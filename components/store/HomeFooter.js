@@ -1,10 +1,11 @@
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 export default function HomeFooter() {
   return (
     <View style={footer_styles.footerContainer}>
       <Text style={footer_styles.whiteText}>
-        Não tens uma conta? <Text>Regista-te</Text>.
+        Não tens uma conta?{' '}
+        <Text style={footer_styles.underlined}>Regista-te</Text>.
       </Text>
     </View>
   );
@@ -17,5 +18,10 @@ const footer_styles = StyleSheet.create({
   },
   whiteText: {
     color: 'white',
+    textAlign: 'center',
+  },
+  underlined: {
+    fontWeight: 'bold',
+    textDecorationLine: 'underline',
   },
 });

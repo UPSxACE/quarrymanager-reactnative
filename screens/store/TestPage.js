@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View } from 'react-native';
-import SearchBar from '../../components/store/SearchBar';
 import HomeFooter from '../../components/store/HomeFooter';
 
 export default function TestPage({ navigation }) {
