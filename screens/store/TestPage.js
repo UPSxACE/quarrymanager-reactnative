@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 import HomeFooter from '../../components/store/HomeFooter';
+import WhiteButton from '../../components/store/WhiteButton';
 
 export default function TestPage({ navigation }) {
   return (
@@ -10,6 +11,7 @@ export default function TestPage({ navigation }) {
       >
         Teste
       </Text>
+      <WhiteButton />
       <HomeFooter />
     </View>
   );
