@@ -1,9 +1,13 @@
+import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import HomeFooter from '../../components/store/HomeFooter';
 import WhiteButton from '../../components/store/WhiteButton';
 import { Box, Text, HStack, VStack, Center } from 'native-base';
+import WhiteInput from '../../components/store/WhiteInput';
 
 export default function TestPage({ navigation }) {
+  const [formData, setData] = React.useState({});
+
   return (
     <View style={page_styles.container}>
       <Text
@@ -29,6 +33,13 @@ export default function TestPage({ navigation }) {
       <VStack bg="white">
         <WhiteButton label="Test" />
       </VStack>
+      <HStack paddingLeft="12px" paddingRight="12px" width={'100%'}>
+        <WhiteInput
+          marginTop="12px"
+          label="Nome"
+          onChangeText={(value) => setData({ ...formData, name: value })}
+        />
+      </HStack>
     </View>
   );
 }
