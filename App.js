@@ -21,6 +21,9 @@ export default function App() {
       amber: {
         // 400: '#d97706',
       },
+      main: {
+        A: '#576F89',
+      },
     },
   });
 

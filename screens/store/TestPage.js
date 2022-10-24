@@ -23,6 +23,9 @@ export default function TestPage({ navigation }) {
       <Center h="300" w="300" bg="black">
         <Text color="white">Test</Text>
       </Center>
+      <Box alignItems="center" bg="main.A">
+        <Text color="white">Test new color</Text>
+      </Box>
     </View>
   );
 }
