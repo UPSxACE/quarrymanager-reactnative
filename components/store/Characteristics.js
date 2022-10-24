@@ -1,13 +1,12 @@
 import { View, Text, FlatList, StyleSheet } from "react-native";
 
-const data = [
-  { title: "Resistencia a Compressao", valor: "6 Mpa" },
-  { title: "Resistencia a Flexao", valor: "2 Mpa" },
-  { title: "Massa Volumica Aparente", valor: "6 Kg/m²" },
-  { title: "Massa Absorcao de Agua", valor: "3 %" },
-];
-
-export default function Characteristics() {
+export default function Characteristics({ resCom, resFlex, mva, maa }) {
+  const data = [
+    { title: "Resistencia a Compressao", valor: `${resCom} Mpa` },
+    { title: "Resistencia a Flexao", valor: `${resFlex} Mpa` },
+    { title: "Massa Volumica Aparente", valor: `${mva} Kg/m²` },
+    { title: "Massa Absorcao de Agua", valor: `${maa} %` },
+  ];
   const item = ({ item }) => {
     return (
       <View

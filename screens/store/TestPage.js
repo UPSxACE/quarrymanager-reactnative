@@ -17,7 +17,7 @@ export default function TestPage({ navigation }) {
           "Pode ser utilizado em superfícies de ambientes internos como: cozinhas, banheiros, lavabos, áreas de serviços, pisos, escadas, mesas e muito mais. Para limpeza do material, nós recomendamos que se use um pano com detergente neutro ou esponja scott brite com sapólio em pó."
         }
       />
-      <Characteristics />
+      <Characteristics resCom={6} resFlex={2} mva={6} maa={3} />
     </View>
   );
 }
