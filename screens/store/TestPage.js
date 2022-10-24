@@ -33,13 +33,19 @@ export default function TestPage({ navigation }) {
       <VStack bg="white">
         <WhiteButton label="Test" />
       </VStack>
-      <HStack paddingLeft="12px" paddingRight="12px" width={'100%'}>
+      <VStack paddingLeft="12px" paddingRight="12px" width={'100%'}>
         <WhiteInput
           marginTop="12px"
           label="Nome"
           onChangeText={(value) => setData({ ...formData, name: value })}
         />
-      </HStack>
+        <WhiteInput
+          marginTop="12px"
+          label="Password"
+          onChangeText={(value) => setData({ ...formData, name: value })}
+          secret
+        />
+      </VStack>
     </View>
   );
 }
