@@ -12,9 +12,10 @@ export default function TestPage({ navigation }) {
         Teste
       </Text>
       <Description
-        descricao={"0asfh"}
-        preco={20}
-        texto1={"ajksdgçjkahdfçlahfçasjhfçjaksfhçakdf"}
+        preco={"10,99€/m²"}
+        descricao={
+          "Pode ser utilizado em superfícies de ambientes internos como: cozinhas, banheiros, lavabos, áreas de serviços, pisos, escadas, mesas e muito mais. Para limpeza do material, nós recomendamos que se use um pano com detergente neutro ou esponja scott brite com sapólio em pó."
+        }
       />
       <Characteristics />
     </View>

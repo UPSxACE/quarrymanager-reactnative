@@ -10,7 +10,12 @@ const data = [
 export default function Characteristics() {
   const item = ({ item }) => {
     return (
-      <View style={{ flexDirection: "row" }}>
+      <View
+        style={{
+          flexDirection: "row",
+          width: "100%",
+        }}
+      >
         <View style={characteristicsStyles.textStyle1}>
           <Text>{item.title}</Text>
         </View>
@@ -23,7 +28,14 @@ export default function Characteristics() {
 
   return (
     <View style={characteristicsStyles.flatlistStyle}>
+      <View style={characteristicsStyles.alignHead}>
+        <View>
+          <Text style={characteristicsStyles.headerText}>Características</Text>
+        </View>
+      </View>
       <FlatList
+        style={{ width: "100%" }}
+        scrollEnabled={false}
         data={data}
         renderItem={item}
         keyExtractor={(item, index) => index.toString()}
@@ -36,16 +48,29 @@ const characteristicsStyles = StyleSheet.create({
   flatlistStyle: {
     justifyContent: "center",
     alignItems: "center",
+    padding: 12,
+    width: "100%",
   },
   textStyle1: {
-    width: 100,
+    width: "50%",
     borderBottomWidth: 1,
     borderColor: "gray",
   },
   textStyle2: {
-    width: 100,
+    width: "50%",
     borderBottomWidth: 1,
     borderColor: "gray",
     alignItems: "flex-end",
+  },
+  alignHead: {
+    margin: 12,
+    flexDirection: "row",
+    borderBottomWidth: 1,
+    width: "100%",
+  },
+
+  headerText: {
+    fontWeight: "bold",
+    fontSize: 16,
   },
 });

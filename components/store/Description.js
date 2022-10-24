@@ -1,23 +1,23 @@
 import { Button } from "native-base";
 import { View, Text, StyleSheet } from "react-native";
 
-export default function Description({ descricao, preco, texto1 }) {
+export default function Description({ descricao, preco }) {
   return (
     <View>
       <View style={descriptionStyles.alignHead}>
         <View>
-          <Text style={descriptionStyles.headerText}>{descricao}</Text>
+          <Text style={descriptionStyles.headerText}>Descrição</Text>
         </View>
         <View style={descriptionStyles.rightText}>
           <Text style={descriptionStyles.headerText}>{preco}</Text>
         </View>
       </View>
       <View style={descriptionStyles.alignText}>
-        <Text style={descriptionStyles.descriptionText}>{texto1}</Text>
+        <Text style={descriptionStyles.descriptionText}>{descricao}</Text>
       </View>
       <View style={descriptionStyles.alignDiv}>
         <Button style={descriptionStyles.buttonStyle} bordered success>
-          <Text>Success</Text>
+          <Text>Pedir Orçamento</Text>
         </Button>
       </View>
     </View>
