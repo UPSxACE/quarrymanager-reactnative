@@ -23,6 +23,9 @@ export default function App() {
       },
       main: {
         A: '#576F89',
+        B: '#9FB6D4',
+        greyComponentBg: '#F5F5F5',
+        greyComponentText: '#6C6B6B',
       },
     },
   });

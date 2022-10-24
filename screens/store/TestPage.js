@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import HomeFooter from '../../components/store/HomeFooter';
 import WhiteButton from '../../components/store/WhiteButton';
-import { Box, Text, HStack, Center } from 'native-base';
+import { Box, Text, HStack, VStack, Center } from 'native-base';
 
 export default function TestPage({ navigation }) {
   return (
@@ -26,6 +26,9 @@ export default function TestPage({ navigation }) {
       <Box alignItems="center" bg="main.A">
         <Text color="white">Test new color</Text>
       </Box>
+      <VStack bg="white">
+        <WhiteButton label="Test" />
+      </VStack>
     </View>
   );
 }
