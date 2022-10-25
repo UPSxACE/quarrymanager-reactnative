@@ -7,6 +7,7 @@ import AboutPage from "./screens/store/AboutPage";
 import { NativeBaseProvider, extendTheme } from "native-base";
 import { LinearGradient } from "expo-linear-gradient";
 import Profile from "./screens/store/Profile";
+import Settingspage from "./screens/store/SettingsPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -42,6 +43,7 @@ export default function App() {
           <Stack.Screen name="Home" component={TestPage} />
           <Stack.Screen name="About" component={AboutPage} />
           <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="Settings" component={Settingspage} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
