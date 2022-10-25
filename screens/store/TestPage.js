@@ -30,9 +30,6 @@ export default function TestPage({ navigation }) {
       <Box alignItems="center" bg="main.A">
         <Text color="white">Test new color</Text>
       </Box>
-      <VStack bg="white">
-        <WhiteButton label="Test" />
-      </VStack>
       <VStack paddingLeft="12px" paddingRight="12px" width={'100%'}>
         <WhiteInput
           marginTop="12px"
@@ -45,6 +42,9 @@ export default function TestPage({ navigation }) {
           onChangeText={(value) => setData({ ...formData, name: value })}
           secret
         />
+      </VStack>
+      <VStack marginTop="12px" bg="white">
+        <WhiteButton label="Submit" />
       </VStack>
     </View>
   );

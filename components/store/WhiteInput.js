@@ -3,12 +3,11 @@ import { Input, Pressable, Icon } from 'native-base';
 import Feather from '@expo/vector-icons/Feather';
 
 export default function WhiteInput({ label, secret, ...props }) {
-  const [show, setShow] = React.useState(false);
+  const [show, setShow] = React.useState(!secret);
   return (
     <Input
       height="40px"
       width={'100%'}
-      {...props}
       placeholder={label}
       type={show ? 'text' : 'password'}
       InputRightElement={
@@ -18,6 +17,15 @@ export default function WhiteInput({ label, secret, ...props }) {
           </Pressable>
         )
       }
+      rounded="0"
+      bg="main.greyComponentBg"
+      borderWidth="0"
+      borderBottomWidth="1"
+      borderBottomColor="main.B"
+      _focus={{ bg: 'gray.200' }}
+      placeholderTextColor="#6C6B6B"
+      color="greyComponentText"
+      {...props}
     />
   );
 }
