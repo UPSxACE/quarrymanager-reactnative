@@ -31,7 +31,7 @@ export default function TestPage({ navigation }) {
         style={page_styles.text1}
         onPress={() => navigation.navigate("About")}
       >
-        Teste
+        Testeeee
       </Text>
       <WhiteButton />
       <HomeFooter />
