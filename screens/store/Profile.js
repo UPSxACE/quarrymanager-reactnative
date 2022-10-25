@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Icon, Button, Pressable } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 import Feather from "@expo/vector-icons";
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
@@ -7,7 +7,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import SearchBar from "../../components/store/SearchBar";
 
-export default function TestPage({ navigation }) {
+export default function Profile({ navigation }) {
   return (
     <View style={page_styles.container}>
       <Text>Home!</Text>
@@ -27,18 +27,9 @@ const page_styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    justifyContent: "center",
-    alignItems: "center",
   },
 
   text1: {
     color: "grey",
-  },
-
-  navbar: {
-    flexDirection: "row",
-    backgroundColor: "black",
-    width: "90%",
-    justifyContent: "space-evenly",
   },
 });
