@@ -4,6 +4,7 @@ import HomeFooter from '../../components/store/HomeFooter';
 import WhiteButton from '../../components/store/WhiteButton';
 import { Box, Text, HStack, VStack, Center } from 'native-base';
 import WhiteInput from '../../components/store/WhiteInput';
+import BlueButton from '../../components/store/BlueButton';
 
 export default function TestPage({ navigation }) {
   const [formData, setData] = React.useState({});
@@ -46,6 +47,9 @@ export default function TestPage({ navigation }) {
       <VStack marginTop="12px" bg="white">
         <WhiteButton label="Submit" />
       </VStack>
+      <BlueButton
+        label="Botão Submit"
+        BlueBotton />
     </View>
   );
 }
