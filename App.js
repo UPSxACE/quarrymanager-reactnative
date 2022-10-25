@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TestPage from "./screens/store/TestPage";
 import AboutPage from "./screens/store/AboutPage";
 import Profile from "./screens/store/Profile";
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {

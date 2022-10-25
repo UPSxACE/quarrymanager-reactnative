@@ -10,12 +10,23 @@ import SearchBar from "../../components/store/SearchBar";
 export default function TestPage({ navigation }) {
   return (
     <View style={page_styles.container}>
-      <Text>Home!</Text>
-      <Button title="Go to Home" onPress={() => navigation.navigate("Home")} />
+      <Button
+        style={{
+          width: "90%",
+          justifyContent: "space-evenly",
+          backgroundColor: "000",
+        }}
+        title="Home"
+        onPress={() => navigation.navigate("Home")}
+      />
       <View style={page_styles.container}>
-        <Text>Perfil</Text>
         <Button
-          title="Go to Profile"
+          style={{
+            width: "90%",
+            justifyContent: "space-evenly",
+            backgroundColor: "000",
+          }}
+          title="Profile"
           onPress={() => navigation.navigate("Profile")}
         />
       </View>
@@ -29,16 +40,15 @@ const page_styles = StyleSheet.create({
     backgroundColor: "#fff",
     justifyContent: "center",
     alignItems: "center",
+    flexDirection: "row",
+  },
+
+  button1: {
+    width: "90%",
+    justifyContent: "space-evenly",
   },
 
   text1: {
     color: "grey",
-  },
-
-  navbar: {
-    flexDirection: "row",
-    backgroundColor: "black",
-    width: "90%",
-    justifyContent: "space-evenly",
   },
 });
