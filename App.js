@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TestPage from "./screens/store/TestPage";
 import AboutPage from "./screens/store/AboutPage";
 import { NativeBaseProvider, extendTheme } from "native-base";
+import { LinearGradient } from "expo-linear-gradient";
 import Profile from "./screens/store/Profile";
 
 const Stack = createNativeStackNavigator();
@@ -27,12 +28,14 @@ export default function App() {
         B: "#9FB6D4",
         greyComponentBg: "#F5F5F5",
         greyComponentText: "#6C6B6B",
+        C: "#82A2CC",
+        D: "#394A58",
       },
     },
   });
 
   return (
-    <NativeBaseProvider theme={theme}>
+    <NativeBaseProvider theme={theme} config={config}>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Home" component={TestPage} />
@@ -63,3 +66,9 @@ const page_styles = StyleSheet.create({
     color: "grey",
   },
 });
+
+const config = {
+  dependencies: {
+    "linear-gradient": LinearGradient,
+  },
+};

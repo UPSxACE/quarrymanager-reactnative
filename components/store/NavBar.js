@@ -8,12 +8,21 @@ import * as React from "react";
 export default function NavBar() {
   const navigation = useNavigation();
   return (
-    <HStack h={"40px"} justifyContent={"space-evenly"}>
-      <Center h={"40px"} w={"40px"}>
+    <HStack
+      h={"50px"}
+      justifyContent={"space-evenly"}
+      bg={{
+        linearGradient: {
+          colors: ["main.C", "main.D"],
+          start: [0, 0.5],
+        },
+      }}
+    >
+      <Center h={"50px"} w={"50px"}>
         <Pressable>
           <Icon
-            size="30px"
-            color="#000"
+            size="6"
+            color="#fff"
             as={
               <Feather
                 name="home"
@@ -23,11 +32,11 @@ export default function NavBar() {
           />
         </Pressable>
       </Center>
-      <Center h={"40px"} w={"40px"}>
+      <Center h={"50px"} w={"50px"}>
         <Pressable>
           <Icon
             size="6"
-            color="#000"
+            color="#fff"
             as={
               <Feather
                 name="package"
@@ -37,11 +46,11 @@ export default function NavBar() {
           />
         </Pressable>
       </Center>
-      <Center h={"40px"} w={"40px"}>
+      <Center h={"50px"} w={"50px"}>
         <Pressable>
           <Icon
             size="6"
-            color="#000"
+            color="#fff"
             as={
               <Feather
                 name="user"
@@ -51,11 +60,11 @@ export default function NavBar() {
           />
         </Pressable>
       </Center>
-      <Center h={"40px"} w={"40px"}>
+      <Center h={"50px"} w={"50px"}>
         <Pressable>
           <Icon
             size="6"
-            color="#000"
+            color="#fff"
             as={
               <Feather
                 name="menu"
