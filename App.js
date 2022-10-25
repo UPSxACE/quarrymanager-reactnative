@@ -30,6 +30,7 @@ export default function App() {
         greyComponentText: "#6C6B6B",
         C: "#82A2CC",
         D: "#394A58",
+        blueComponentBorder: "#7F9EC6",
       },
     },
   });

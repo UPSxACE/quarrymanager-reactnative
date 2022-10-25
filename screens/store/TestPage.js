@@ -19,6 +19,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import SearchBar from "../../components/store/SearchBar";
 import NavBar from "../../components/store/NavBar";
+import ArrowButton from "../../components/store/ArrowButton";
 
 export default function TestPage({ navigation }) {
   const [formData, setData] = React.useState({});
@@ -26,6 +27,10 @@ export default function TestPage({ navigation }) {
   return (
     <ScrollView style={page_styles.container}>
       <NavBar />
+
+      <HStack pl={"12px"} pr={"12px"}>
+        <ArrowButton />
+      </HStack>
 
       <Text
         style={page_styles.text1}
