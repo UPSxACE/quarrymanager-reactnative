@@ -6,10 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 export default function ArrowButton({ label }) {
   const navigation = useNavigation();
   return (
-    <Pressable
-      width={"100%"}
-      onPress={() => navigation.navigate("SettingsPage")}
-    >
+    <Pressable width={"100%"} onPress={() => navigation.navigate("Settings")}>
       <HStack
         w={"100%"}
         h={"40px"}

@@ -68,7 +68,7 @@ export default function NavBar() {
             as={
               <Feather
                 name="menu"
-                onPress={() => navigation.navigate("SettingsPage")}
+                onPress={() => navigation.navigate("Settings")}
               />
             }
           />
