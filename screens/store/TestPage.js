@@ -29,7 +29,7 @@ export default function TestPage({ navigation }) {
       <NavBar />
 
       <HStack pl={"12px"} pr={"12px"}>
-        <ArrowButton />
+        <ArrowButton label="Dashboard" />
       </HStack>
 
       <Text
