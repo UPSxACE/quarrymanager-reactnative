@@ -1,17 +1,18 @@
-import { StyleSheet, Text, View, Button } from "react-native";
-import Feather from "@expo/vector-icons";
-import * as React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { StyleSheet, Text, View, Button } from 'react-native';
+import Feather from '@expo/vector-icons';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import SearchBar from "../../components/store/SearchBar";
+import SearchBar from '../../components/store/SearchBar';
+import { StatusBar } from 'expo-status-bar';
 
 export default function Profile({ navigation }) {
   return (
     <View style={page_styles.container}>
       <Text>Configurações</Text>
-      <Button title="Home Icon" onPress={() => navigation.navigate("Home")} />
+      <Button title='Home Icon' onPress={() => navigation.navigate('Home')} />
     </View>
   );
 }
@@ -19,12 +20,12 @@ export default function Profile({ navigation }) {
 const page_styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   text1: {
-    color: "grey",
+    color: 'grey',
   },
 });
