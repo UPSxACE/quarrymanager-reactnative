@@ -10,6 +10,7 @@ export default function NavBar() {
   return (
     <HStack
       h={"50px"}
+      w={"100%"}
       justifyContent={"space-evenly"}
       bg={{
         linearGradient: {
@@ -68,7 +69,7 @@ export default function NavBar() {
             as={
               <Feather
                 name="menu"
-                onPress={() => navigation.navigate("Home")}
+                onPress={() => navigation.navigate("Settings")}
               />
             }
           />

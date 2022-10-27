@@ -20,7 +20,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import SearchBar from "../../components/store/SearchBar";
 import NavBar from "../../components/store/NavBar";
 import ArrowButton from "../../components/store/ArrowButton";
-import BlueButton from '../../components/store/BlueButton';
+import BlueButton from "../../components/store/BlueButton";
 
 export default function TestPage({ navigation }) {
   const [formData, setData] = React.useState({});
@@ -69,9 +69,10 @@ export default function TestPage({ navigation }) {
       <VStack marginTop="12px" bg="white">
         <WhiteButton label="Submit" />
       </VStack>
-      <BlueButton
-        label="Botão Submit"
-        BlueBotton />    </ScrollView>
+      <HStack marginX={"16px"}>
+        <BlueButton label="Botão Submit" BlueBotton />
+      </HStack>
+    </ScrollView>
   );
 }
 

@@ -3,10 +3,10 @@ import { Text, HStack, Button, Icon, Center } from "native-base";
 import { Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-export default function ArrowButton({ label }) {
+export default function ArrowButton({ label, destiny }) {
   const navigation = useNavigation();
   return (
-    <Pressable width={"100%"} onPress={() => navigation.navigate("Home")}>
+    <Pressable width={"100%"} onPress={() => navigation.navigate(destiny)}>
       <HStack
         w={"100%"}
         h={"40px"}
