@@ -1,11 +1,11 @@
 import * as React from "react";
 import ArrowButton from "../../components/store/ArrowButton";
 import NavBar from "../../components/store/NavBar";
-import { Center, HStack, VStack, View } from "native-base";
+import { Center, HStack, VStack, View, Menu } from "native-base";
 
 export default function SettingsPage() {
   return (
-    <View>
+    <View h={"100%"}>
       <HStack pl={"12px"} pr={"12px"} pb={"12px"} pt={"12px"}>
         <ArrowButton label="Dashboard" destiny={"Home"} />
       </HStack>
@@ -21,8 +21,9 @@ export default function SettingsPage() {
       <HStack pl={"12px"} pr={"12px"} pb={"12px"}>
         <ArrowButton label="Terminar Sessão" destiny={"Home"} />
       </HStack>
-
-      <NavBar />
+      <View marginTop={"auto"}>
+        <NavBar />
+      </View>
     </View>
   );
 }
