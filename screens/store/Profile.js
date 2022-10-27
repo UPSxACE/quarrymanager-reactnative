@@ -15,22 +15,28 @@ import WhiteInput from "../../components/store/WhiteInput";
 export default function Profile({ navigation }) {
   return (
     <ScrollView style={page_styles.container}>
-      <HStack w={"100%"}>
-        <Text>Foto de perfil</Text>
+      <VStack
+        paddingBottom={"12px"}
+        borderBottomWidth={"1px"}
+        borderColor={"gray.300"}
+      >
+        <HStack w={"100%"}>
+          <Text>Foto de perfil</Text>
 
-        <Pressable onPress={() => navigation.navigate("Home")} ml={"auto"}>
-          <Text>Editar</Text>
-        </Pressable>
-      </HStack>
-      <Image
-        marginTop={"12px"}
-        alignSelf={"center"}
-        alt="Profile Picture"
-        style={page_styles.userPicture}
-        source={{
-          uri: "https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg",
-        }}
-      />
+          <Pressable onPress={() => navigation.navigate("Home")} ml={"auto"}>
+            <Text>Editar</Text>
+          </Pressable>
+        </HStack>
+        <Image
+          marginTop={"12px"}
+          alignSelf={"center"}
+          alt="Profile Picture"
+          style={page_styles.userPicture}
+          source={{
+            uri: "https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg",
+          }}
+        />
+      </VStack>
       <HStack w={"100%"} marginTop={"12px"}>
         <Text>Foto de capa</Text>
         <Pressable onPress={() => navigation.navigate("Home")} ml={"auto"}>
@@ -67,19 +73,19 @@ export default function Profile({ navigation }) {
         <WhiteInput label={"Morada"} marginTop={"12px"} />
         <HStack>
           <WhiteInput
-            w={"33.33%"}
+            w={"50%"}
             label={"Código Postal"}
             marginTop={"12px"}
             marginRight={"6px"}
           />
           <WhiteInput
-            w={"33.33%"}
+            w={"50%"}
             label={"Região"}
             marginTop={"12px"}
             marginRight={"6px"}
           />
-          <WhiteInput w={"33.33%"} label={"Telefone"} marginTop={"12px"} />
         </HStack>
+        <WhiteInput label={"Telefone"} marginTop={"12px"} />
       </VStack>
 
       <VStack marginTop={"12px"} paddingBottom={"50px"}>
