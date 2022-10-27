@@ -1,15 +1,24 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TestPage from "./screens/store/TestPage";
 import AboutPage from "./screens/store/AboutPage";
-import { NativeBaseProvider, extendTheme } from "native-base";
+import {
+  NativeBaseProvider,
+  extendTheme,
+  View,
+  Box,
+  HStack,
+} from "native-base";
 import { LinearGradient } from "expo-linear-gradient";
 import Profile from "./screens/store/Profile";
 import SettingsPage from "./screens/store/SettingsPage";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Feather } from "@expo/vector-icons";
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   const theme = extendTheme({
@@ -39,12 +48,35 @@ export default function App() {
   return (
     <NativeBaseProvider theme={theme} config={config}>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+
+              if (route.name === "Home") {
+                iconName = focused ? "home" : "home";
+              } else if (route.name === "Settings") {
+                iconName = focused ? "menu" : "menu";
+              }
+
+              // You can return any component that you like here!
+              return <Feather name={iconName} size={size} color={color} />;
+            },
+            tabBarActiveTintColor: "tomato",
+            tabBarInactiveTintColor: "gray",
+          })}
+        >
+          <Tab.Screen name="Home" component={TestPage} />
+          <Tab.Screen name="About" component={AboutPage} />
+          <Tab.Screen name="Profile" component={Profile} />
+          <Tab.Screen name="Settings" component={SettingsPage} />
+        </Tab.Navigator>
+        {/* <Stack.Navigator>
           <Stack.Screen name="Home" component={TestPage} />
           <Stack.Screen name="About" component={AboutPage} />
           <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="Settings" component={SettingsPage} />
-        </Stack.Navigator>
+        </Stack.Navigator> */}
       </NavigationContainer>
     </NativeBaseProvider>
   );
