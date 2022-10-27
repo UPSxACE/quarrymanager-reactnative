@@ -50,11 +50,16 @@ export default function App() {
       <NavigationContainer>
         <Tab.Navigator
           screenOptions={({ route }) => ({
+            tabBarShowLabel: false,
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;
 
               if (route.name === "Home") {
                 iconName = focused ? "home" : "home";
+              } else if (route.name === "About") {
+                iconName = focused ? "package" : "package";
+              } else if (route.name === "Profile") {
+                iconName = focused ? "user" : "user";
               } else if (route.name === "Settings") {
                 iconName = focused ? "menu" : "menu";
               }
@@ -62,8 +67,24 @@ export default function App() {
               // You can return any component that you like here!
               return <Feather name={iconName} size={size} color={color} />;
             },
-            tabBarActiveTintColor: "tomato",
-            tabBarInactiveTintColor: "gray",
+            tabBarActiveTintColor: "white",
+            tabBarInactiveTintColor: "white",
+
+            tabBarBackground: () => (
+              <View style={{ flex: 1 }}>
+                <HStack
+                  h={"50px"}
+                  w={"100%"}
+                  justifyContent={"space-evenly"}
+                  bg={{
+                    linearGradient: {
+                      colors: ["main.C", "main.D"],
+                      start: [0, 0.5],
+                    },
+                  }}
+                ></HStack>
+              </View>
+            ),
           })}
         >
           <Tab.Screen name="Home" component={TestPage} />

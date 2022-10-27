@@ -21,9 +21,6 @@ export default function SettingsPage() {
       <HStack pl={"12px"} pr={"12px"} pb={"12px"}>
         <ArrowButton label="Terminar Sessão" destiny={"Home"} />
       </HStack>
-      <View marginTop={"auto"}>
-        <NavBar />
-      </View>
     </View>
   );
 }
