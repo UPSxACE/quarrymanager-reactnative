@@ -18,7 +18,7 @@ export default function Profile({ navigation }) {
       <VStack
         paddingBottom={"12px"}
         borderBottomWidth={"1px"}
-        borderColor={"gray.300"}
+        borderColor={"#9FB6D4"}
       >
         <HStack w={"100%"}>
           <Text>Foto de perfil</Text>
@@ -37,20 +37,26 @@ export default function Profile({ navigation }) {
           }}
         />
       </VStack>
-      <HStack w={"100%"} marginTop={"12px"}>
-        <Text>Foto de capa</Text>
-        <Pressable onPress={() => navigation.navigate("Home")} ml={"auto"}>
-          <Text>Editar</Text>
-        </Pressable>
-      </HStack>
-      <Image
-        marginTop={"12px"}
-        alt="Profile Picture"
-        style={page_styles.coverPicture}
-        source={{
-          uri: "https://www.nit.pt/wp-content/uploads/2022/09/78805a221a988e79ef3f42d7c5bfd418-4.jpg",
-        }}
-      />
+      <VStack
+        paddingBottom={"12px"}
+        borderBottomWidth={"1px"}
+        borderColor={"#9FB6D4"}
+      >
+        <HStack w={"100%"} marginTop={"12px"}>
+          <Text>Foto de capa</Text>
+          <Pressable onPress={() => navigation.navigate("Home")} ml={"auto"}>
+            <Text>Editar</Text>
+          </Pressable>
+        </HStack>
+        <Image
+          marginTop={"12px"}
+          alt="Profile Picture"
+          style={page_styles.coverPicture}
+          source={{
+            uri: "https://www.nit.pt/wp-content/uploads/2022/09/78805a221a988e79ef3f42d7c5bfd418-4.jpg",
+          }}
+        />
+      </VStack>
       <HStack w={"100%"} marginTop={"12px"}>
         <Text>Dados de entrega</Text>
 
