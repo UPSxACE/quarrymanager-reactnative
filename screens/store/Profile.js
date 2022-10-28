@@ -99,6 +99,7 @@ export default function Profile({ navigation }) {
 const page_styles = StyleSheet.create({
   container: {
     flex: 1,
+
     backgroundColor: "#fff",
     padding: 12,
   },
