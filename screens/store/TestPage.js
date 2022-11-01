@@ -20,7 +20,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import SearchBar from "../../components/store/SearchBar";
 import NavBar from "../../components/store/NavBar";
 import ArrowButton from "../../components/store/ArrowButton";
-import BlueButton from "../../components/store/BlueButton";
+import BlueButton from '../../components/store/BlueButton';
+import BlueInput from '../../components/store/BlueInput';
 
 export default function TestPage({ navigation }) {
   const [formData, setData] = React.useState({});
@@ -69,9 +70,16 @@ export default function TestPage({ navigation }) {
       <VStack marginTop="12px" bg="white">
         <WhiteButton label="Submit" />
       </VStack>
-      <HStack marginX={"16px"}>
-        <BlueButton label="Botão Submit" BlueBotton />
-      </HStack>
+      <VStack marginTop="12px">
+        <BlueButton
+          label="Botão Submit"
+        />
+        <BlueInput
+          label="Insert Text"
+          marginTop="12px"
+          onChangeText={(value) => setData({ ...formData, name: value })}
+        />
+      </VStack>
     </ScrollView>
   );
 }
