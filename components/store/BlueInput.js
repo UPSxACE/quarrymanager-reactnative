@@ -22,7 +22,7 @@ export default function BlueInput({ label, secret, ...props }) {
       borderWidth='0'
       borderBottomWidth='1'
       borderBottomColor='#576F89'
-      placeholderTextColor='#6C6B6B'
+      placeholderTextColor='#BDBDBD'
       color='greyComponentText'
       {...props}
     />
