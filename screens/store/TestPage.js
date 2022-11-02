@@ -9,9 +9,7 @@ export default function TestPage({ navigation }) {
       <Text
         style={page_styles.text1}
         onPress={() => navigation.navigate("About")}
-      >
-        Teste
-      </Text>
+      ></Text>
       <LoteDescription
         mat={"Mármore"}
         cor={"Laranja"}
