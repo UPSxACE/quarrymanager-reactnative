@@ -1,4 +1,5 @@
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { Text, FlatList, StyleSheet } from "react-native";
+import { View, HStack } from "native-base";
 
 export default function Characteristics({ resCom, resFlex, mva, maa }) {
   const data = [

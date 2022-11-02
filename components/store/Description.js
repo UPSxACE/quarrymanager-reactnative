@@ -1,5 +1,6 @@
 import { Button } from "native-base";
-import { View, Text, StyleSheet } from "react-native";
+import { Text, StyleSheet } from "react-native";
+import { View, HStack, VStack } from "native-base";
 
 export default function Description({ descricao, preco }) {
   return (
