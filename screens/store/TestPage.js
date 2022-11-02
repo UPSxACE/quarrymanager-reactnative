@@ -1,5 +1,6 @@
 import { VStack, HStack } from "native-base";
 import { StyleSheet, Text, View } from "react-native";
+import LoteDescription from "../../components/LoteDescription";
 import HomeFooter from "../../components/store/HomeFooter";
 
 export default function TestPage({ navigation }) {
@@ -11,11 +12,15 @@ export default function TestPage({ navigation }) {
       >
         Teste
       </Text>
-      <VStack>
-        <HStack>
-          <Text>título</Text>
-        </HStack>
-      </VStack>
+      <LoteDescription
+        mat={"Mármore"}
+        cor={"Laranja"}
+        quant={"475m^2"}
+        localex={"Moca"}
+        localar={"Areeiro da Serra"}
+        dataex={"2022-04-22"}
+        horaex={"23:19:01"}
+      />
       <HomeFooter />
     </View>
   );
