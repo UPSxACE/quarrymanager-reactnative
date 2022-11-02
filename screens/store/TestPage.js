@@ -1,5 +1,7 @@
-import { StyleSheet, View } from "react-native";
 import LoteDescription from "../../components/LoteDescription";
+import Description from "../../components/store/Description";
+import Characteristics from "../../components/store/Characteristics";
+import { StyleSheet, View, Button } from "react-native";
 import HomeFooter from "../../components/store/HomeFooter";
 import WhiteButton from "../../components/store/WhiteButton";
 import {
@@ -23,6 +25,7 @@ import NavBar from "../../components/store/NavBar";
 import ArrowButton from "../../components/store/ArrowButton";
 import BlueButton from "../../components/store/BlueButton";
 import BlueInput from "../../components/store/BlueInput";
+
 export default function TestPage({ navigation }) {
   const [formData, setData] = React.useState({});
 
@@ -47,6 +50,15 @@ export default function TestPage({ navigation }) {
         dataex={"2022-04-22"}
         horaex={"23:19:01"}
       />
+
+      <Description
+        preco={"10,99€/m²"}
+        descricao={
+          "Pode ser utilizado em superfícies de ambientes internos como: cozinhas, banheiros, lavabos, áreas de serviços, pisos, escadas, mesas e muito mais. Para limpeza do material, nós recomendamos que se use um pano com detergente neutro ou esponja scott brite com sapólio em pó."
+        }
+      />
+      <Characteristics resCom={6} resFlex={2} mva={6} maa={3} />
+
       <WhiteButton />
 
       <HomeFooter />
