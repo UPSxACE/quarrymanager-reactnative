@@ -2,7 +2,8 @@ import { Text, HStack, Button, Image, View, VStack, Icon } from "native-base";
 import { Pressable, StyleSheet } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
-export default function ListItem({ request, newMessage }) {
+export default function ListItem({ newMessage }) {
+  const [newMessage, setnewMessage] = React.useState(newMessage);
   return (
     <View
       style={page_styles.container}
@@ -22,7 +23,7 @@ export default function ListItem({ request, newMessage }) {
             uri: "https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg",
           }}
         />
-        <VStack>
+        <VStack alignItems={"center"}>
           <Text style={page_styles.titleText}>Mármore Preto</Text>
           <Text style={page_styles.processText}>Em processamento</Text>
         </VStack>
@@ -38,7 +39,7 @@ const page_styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#f5f5f5",
-    padding: 12,
+    paddingBottom: 12,
     width: "100%",
   },
 
@@ -55,6 +56,6 @@ const page_styles = StyleSheet.create({
   productPicture: {
     width: 130,
     height: 100,
-    borderRadius: 5,
+    borderRadius: 4,
   },
 });
