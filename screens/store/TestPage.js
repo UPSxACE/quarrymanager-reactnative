@@ -1,9 +1,9 @@
-import LoteDescription from "../../components/LoteDescription";
-import Description from "../../components/store/Description";
-import Characteristics from "../../components/store/Characteristics";
-import { StyleSheet, View, Button } from "react-native";
-import HomeFooter from "../../components/store/HomeFooter";
-import WhiteButton from "../../components/store/WhiteButton";
+import LoteDescription from '../../components/LoteDescription';
+import Description from '../../components/store/Description';
+import Characteristics from '../../components/store/Characteristics';
+import { StyleSheet, View, Button } from 'react-native';
+import HomeFooter from '../../components/store/HomeFooter';
+import WhiteButton from '../../components/store/WhiteButton';
 import {
   Box,
   Text,
@@ -12,19 +12,19 @@ import {
   Center,
   ScrollView,
   Pressable,
-} from "native-base";
-import WhiteInput from "../../components/store/WhiteInput";
-import { Icon } from "native-base";
-import Feather from "@expo/vector-icons/Feather";
-import * as React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import SearchBar from "../../components/store/SearchBar";
-import NavBar from "../../components/store/NavBar";
-import ArrowButton from "../../components/store/ArrowButton";
-import BlueButton from "../../components/store/BlueButton";
-import BlueInput from "../../components/store/BlueInput";
+} from 'native-base';
+import WhiteInput from '../../components/store/WhiteInput';
+import { Icon } from 'native-base';
+import Feather from '@expo/vector-icons/Feather';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import SearchBar from '../../components/store/SearchBar';
+import NavBar from '../../components/store/NavBar';
+import ArrowButton from '../../components/store/ArrowButton';
+import BlueButton from '../../components/store/BlueButton';
+import BlueInput from '../../components/store/BlueInput';
 
 export default function TestPage({ navigation }) {
   const [formData, setData] = React.useState({});
@@ -33,28 +33,32 @@ export default function TestPage({ navigation }) {
     <ScrollView style={page_styles.container}>
       <NavBar />
 
-      <HStack pl={"12px"} pr={"12px"}>
+      <HStack pl={'12px'} pr={'12px'}>
         <ArrowButton label="Dashboard" />
+      </HStack>
+
+      <HStack pl={'12px'} pr={'12px'}>
+        <ArrowButton label="Tests2" destiny="Tests2" />
       </HStack>
 
       <Text
         style={page_styles.text1}
-        onPress={() => navigation.navigate("About")}
+        onPress={() => navigation.navigate('About')}
       ></Text>
       <LoteDescription
-        mat={"Mármore"}
-        cor={"Laranja"}
-        quant={"475m^2"}
-        localex={"Moca"}
-        localar={"Areeiro da Serra"}
-        dataex={"2022-04-22"}
-        horaex={"23:19:01"}
+        mat={'Mármore'}
+        cor={'Laranja'}
+        quant={'475m^2'}
+        localex={'Moca'}
+        localar={'Areeiro da Serra'}
+        dataex={'2022-04-22'}
+        horaex={'23:19:01'}
       />
 
       <Description
-        preco={"10,99€/m²"}
+        preco={'10,99€/m²'}
         descricao={
-          "Pode ser utilizado em superfícies de ambientes internos como: cozinhas, banheiros, lavabos, áreas de serviços, pisos, escadas, mesas e muito mais. Para limpeza do material, nós recomendamos que se use um pano com detergente neutro ou esponja scott brite com sapólio em pó."
+          'Pode ser utilizado em superfícies de ambientes internos como: cozinhas, banheiros, lavabos, áreas de serviços, pisos, escadas, mesas e muito mais. Para limpeza do material, nós recomendamos que se use um pano com detergente neutro ou esponja scott brite com sapólio em pó.'
         }
       />
       <Characteristics resCom={6} resFlex={2} mva={6} maa={3} />
@@ -74,7 +78,7 @@ export default function TestPage({ navigation }) {
       <Box alignItems="center" bg="main.A">
         <Text color="white">Test new color</Text>
       </Box>
-      <VStack paddingLeft="12px" paddingRight="12px" width={"100%"}>
+      <VStack paddingLeft="12px" paddingRight="12px" width={'100%'}>
         <WhiteInput
           marginTop="12px"
           label="Nome"
@@ -105,15 +109,15 @@ export default function TestPage({ navigation }) {
 const page_styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
   },
 
   button1: {
-    width: "90%",
-    justifyContent: "space-evenly",
+    width: '90%',
+    justifyContent: 'space-evenly',
   },
 
   text1: {
-    color: "grey",
+    color: 'grey',
   },
 });
