@@ -21,6 +21,7 @@ import SearchBar from "../../components/store/SearchBar";
 import NavBar from "../../components/store/NavBar";
 import ArrowButton from "../../components/store/ArrowButton";
 import BlueButton from "../../components/store/BlueButton";
+import ListItem from "../../components/store/ListItem";
 
 export default function TestPage({ navigation }) {
   const [formData, setData] = React.useState({});
@@ -28,6 +29,8 @@ export default function TestPage({ navigation }) {
   return (
     <ScrollView style={page_styles.container}>
       <NavBar />
+
+      <ListItem />
 
       <HStack pl={"12px"} pr={"12px"}>
         <ArrowButton label="Dashboard" />
