@@ -4,42 +4,57 @@ import { Feather } from "@expo/vector-icons";
 
 export default function ListItem({ request, newMessage }) {
   return (
-    <View paddingLeft="12px" paddingRight="12px">
-      <Pressable>
-        <HStack>
-          <Image
-            marginTop={"12px"}
-            alignSelf={"center"}
-            alt="Product Picture"
-            style={page_styles.productPicture}
-            source={{
-              uri: "https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg",
-            }}
-          />
-          <VStack>
-            <Text>Mármore Preto</Text>
-            <Text>Mármore Preto</Text>
-          </VStack>
-          <Icon size="6" color="#000" as={<Feather name="chevron-right" />} />
-        </HStack>
-      </Pressable>
+    <View
+      style={page_styles.container}
+      onPress={() => navigation.navigate(destiny)}
+    >
+      <HStack
+        destiny={"Settings"}
+        justifyContent={"space-evenly"}
+        alignItems={"center"}
+      >
+        <Image
+          marginTop={"12px"}
+          alignSelf={"center"}
+          alt="Product Picture"
+          style={page_styles.productPicture}
+          source={{
+            uri: "https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg",
+          }}
+        />
+        <VStack>
+          <Text style={page_styles.titleText}>Mármore Preto</Text>
+          <Text style={page_styles.processText}>Em processamento</Text>
+        </VStack>
+        <VStack>
+          <Icon size="7" color="#000" as={<Feather name="chevron-right" />} />
+        </VStack>
+      </HStack>
     </View>
   );
 }
 
 const page_styles = StyleSheet.create({
-  text1: {
-    color: "red",
+  container: {
+    flex: 1,
+    backgroundColor: "#f5f5f5",
+    padding: 12,
+    width: "100%",
+  },
+
+  titleText: {
+    color: "black",
+    fontWeight: "bold",
+  },
+
+  processText: {
+    color: "black",
+    fontStyle: "italic",
   },
 
   productPicture: {
-    width: 110,
-    height: 110,
-    borderRadius: 10,
-  },
-
-  coverPicture: {
-    width: "100%",
-    height: 120,
+    width: 130,
+    height: 100,
+    borderRadius: 5,
   },
 });
