@@ -89,7 +89,7 @@ const page_styles = StyleSheet.create({
   },
 
   processText: {
-    color: "black",
+    color: "#6E7173",
     fontStyle: "italic",
     lineHeight: 16,
   },
