@@ -25,6 +25,7 @@ import NavBar from '../../components/store/NavBar';
 import ArrowButton from '../../components/store/ArrowButton';
 import BlueButton from '../../components/store/BlueButton';
 import BlueInput from '../../components/store/BlueInput';
+import DashboardCard from '../../components/dashboard/DashboardCard';
 
 export default function TestPage({ navigation }) {
   const [formData, setData] = React.useState({});
@@ -102,6 +103,12 @@ export default function TestPage({ navigation }) {
           onChangeText={(value) => setData({ ...formData, name: value })}
         />
       </VStack>
+
+      <DashboardCard pedidos="1"
+        width='152px'
+        label="Confirmados"
+        cardColor="#F69624"
+      />
     </ScrollView>
   );
 }
