@@ -1,12 +1,12 @@
+import React from "react";
 import { Text, HStack, Button, Image, View, VStack, Icon } from "native-base";
 import { Pressable, StyleSheet } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
 export default function ListItem({ newMessage }) {
-  const [newMessage, setnewMessage] = React.useState(newMessage);
   return (
     <View
-      style={page_styles.container}
+      style={newMessage ? page_styles.container : new_style.container}
       onPress={() => navigation.navigate(destiny)}
     >
       <HStack
@@ -23,12 +23,25 @@ export default function ListItem({ newMessage }) {
             uri: "https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg",
           }}
         />
+
         <VStack alignItems={"center"}>
-          <Text style={page_styles.titleText}>Mármore Preto</Text>
-          <Text style={page_styles.processText}>Em processamento</Text>
+          <Text
+            style={newMessage ? page_styles.titleText : new_style.titleText}
+          >
+            Mármore Preto
+          </Text>
+          <Text
+            style={newMessage ? page_styles.processText : new_style.titleText}
+          >
+            Em processamento
+          </Text>
         </VStack>
         <VStack>
-          <Icon size="7" color="#000" as={<Feather name="chevron-right" />} />
+          <Icon
+            size="6"
+            color={newMessage ? "#000" : "#fff"}
+            as={<Feather name="chevron-right" />}
+          />
         </VStack>
       </HStack>
     </View>
@@ -57,5 +70,24 @@ const page_styles = StyleSheet.create({
     width: 130,
     height: 100,
     borderRadius: 4,
+  },
+});
+
+const new_style = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#7C9BC2",
+    paddingBottom: 12,
+    width: "100%",
+  },
+
+  titleText: {
+    color: "white",
+    fontWeight: "bold",
+  },
+
+  processText: {
+    color: "white",
+    fontStyle: "italic",
   },
 });
