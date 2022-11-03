@@ -10,15 +10,24 @@ function Item({ id, title, price, imageUrl }) {
         paddingRight={"12px"}
       >
         <VStack>
-          <Image
-            marginTop={"12px"}
-            alignSelf={"center"}
-            alt="Product Picture"
-            style={page_styles.productPicture}
-            source={{
-              uri: imageUrl,
+          <View
+            style={{
+              elevation: 4,
+              shadowColor: "#000",
+              backgroundColor: "white",
+              marginTop: 12,
+              borderRadius: 4,
             }}
-          />
+          >
+            <Image
+              alignSelf={"center"}
+              alt="Product Picture"
+              style={page_styles.productPicture}
+              source={{
+                uri: imageUrl,
+              }}
+            />
+          </View>
 
           <Text textAlign={"center"}>{title}</Text>
           <Text textAlign={"center"}>{price}</Text>
@@ -59,5 +68,7 @@ const page_styles = StyleSheet.create({
     width: 130,
     height: 100,
     borderRadius: 4,
+    backgroundColor: "white",
+    elevation: 10,
   },
 });
