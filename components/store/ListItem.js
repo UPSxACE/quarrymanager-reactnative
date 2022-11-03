@@ -20,7 +20,11 @@ export default function ListItem({
         }
       }}
     >
-      <VStack style={newMessage ? new_style.container : page_styles.container}>
+      <VStack
+        style={newMessage ? new_style.container : page_styles.container}
+        borderWidth="0.5px"
+        borderColor="#6E7173"
+      >
         <HStack justifyContent={"space-evenly"} alignItems={"center"}>
           <Image
             marginTop={"12px"}
