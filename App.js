@@ -16,6 +16,7 @@ import Profile from './screens/store/Profile';
 import SettingsPage from './screens/store/SettingsPage';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
+import TestPage2 from './screens/store/TestPage2';
 
 const HomeStack = createNativeStackNavigator();
 const OrderStack = createNativeStackNavigator();
@@ -109,34 +110,39 @@ export default function App() {
             ),
           })}
         >
-          <Tab.Screen name='BtHome'>
+          <Tab.Screen name="BtHome">
             {() => (
               <ProfileStack.Navigator>
                 <ProfileStack.Screen
-                  name='Home'
+                  name="Home"
                   component={TestPage}
+                  options={stackOptions}
+                ></ProfileStack.Screen>
+                <ProfileStack.Screen
+                  name="Tests2"
+                  component={TestPage2}
                   options={stackOptions}
                 ></ProfileStack.Screen>
               </ProfileStack.Navigator>
             )}
           </Tab.Screen>
 
-          <Tab.Screen name='BtAbout'>
+          <Tab.Screen name="BtAbout">
             {() => (
               <ProfileStack.Navigator>
                 <ProfileStack.Screen
-                  name='About'
+                  name="About"
                   component={AboutPage}
                   options={stackOptions}
                 ></ProfileStack.Screen>
               </ProfileStack.Navigator>
             )}
           </Tab.Screen>
-          <Tab.Screen name='BtProfile'>
+          <Tab.Screen name="BtProfile">
             {() => (
               <ProfileStack.Navigator>
                 <ProfileStack.Screen
-                  name='Profile'
+                  name="Profile"
                   component={Profile}
                   options={stackOptions}
                 ></ProfileStack.Screen>
@@ -144,11 +150,11 @@ export default function App() {
             )}
           </Tab.Screen>
 
-          <Tab.Screen name='BtSettings'>
+          <Tab.Screen name="BtSettings">
             {() => (
               <ProfileStack.Navigator>
                 <ProfileStack.Screen
-                  name='Settings'
+                  name="Settings"
                   component={SettingsPage}
                   options={stackOptions}
                 ></ProfileStack.Screen>
@@ -156,20 +162,20 @@ export default function App() {
             )}
           </Tab.Screen>
         </Tab.Navigator>
-        {/* <Stack.Navigator>
-          <Stack.Screen name="Home" component={TestPage} />
-          <Stack.Screen name="About" component={AboutPage} />
-          <Stack.Screen name="Profile" component={Profile} />
-          <Stack.Screen name="Settings" component={SettingsPage} />
-        </Stack.Navigator> */}
+        {/*<Stack.Navigator>
+            <Stack.Screen name="Home" component={TestPage} />
+            <Stack.Screen name="About" component={AboutPage} />
+            <Stack.Screen name="Profile" component={Profile} />
+            <Stack.Screen name="Settings" component={SettingsPage} />
+          </Stack.Navigator>*/}
       </NavigationContainer>
-      <StatusBar style='light' />
+      <StatusBar style="light" />
     </NativeBaseProvider>
   );
 
   return (
     <View style={page_styles.container}>
-      <StatusBar style='auto' />
+      <StatusBar style="auto" />
       <TestPage />
     </View>
   );
