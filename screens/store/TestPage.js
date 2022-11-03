@@ -33,6 +33,7 @@ export default function TestPage({ navigation }) {
         destiny={["BtSettings", "Settings"]}
         title={"Mármore Preto"}
         state={"Em processamento"}
+        imageUrl="https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg"
       />
 
       <HStack pl={"12px"} pr={"12px"}>

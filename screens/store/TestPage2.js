@@ -1,21 +1,24 @@
-import { View } from 'native-base';
-import ScrollableTabs from '../../components/store/ScrollableTabs';
+import { View } from "native-base";
+import BasicList from "../../components/store/BasicList";
+import ScrollableTabs from "../../components/store/ScrollableTabs";
 
 const TABS_DATA = [
-  'Mármores',
-  'Granitos',
-  'Esmeraldas',
-  'Diamantes',
-  'Porcelana',
-  'Pedras',
-  'Rochas',
-  'Favoritos',
+  "Mármores",
+  "Granitos",
+  "Esmeraldas",
+  "Diamantes",
+  "Porcelana",
+  "Pedras",
+  "Rochas",
+  "Favoritos",
 ];
 
 export default function TestPage2({ navigation }) {
   return (
     <View>
       <ScrollableTabs tabs={TABS_DATA} />
+
+      <BasicList />
     </View>
   );
 }

@@ -4,7 +4,13 @@ import { Pressable, StyleSheet } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-export default function ListItem({ newMessage, destiny, title, state }) {
+export default function ListItem({
+  newMessage,
+  destiny,
+  title,
+  state,
+  imageUrl,
+}) {
   const navigation = useNavigation();
   return (
     <Pressable
@@ -18,7 +24,7 @@ export default function ListItem({ newMessage, destiny, title, state }) {
             alt="Product Picture"
             style={page_styles.productPicture}
             source={{
-              uri: "https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg",
+              uri: imageUrl,
             }}
           />
 
