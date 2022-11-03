@@ -7,19 +7,19 @@ export default function SettingsPage() {
   return (
     <View h={"100%"}>
       <HStack pl={"12px"} pr={"12px"} pb={"12px"} pt={"12px"}>
-        <ArrowButton label="Dashboard" destiny={"Home"} />
+        <ArrowButton label="Dashboard" destiny={["BtHome", "Home"]} />
       </HStack>
       <HStack pl={"12px"} pr={"12px"} pb={"12px"}>
-        <ArrowButton label="Definições da Conta" destiny={"Home"} />
+        <ArrowButton label="Definições da Conta" destiny={["BtHome", "Home"]} />
       </HStack>
       <HStack pl={"12px"} pr={"12px"} pb={"12px"}>
-        <ArrowButton label="Pedidos" destiny={"Home"} />
+        <ArrowButton label="Pedidos" destiny={["BtHome", "Home"]} />
       </HStack>
       <HStack pl={"12px"} pr={"12px"} pb={"12px"}>
-        <ArrowButton label="Notificações" destiny={"Home"} />
+        <ArrowButton label="Notificações" destiny={["BtHome", "Home"]} />
       </HStack>
       <HStack pl={"12px"} pr={"12px"} pb={"12px"}>
-        <ArrowButton label="Terminar Sessão" destiny={"Home"} />
+        <ArrowButton label="Terminar Sessão" destiny={["BtHome", "Home"]} />
       </HStack>
     </View>
   );

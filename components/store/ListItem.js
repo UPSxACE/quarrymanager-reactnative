@@ -1,26 +1,17 @@
 import React from "react";
-import {
-  Text,
-  HStack,
-  Button,
-  Image,
-  View,
-  VStack,
-  Icon,
-  Badge,
-} from "native-base";
+import { Text, HStack, Image, View, VStack, Icon, Badge } from "native-base";
 import { Pressable, StyleSheet } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
-export default function ListItem({ newMessage }) {
+export default function ListItem({ newMessage, destiny }) {
+  const navigation = useNavigation();
   return (
-    <VStack style={newMessage ? new_style.container : page_styles.container}>
-      <Pressable onPress={() => navigation.navigate(destiny)}>
-        <HStack
-          destiny={"Settings"}
-          justifyContent={"space-evenly"}
-          alignItems={"center"}
-        >
+    <Pressable
+      onPress={() => navigation.navigate(destiny[0], { screen: destiny[1] })}
+    >
+      <VStack style={newMessage ? new_style.container : page_styles.container}>
+        <HStack justifyContent={"space-evenly"} alignItems={"center"}>
           <Image
             marginTop={"12px"}
             alignSelf={"center"}
@@ -36,7 +27,7 @@ export default function ListItem({ newMessage }) {
               <Badge
                 borderColor="#FFFB94"
                 bg={"transparent"}
-                marginBottom={"3px"}
+                marginBottom={"2px"}
               >
                 <Text color="#FFFB94">Resposta!</Text>
               </Badge>
@@ -62,8 +53,8 @@ export default function ListItem({ newMessage }) {
             />
           </VStack>
         </HStack>
-      </Pressable>
-    </VStack>
+      </VStack>
+    </Pressable>
   );
 }
 
