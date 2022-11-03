@@ -17,6 +17,7 @@ import SettingsPage from './screens/store/SettingsPage';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
 import TestPage2 from './screens/store/TestPage2';
+import TestPage3 from './screens/store/TestPage3';
 
 const HomeStack = createNativeStackNavigator();
 const OrderStack = createNativeStackNavigator();
@@ -121,6 +122,11 @@ export default function App() {
                 <ProfileStack.Screen
                   name="Tests2"
                   component={TestPage2}
+                  options={stackOptions}
+                ></ProfileStack.Screen>
+                <ProfileStack.Screen
+                  name="Tests3"
+                  component={TestPage3}
                   options={stackOptions}
                 ></ProfileStack.Screen>
               </ProfileStack.Navigator>
