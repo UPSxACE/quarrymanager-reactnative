@@ -4,7 +4,7 @@ import { Pressable, StyleSheet } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-export default function ListItem({ newMessage, destiny }) {
+export default function ListItem({ newMessage, destiny, title, state }) {
   const navigation = useNavigation();
   return (
     <Pressable
@@ -35,14 +35,14 @@ export default function ListItem({ newMessage, destiny }) {
             <Text
               style={newMessage ? new_style.titleText : page_styles.titleText}
             >
-              Mármore Preto
+              {title}
             </Text>
             <Text
               style={
                 newMessage ? new_style.processText : page_styles.processText
               }
             >
-              Em processamento
+              {state}
             </Text>
           </VStack>
           <VStack>

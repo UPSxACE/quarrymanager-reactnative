@@ -30,7 +30,12 @@ export default function TestPage({ navigation }) {
     <ScrollView style={page_styles.container}>
       <NavBar />
 
-      <ListItem newMessage destiny={["BtSettings", "Settings"]} />
+      <ListItem
+        newMessage
+        destiny={["BtSettings", "Settings"]}
+        title={"Mármore Preto"}
+        state={"Em processamento"}
+      />
 
       <HStack pl={"12px"} pr={"12px"}>
         <ArrowButton label="Dashboard" />
