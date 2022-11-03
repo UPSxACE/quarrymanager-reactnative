@@ -36,6 +36,7 @@ function Item({ id, state, title, newMessage, imageUrl }) {
       title={title}
       state={state}
       imageUrl={imageUrl}
+      destiny={["BtHome", "Home"]}
     ></ListItem>
   );
 }
@@ -43,6 +44,7 @@ function Item({ id, state, title, newMessage, imageUrl }) {
 function renderItem({ item }) {
   return (
     <Item
+      id={item.id}
       title={item.title}
       newMessage={item.newMessage}
       state={item.state}

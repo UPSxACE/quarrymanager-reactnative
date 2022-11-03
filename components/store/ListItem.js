@@ -14,7 +14,11 @@ export default function ListItem({
   const navigation = useNavigation();
   return (
     <Pressable
-      onPress={() => navigation.navigate(destiny[0], { screen: destiny[1] })}
+      onPress={() => {
+        if (destiny) {
+          navigation.navigate(destiny[0], { screen: destiny[1] });
+        }
+      }}
     >
       <VStack style={newMessage ? new_style.container : page_styles.container}>
         <HStack justifyContent={"space-evenly"} alignItems={"center"}>
@@ -52,11 +56,13 @@ export default function ListItem({
             </Text>
           </VStack>
           <VStack>
-            <Icon
-              size="6"
-              color={newMessage ? "#fff" : "#000"}
-              as={<Feather name="chevron-right" />}
-            />
+            {destiny && (
+              <Icon
+                size="6"
+                color={newMessage ? "#fff" : "#000"}
+                as={<Feather name="chevron-right" />}
+              />
+            )}
           </VStack>
         </HStack>
       </VStack>
