@@ -24,6 +24,7 @@ import NavBar from "../../components/store/NavBar";
 import ArrowButton from "../../components/store/ArrowButton";
 import BlueButton from "../../components/store/BlueButton";
 import BlueInput from "../../components/store/BlueInput";
+import BatchPictures from "../../components/store/BatchPictures";
 
 export default function TestPage({ navigation }) {
   const [formData, setData] = React.useState({});
@@ -48,6 +49,7 @@ export default function TestPage({ navigation }) {
         }
       />
       <Characteristics resCom={6} resFlex={2} mva={6} maa={3} />
+      <BatchPictures />
 
       <WhiteButton />
       <HomeFooter />
