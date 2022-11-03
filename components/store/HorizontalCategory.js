@@ -1,10 +1,14 @@
-import { HStack, Text, Image, VStack, FlatList } from "native-base";
+import { HStack, Text, Image, VStack, FlatList, View } from "native-base";
 import { StyleSheet } from "react-native";
 
 function Item({ id, title, price, imageUrl }) {
   return (
     <VStack>
-      <HStack justifyContent={"space-evenly"} alignItems={"center"}>
+      <HStack
+        justifyContent={"space-evenly"}
+        alignItems={"center"}
+        paddingRight={"12px"}
+      >
         <VStack>
           <Image
             marginTop={"12px"}
@@ -15,8 +19,9 @@ function Item({ id, title, price, imageUrl }) {
               uri: imageUrl,
             }}
           />
-          <Text>{title}</Text>
-          <Text>{price}</Text>
+
+          <Text textAlign={"center"}>{title}</Text>
+          <Text textAlign={"center"}>{price}</Text>
         </VStack>
       </HStack>
     </VStack>
@@ -36,8 +41,8 @@ function renderItem({ item }) {
 
 export default function HorizontalCategory({ categoryTitle, data }) {
   return (
-    <VStack>
-      <Text>{categoryTitle}</Text>
+    <VStack paddingLeft={"12px"}>
+      <Text fontWeight="bold">{categoryTitle}</Text>
       <FlatList
         data={data}
         renderItem={renderItem}
@@ -46,26 +51,6 @@ export default function HorizontalCategory({ categoryTitle, data }) {
         showsHorizontalScrollIndicator={false}
       />
     </VStack>
-
-    /*
-    <HStack>
-      <Text>Mármores</Text>
-      <HStack justifyContent={"space-evenly"} alignItems={"center"}>
-        <VStack>
-          <Image
-            marginTop={"12px"}
-            alignSelf={"center"}
-            alt="Product Picture"
-            style={page_styles.productPicture}
-            source={{
-              uri: imageUrl,
-            }}
-          />
-          <Text>Mármore Preto</Text>
-          <Text>Preço</Text>
-        </VStack>
-      </HStack>
-    </HStack>  */
   );
 }
 
