@@ -1,31 +1,7 @@
 import { Text, FlatList, StyleSheet } from "react-native";
-import { View, HStack } from "native-base";
+import { View, HStack, VStack } from "native-base";
 
 export default function Characteristics({ resCom, resFlex, mva, maa }) {
-  const data = [
-    { title: "Resistencia a Compressao", valor: `${resCom} Mpa` },
-    { title: "Resistencia a Flexao", valor: `${resFlex} Mpa` },
-    { title: "Massa Volumica Aparente", valor: `${mva} Kg/m²` },
-    { title: "Massa Absorcao de Agua", valor: `${maa} %` },
-  ];
-  const item = ({ item }) => {
-    return (
-      <View
-        style={{
-          flexDirection: "row",
-          width: "100%",
-        }}
-      >
-        <View style={characteristicsStyles.textStyle1}>
-          <Text>{item.title}</Text>
-        </View>
-        <View style={characteristicsStyles.textStyle2}>
-          <Text>{item.valor}</Text>
-        </View>
-      </View>
-    );
-  };
-
   return (
     <View style={characteristicsStyles.flatlistStyle}>
       <View style={characteristicsStyles.alignHead}>
@@ -33,13 +9,60 @@ export default function Characteristics({ resCom, resFlex, mva, maa }) {
           <Text style={characteristicsStyles.headerText}>Características</Text>
         </View>
       </View>
-      <FlatList
-        style={{ width: "100%" }}
-        scrollEnabled={false}
-        data={data}
-        renderItem={item}
-        keyExtractor={(item, index) => index.toString()}
-      />
+      <VStack style={{ width: "100%" }}>
+        <View
+          style={{
+            flexDirection: "row",
+            width: "100%",
+          }}
+        >
+          <View style={characteristicsStyles.textStyle1}>
+            <Text>Resistencia a Compressao</Text>
+          </View>
+          <View style={characteristicsStyles.textStyle2}>
+            <Text>{`${resCom} Mpa`}</Text>
+          </View>
+        </View>
+        <View
+          style={{
+            flexDirection: "row",
+            width: "100%",
+          }}
+        >
+          <View style={characteristicsStyles.textStyle1}>
+            <Text>Resistencia a Flexao</Text>
+          </View>
+          <View style={characteristicsStyles.textStyle2}>
+            <Text>{`${resFlex} Mpa`}</Text>
+          </View>
+        </View>
+        <View
+          style={{
+            flexDirection: "row",
+            width: "100%",
+          }}
+        >
+          <View style={characteristicsStyles.textStyle1}>
+            <Text>Massa Volumica Aparente</Text>
+          </View>
+          <View style={characteristicsStyles.textStyle2}>
+            <Text>{`${mva} Kg/m²`}</Text>
+          </View>
+        </View>
+        <View
+          style={{
+            flexDirection: "row",
+            width: "100%",
+          }}
+        >
+          <View style={characteristicsStyles.textStyle1}>
+            <Text>Massa Absorcao de Agua</Text>
+          </View>
+          <View style={characteristicsStyles.textStyle2}>
+            <Text>{`${maa} %`}</Text>
+          </View>
+        </View>
+      </VStack>
     </View>
   );
 }
