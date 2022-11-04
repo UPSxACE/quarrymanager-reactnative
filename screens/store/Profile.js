@@ -2,14 +2,7 @@ import { StyleSheet, Text, View, Button } from "react-native";
 
 import * as React from "react";
 
-import {
-  Center,
-  HStack,
-  Pressable,
-  Image,
-  VStack,
-  ScrollView,
-} from "native-base";
+import { HStack, Pressable, Image, VStack, ScrollView } from "native-base";
 import WhiteInput from "../../components/store/WhiteInput";
 
 export default function Profile({ navigation }) {

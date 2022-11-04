@@ -1,3 +1,4 @@
+import LoteDescription from "../../components/LoteDescription";
 import Description from "../../components/store/Description";
 import Characteristics from "../../components/store/Characteristics";
 import { StyleSheet, View, Button } from "react-native";
@@ -13,16 +14,12 @@ import {
   Pressable,
 } from "native-base";
 import WhiteInput from "../../components/store/WhiteInput";
-import { Icon } from "native-base";
-import Feather from "@expo/vector-icons/Feather";
 import * as React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import SearchBar from "../../components/store/SearchBar";
 import NavBar from "../../components/store/NavBar";
 import ArrowButton from "../../components/store/ArrowButton";
 import BlueButton from "../../components/store/BlueButton";
+import ListItem from "../../components/store/ListItem";
+import DashboardCard from "../../components/dashboard/DashboardCard";
 import BlueInput from "../../components/store/BlueInput";
 import BatchPictures from "../../components/store/BatchPictures";
 
@@ -32,14 +29,34 @@ export default function TestPage({ navigation }) {
   return (
     <ScrollView style={page_styles.container}>
       <NavBar />
+      <ListItem
+        newMessage
+        destiny={["BtSettings", "Settings"]}
+        title={"Mármore Preto"}
+        state={"Em processamento"}
+        imageUrl="https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg"
+      />
 
       <HStack pl={"12px"} pr={"12px"}>
         <ArrowButton label="Dashboard" />
       </HStack>
 
+      <HStack pl={"12px"} pr={"12px"}>
+        <ArrowButton label="Tests2" destiny={["BtHome", "Tests2"]} />
+      </HStack>
+
       <Text
         style={page_styles.text1}
         onPress={() => navigation.navigate("About")}
+      ></Text>
+      <LoteDescription
+        mat={"Mármore"}
+        cor={"Laranja"}
+        quant={"475m^2"}
+        localex={"Moca"}
+        localar={"Areeiro da Serra"}
+        dataex={"2022-04-22"}
+        horaex={"23:19:01"}
       />
 
       <Description
@@ -52,6 +69,7 @@ export default function TestPage({ navigation }) {
       <BatchPictures />
 
       <WhiteButton />
+
       <HomeFooter />
       <Box alignItems="center" bg="secondary.500">
         <Text color="white">AAABBCCD</Text>
@@ -89,6 +107,13 @@ export default function TestPage({ navigation }) {
           onChangeText={(value) => setData({ ...formData, name: value })}
         />
       </VStack>
+
+      <DashboardCard
+        pedidos="1"
+        width="152px"
+        label="Confirmados"
+        cardColor="#F69624"
+      />
     </ScrollView>
   );
 }
