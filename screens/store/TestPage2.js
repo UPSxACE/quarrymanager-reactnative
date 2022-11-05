@@ -42,7 +42,12 @@ export default function TestPage2({ navigation }) {
 
       <BasicList />
       <VStack pl="20px">
-        <HorizontalList title="Pedidos" data={HLDATA} />
+        <HorizontalList
+          title="Pedidos"
+          data={HLDATA}
+          mainText="customer"
+          date="date"
+        />
       </VStack>
     </View>
   );
