@@ -64,6 +64,10 @@ export default function App() {
         C: '#82A2CC',
         D: '#394A58',
         blueComponentBorder: '#7F9EC6',
+        dashboardComponentColor1: '#0369A1',
+        mainTextColor: '#464748',
+        secondaryTextColor: '#6E7173',
+        weakGrey: '#959595',
       },
     },
   });

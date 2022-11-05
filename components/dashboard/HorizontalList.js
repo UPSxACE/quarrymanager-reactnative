@@ -11,7 +11,7 @@ export default function HorizontalList({
   function Item({ tag, mainText, subText, date }) {
     return (
       <HStack width="240px" bg="white" mr="12px">
-        <VStack bg="#0369A1" height="100%" width="4px" />
+        <VStack bg="main.dashboardComponentColor1" height="100%" width="4px" />
         <VStack w="236px">
           {subText ? (
             <VStack paddingX="12px">
@@ -26,11 +26,12 @@ export default function HorizontalList({
               </Text>
             </VStack>
           ) : (
-            <VStack padding="12px" paddingBottom="4px">
+            <VStack padding="12px" paddingBottom="4px" paddingTop="16px">
               <Text
-                h="28px"
-                lineHeight={'28px'}
+                h="24px"
+                lineHeight={'24px'}
                 fontSize="24px"
+                color="main.dashboardComponentColor1"
                 //bg="black"
               >
                 {tag}
@@ -40,11 +41,18 @@ export default function HorizontalList({
                 lineHeight={'40px'}
                 fontSize="21px"
                 borderBottomWidth={'1px'}
+                borderBottomColor={'rgba(0,0,0,0.16)'}
+                color="main.mainTextColor"
                 //bg="grey"
               >
                 {mainText}
               </Text>
-              <Text h="28px" lineHeight={'28px'} fontSize="10px">
+              <Text
+                h="28px"
+                lineHeight={'28px'}
+                fontSize="10px"
+                color="main.weakGrey"
+              >
                 {date}
               </Text>
             </VStack>
@@ -71,7 +79,7 @@ export default function HorizontalList({
       </Text>
       <FlatList
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item, index) => index}
         data={data}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
