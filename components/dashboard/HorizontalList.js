@@ -7,6 +7,7 @@ export default function HorizontalList({
   mainText,
   subText,
   date,
+  tag,
 }) {
   function Item({ tag, mainText, subText, date }) {
     return (
@@ -14,15 +15,43 @@ export default function HorizontalList({
         <VStack bg="main.dashboardComponentColor1" height="100%" width="4px" />
         <VStack w="236px">
           {subText ? (
-            <VStack paddingX="12px">
-              <Text h="24px" lineHeight={'24px'}>
+            <VStack padding="12px" paddingBottom="4px" paddingTop="4px">
+              <Text
+                h="24px"
+                lineHeight={'24px'}
+                fontSize="14px"
+                color="main.dashboardComponentColor1"
+                //bg="black"
+              >
                 {tag}
               </Text>
-              <Text h="24px" lineHeight={'24px'}>
+              <Text
+                h="26px"
+                lineHeight={'26px'}
+                fontSize="24px"
+                color="main.mainTextColor"
+                //bg="grey"
+              >
                 {mainText}
               </Text>
-              <Text h="24px" lineHeight={'24px'}>
+              <Text
+                h="26px"
+                lineHeight={'26px'}
+                fontSize="12px"
+                borderBottomWidth={'1px'}
+                borderBottomColor={'rgba(0,0,0,0.16)'}
+                color="main.mainTextColor"
+                //bg="grey"
+              >
                 {subText}
+              </Text>
+              <Text
+                h="28px"
+                lineHeight={'28px'}
+                fontSize="10px"
+                color="main.weakGrey"
+              >
+                {date}
               </Text>
             </VStack>
           ) : (
@@ -68,6 +97,7 @@ export default function HorizontalList({
         mainText={typeof mainText !== 'undefined' ? item[mainText] : ''}
         tag={typeof tag !== 'undefined' ? item[tag] : '#' + index}
         date={typeof date !== 'undefined' ? item[date] : ''}
+        subText={typeof subText !== 'undefined' ? item[subText] : ''}
       />
     );
   }
