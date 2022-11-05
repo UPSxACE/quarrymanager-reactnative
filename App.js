@@ -17,6 +17,7 @@ import SettingsPage from './screens/store/SettingsPage';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
 import TestPage2 from './screens/store/TestPage2';
+import TestPage3 from './screens/store/TestPage3';
 
 const HomeStack = createNativeStackNavigator();
 const OrderStack = createNativeStackNavigator();
@@ -63,6 +64,10 @@ export default function App() {
         C: '#82A2CC',
         D: '#394A58',
         blueComponentBorder: '#7F9EC6',
+        dashboardComponentColor1: '#0369A1',
+        mainTextColor: '#464748',
+        secondaryTextColor: '#6E7173',
+        weakGrey: '#959595',
       },
     },
   });
@@ -121,6 +126,11 @@ export default function App() {
                 <ProfileStack.Screen
                   name="Tests2"
                   component={TestPage2}
+                  options={stackOptions}
+                ></ProfileStack.Screen>
+                <ProfileStack.Screen
+                  name="Tests3"
+                  component={TestPage3}
                   options={stackOptions}
                 ></ProfileStack.Screen>
               </ProfileStack.Navigator>
