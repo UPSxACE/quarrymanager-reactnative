@@ -3,16 +3,7 @@ import BasicList from "../../components/store/BasicList";
 import ScrollableTabs from "../../components/store/ScrollableTabs";
 
 export default function Orders(props) {
-  const TABS_DATA = [
-    "Mármores",
-    "Granitos",
-    "Esmeraldas",
-    "Diamantes",
-    "Porcelana",
-    "Pedras",
-    "Rochas",
-    "Favoritos",
-  ];
+  const TABS_DATA = ["Todos", "Ativos", "Finalizados", "Favoritos"];
 
   return (
     <View>
