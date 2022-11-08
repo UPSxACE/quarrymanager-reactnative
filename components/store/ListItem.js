@@ -20,56 +20,52 @@ export default function ListItem({
         }
       }}
     >
-      <VStack
+      <HStack
         style={newMessage ? new_style.container : page_styles.container}
         borderWidth="0.5px"
         borderColor="#6E7173"
+        alignItems={"center"}
       >
-        <HStack justifyContent={"space-evenly"} alignItems={"center"}>
-          <Image
-            marginTop={"12px"}
-            alignSelf={"center"}
-            alt="Product Picture"
-            style={page_styles.productPicture}
-            source={{
-              uri: imageUrl,
-            }}
-          />
-
-          <VStack alignItems={"center"}>
-            {newMessage && (
-              <Badge
-                borderColor="#FFFB94"
-                bg={"transparent"}
-                marginBottom={"2px"}
-              >
-                <Text color="#FFFB94">Resposta!</Text>
-              </Badge>
-            )}
-            <Text
-              style={newMessage ? new_style.titleText : page_styles.titleText}
+        <Image
+          marginTop={"12px"}
+          alignSelf={"center"}
+          alt="Product Picture"
+          style={page_styles.productPicture}
+          source={{
+            uri: imageUrl,
+          }}
+        />
+        <VStack alignItems={"center"} flex={1}>
+          {newMessage && (
+            <Badge
+              borderColor="#FFFB94"
+              bg={"transparent"}
+              marginBottom={"2px"}
             >
-              {title}
-            </Text>
-            <Text
-              style={
-                newMessage ? new_style.processText : page_styles.processText
-              }
-            >
-              {state}
-            </Text>
-          </VStack>
-          <VStack>
-            {destiny && (
-              <Icon
-                size="6"
-                color={newMessage ? "#fff" : "#000"}
-                as={<Feather name="chevron-right" />}
-              />
-            )}
-          </VStack>
+              <Text color="#FFFB94">Resposta!</Text>
+            </Badge>
+          )}
+          <Text
+            style={newMessage ? new_style.titleText : page_styles.titleText}
+          >
+            {title}
+          </Text>
+          <Text
+            style={newMessage ? new_style.processText : page_styles.processText}
+          >
+            {state}
+          </Text>
+        </VStack>
+        <HStack marginHorizontal={12}>
+          {destiny && (
+            <Icon
+              size="6"
+              color={newMessage ? "#fff" : "#000"}
+              as={<Feather name="chevron-right" />}
+            />
+          )}
         </HStack>
-      </VStack>
+      </HStack>
     </Pressable>
   );
 }
@@ -98,6 +94,7 @@ const page_styles = StyleSheet.create({
     width: 130,
     height: 100,
     borderRadius: 4,
+    marginHorizontal: 12,
   },
 });
 
