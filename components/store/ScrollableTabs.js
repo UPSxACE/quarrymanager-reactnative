@@ -8,7 +8,7 @@ const item = ({ item, index }) => {
   );
 };
 
-const ScrollableTabs = ({ tabs }) => {
+const ScrollableTabs = ({ tabs, ...props }) => {
   return (
     <FlatList
       bg={"white"}
@@ -17,6 +17,7 @@ const ScrollableTabs = ({ tabs }) => {
       renderItem={item}
       keyExtractor={(item, index) => index.toString()}
       showsHorizontalScrollIndicator={false}
+      {...props}
     />
   );
 };

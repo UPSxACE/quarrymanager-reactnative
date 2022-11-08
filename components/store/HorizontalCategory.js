@@ -50,8 +50,10 @@ function renderItem({ item }) {
 
 export default function HorizontalCategory({ categoryTitle, data }) {
   return (
-    <VStack paddingLeft={"12px"}>
-      <Text fontWeight="bold">{categoryTitle}</Text>
+    <VStack paddingLeft={"12px"} paddingTop={"6px"} paddingBottom={"12px"}>
+      <Text fontWeight="bold" fontSize={"18px"}>
+        {categoryTitle}
+      </Text>
       <FlatList
         data={data}
         renderItem={renderItem}

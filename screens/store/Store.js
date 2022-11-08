@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 import ScrollableTabs from "../../components/store/ScrollableTabs";
-import { FlatList, Image, VStack } from "native-base";
+import { FlatList, HStack, Image, ScrollView, VStack } from "native-base";
 import PagerView from "react-native-pager-view";
 import HorizontalCategory from "../../components/store/HorizontalCategory";
 
@@ -115,24 +115,43 @@ export default function Store() {
     },
   ];
   return (
-    <View>
-      <ScrollableTabs tabs={TABS_DATA} />
-      <PagerView style={{ flex: 1 }} initialPage={0}>
-        <View key={"1"} width={"100%"}>
-          <Image
-            alt="Main Picture"
-            style={page_styles.mainPicture}
-            source={{
-              uri: DATA[0].imageUrl,
-            }}
-          />
-        </View>
-      </PagerView>
+    <ScrollView>
+      <ScrollableTabs
+        tabs={TABS_DATA}
+        style={{ backgroundColor: "white", elevation: 15, zIndex: 1 }}
+      />
 
-      <HorizontalCategory categoryTitle={"Mármores"} data={CATEGORY_DATA1} />
-      <HorizontalCategory categoryTitle={"Granitos"} data={CATEGORY_DATA2} />
-      <HorizontalCategory categoryTitle={"Esmeraldas"} data={CATEGORY_DATA3} />
-    </View>
+      <View key={"1"} width={"100%"}>
+        <Image
+          alt="Main Picture"
+          style={page_styles.mainPicture}
+          source={{
+            uri: DATA[0].imageUrl,
+          }}
+        />
+      </View>
+
+      <VStack bgColor={"#CDD3D3"}>
+        <HStack bgColor={"white"} marginBottom={"4px"}>
+          <HorizontalCategory
+            categoryTitle={"Mármores"}
+            data={CATEGORY_DATA1}
+          />
+        </HStack>
+        <HStack bgColor={"white"} marginBottom={"4px"}>
+          <HorizontalCategory
+            categoryTitle={"Granitos"}
+            data={CATEGORY_DATA2}
+          />
+        </HStack>
+        <HStack bgColor={"white"}>
+          <HorizontalCategory
+            categoryTitle={"Esmeraldas"}
+            data={CATEGORY_DATA3}
+          />
+        </HStack>
+      </VStack>
+    </ScrollView>
   );
   return (
     <FlatList
@@ -156,6 +175,5 @@ const page_styles = StyleSheet.create({
   mainPicture: {
     width: 360,
     height: 260,
-    borderRadius: 100,
   },
 });
