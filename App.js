@@ -18,6 +18,7 @@ import { Feather } from "@expo/vector-icons";
 import TestPage2 from "./screens/store/TestPage2";
 import TestPage3 from "./screens/store/TestPage3";
 import Orders from "./screens/store/Orders";
+import Store from "./screens/store/Store";
 
 const HomeStack = createNativeStackNavigator();
 const OrderStack = createNativeStackNavigator();
@@ -119,8 +120,8 @@ export default function App() {
             {() => (
               <ProfileStack.Navigator>
                 <ProfileStack.Screen
-                  name="Home"
-                  component={TestPage}
+                  name="Store"
+                  component={Store}
                   options={stackOptions}
                 ></ProfileStack.Screen>
                 <ProfileStack.Screen
