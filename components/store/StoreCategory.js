@@ -68,12 +68,12 @@ export default function StoreCategory({ categoryResults, data }) {
       paddingTop={"6px"}
       paddingBottom={"12px"}
     >
-      <HStack>
+      <HStack marginTop={"8px"}>
         <Text fontWeight="bold" fontSize={"18px"}>
           {categoryResults.toUpperCase()}
         </Text>
         <Text fontSize={"16px"} marginLeft={"auto"} color={"gray.400"}>
-          8-10
+          8-100
         </Text>
       </HStack>
       <FlatList

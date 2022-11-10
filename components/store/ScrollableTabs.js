@@ -1,4 +1,6 @@
+import { useNavigation } from "@react-navigation/native";
 import { Text, FlatList } from "native-base";
+import { Pressable } from "react-native";
 
 const item = ({ item, index }) => {
   return (
@@ -8,7 +10,7 @@ const item = ({ item, index }) => {
   );
 };
 
-const ScrollableTabs = ({ tabs, ...props }) => {
+const ScrollableTabs = ({ destiny, tabs, ...props }) => {
   return (
     <FlatList
       bg={"white"}

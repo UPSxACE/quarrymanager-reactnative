@@ -20,6 +20,8 @@ import TestPage3 from './screens/store/TestPage3';
 import { useState } from 'react';
 import Store from './screens/store/Store';
 import DashboardHome from './screens/dashboard/DashboardHome';
+import Orders from './screens/store/Orders';
+import StoreCategories from './screens/store/StoreCategories';
 
 const HomeStack = createNativeStackNavigator();
 const OrderStack = createNativeStackNavigator();
