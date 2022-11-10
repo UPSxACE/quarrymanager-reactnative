@@ -23,6 +23,7 @@ import DashboardHome from './screens/dashboard/DashboardHome';
 import Orders from './screens/store/Orders';
 import StoreCategories from './screens/store/StoreCategories';
 
+const DashboardHomeStack = createNativeStackNavigator();
 const HomeStack = createNativeStackNavigator();
 const OrderStack = createNativeStackNavigator();
 const ProfileStack = createNativeStackNavigator();
@@ -91,7 +92,7 @@ export default function App() {
 
                 if (route.name === 'BtDashboardHome') {
                   iconName = focused ? 'home' : 'home';
-                } else if (route.name === 'BtAbout') {
+                } else if (route.name === 'BtOrders') {
                   iconName = focused ? 'package' : 'package';
                 } else if (route.name === 'BtProfile') {
                   iconName = focused ? 'user' : 'user';
@@ -122,15 +123,15 @@ export default function App() {
               ),
             })}
           >
-            <Tab.Screen name='BtDashboardHome'>
+            <Tab.Screen name="BtDashboardHome">
               {() => (
-                <ProfileStack.Navigator>
-                  <ProfileStack.Screen
-                    name='Dashboard'
+                <DashboardHomeStack.Navigator>
+                  <DashboardHomeStack.Screen
+                    name="Dashboard"
                     component={DashboardHome}
                     options={stackOptions}
-                  ></ProfileStack.Screen>
-                </ProfileStack.Navigator>
+                  ></DashboardHomeStack.Screen>
+                </DashboardHomeStack.Navigator>
               )}
             </Tab.Screen>
           </Tab.Navigator>
@@ -144,7 +145,7 @@ export default function App() {
 
                 if (route.name === 'BtHome') {
                   iconName = focused ? 'home' : 'home';
-                } else if (route.name === 'BtAbout') {
+                } else if (route.name === 'BtOrders') {
                   iconName = focused ? 'package' : 'package';
                 } else if (route.name === 'BtProfile') {
                   iconName = focused ? 'user' : 'user';
@@ -175,44 +176,44 @@ export default function App() {
               ),
             })}
           >
-            <Tab.Screen name='BtHome'>
+            <Tab.Screen name="BtHome">
               {() => (
-                <ProfileStack.Navigator>
-                  <ProfileStack.Screen
-                    name='Store'
+                <HomeStack.Navigator>
+                  <HomeStack.Screen
+                    name="Store"
                     component={Store}
                     options={stackOptions}
-                  ></ProfileStack.Screen>
-                  <ProfileStack.Screen
-                    name='Tests2'
+                  ></HomeStack.Screen>
+                  <HomeStack.Screen
+                    name="Tests2"
                     component={TestPage2}
                     options={stackOptions}
-                  ></ProfileStack.Screen>
-                  <ProfileStack.Screen
-                    name='Tests3'
+                  ></HomeStack.Screen>
+                  <HomeStack.Screen
+                    name="Tests3"
                     component={TestPage3}
                     options={stackOptions}
-                  ></ProfileStack.Screen>
-                </ProfileStack.Navigator>
+                  ></HomeStack.Screen>
+                </HomeStack.Navigator>
               )}
             </Tab.Screen>
 
-            <Tab.Screen name='BtOrders'>
+            <Tab.Screen name="BtOrders">
               {() => (
-                <ProfileStack.Navigator>
-                  <ProfileStack.Screen
-                    name='Orders'
-                    component={AboutPage}
+                <OrderStack.Navigator>
+                  <OrderStack.Screen
+                    name="Orders"
+                    component={Orders}
                     options={stackOptions}
-                  ></ProfileStack.Screen>
-                </ProfileStack.Navigator>
+                  ></OrderStack.Screen>
+                </OrderStack.Navigator>
               )}
             </Tab.Screen>
-            <Tab.Screen name='BtProfile'>
+            <Tab.Screen name="BtProfile">
               {() => (
                 <ProfileStack.Navigator>
                   <ProfileStack.Screen
-                    name='Profile'
+                    name="Profile"
                     component={Profile}
                     options={stackOptions}
                   ></ProfileStack.Screen>
@@ -220,27 +221,27 @@ export default function App() {
               )}
             </Tab.Screen>
 
-            <Tab.Screen name='BtSettings'>
+            <Tab.Screen name="BtSettings">
               {() => (
-                <ProfileStack.Navigator>
-                  <ProfileStack.Screen
-                    name='Settings'
+                <SettingsStack.Navigator>
+                  <SettingsStack.Screen
+                    name="Settings"
                     component={SettingsPage}
                     options={stackOptions}
-                  ></ProfileStack.Screen>
-                </ProfileStack.Navigator>
+                  ></SettingsStack.Screen>
+                </SettingsStack.Navigator>
               )}
             </Tab.Screen>
           </Tab.Navigator>
         )}
       </NavigationContainer>
-      <StatusBar style='light' />
+      <StatusBar style="light" />
     </NativeBaseProvider>
   );
 
   return (
     <View style={page_styles.container}>
-      <StatusBar style='auto' />
+      <StatusBar style="auto" />
       <TestPage />
     </View>
   );
