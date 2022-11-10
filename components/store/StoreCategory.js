@@ -73,7 +73,7 @@ export default function StoreCategory({ categoryResults, data }) {
           {categoryResults.toUpperCase()}
         </Text>
         <Text fontSize={"16px"} marginLeft={"auto"} color={"gray.400"}>
-          8-10
+          8-100
         </Text>
       </HStack>
       <FlatList
