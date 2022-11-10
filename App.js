@@ -3,7 +3,6 @@ import { StyleSheet, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TestPage from './screens/store/TestPage';
-import AboutPage from './screens/store/AboutPage';
 import {
   NativeBaseProvider,
   extendTheme,
@@ -19,6 +18,7 @@ import { Feather } from '@expo/vector-icons';
 import TestPage2 from './screens/store/TestPage2';
 import TestPage3 from './screens/store/TestPage3';
 import { useState } from 'react';
+import Store from './screens/store/Store';
 import DashboardHome from './screens/dashboard/DashboardHome';
 
 const HomeStack = createNativeStackNavigator();
@@ -177,8 +177,8 @@ export default function App() {
               {() => (
                 <ProfileStack.Navigator>
                   <ProfileStack.Screen
-                    name='Home'
-                    component={TestPage}
+                    name='Store'
+                    component={Store}
                     options={stackOptions}
                   ></ProfileStack.Screen>
                   <ProfileStack.Screen
@@ -195,11 +195,11 @@ export default function App() {
               )}
             </Tab.Screen>
 
-            <Tab.Screen name='BtAbout'>
+            <Tab.Screen name='BtOrders'>
               {() => (
                 <ProfileStack.Navigator>
                   <ProfileStack.Screen
-                    name='About'
+                    name='Orders'
                     component={AboutPage}
                     options={stackOptions}
                   ></ProfileStack.Screen>
