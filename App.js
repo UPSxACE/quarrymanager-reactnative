@@ -122,7 +122,7 @@ export default function App() {
               <ProfileStack.Navigator>
                 <ProfileStack.Screen
                   name="Store"
-                  component={StoreCategories}
+                  component={Store}
                   options={stackOptions}
                 ></ProfileStack.Screen>
                 <ProfileStack.Screen

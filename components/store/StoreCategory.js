@@ -68,7 +68,7 @@ export default function StoreCategory({ categoryResults, data }) {
       paddingTop={"6px"}
       paddingBottom={"12px"}
     >
-      <HStack>
+      <HStack marginTop={"8px"}>
         <Text fontWeight="bold" fontSize={"18px"}>
           {categoryResults.toUpperCase()}
         </Text>
