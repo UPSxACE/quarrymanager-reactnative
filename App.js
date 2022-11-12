@@ -54,7 +54,7 @@ function HomeTabs({ navigation, route }) {
         tabBarStyle: { display: 'none' },
       }}
     >
-      <HomeTab.Screen name="Home" component={Store} />
+      <HomeTab.Screen name="Home" component={TestPage} />
       <HomeTab.Screen name="Orders" component={Orders} />
       <HomeTab.Screen name="Profile" component={Profile} />
       <HomeTab.Screen name="Settings" component={SettingsPage} />

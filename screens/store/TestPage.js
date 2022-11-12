@@ -119,7 +119,7 @@ export default function TestPage({ navigation }) {
 
       <DashboardCard
         pedidos="1"
-        width="152px"
+        width={152}
         label="Confirmados"
         cardColor="#F69624"
       />

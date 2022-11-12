@@ -1,18 +1,18 @@
-import { Button, View, Text } from "native-base";
-import { Alert } from "react-native";
+import { Pressable, View, Text, Alert } from 'react-native';
 
 export default function BlueButton({ label }) {
   return (
-    <View justifyContent="center" w={"100%"}>
-      <Button
-        bg="#576F89"
-        onPress={() => Alert.alert("Simple Button pressed")}
-        paddingY="8px"
+    <View style={{ justifyContent: 'center', width: '100%' }}>
+      <Pressable
+        style={{
+          backgroundColor: '#576F89',
+          paddingVertical: 8,
+          borderRadius: 4,
+        }}
+        onPress={() => Alert.alert('Simple Pressable pressed')}
       >
-        <Text color="white" textAlign="center">
-          {label}
-        </Text>
-      </Button>
+        <Text style={{ color: 'white', textAlign: 'center' }}>{label}</Text>
+      </Pressable>
     </View>
   );
 }
