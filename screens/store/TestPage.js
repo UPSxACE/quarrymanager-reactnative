@@ -32,6 +32,7 @@ import { Image } from 'react-native';
 import Animated, { SlideInRight } from 'react-native-reanimated';
 
 export default function TestPage({ navigation }) {
+  const [formData, setData] = React.useState({});
   return (
     <ScrollView style={page_styles.container}>
       <NavBar />

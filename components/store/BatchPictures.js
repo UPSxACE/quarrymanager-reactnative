@@ -1,7 +1,12 @@
-import { Text, StyleSheet } from 'react-native';
-import { HStack, VStack, Image, Icon, Center, FlatList } from 'native-base';
+import {
+  Text,
+  StyleSheet,
+  View,
+  Image,
+  FlatList,
+  Dimensions,
+} from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import { Dimensions } from 'react-native';
 
 export default function Characteristics(props) {
   const data = [
@@ -38,27 +43,34 @@ export default function Characteristics(props) {
     if (index > 0 && index <= 4) {
       return (
         <Image
-          borderRadius={4}
-          ml={index == 1 ? 0 : (Dimensions.get('window').width - 36) * 0.05}
-          h={(Dimensions.get('window').width - 36) * 0.16}
-          w={(Dimensions.get('window').width - 36) * 0.16}
+          style={{
+            borderRadius: 4,
+            marginLeft:
+              index == 1 ? 0 : (Dimensions.get('window').width - 36) * 0.05,
+            height: (Dimensions.get('window').width - 36) * 0.16,
+            width: (Dimensions.get('window').width - 36) * 0.16,
+          }}
           alt="Batch picture"
           source={{
             uri: item.pic,
           }}
-        ></Image>
+        />
       );
     } else if (index == 5) {
       return (
-        <Center
-          borderRadius={4}
-          ml={(Dimensions.get('window').width - 36) * 0.05}
-          w={(Dimensions.get('window').width - 36) * 0.16}
-          h={(Dimensions.get('window').width - 36) * 0.16}
-          bg="#394A58"
+        <View
+          style={{
+            width: (Dimensions.get('window').width - 36) * 0.16,
+            borderRadius: 4,
+            marginLeft: (Dimensions.get('window').width - 36) * 0.05,
+            marginRight: (Dimensions.get('window').width - 36) * 0.16,
+            backgroundColor: '#394A58',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
         >
-          <Icon size="6" color="#ffff" as={<Feather name="chevron-right" />} />
-        </Center>
+          <Feather color="#ffff" size={28} name="chevron-right" />
+        </View>
       );
     }
   };
@@ -67,25 +79,25 @@ export default function Characteristics(props) {
   };
 
   return (
-    <VStack alignItems={'center'}>
-      <HStack>
-        <HStack>
-          <Image
-            borderRadius={4}
-            w={Dimensions.get('window').width - 36}
-            h="175px"
-            alt="Batch picture"
-            source={{
-              uri: data[0].pic,
-            }}
-          />
-        </HStack>
-      </HStack>
+    <View style={{ alignItems: 'center' }}>
+      <View>
+        <Image
+          style={{
+            width: Dimensions.get('window').width - 36,
+            height: 175,
+            borderRadius: 4,
+          }}
+          alt="Batch picture"
+          source={{
+            uri: data[0].pic,
+          }}
+        />
+      </View>
+
       <FlatList
-        paddingTop={'16px'}
+        style={{ paddingTop: 16 }}
         contentContainerStyle={{
           flexDirection: 'row',
-
           width: Dimensions.get('window').width - 36,
         }}
         scrollEnabled={false}
@@ -94,7 +106,7 @@ export default function Characteristics(props) {
         keyExtractor={(item, index) => index.toString()}
         horizontal={true}
       />
-    </VStack>
+    </View>
   );
 }
 

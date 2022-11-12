@@ -9,7 +9,7 @@ export default function BlueButton({ label }) {
           paddingVertical: 8,
           borderRadius: 4,
         }}
-        onPress={() => Alert.alert('Simple Pressable pressed')}
+        onPress={() => Alert.alert('Simple button pressed')}
       >
         <Text style={{ color: 'white', textAlign: 'center' }}>{label}</Text>
       </Pressable>

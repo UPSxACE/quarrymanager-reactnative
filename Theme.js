@@ -1,7 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Text, View, HStack } from 'native-base';
-import { Pressable } from 'react-native';
+import { View, Pressable } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 export const themeColors = {
@@ -24,35 +23,33 @@ export const gradientHeaderOptions = {
   headerTintColor: 'white',
   headerBackground: () => (
     <View style={{ flex: 1 }}>
-      <HStack
-        h={'100%'}
-        w={'100%'}
-        justifyContent={'space-evenly'}
-        bg={{
-          linearGradient: {
-            colors: ['main.D', 'main.C'],
-            start: [0, 0.5],
-          },
+      <LinearGradient
+        style={{
+          flexDirection: 'row',
+          height: '100%',
+          width: '100%',
+          justifyContent: 'space-evenly',
         }}
-      ></HStack>
+        colors={[themeColors.main.D, themeColors.main.C]}
+        start={{ x: 0, y: 0.5 }}
+      ></LinearGradient>
     </View>
   ),
 };
 
 export const gradientTabBarOptions = {
   tabBarBackground: () => (
-    <View style={{ flex: 1, position: 'relative' }}>
-      <HStack
-        h={'100%'}
-        w={'100%'}
-        justifyContent={'space-evenly'}
-        bg={{
-          linearGradient: {
-            colors: ['main.C', 'main.D'],
-            start: [0, 0.5],
-          },
+    <View style={{ flex: 1 }}>
+      <LinearGradient
+        style={{
+          height: '100%',
+          width: '100%',
+          justifyContent: 'space-evenly',
         }}
-      ></HStack>
+        colors={[themeColors.main.C, themeColors.main.D]}
+        start={{ x: 0, y: 0.5 }}
+        justifyContent={'space-evenly'}
+      ></LinearGradient>
     </View>
   ),
 };
@@ -101,18 +98,17 @@ const tabRoutes = [
 export function CustomBottomTab() {
   const navigation = useNavigation();
   return (
-    <View style={{ position: 'relative' }}>
-      <HStack
-        h={'50px'}
-        w={'100%'}
-        justifyContent={'space-evenly'}
-        alignItems={'center'}
-        bg={{
-          linearGradient: {
-            colors: ['main.C', 'main.D'],
-            start: [0, 0.5],
-          },
+    <View>
+      <LinearGradient
+        style={{
+          flexDirection: 'row',
+          height: 50,
+          width: '100%',
+          justifyContent: 'space-evenly',
         }}
+        colors={[themeColors.main.C, themeColors.main.D]}
+        start={{ x: 0, y: 0.5 }}
+        justifyContent={'space-evenly'}
       >
         {tabRoutes.map((tab, index) => {
           return (
@@ -135,7 +131,7 @@ export function CustomBottomTab() {
             </Pressable>
           );
         })}
-      </HStack>
+      </LinearGradient>
     </View>
   );
 }

@@ -1,23 +1,20 @@
-import { HStack, Text, Image, VStack, FlatList, View } from "native-base";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Text, Image, View, FlatList } from 'react-native';
 
 function Item({ id, title, price, imageUrl, description }) {
   return (
-    <VStack w={"50%"} alignItems={"center"}>
-      <VStack
-        alignItems={"center"}
-        bg={"red.800"}
-        w={"160px"}
-        h={"auto"}
-        paddingTop={"12px"}
-        paddingBottom={"10px"}
+    <View style={page_styles.container}>
+      <View
         style={{
           elevation: 4,
-          shadowColor: "#000",
-          backgroundColor: "#F8F8F8",
+          shadowColor: '#000',
+          backgroundColor: '#F8F8F8',
           marginTop: 6,
           marginBottom: 6,
           borderRadius: 4,
+          alignItems: 'center',
+          width: 160,
+          paddingTop: 12,
+          paddingBottom: 10,
         }}
       >
         <Image
@@ -28,23 +25,17 @@ function Item({ id, title, price, imageUrl, description }) {
           }}
         />
 
-        <Text fontWeight="bold" fontSize={16}>
-          {title}
-        </Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 16 }}>{title}</Text>
         <Text
           numberOfLines={2}
-          ellipsizeMode={"tail"}
-          fontSize={10}
-          paddingLeft={"5px"}
-          paddingRight={"5px"}
+          ellipsizeMode={'tail'}
+          style={{ fontSize: 10, paddingLeft: 5, paddingRight: 5 }}
         >
           {description}
         </Text>
-        <Text fontWeight="bold" fontSize={18}>
-          {price}
-        </Text>
-      </VStack>
-    </VStack>
+        <Text style={{ fontWeight: 'bold', fontSize: 18 }}>{price}</Text>
+      </View>
+    </View>
   );
 }
 
@@ -62,20 +53,22 @@ function renderItem({ item }) {
 
 export default function StoreCategory({ categoryResults, data }) {
   return (
-    <VStack
-      paddingLeft={"12px"}
-      paddingRight={"12px"}
-      paddingTop={"6px"}
-      paddingBottom={"12px"}
+    <View
+      style={{
+        paddingLeft: 12,
+        paddingRight: 12,
+        paddingTop: 6,
+        paddingBottom: 12,
+      }}
     >
-      <HStack marginTop={"8px"}>
-        <Text fontWeight="bold" fontSize={"18px"}>
+      <View style={{ flexDirection: 'row', marginTop: 8 }}>
+        <Text style={{ fontWeight: 'bold', fontSize: 18 }}>
           {categoryResults.toUpperCase()}
         </Text>
-        <Text fontSize={"16px"} marginLeft={"auto"} color={"gray.400"}>
+        <Text style={{ fontSize: 16, marginLeft: 'auto', color: '#a8a29e' }}>
           8-100
         </Text>
-      </HStack>
+      </View>
       <FlatList
         data={data}
         renderItem={renderItem}
@@ -83,16 +76,23 @@ export default function StoreCategory({ categoryResults, data }) {
         numColumns={2}
         horizontal={false}
       />
-    </VStack>
+    </View>
   );
 }
 
 const page_styles = StyleSheet.create({
+  container: {
+    width: '50%',
+    alignItems: 'center',
+  },
+
+  innerContainer: {},
+
   productPicture: {
     width: 144,
     height: 88,
     borderRadius: 4,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     elevation: 5,
   },
 });
