@@ -1,39 +1,29 @@
-import { HStack, Text, Image, VStack, FlatList, View } from "native-base";
-import { StyleSheet } from "react-native";
+import { Text, Image, FlatList, View, StyleSheet } from 'react-native';
 
 function Item({ id, title, price, imageUrl }) {
   return (
-    <VStack>
-      <HStack
-        justifyContent={"space-evenly"}
-        alignItems={"center"}
-        paddingRight={"12px"}
+    <View style={list_styles.item}>
+      <View
+        style={{
+          elevation: 4,
+          shadowColor: '#000',
+          backgroundColor: 'white',
+          marginTop: 12,
+          borderRadius: 4,
+        }}
       >
-        <VStack>
-          <View
-            style={{
-              elevation: 4,
-              shadowColor: "#000",
-              backgroundColor: "white",
-              marginTop: 12,
-              borderRadius: 4,
-            }}
-          >
-            <Image
-              alignSelf={"center"}
-              alt="Product Picture"
-              style={page_styles.productPicture}
-              source={{
-                uri: imageUrl,
-              }}
-            />
-          </View>
+        <Image
+          alt="Product Picture"
+          style={page_styles.productPicture}
+          source={{
+            uri: imageUrl,
+          }}
+        />
+      </View>
 
-          <Text textAlign={"center"}>{title}</Text>
-          <Text textAlign={"center"}>{price}</Text>
-        </VStack>
-      </HStack>
-    </VStack>
+      <Text style={{ textAlign: 'center' }}>{title}</Text>
+      <Text style={{ textAlign: 'center' }}>{price}</Text>
+    </View>
   );
 }
 
@@ -50,10 +40,8 @@ function renderItem({ item }) {
 
 export default function HorizontalCategory({ categoryTitle, data }) {
   return (
-    <VStack paddingLeft={"12px"} paddingTop={"6px"} paddingBottom={"12px"}>
-      <Text fontWeight="bold" fontSize={"18px"}>
-        {categoryTitle}
-      </Text>
+    <View style={list_styles.horizontalList}>
+      <Text style={list_styles.text}>{categoryTitle}</Text>
       <FlatList
         data={data}
         renderItem={renderItem}
@@ -61,7 +49,7 @@ export default function HorizontalCategory({ categoryTitle, data }) {
         horizontal={true}
         showsHorizontalScrollIndicator={false}
       />
-    </VStack>
+    </View>
   );
 }
 
@@ -70,7 +58,27 @@ const page_styles = StyleSheet.create({
     width: 130,
     height: 100,
     borderRadius: 4,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     elevation: 10,
+    alignSelf: 'center',
+  },
+});
+
+const list_styles = StyleSheet.create({
+  horizontalList: {
+    paddingLeft: 12,
+    paddingTop: 6,
+    paddingBottom: 12,
+  },
+
+  text: {
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
+
+  item: {
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    marginRight: 12,
   },
 });

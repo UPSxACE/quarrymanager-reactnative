@@ -1,5 +1,5 @@
 import HorizontalCategory from '../../components/store/HorizontalCategory';
-import { View, VStack } from 'native-base';
+import { View } from 'react-native';
 import HorizontalList from '../../components/dashboard/HorizontalList';
 import BasicList from '../../components/store/BasicList';
 import ScrollableTabs from '../../components/store/ScrollableTabs';
@@ -64,19 +64,16 @@ export default function TestPage2({ navigation }) {
   return (
     <View>
       <ScrollableTabs tabs={TABS_DATA} />
-
       <BasicList />
-
       <HorizontalCategory categoryTitle={'Mármores'} data={CATEGORY_DATA} />
-
-      <VStack pl="20px">
+      <View style={{ paddingLeft: 20 }}>
         <HorizontalList
           title="Pedidos"
           data={HLDATA}
           mainText="customer"
           date="date"
         />
-      </VStack>
+      </View>
     </View>
   );
 }

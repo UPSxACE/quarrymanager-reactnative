@@ -1,19 +1,14 @@
-import { useNavigation } from "@react-navigation/native";
-import { Text, FlatList } from "native-base";
-import { Pressable } from "react-native";
+import { useNavigation } from '@react-navigation/native';
+import { Pressable, StyleSheet, Text, FlatList } from 'react-native';
 
 const item = ({ item, index }) => {
-  return (
-    <Text fontWeight={"medium"} fontSize={"16px"} padding={"12px"}>
-      {item.toUpperCase()}
-    </Text>
-  );
+  return <Text style={styles.itemText}>{item.toUpperCase()}</Text>;
 };
 
 const ScrollableTabs = ({ destiny, tabs, ...props }) => {
   return (
     <FlatList
-      bg={"white"}
+      style={styles.flatlist}
       horizontal={true}
       data={tabs}
       renderItem={item}
@@ -23,5 +18,17 @@ const ScrollableTabs = ({ destiny, tabs, ...props }) => {
     />
   );
 };
+
+const styles = StyleSheet.create({
+  flatlist: {
+    backgroundColor: 'white',
+  },
+
+  itemText: {
+    fontWeight: 'medium',
+    fontSize: 16,
+    padding: 12,
+  },
+});
 
 export default ScrollableTabs;

@@ -1,8 +1,8 @@
-import React from "react";
-import { Text, HStack, Image, View, VStack, Icon, Badge } from "native-base";
-import { Pressable, StyleSheet } from "react-native";
-import { Feather } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import React from 'react';
+import Badge from '../Badge';
+import { Pressable, StyleSheet, Text, Image, View, Icon } from 'react-native';
+import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 export default function ListItem({
   newMessage,
@@ -20,31 +20,16 @@ export default function ListItem({
         }
       }}
     >
-      <HStack
-        style={newMessage ? new_style.container : page_styles.container}
-        borderWidth="0.5px"
-        borderColor="#6E7173"
-        alignItems={"center"}
-      >
+      <View style={newMessage ? new_style.container : page_styles.container}>
         <Image
-          marginTop={"12px"}
-          alignSelf={"center"}
           alt="Product Picture"
           style={page_styles.productPicture}
           source={{
             uri: imageUrl,
           }}
         />
-        <VStack alignItems={"center"} flex={1}>
-          {newMessage && (
-            <Badge
-              borderColor="#FFFB94"
-              bg={"transparent"}
-              marginBottom={"2px"}
-            >
-              <Text color="#FFFB94">Resposta!</Text>
-            </Badge>
-          )}
+        <View style={{ alignItems: 'center', flex: 1 }}>
+          {newMessage && <Badge label={'Resposta!'} color="#FFFB94" />}
           <Text
             style={newMessage ? new_style.titleText : page_styles.titleText}
           >
@@ -55,38 +40,46 @@ export default function ListItem({
           >
             {state}
           </Text>
-        </VStack>
-        <HStack marginHorizontal={12}>
+        </View>
+        <View style={{ flexDirection: 'row', marginHorizontal: 12 }}>
           {destiny && (
-            <Icon
-              size="6"
-              color={newMessage ? "#fff" : "#000"}
-              as={<Feather name="chevron-right" />}
+            <Feather
+              size={28}
+              color={newMessage ? '#fff' : '#000'}
+              name="chevron-right"
             />
           )}
-        </HStack>
-      </HStack>
+        </View>
+      </View>
     </Pressable>
   );
 }
 
+const styles = StyleSheet.create({
+  image: {},
+});
+
 const page_styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5",
+    flexDirection: 'row',
+    backgroundColor: '#f5f5f5',
     paddingBottom: 12,
-    width: "100%",
+    width: '100%',
+    borderWidth: 0.5,
+    borderColor: '#6E7173',
+    alignItems: 'center',
   },
 
   titleText: {
-    color: "black",
-    fontWeight: "bold",
+    color: 'black',
+    fontWeight: 'bold',
     lineHeight: 16,
   },
 
   processText: {
-    color: "#6E7173",
-    fontStyle: "italic",
+    color: '#6E7173',
+    fontStyle: 'italic',
     lineHeight: 16,
   },
 
@@ -95,26 +88,32 @@ const page_styles = StyleSheet.create({
     height: 100,
     borderRadius: 4,
     marginHorizontal: 12,
+    marginTop: 12,
+    marginBottom: 12,
+    alignSelf: 'center',
   },
 });
 
 const new_style = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#7C9BC2",
-    paddingBottom: 12,
-    width: "100%",
+    flexDirection: 'row',
+    backgroundColor: '#7C9BC2',
+    width: '100%',
+    borderWidth: 0.5,
+    borderColor: '#6E7173',
+    alignItems: 'center',
   },
 
   titleText: {
-    color: "white",
+    color: 'white',
     lineHeight: 16,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
 
   processText: {
-    color: "white",
-    fontStyle: "italic",
+    color: 'white',
+    fontStyle: 'italic',
     lineHeight: 16,
   },
 });
