@@ -1,13 +1,15 @@
 import React from 'react';
-import { Input, Pressable, Icon } from 'native-base';
+import { Input, Pressable, Icon, Text } from 'native-base';
 import { TextInput } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
 import { themeColors } from '../../Theme';
+import StyledOnFocus from '../StyledOnFocus';
 
 export default function BlueInput({ label, secret, ...props }) {
   const [show, setShow] = React.useState(!secret);
   return (
-    <Input
+    <StyledOnFocus.Input
+      {...props}
       style={{
         height: 40,
         width: '100%',
@@ -16,11 +18,14 @@ export default function BlueInput({ label, secret, ...props }) {
         borderWidth: 0,
         borderBottomWidth: 1,
         borderBottomColor: '#576F89',
-        color: themeColors.greyComponentText,
+        color: 'white',
+        paddingLeft: 12,
+        paddingRight: 12,
+        ...props.style,
       }}
       placeholder={'texto'}
       placeholderTextColor="#BDBDBD"
-      type={show ? 'text' : 'password'}
+      secureTextEntry={!show}
       InputRightElement={
         secret && (
           <Pressable onPress={() => setShow(!show)}>
@@ -28,7 +33,6 @@ export default function BlueInput({ label, secret, ...props }) {
           </Pressable>
         )
       }
-      {...props}
     />
   );
 }

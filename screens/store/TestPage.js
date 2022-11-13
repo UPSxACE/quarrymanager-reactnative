@@ -111,7 +111,7 @@ export default function TestPage({ navigation }) {
         <BlueButton label="Botão Submit" />
         <BlueInput
           label="Insert Text"
-          marginTop="12px"
+          style={{ marginTop: 12 }}
           onChangeText={(value) => setData({ ...formData, name: value })}
         />
       </VStack>
