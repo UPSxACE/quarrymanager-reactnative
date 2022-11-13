@@ -11,8 +11,8 @@ StyledOnFocus.Input = ({ children, onFocusStyle, ...props }) => {
       {...props}
       style={
         focus
-          ? props.onFocusStyle
-            ? { ...props.style, ...props.onFocusStyle }
+          ? onFocusStyle
+            ? { ...props.style, ...onFocusStyle }
             : { ...props.style }
           : { ...props.style }
       }

@@ -113,6 +113,7 @@ export default function TestPage({ navigation }) {
           label="Insert Text"
           style={{ marginTop: 12 }}
           onChangeText={(value) => setData({ ...formData, name: value })}
+          //onFocusStyle={{ backgroundColor: 'red' }}
         />
       </VStack>
 
