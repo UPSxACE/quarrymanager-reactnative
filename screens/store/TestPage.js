@@ -19,7 +19,7 @@ import {
   ScrollView,
   Pressable,
 } from "native-base";
-import BatchPictures from "../../components/store/BatchPictures";
+import BatchPictures from "../../components/dashboard/BatchPictures";
 import WhiteInput from "../../components/store/WhiteInput";
 import * as React from "react";
 import ArrowButton from "../../components/store/ArrowButton";
@@ -78,7 +78,7 @@ export default function TestPage({ navigation }) {
         }
       />
       <Characteristics resCom={6} resFlex={2} mva={6} maa={3} />
-      <BatchPictures />
+      <BatchPictures horizontalPadding={12} />
 
       <WhiteButton />
 

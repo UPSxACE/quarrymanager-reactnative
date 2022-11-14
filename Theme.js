@@ -16,6 +16,7 @@ export const themeColors = {
     mainTextColor: "#464748",
     secondaryTextColor: "#6E7173",
     weakGrey: "#959595",
+    dashboardBackground: "#F3F3F3",
   },
 };
 
@@ -98,7 +99,7 @@ const tabRoutes = [
 const dashboardRoutes = [
   { destiny: ["HomeStack", "Dashboard"], icon: "home" },
   { destiny: ["HomeStack", "Lotes"], icon: "layers" },
-  { destiny: ["HomeStack", "Dashboard"], icon: "log-out" },
+  { destiny: ["HomeStack", "Home"], icon: "log-out" },
 ];
 
 export function CustomBottomTab({ dashboard }) {
