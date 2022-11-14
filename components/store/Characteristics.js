@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet } from "react-native";
 
 export default function Characteristics({ resCom, resFlex, mva, maa }) {
   return (
@@ -8,11 +8,11 @@ export default function Characteristics({ resCom, resFlex, mva, maa }) {
           <Text style={characteristicsStyles.headerText}>Características</Text>
         </View>
       </View>
-      <View style={{ width: '100%' }}>
+      <View style={{ width: "100%" }}>
         <View
           style={{
-            flexDirection: 'row',
-            width: '100%',
+            flexDirection: "row",
+            width: "100%",
           }}
         >
           <View style={characteristicsStyles.textStyle1}>
@@ -24,8 +24,8 @@ export default function Characteristics({ resCom, resFlex, mva, maa }) {
         </View>
         <View
           style={{
-            flexDirection: 'row',
-            width: '100%',
+            flexDirection: "row",
+            width: "100%",
           }}
         >
           <View style={characteristicsStyles.textStyle1}>
@@ -37,8 +37,8 @@ export default function Characteristics({ resCom, resFlex, mva, maa }) {
         </View>
         <View
           style={{
-            flexDirection: 'row',
-            width: '100%',
+            flexDirection: "row",
+            width: "100%",
           }}
         >
           <View style={characteristicsStyles.textStyle1}>
@@ -50,8 +50,8 @@ export default function Characteristics({ resCom, resFlex, mva, maa }) {
         </View>
         <View
           style={{
-            flexDirection: 'row',
-            width: '100%',
+            flexDirection: "row",
+            width: "100%",
           }}
         >
           <View style={characteristicsStyles.textStyle1}>
@@ -68,31 +68,32 @@ export default function Characteristics({ resCom, resFlex, mva, maa }) {
 
 const characteristicsStyles = StyleSheet.create({
   flatlistStyle: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     padding: 12,
-    width: '100%',
+    width: "100%",
+    backgroundColor: "white",
   },
   textStyle1: {
-    width: '50%',
+    width: "50%",
     borderBottomWidth: 1,
-    borderColor: 'gray',
+    borderColor: "gray",
   },
   textStyle2: {
-    width: '50%',
+    width: "50%",
     borderBottomWidth: 1,
-    borderColor: 'gray',
-    alignItems: 'flex-end',
+    borderColor: "gray",
+    alignItems: "flex-end",
   },
   alignHead: {
     margin: 12,
-    flexDirection: 'row',
+    flexDirection: "row",
     borderBottomWidth: 1,
-    width: '100%',
+    width: "100%",
   },
 
   headerText: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 16,
   },
 });

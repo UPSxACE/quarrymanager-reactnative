@@ -1,41 +1,44 @@
-import { StatusBar } from 'expo-status-bar';
-import { Animated, Button, StyleSheet, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import TestPage from './screens/store/TestPage';
+import { StatusBar } from "expo-status-bar";
+import { Animated, Button, StyleSheet, Text } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import TestPage from "./screens/store/TestPage";
 import {
   NativeBaseProvider,
   extendTheme,
   View,
   Box,
   HStack,
-} from 'native-base';
-import { LinearGradient } from 'expo-linear-gradient';
-import Profile from './screens/store/Profile';
-import SettingsPage from './screens/store/SettingsPage';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Feather } from '@expo/vector-icons';
-import TestPage2 from './screens/store/TestPage2';
-import TestPage3 from './screens/store/TestPage3';
-import { useState } from 'react';
-import Store from './screens/store/Store';
-import DashboardHome from './screens/dashboard/DashboardHome';
-import Orders from './screens/store/Orders';
-import StoreCategories from './screens/store/StoreCategories';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
+} from "native-base";
+import { LinearGradient } from "expo-linear-gradient";
+import Profile from "./screens/store/Profile";
+import SettingsPage from "./screens/store/SettingsPage";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Feather } from "@expo/vector-icons";
+import TestPage2 from "./screens/store/TestPage2";
+import TestPage3 from "./screens/store/TestPage3";
+import { useState } from "react";
+import Store from "./screens/store/Store";
+import DashboardHome from "./screens/dashboard/DashboardHome";
+import Orders from "./screens/store/Orders";
+import StoreCategories from "./screens/store/StoreCategories";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import {
   gradientHeaderOptions,
   gradientTabBarOptions,
   theme_obj,
   theme_config,
   CustomBottomTab,
-} from './Theme';
+} from "./Theme";
+import Product from "./screens/store/Product";
 
 function isRootStack(routeName) {
   switch (routeName) {
-    case 'Tests2':
+    case "Tests2":
       return true;
-    case 'Tests3':
+    case "Tests3":
+      return true;
+    case "Produto":
       return true;
     default:
       return false;
@@ -51,7 +54,7 @@ function HomeTabs({ navigation, route }) {
       screenOptions={{
         ...gradientHeaderOptions,
         //...gradientTabBarOptions,
-        tabBarStyle: { display: 'none' },
+        tabBarStyle: { display: "none" },
       }}
     >
       <HomeTab.Screen name="Home" component={TestPage} />
@@ -84,12 +87,17 @@ export default function App() {
               component={TestPage2}
               options={{
                 ...gradientHeaderOptions,
-                gestureDirection: 'horizontal',
+                gestureDirection: "horizontal",
               }}
             ></RootStack.Screen>
             <RootStack.Screen
               name="Tests3"
               component={TestPage3}
+              options={{ ...gradientHeaderOptions }}
+            ></RootStack.Screen>
+            <RootStack.Screen
+              name="Produto"
+              component={Product}
               options={{ ...gradientHeaderOptions }}
             ></RootStack.Screen>
           </RootStack.Navigator>
