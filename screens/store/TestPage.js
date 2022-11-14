@@ -110,8 +110,9 @@ export default function TestPage({ navigation }) {
       <VStack marginTop="12px">
         <BlueButton label="Botão Submit" />
         <BlueInput
+          secret
           label="Insert Text"
-          style={{ marginTop: 12 }}
+          containerStyle={{ marginTop: 12 }}
           onChangeText={(value) => setData({ ...formData, name: value })}
           //onFocusStyle={{ backgroundColor: 'red' }}
         />

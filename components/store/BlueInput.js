@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Pressable, Icon, Text } from 'native-base';
+import { Pressable, View } from 'react-native';
 import { TextInput } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
 import { themeColors } from '../../Theme';
@@ -12,7 +12,6 @@ export default function BlueInput({ label, secret, ...props }) {
       {...props}
       style={{
         height: 40,
-        width: '100%',
         borderRadius: 0,
         backgroundColor: '#576F89',
         borderWidth: 0,
@@ -23,14 +22,28 @@ export default function BlueInput({ label, secret, ...props }) {
         paddingRight: 12,
         ...props.style,
       }}
-      placeholder={'texto'}
+      placeholder={label}
       placeholderTextColor="#BDBDBD"
       secureTextEntry={!show}
-      InputRightElement={
+      inputRightElement={
         secret && (
-          <Pressable onPress={() => setShow(!show)}>
-            <Icon as={<Feather name={show ? 'eye' : 'eye-off'} />} mr="2" />
-          </Pressable>
+          <View>
+            <Pressable
+              style={{
+                backgroundColor: '#576F89',
+                height: 40,
+                justifyContent: 'center',
+                paddingHorizontal: 12,
+              }}
+              onPress={() => setShow(!show)}
+            >
+              <Feather
+                size={16}
+                color={'white'}
+                name={show ? 'eye' : 'eye-off'}
+              />
+            </Pressable>
+          </View>
         )
       }
     />

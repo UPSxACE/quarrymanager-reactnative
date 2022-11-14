@@ -1,30 +1,42 @@
 import { useState } from 'react';
-import { TextInput } from 'react-native';
+import { TextInput, View } from 'react-native';
 
 const StyledOnFocus = {};
 
-StyledOnFocus.Input = ({ children, onFocusStyle, ...props }) => {
+StyledOnFocus.Input = ({
+  children,
+  onFocusStyle,
+  inputRightElement,
+  containerStyle,
+  ...props
+}) => {
   const [focus, setFocus] = useState(false);
-
   return (
-    <TextInput
-      {...props}
-      style={
-        focus
-          ? onFocusStyle
-            ? { ...props.style, ...onFocusStyle }
-            : { ...props.style }
-          : { ...props.style }
-      }
-      onFocus={() => {
-        setFocus(true);
-      }}
-      onBlur={() => {
-        setFocus(false);
-      }}
-    >
-      {children}
-    </TextInput>
+    <View style={{ flexDirection: 'row', ...containerStyle }}>
+      <TextInput
+        {...props}
+        style={
+          focus
+            ? onFocusStyle
+              ? {
+                  flex: 1,
+                  ...props.style,
+                  ...onFocusStyle,
+                }
+              : { flex: 1, ...props.style }
+            : { flex: 1, ...props.style }
+        }
+        onFocus={() => {
+          setFocus(true);
+        }}
+        onBlur={() => {
+          setFocus(false);
+        }}
+      >
+        {children}
+      </TextInput>
+      {inputRightElement && inputRightElement}
+    </View>
   );
 };
 
