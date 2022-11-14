@@ -1,44 +1,54 @@
-import { View, VStack, Text, FlatList } from "native-base";
-import HorizontalList from "../../components/dashboard/HorizontalList";
-import BasicList from "../../components/store/BasicList";
+import { View, StyleSheet, FlatList, Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-const DATA = ["test"];
-
-const ORDER_DATA = [
+const DATA = [
   {
-    product: "Mármore Preto",
-    customer: "Eduardo Botelho",
-    address: "Rua de Bragança",
-    date: "17 Dez 2022 | 09:05 PM",
+    quantity: "Quantidade:",
+    price: "Preço(€/m²): 10,99",
+    discount: "Desconto:",
+    total: "Total: ",
   },
 ];
 
 function Item({ id, quantity, price, discount, total }) {
+  const navigation = useNavigation();
   return (
     <View style={page_styles.container}>
       <View
         style={{
-          elevation: 4,
-          shadowColor: "#000",
           backgroundColor: "#F8F8F8",
           marginTop: 6,
-          marginBottom: 6,
-          borderRadius: 4,
-          alignItems: "center",
-          width: 160,
-          paddingTop: 12,
-          paddingBottom: 10,
+          marginBottom: 2,
+
+          width: "100%",
         }}
       >
-        <Text style={{ fontWeight: "bold", fontSize: 16 }}>{title}</Text>
-        <Text
-          numberOfLines={2}
-          ellipsizeMode={"tail"}
-          style={{ fontSize: 10, paddingLeft: 5, paddingRight: 5 }}
-        >
-          {description}
+        <Text style={{ fontWeight: "bold", fontSize: 18 }}>Pedido</Text>
+      </View>
+      <View
+        style={{
+          backgroundColor: "#F8F8F8",
+
+          marginBottom: 6,
+          width: "100%",
+        }}
+      >
+        <Text>{quantity}</Text>
+        <Text>{price}</Text>
+        <Text>{discount}</Text>
+        <Text>{total}</Text>
+      </View>
+      <View
+        style={{
+          backgroundColor: "#F8F8F8",
+          marginTop: 6,
+          marginBottom: 2,
+          width: "100%",
+        }}
+      >
+        <Text style={{ fontSize: 18 }} onPress={() => navigation.navigate()}>
+          Adicionar Código de Desconto
         </Text>
-        <Text style={{ fontWeight: "bold", fontSize: 18 }}>{price}</Text>
       </View>
     </View>
   );
@@ -58,8 +68,7 @@ function renderItem({ item }) {
 
 export default function OrderProduct({ navigation }) {
   return (
-    <View height="100%">
-      <Text style={{ fontWeight: "bold", fontSize: 18 }}>Pedido</Text>
+    <View height="100%" backgroundColor="black">
       <FlatList
         data={DATA}
         renderItem={renderItem}
@@ -71,17 +80,11 @@ export default function OrderProduct({ navigation }) {
 
 const page_styles = StyleSheet.create({
   container: {
-    width: "50%",
+    width: "100%",
     alignItems: "center",
-  },
+    marginLeft: 12,
+    marginRight: 12,
 
-  innerContainer: {},
-
-  productPicture: {
-    width: 144,
-    height: 88,
-    borderRadius: 4,
-    backgroundColor: "white",
-    elevation: 5,
+    backgroundColor: "black",
   },
 });
