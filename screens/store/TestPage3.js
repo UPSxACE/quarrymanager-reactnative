@@ -1,4 +1,4 @@
-import { View, VStack, Text, FlatList } from 'native-base';
+import { View, Text, FlatList } from 'react-native';
 import HorizontalList from '../../components/dashboard/HorizontalList';
 
 const DATA = [

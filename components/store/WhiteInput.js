@@ -1,31 +1,53 @@
 import React from 'react';
-import { Input, Pressable, Icon } from 'native-base';
+import { Pressable, View } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
+import StyledOnFocus from '../StyledOnFocus';
+import { themeColors } from '../../Theme';
 
 export default function WhiteInput({ label, secret, ...props }) {
   const [show, setShow] = React.useState(!secret);
   return (
-    <Input
-      height="40px"
-      width={'100%'}
+    <StyledOnFocus.Input
+      {...props}
+      style={{
+        height: 40,
+        borderRadius: 0,
+        backgroundColor: themeColors.main.greyComponentBg,
+        borderWidth: 0,
+        borderBottomWidth: 1,
+        borderBottomColor: themeColors.main.B,
+        color: themeColors.greyComponentText,
+        paddingLeft: 12,
+        paddingRight: 12,
+        ...props.style,
+      }}
+      onFocusStyle={{ backgroundColor: '#e4e4e7' }}
       placeholder={label}
-      type={show ? 'text' : 'password'}
-      InputRightElement={
+      placeholderTextColor="#6C6B6B"
+      secretTextEntry={!show}
+      rightStyle={{ backgroundColor: themeColors.main.greyComponentBg }}
+      rightFocusStyle={{ backgroundColor: '#e4e4e7' }}
+      inputRightElement={
         secret && (
-          <Pressable onPress={() => setShow(!show)}>
-            <Icon as={<Feather name={show ? 'eye' : 'eye-off'} />} mr="2" />
+          <Pressable
+            style={{
+              borderBottomWidth: 1,
+              borderBottomColor: themeColors.main.B,
+              height: 40,
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '100%',
+            }}
+            onPress={() => setShow(!show)}
+          >
+            <Feather
+              size={16}
+              color={'#6C6B6B'}
+              name={show ? 'eye' : 'eye-off'}
+            />
           </Pressable>
         )
       }
-      rounded="0"
-      bg="main.greyComponentBg"
-      borderWidth="0"
-      borderBottomWidth="1"
-      borderBottomColor="main.B"
-      _focus={{ bg: 'gray.200' }}
-      placeholderTextColor="#6C6B6B"
-      color="greyComponentText"
-      {...props}
     />
   );
 }
