@@ -1,34 +1,34 @@
-import { useNavigation } from '@react-navigation/native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { View, Pressable } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { useNavigation } from "@react-navigation/native";
+import { LinearGradient } from "expo-linear-gradient";
+import { View, Pressable } from "react-native";
+import { Feather } from "@expo/vector-icons";
 
 export const themeColors = {
   main: {
-    A: '#576F89',
-    B: '#9FB6D4',
-    greyComponentBg: '#F5F5F5',
-    greyComponentText: '#6C6B6B',
-    C: '#82A2CC',
-    D: '#394A58',
-    blueComponentBorder: '#7F9EC6',
-    dashboardComponentColor1: '#0369A1',
-    mainTextColor: '#464748',
-    secondaryTextColor: '#6E7173',
-    weakGrey: '#959595',
+    A: "#576F89",
+    B: "#9FB6D4",
+    greyComponentBg: "#F5F5F5",
+    greyComponentText: "#6C6B6B",
+    C: "#82A2CC",
+    D: "#394A58",
+    blueComponentBorder: "#7F9EC6",
+    dashboardComponentColor1: "#0369A1",
+    mainTextColor: "#464748",
+    secondaryTextColor: "#6E7173",
+    weakGrey: "#959595",
   },
 };
 
 export const gradientHeaderOptions = {
-  headerTintColor: 'white',
+  headerTintColor: "white",
   headerBackground: () => (
     <View style={{ flex: 1 }}>
       <LinearGradient
         style={{
-          flexDirection: 'row',
-          height: '100%',
-          width: '100%',
-          justifyContent: 'space-evenly',
+          flexDirection: "row",
+          height: "100%",
+          width: "100%",
+          justifyContent: "space-evenly",
         }}
         colors={[themeColors.main.D, themeColors.main.C]}
         start={{ x: 0, y: 0.5 }}
@@ -42,13 +42,13 @@ export const gradientTabBarOptions = {
     <View style={{ flex: 1 }}>
       <LinearGradient
         style={{
-          height: '100%',
-          width: '100%',
-          justifyContent: 'space-evenly',
+          height: "100%",
+          width: "100%",
+          justifyContent: "space-evenly",
         }}
         colors={[themeColors.main.C, themeColors.main.D]}
         start={{ x: 0, y: 0.5 }}
-        justifyContent={'space-evenly'}
+        justifyContent={"space-evenly"}
       ></LinearGradient>
     </View>
   ),
@@ -67,38 +67,38 @@ export const theme_obj = {
       // 400: '#d97706',
     },
     main: {
-      A: '#576F89',
-      B: '#9FB6D4',
-      greyComponentBg: '#F5F5F5',
-      greyComponentText: '#6C6B6B',
-      C: '#82A2CC',
-      D: '#394A58',
-      blueComponentBorder: '#7F9EC6',
-      dashboardComponentColor1: '#0369A1',
-      mainTextColor: '#464748',
-      secondaryTextColor: '#6E7173',
-      weakGrey: '#959595',
+      A: "#576F89",
+      B: "#9FB6D4",
+      greyComponentBg: "#F5F5F5",
+      greyComponentText: "#6C6B6B",
+      C: "#82A2CC",
+      D: "#394A58",
+      blueComponentBorder: "#7F9EC6",
+      dashboardComponentColor1: "#0369A1",
+      mainTextColor: "#464748",
+      secondaryTextColor: "#6E7173",
+      weakGrey: "#959595",
     },
   },
 };
 
 export const theme_config = {
   dependencies: {
-    'linear-gradient': LinearGradient,
+    "linear-gradient": LinearGradient,
   },
 };
 
 const tabRoutes = [
-  { destiny: ['HomeStack', 'Home'], icon: 'home' },
-  { destiny: ['HomeStack', 'Orders'], icon: 'package' },
-  { destiny: ['HomeStack', 'Profile'], icon: 'user' },
-  { destiny: ['HomeStack', 'Settings'], icon: 'menu' },
+  { destiny: ["HomeStack", "Home"], icon: "home" },
+  { destiny: ["HomeStack", "Orders"], icon: "package" },
+  { destiny: ["HomeStack", "Profile"], icon: "user" },
+  { destiny: ["HomeStack", "Settings"], icon: "menu" },
 ];
 
 const dashboardRoutes = [
-  { destiny: ['HomeStack', 'Dashboard'], icon: 'home' },
-  { destiny: ['HomeStack', 'Dashboard'], icon: 'layers' },
-  { destiny: ['HomeStack', 'Dashboard'], icon: 'log-out' },
+  { destiny: ["HomeStack", "Dashboard"], icon: "home" },
+  { destiny: ["HomeStack", "Lotes"], icon: "layers" },
+  { destiny: ["HomeStack", "Dashboard"], icon: "log-out" },
 ];
 
 export function CustomBottomTab({ dashboard }) {
@@ -107,14 +107,14 @@ export function CustomBottomTab({ dashboard }) {
     <View>
       <LinearGradient
         style={{
-          flexDirection: 'row',
+          flexDirection: "row",
           height: 50,
-          width: '100%',
-          justifyContent: 'space-evenly',
+          width: "100%",
+          justifyContent: "space-evenly",
         }}
         colors={[themeColors.main.C, themeColors.main.D]}
         start={{ x: 0, y: 0.5 }}
-        justifyContent={'space-evenly'}
+        justifyContent={"space-evenly"}
       >
         {dashboard
           ? dashboardRoutes.map((tab, index) => {
@@ -130,11 +130,11 @@ export function CustomBottomTab({ dashboard }) {
                   style={{
                     flex: 1,
                     height: 50,
-                    justifyContent: 'center',
-                    alignItems: 'center',
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
-                  <Feather name={tab.icon} size={25} color={'white'} />
+                  <Feather name={tab.icon} size={25} color={"white"} />
                 </Pressable>
               );
             })
@@ -151,11 +151,11 @@ export function CustomBottomTab({ dashboard }) {
                   style={{
                     flex: 1,
                     height: 50,
-                    justifyContent: 'center',
-                    alignItems: 'center',
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
-                  <Feather name={tab.icon} size={25} color={'white'} />
+                  <Feather name={tab.icon} size={25} color={"white"} />
                 </Pressable>
               );
             })}
