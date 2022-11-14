@@ -95,7 +95,13 @@ const tabRoutes = [
   { destiny: ['HomeStack', 'Settings'], icon: 'menu' },
 ];
 
-export function CustomBottomTab() {
+const dashboardRoutes = [
+  { destiny: ['HomeStack', 'Dashboard'], icon: 'home' },
+  { destiny: ['HomeStack', 'Dashboard'], icon: 'layers' },
+  { destiny: ['HomeStack', 'Dashboard'], icon: 'log-out' },
+];
+
+export function CustomBottomTab({ dashboard }) {
   const navigation = useNavigation();
   return (
     <View>
@@ -110,27 +116,49 @@ export function CustomBottomTab() {
         start={{ x: 0, y: 0.5 }}
         justifyContent={'space-evenly'}
       >
-        {tabRoutes.map((tab, index) => {
-          return (
-            <Pressable
-              key={index}
-              onPressIn={() => {
-                navigation.navigate(tab.destiny[0], {
-                  screen: tab.destiny[1],
-                  RID: tab.destiny[0],
-                });
-              }}
-              style={{
-                flex: 1,
-                height: 50,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <Feather name={tab.icon} size={25} color={'white'} />
-            </Pressable>
-          );
-        })}
+        {dashboard
+          ? dashboardRoutes.map((tab, index) => {
+              return (
+                <Pressable
+                  key={index}
+                  onPressIn={() => {
+                    navigation.navigate(tab.destiny[0], {
+                      screen: tab.destiny[1],
+                      RID: tab.destiny[0],
+                    });
+                  }}
+                  style={{
+                    flex: 1,
+                    height: 50,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Feather name={tab.icon} size={25} color={'white'} />
+                </Pressable>
+              );
+            })
+          : tabRoutes.map((tab, index) => {
+              return (
+                <Pressable
+                  key={index}
+                  onPressIn={() => {
+                    navigation.navigate(tab.destiny[0], {
+                      screen: tab.destiny[1],
+                      RID: tab.destiny[0],
+                    });
+                  }}
+                  style={{
+                    flex: 1,
+                    height: 50,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Feather name={tab.icon} size={25} color={'white'} />
+                </Pressable>
+              );
+            })}
       </LinearGradient>
     </View>
   );

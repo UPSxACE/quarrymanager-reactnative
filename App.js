@@ -45,26 +45,34 @@ function isRootStack(routeName) {
 const RootStack = createNativeStackNavigator();
 const HomeTab = createBottomTabNavigator();
 
-function HomeTabs({ navigation, route }) {
-  return (
-    <HomeTab.Navigator
-      screenOptions={{
-        ...gradientHeaderOptions,
-        //...gradientTabBarOptions,
-        tabBarStyle: { display: 'none' },
-      }}
-    >
-      <HomeTab.Screen name="Home" component={TestPage} />
-      <HomeTab.Screen name="Orders" component={Orders} />
-      <HomeTab.Screen name="Profile" component={Profile} />
-      <HomeTab.Screen name="Settings" component={SettingsPage} />
-    </HomeTab.Navigator>
-  );
-}
-
 export default function App() {
   const theme = extendTheme(theme_obj);
   const [dashboard, setDashboard] = useState(false);
+
+  const Settings = () => <SettingsPage setDashboard={setDashboard} />;
+  const DashboardHomeComponent = () => {
+    setDashboard(true);
+    return <DashboardHome />;
+  };
+
+  function HomeTabs({ navigation, route }) {
+    return (
+      <HomeTab.Navigator
+        screenOptions={{
+          ...gradientHeaderOptions,
+          //...gradientTabBarOptions,
+          tabBarStyle: { display: 'none' },
+        }}
+      >
+        <HomeTab.Screen name="Home" component={TestPage} />
+        <HomeTab.Screen name="Orders" component={Orders} />
+        <HomeTab.Screen name="Profile" component={Profile} />
+        <HomeTab.Screen name="Settings" component={Settings} />
+        <HomeTab.Screen name="Dashboard" component={DashboardHomeComponent} />
+      </HomeTab.Navigator>
+    );
+  }
+
   return (
     <NativeBaseProvider theme={theme} config={theme_config}>
       <GestureHandlerRootView style={{ flex: 1 }}>
@@ -94,7 +102,7 @@ export default function App() {
             ></RootStack.Screen>
           </RootStack.Navigator>
           <StatusBar style="light" />
-          <CustomBottomTab />
+          <CustomBottomTab dashboard={dashboard} setDashboard={setDashboard} />
         </NavigationContainer>
       </GestureHandlerRootView>
     </NativeBaseProvider>

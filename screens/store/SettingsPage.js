@@ -2,7 +2,7 @@ import * as React from 'react';
 import ArrowButton from '../../components/store/ArrowButton';
 import { View } from 'react-native';
 
-export default function SettingsPage() {
+export default function SettingsPage({ setDashboard }) {
   return (
     <View h={'100%'}>
       <View
@@ -12,7 +12,13 @@ export default function SettingsPage() {
           paddingVertical: 12,
         }}
       >
-        <ArrowButton label="Dashboard" destiny={['BtHome', 'Home']} />
+        <ArrowButton
+          label="Dashboard"
+          destiny={['HomeStack', 'Dashboard']}
+          /*onPressEvent={() => {
+            setDashboard(true);
+          }}*/
+        />
       </View>
       <View
         style={{
