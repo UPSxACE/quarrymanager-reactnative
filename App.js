@@ -30,12 +30,15 @@ import {
   theme_config,
   CustomBottomTab,
 } from './Theme';
+import Product from './screens/store/Product';
 
 function isRootStack(routeName) {
   switch (routeName) {
     case 'Tests2':
       return true;
     case 'Tests3':
+      return true;
+    case 'Produto':
       return true;
     default:
       return false;
@@ -98,6 +101,11 @@ export default function App() {
             <RootStack.Screen
               name="Tests3"
               component={TestPage3}
+              options={{ ...gradientHeaderOptions }}
+            ></RootStack.Screen>
+            <RootStack.Screen
+              name="Produto"
+              component={Product}
               options={{ ...gradientHeaderOptions }}
             ></RootStack.Screen>
           </RootStack.Navigator>

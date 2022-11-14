@@ -1,8 +1,8 @@
-import { Text, StyleSheet, View, Button } from 'react-native';
+import { Text, StyleSheet, View, Button } from "react-native";
 
 export default function Description({ descricao, preco }) {
   return (
-    <View>
+    <View style={{ backgroundColor: "white" }}>
       <View style={descriptionStyles.alignHead}>
         <View>
           <Text style={descriptionStyles.headerText}>Descrição</Text>
@@ -23,8 +23,8 @@ export default function Description({ descricao, preco }) {
 
 const descriptionStyles = StyleSheet.create({
   alignDiv: {
-    alignItems: 'flex-end',
-    width: '100%',
+    alignItems: "flex-end",
+    width: "100%",
     padding: 12,
     paddingTop: 0,
   },
@@ -35,15 +35,15 @@ const descriptionStyles = StyleSheet.create({
   },
   alignHead: {
     margin: 12,
-    flexDirection: 'row',
+    flexDirection: "row",
     borderBottomWidth: 1,
   },
 
   rightText: {
-    marginLeft: 'auto',
+    marginLeft: "auto",
   },
   headerText: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 16,
   },
   buttonStyle: {
