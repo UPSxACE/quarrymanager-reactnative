@@ -93,12 +93,12 @@ export default function TestPage({ navigation }) {
       </Box>
       <VStack paddingLeft="12px" paddingRight="12px" width={'100%'}>
         <WhiteInput
-          marginTop="12px"
+          containerStyle={{ marginTop: 12 }}
           label="Nome"
           onChangeText={(value) => setData({ ...formData, name: value })}
         />
         <WhiteInput
-          marginTop="12px"
+          containerStyle={{ marginTop: 12 }}
           label="Password"
           onChangeText={(value) => setData({ ...formData, name: value })}
           secret
