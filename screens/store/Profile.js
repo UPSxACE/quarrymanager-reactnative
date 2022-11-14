@@ -1,90 +1,90 @@
-import { StyleSheet, Text, View, Button } from "react-native";
-
-import * as React from "react";
-
-import { HStack, Pressable, Image, VStack, ScrollView } from "native-base";
-import WhiteInput from "../../components/store/WhiteInput";
+import { StyleSheet, Text } from 'react-native';
+import * as React from 'react';
+import { Pressable, Image, View, ScrollView } from 'react-native';
+import WhiteInput from '../../components/store/WhiteInput';
 
 export default function Profile({ navigation }) {
   return (
     <ScrollView style={page_styles.container}>
-      <VStack
-        paddingBottom={"12px"}
-        borderBottomWidth={"1px"}
-        borderColor={"#9FB6D4"}
-      >
-        <HStack w={"100%"}>
+      <View style={page_styles.profilePictureContainer}>
+        <View style={{ width: '100%' }}>
           <Text>Foto de perfil</Text>
 
-          <Pressable onPress={() => navigation.navigate("Home")} ml={"auto"}>
+          <Pressable
+            onPress={() => navigation.navigate('Home')}
+            style={{ marginLeft: 'auto' }}
+          >
             <Text>Editar</Text>
           </Pressable>
-        </HStack>
+        </View>
         <Image
-          marginTop={"12px"}
-          alignSelf={"center"}
           alt="Profile Picture"
           style={page_styles.userPicture}
           source={{
-            uri: "https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg",
+            uri: 'https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg',
           }}
         />
-      </VStack>
+      </View>
 
-      <HStack w={"100%"} marginTop={"12px"}>
+      <View style={{ flexDirection: 'row', width: '100%', marginTop: 12 }}>
         <Text>Dados de entrega</Text>
 
-        <Pressable onPress={() => navigation.navigate("Home")} ml={"auto"}>
+        <Pressable
+          onPress={() => navigation.navigate('Home')}
+          style={{ marginLeft: 'auto' }}
+        >
           <Text>Editar</Text>
         </Pressable>
-      </HStack>
-      <VStack>
-        <WhiteInput label={"Primeiro Nome"} marginTop={"12px"} />
-        <WhiteInput label={"Último Nome"} marginTop={"12px"} />
-        <HStack>
-          <WhiteInput
-            w={"50%"}
-            label={"Data de Nascimento"}
-            marginTop={"12px"}
-            marginRight={"6px"}
-          />
-          <WhiteInput w={"50%"} label={"Gênero"} marginTop={"12px"} />
-        </HStack>
-        <WhiteInput label={"Morada"} marginTop={"12px"} />
-        <HStack>
-          <WhiteInput
-            w={"50%"}
-            label={"Código Postal"}
-            marginTop={"12px"}
-            marginRight={"6px"}
-          />
-          <WhiteInput
-            w={"50%"}
-            label={"Região"}
-            marginTop={"12px"}
-            marginRight={"6px"}
-          />
-        </HStack>
-        <WhiteInput label={"Telefone"} marginTop={"12px"} />
-      </VStack>
+      </View>
+      <View>
+        <View style={{ marginTop: 12 }}>
+          <WhiteInput label={'Primeiro Nome'} />
+        </View>
+        <View style={{ marginTop: 12 }}>
+          <WhiteInput label={'Último Nome'} />
+        </View>
 
-      <VStack marginTop={"12px"} paddingBottom={"50px"}>
-        <Pressable onPress={() => navigation.navigate("Home")}>
+        <View style={{ flexDirection: 'row', marginTop: 12 }}>
+          <WhiteInput
+            w={'50%'}
+            label={'Data de Nascimento'}
+            marginRight={'6px'}
+          />
+          <WhiteInput w={'50%'} label={'Gênero'} />
+        </View>
+        <View style={{ marginTop: 12 }}>
+          <WhiteInput label={'Morada'} />
+        </View>
+
+        <View style={{ flexDirection: 'row', marginTop: 12 }}>
+          <WhiteInput w={'50%'} label={'Código Postal'} marginRight={'6px'} />
+          <WhiteInput w={'50%'} label={'Região'} marginRight={'6px'} />
+        </View>
+        <View style={{ marginTop: 12 }}>
+          <WhiteInput label={'Telefone'} />
+        </View>
+      </View>
+
+      <View style={{ paddingBottom: 50 }}>
+        <Pressable
+          style={{ marginTop: 12 }}
+          onPress={() => navigation.navigate('Home')}
+        >
           <Text>Alterar Username</Text>
         </Pressable>
         <Pressable
-          onPress={() => navigation.navigate("Home")}
-          marginTop={"12px"}
+          onPress={() => navigation.navigate('Home')}
+          style={{ marginTop: 12 }}
         >
           <Text>Alterar E-mail</Text>
         </Pressable>
         <Pressable
-          onPress={() => navigation.navigate("Home")}
-          marginTop={"12px"}
+          onPress={() => navigation.navigate('Home')}
+          style={{ marginTop: 12 }}
         >
           <Text>Alterar Palavra-Passe</Text>
         </Pressable>
-      </VStack>
+      </View>
     </ScrollView>
   );
 }
@@ -93,22 +93,30 @@ const page_styles = StyleSheet.create({
   container: {
     flex: 1,
 
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     padding: 12,
   },
 
+  profilePictureContainer: {
+    paddingBottom: 12,
+    borderBottomWidth: 1,
+    borderColor: '#9FB6D4',
+  },
+
   text1: {
-    color: "grey",
+    color: 'grey',
   },
 
   userPicture: {
     width: 110,
     height: 110,
     borderRadius: 100,
+    marginTop: 12,
+    alignSelf: 'center',
   },
 
   coverPicture: {
-    width: "100%",
+    width: '100%',
     height: 120,
   },
 });

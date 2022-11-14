@@ -1,5 +1,4 @@
-import { VStack, HStack, Text } from "native-base";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View, Text } from 'react-native';
 
 export default function LoteDescription({
   mat,
@@ -11,84 +10,84 @@ export default function LoteDescription({
   horaex,
 }) {
   return (
-    <VStack>
-      <HStack justifyContent={"center"}>
+    <View>
+      <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
         <Text style={loteDescriptionStyle.titleStyle}>GRN_LRJ_00326</Text>
-      </HStack>
-      <HStack></HStack>
-      <HStack style={loteDescriptionStyle.borderStyle}>
-        <HStack>
+      </View>
+      <View style={loteDescriptionStyle.borderStyle}>
+        <View style={{ flexDirection: 'row' }}>
           <Text>Material</Text>
-        </HStack>
-        <HStack marginLeft={"auto"}>
+        </View>
+        <View style={{ flexDirection: 'row', marginLeft: 'auto' }}>
           <Text style={loteDescriptionStyle.text2}>{mat}</Text>
-        </HStack>
-      </HStack>
-      <HStack style={loteDescriptionStyle.borderStyle}>
-        <HStack>
+        </View>
+      </View>
+      <View style={loteDescriptionStyle.borderStyle}>
+        <View style={{ flexDirection: 'row' }}>
           <Text>Cor</Text>
-        </HStack>
-        <HStack marginLeft={"auto"}>
+        </View>
+        <View style={{ flexDirection: 'row', marginLeft: 'auto' }}>
           <Text style={loteDescriptionStyle.text2}>{cor}</Text>
-        </HStack>
-      </HStack>
-      <HStack style={loteDescriptionStyle.borderStyle}>
-        <HStack>
+        </View>
+      </View>
+      <View style={loteDescriptionStyle.borderStyle}>
+        <View style={{ flexDirection: 'row' }}>
           <Text>Quantidade</Text>
-        </HStack>
-        <HStack marginLeft={"auto"}>
+        </View>
+        <View style={{ flexDirection: 'row', marginLeft: 'auto' }}>
           <Text style={loteDescriptionStyle.text2}>{quant}</Text>
-        </HStack>
-      </HStack>
-      <HStack style={loteDescriptionStyle.borderStyle}>
-        <HStack>
+        </View>
+      </View>
+      <View style={loteDescriptionStyle.borderStyle}>
+        <View style={{ flexDirection: 'row' }}>
           <Text>Local da extração</Text>
-        </HStack>
-        <HStack marginLeft={"auto"}>
+        </View>
+        <View style={{ flexDirection: 'row', marginLeft: 'auto' }}>
           <Text style={loteDescriptionStyle.text2}>{localex}</Text>
-        </HStack>
-      </HStack>
-      <HStack style={loteDescriptionStyle.borderStyle}>
-        <HStack>
+        </View>
+      </View>
+      <View style={loteDescriptionStyle.borderStyle}>
+        <View style={{ flexDirection: 'row' }}>
           <Text>Local de Armazém</Text>
-        </HStack>
-        <HStack marginLeft={"auto"}>
+        </View>
+        <View style={{ flexDirection: 'row', marginLeft: 'auto' }}>
           <Text style={loteDescriptionStyle.text2}>{localar}</Text>
-        </HStack>
-      </HStack>
-      <HStack style={loteDescriptionStyle.borderStyle}>
-        <HStack>
+        </View>
+      </View>
+      <View style={loteDescriptionStyle.borderStyle}>
+        <View style={{ flexDirection: 'row' }}>
           <Text>Data Extração</Text>
-        </HStack>
-        <HStack marginLeft={"auto"}>
+        </View>
+        <View style={{ flexDirection: 'row', marginLeft: 'auto' }}>
           <Text style={loteDescriptionStyle.text2}>{dataex}</Text>
-        </HStack>
-      </HStack>
-      <HStack style={loteDescriptionStyle.borderStyle}>
-        <HStack>
+        </View>
+      </View>
+      <View style={loteDescriptionStyle.borderStyle}>
+        <View style={{ flexDirection: 'row' }}>
           <Text>Hora Extração</Text>
-        </HStack>
-        <HStack marginLeft={"auto"}>
+        </View>
+        <View style={{ flexDirection: 'row', marginLeft: 'auto' }}>
           <Text style={loteDescriptionStyle.text2}>{horaex}</Text>
-        </HStack>
-      </HStack>
-    </VStack>
+        </View>
+      </View>
+    </View>
   );
 }
 const loteDescriptionStyle = StyleSheet.create({
   titleStyle: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 21,
   },
   text1: {
-    color: "grey",
+    color: 'grey',
   },
   text2: {
-    color: "#959595",
+    color: '#959595',
   },
   borderStyle: {
+    flexDirection: 'row',
     borderBottomWidth: 1,
-    borderColor: "#BAB9B9",
+    borderColor: '#BAB9B9',
     paddingBottom: 10,
     paddingTop: 10,
     marginEnd: 10,

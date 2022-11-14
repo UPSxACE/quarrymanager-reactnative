@@ -1,37 +1,61 @@
-import { Text, VStack } from "native-base";
+import { Text, View, StyleSheet } from 'react-native';
 
-export default function DashboardCard({ pedidos, label, cardColor, ...props }) {
-    return (
-        <VStack
-            bg={cardColor}
-            paddingLeft='16px'
-            paddingRight='16px'
-            width='100%'
-            paddingBottom='6px'
-            paddingTop='4px'
-            rounded='4'
-            {...props}>
-            <VStack
-                height='48px'
-                borderBottomWidth='1'
-                borderColor='white'
-            >
-                <Text color='white'
-                    fontSize='32px'>
-                    {pedidos}
-                </Text>
-            </VStack>
-            <VStack>
-                <Text color='white'
-                    fontSize='12px'
-                    fontWeight='bold'
-                    height='24px'
-                    lineHeight={"24px"}
-                    letterSpacing='sm'
-                >
-                    {label.toUpperCase()}
-                </Text>
-            </VStack>
-        </VStack >
-    );
+export default function DashboardCard({
+  pedidos,
+  label,
+  cardColor,
+  width,
+  ...props
+}) {
+  return (
+    <View
+      {...props}
+      style={[
+        styles.container,
+        {
+          backgroundColor: cardColor ? cardColor : 'white',
+          width: width ? width : '100%',
+          ...props.style,
+        },
+      ]}
+    >
+      <View style={styles.pedidosWrapper}>
+        <Text style={styles.pedidosText}>{pedidos}</Text>
+      </View>
+      <View>
+        <Text style={styles.labelText}>{label.toUpperCase()}</Text>
+      </View>
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingBottom: 6,
+    paddingTop: 4,
+    borderRadius: 4,
+  },
+
+  pedidosWrapper: {
+    height: 48,
+    borderBottomWidth: 1,
+    borderColor: 'white',
+  },
+
+  pedidosText: {
+    fontSize: 32,
+    color: 'white',
+  },
+
+  labelText: {
+    color: 'white',
+    fontSize: 12,
+    fontWeight: 'bold',
+    height: 24,
+    lineHeight: 24,
+    letterSpacing: 0.1,
+    //letterSpacing: 'sm',
+  },
+});

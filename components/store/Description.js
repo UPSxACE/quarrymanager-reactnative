@@ -1,6 +1,4 @@
-import { Button } from "native-base";
-import { Text, StyleSheet } from "react-native";
-import { View, HStack, VStack } from "native-base";
+import { Text, StyleSheet, View, Button } from 'react-native';
 
 export default function Description({ descricao, preco }) {
   return (
@@ -17,9 +15,7 @@ export default function Description({ descricao, preco }) {
         <Text style={descriptionStyles.descriptionText}>{descricao}</Text>
       </View>
       <View style={descriptionStyles.alignDiv}>
-        <Button style={descriptionStyles.buttonStyle} bordered success>
-          <Text>Pedir Orçamento</Text>
-        </Button>
+        <Button title="Pedir Orçamento" style={descriptionStyles.buttonStyle} />
       </View>
     </View>
   );
@@ -27,8 +23,8 @@ export default function Description({ descricao, preco }) {
 
 const descriptionStyles = StyleSheet.create({
   alignDiv: {
-    alignItems: "flex-end",
-    width: "100%",
+    alignItems: 'flex-end',
+    width: '100%',
     padding: 12,
     paddingTop: 0,
   },
@@ -39,15 +35,15 @@ const descriptionStyles = StyleSheet.create({
   },
   alignHead: {
     margin: 12,
-    flexDirection: "row",
+    flexDirection: 'row',
     borderBottomWidth: 1,
   },
 
   rightText: {
-    marginLeft: "auto",
+    marginLeft: 'auto',
   },
   headerText: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 16,
   },
   buttonStyle: {

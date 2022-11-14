@@ -1,5 +1,5 @@
-import { HStack, VStack, Text } from 'native-base';
-import { FlatList } from 'react-native';
+import { FlatList, StyleSheet, View, Text } from 'react-native';
+import { themeColors } from '../../Theme';
 
 export default function HorizontalList({
   title,
@@ -11,83 +11,25 @@ export default function HorizontalList({
 }) {
   function Item({ tag, mainText, subText, date }) {
     return (
-      <HStack width="240px" bg="white" mr="12px">
-        <VStack bg="main.dashboardComponentColor1" height="100%" width="4px" />
-        <VStack w="236px">
+      <View style={styles.item}>
+        <View style={styles.blueBar} />
+        <View style={styles.itemContent}>
           {subText ? (
-            <VStack padding="12px" paddingBottom="4px" paddingTop="4px">
-              <Text
-                h="24px"
-                lineHeight={'24px'}
-                fontSize="14px"
-                color="main.dashboardComponentColor1"
-                //bg="black"
-              >
-                {tag}
-              </Text>
-              <Text
-                h="26px"
-                lineHeight={'26px'}
-                fontSize="24px"
-                color="main.mainTextColor"
-                //bg="grey"
-              >
-                {mainText}
-              </Text>
-              <Text
-                h="26px"
-                lineHeight={'26px'}
-                fontSize="12px"
-                borderBottomWidth={'1px'}
-                borderBottomColor={'rgba(0,0,0,0.16)'}
-                color="main.mainTextColor"
-                //bg="grey"
-              >
-                {subText}
-              </Text>
-              <Text
-                h="28px"
-                lineHeight={'28px'}
-                fontSize="10px"
-                color="main.weakGrey"
-              >
-                {date}
-              </Text>
-            </VStack>
+            <View style={styles.itemContentInner1}>
+              <Text style={styles.tag1}>{tag}</Text>
+              <Text style={styles.mainText1}>{mainText}</Text>
+              <Text style={styles.subText}>{subText}</Text>
+              <Text style={styles.date}>{date}</Text>
+            </View>
           ) : (
-            <VStack padding="12px" paddingBottom="4px" paddingTop="16px">
-              <Text
-                h="24px"
-                lineHeight={'24px'}
-                fontSize="24px"
-                color="main.dashboardComponentColor1"
-                //bg="black"
-              >
-                {tag}
-              </Text>
-              <Text
-                h="40px"
-                lineHeight={'40px'}
-                fontSize="21px"
-                borderBottomWidth={'1px'}
-                borderBottomColor={'rgba(0,0,0,0.16)'}
-                color="main.mainTextColor"
-                //bg="grey"
-              >
-                {mainText}
-              </Text>
-              <Text
-                h="28px"
-                lineHeight={'28px'}
-                fontSize="10px"
-                color="main.weakGrey"
-              >
-                {date}
-              </Text>
-            </VStack>
+            <View style={styles.itemContentInner2}>
+              <Text style={styles.tag2}>{tag}</Text>
+              <Text style={styles.mainText2}>{mainText}</Text>
+              <Text style={styles.date}>{date}</Text>
+            </View>
           )}
-        </VStack>
-      </HStack>
+        </View>
+      </View>
     );
   }
 
@@ -103,10 +45,8 @@ export default function HorizontalList({
   }
 
   return (
-    <VStack>
-      <Text fontSize="21px" fontWeight="bold">
-        {title.toUpperCase()}
-      </Text>
+    <View>
+      <Text style={styles.categoryTitle}>{title.toUpperCase()}</Text>
       <FlatList
         renderItem={renderItem}
         keyExtractor={(item, index) => index}
@@ -114,6 +54,88 @@ export default function HorizontalList({
         horizontal={true}
         showsHorizontalScrollIndicator={false}
       />
-    </VStack>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  categoryTitle: {
+    fontSize: 21,
+    fontWeight: 'bold',
+  },
+
+  item: {
+    flexDirection: 'row',
+    width: 240,
+    backgroundColor: 'white',
+    marginRight: 12,
+  },
+
+  blueBar: {
+    backgroundColor: themeColors.main.dashboardComponentColor1,
+    height: '100%',
+    width: 4,
+  },
+
+  itemContent: {
+    width: 236,
+  },
+
+  itemContentInner1: {
+    padding: 12,
+    paddingBottom: 4,
+    paddingTop: 4,
+  },
+
+  itemContentInner2: {
+    padding: 12,
+    paddingBottom: 4,
+    paddingTop: 16,
+  },
+
+  tag1: {
+    height: 24,
+    lineHeight: 24,
+    fontSize: 14,
+    color: themeColors.main.dashboardComponentColor1,
+  },
+
+  tag2: {
+    height: 24,
+    lineHeight: 24,
+    fontSize: 24,
+    color: themeColors.main.dashboardComponentColor1,
+  },
+
+  mainText1: {
+    height: 26,
+    lineHeight: 26,
+    fontSize: 24,
+    color: themeColors.main.mainTextColor,
+  },
+
+  mainText2: {
+    height: 40,
+    lineHeight: 40,
+    fontSize: 21,
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(0,0,0,0.16)',
+    color: themeColors.main.mainTextColor,
+  },
+
+  subText: {
+    height: 26,
+    lineHeight: 26,
+    fontSize: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(0,0,0,0.16)',
+    color: themeColors.main.mainTextColor,
+  },
+
+  date: {
+    height: 28,
+    lineHeight: 28,
+    fontSize: 10,
+    color: themeColors.main.weakGrey,
+  },
+});
