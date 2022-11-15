@@ -29,6 +29,7 @@ import DashboardCard from "../../components/dashboard/DashboardCard";
 import BlueInput from "../../components/store/BlueInput";
 import { Image } from "react-native";
 import Animated, { SlideInRight } from "react-native-reanimated";
+import Login from "./Login";
 
 export default function TestPage({ navigation }) {
   const [formData, setData] = React.useState({});
@@ -55,6 +56,9 @@ export default function TestPage({ navigation }) {
       </HStack>
       <HStack pl={"12px"} pr={"12px"}>
         <ArrowButton label="Tests3" destiny={["Tests3", "Tests3"]} />
+      </HStack>
+      <HStack pl={"12px"} pr={"12px"}>
+        <ArrowButton label="Login" destiny={["Login", "Login"]} />
       </HStack>
 
       <Text
