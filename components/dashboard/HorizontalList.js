@@ -37,7 +37,7 @@ export default function HorizontalList({
     return (
       <Item
         mainText={typeof mainText !== 'undefined' ? item[mainText] : ''}
-        tag={typeof tag !== 'undefined' ? item[tag] : '#' + index}
+        tag={typeof tag !== 'undefined' ? item[tag] : '#' + (index + 1)}
         date={typeof date !== 'undefined' ? item[date] : ''}
         subText={typeof subText !== 'undefined' ? item[subText] : ''}
       />
@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
   categoryTitle: {
     fontSize: 21,
     fontWeight: 'bold',
+    marginBottom: 4,
   },
 
   item: {

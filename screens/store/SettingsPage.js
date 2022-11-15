@@ -19,7 +19,7 @@ export default function SettingsPage({ setDashboard }) {
           label="Dashboard"
           destiny={['HomeStack', 'Dashboard']}
           onPressEvent={async () => {
-            await navigation.navigate('HomeStack', { screen: 'Home' });
+            await navigation.navigate('HomeStack', { screen: 'Dashboard' });
             setDashboard(true);
           }}
         />
