@@ -14,7 +14,9 @@ export default function ArrowButton({ label, destiny, onPressEvent }) {
               navigation.navigate(destiny[0], { screen: destiny[1] });
               onPressEvent();
             }
-          :*/ () => navigation.navigate(destiny[0], { screen: destiny[1] })
+          :*/ onPressEvent
+          ? onPressEvent
+          : () => navigation.navigate(destiny[0], { screen: destiny[1] })
       }
     >
       <View style={styles.container}>
