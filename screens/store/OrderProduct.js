@@ -1,14 +1,15 @@
 import {
   View,
   StyleSheet,
-  FlatList,
   Text,
   Image,
   Pressable,
   ScrollView,
+  TextInput,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import WhiteInput from "../../components/store/WhiteInput";
+import { color } from "react-native-reanimated";
 
 export default function OrderProduct({ navigation, title, reference }) {
   return (
@@ -34,6 +35,7 @@ export default function OrderProduct({ navigation, title, reference }) {
           <Text style={page_styles.processText}>Ref: 00023456</Text>
         </View>
       </View>
+
       <View
         style={{
           backgroundColor: "white",
@@ -41,19 +43,26 @@ export default function OrderProduct({ navigation, title, reference }) {
           marginBottom: 2,
           marginLeft: 12,
           paddingLeft: 12,
-          borderRadius: 4,
         }}
       >
-        <View>
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: "bold",
-            }}
-          >
-            Pedido
-          </Text>
-        </View>
+        <Text
+          style={{
+            fontSize: 18,
+            fontWeight: "bold",
+          }}
+        >
+          Pedido
+        </Text>
+      </View>
+      <View
+        style={{
+          backgroundColor: "white",
+          width: "93%",
+          marginBottom: 2,
+          marginLeft: 12,
+          paddingLeft: 12,
+        }}
+      >
         <View
           style={{
             flexDirection: "row",
@@ -107,7 +116,7 @@ export default function OrderProduct({ navigation, title, reference }) {
         >
           <Text
             style={{
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: "bold",
             }}
           >
@@ -116,25 +125,34 @@ export default function OrderProduct({ navigation, title, reference }) {
           <Text
             style={{
               marginLeft: "auto",
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: "bold",
             }}
           >
             21,98€
           </Text>
         </View>
-
-        <Pressable onPress={() => navigation.navigate("Home")}>
-          <Text
-            style={{
-              fontSize: 18,
-              color: "#0050A7",
-            }}
-          >
-            Adicionar Código de Desconto
-          </Text>
-        </Pressable>
       </View>
+
+      <Pressable
+        onPress={() => navigation.navigate("Home")}
+        style={{
+          backgroundColor: "white",
+          width: "93%",
+          marginBottom: 2,
+          marginLeft: 12,
+          paddingLeft: 12,
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 16,
+            color: "#0050A7",
+          }}
+        >
+          Adicionar Código de Desconto
+        </Text>
+      </Pressable>
 
       <View
         style={{
@@ -144,13 +162,12 @@ export default function OrderProduct({ navigation, title, reference }) {
           marginLeft: 12,
           paddingLeft: 12,
           paddingRight: 12,
-          borderRadius: 4,
           flexDirection: "row",
         }}
       >
         <Text
           style={{
-            fontSize: 20,
+            fontSize: 18,
             fontWeight: "bold",
           }}
         >
@@ -161,7 +178,7 @@ export default function OrderProduct({ navigation, title, reference }) {
           onPress={() => navigation.navigate("Home")}
           style={{ marginLeft: "auto" }}
         >
-          <Text style={{ color: "#0050A7" }}>Editar</Text>
+          <Text style={{ color: "#0050A7", fontSize: 16 }}>Editar</Text>
         </Pressable>
       </View>
       <View
@@ -172,8 +189,8 @@ export default function OrderProduct({ navigation, title, reference }) {
           marginLeft: 12,
           paddingLeft: 12,
           paddingRight: 12,
-          borderRadius: 4,
           paddingTop: 12,
+          paddingBottom: 12,
         }}
       >
         <View>
@@ -193,6 +210,37 @@ export default function OrderProduct({ navigation, title, reference }) {
         <View style={{ marginTop: 12 }}>
           <WhiteInput label={"Telefone"} />
         </View>
+      </View>
+      <View
+        style={{
+          backgroundColor: "white",
+          width: "93%",
+          marginBottom: 2,
+          marginLeft: 12,
+          paddingLeft: 12,
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 18,
+            fontWeight: "bold",
+          }}
+        >
+          Pedido
+        </Text>
+      </View>
+      <View
+        style={{
+          backgroundColor: "white",
+          width: "93%",
+          marginBottom: 2,
+          marginLeft: 12,
+        }}
+      >
+        <TextInput
+          style={page_styles.input}
+          value="Mudar este estilo depois, hehehe..."
+        />
       </View>
     </ScrollView>
   );
@@ -224,5 +272,14 @@ const page_styles = StyleSheet.create({
     color: "#6E7173",
     fontStyle: "italic",
     lineHeight: 16,
+  },
+
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 12,
+    borderColor: "#9FB6D4",
+    backgroundColor: "#F5F5F5",
   },
 });
