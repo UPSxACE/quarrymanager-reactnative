@@ -5,13 +5,14 @@ import {
   Text,
   Image,
   Pressable,
+  ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import WhiteInput from "../../components/store/WhiteInput";
 
 export default function OrderProduct({ navigation, title, reference }) {
   return (
-    <View style={page_styles.container}>
+    <ScrollView style={page_styles.container}>
       <View
         style={{
           alignItems: "center",
@@ -135,25 +136,65 @@ export default function OrderProduct({ navigation, title, reference }) {
         </Pressable>
       </View>
 
-      <View style={{ flexDirection: "row", width: "100%", marginTop: 12 }}>
-        <Text>Dados de entrega</Text>
+      <View
+        style={{
+          backgroundColor: "white",
+          width: "93%",
+          marginBottom: 2,
+          marginLeft: 12,
+          paddingLeft: 12,
+          paddingRight: 12,
+          borderRadius: 4,
+          flexDirection: "row",
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: "bold",
+          }}
+        >
+          Dados de entrega
+        </Text>
 
         <Pressable
           onPress={() => navigation.navigate("Home")}
           style={{ marginLeft: "auto" }}
         >
-          <Text>Editar</Text>
+          <Text style={{ color: "#0050A7" }}>Editar</Text>
         </Pressable>
       </View>
-      <View>
-        <View style={{ marginTop: 12 }}>
+      <View
+        style={{
+          backgroundColor: "white",
+          width: "93%",
+          marginBottom: 2,
+          marginLeft: 12,
+          paddingLeft: 12,
+          paddingRight: 12,
+          borderRadius: 4,
+          paddingTop: 12,
+        }}
+      >
+        <View>
           <WhiteInput label={"Primeiro Nome"} />
         </View>
         <View style={{ marginTop: 12 }}>
           <WhiteInput label={"Último Nome"} />
         </View>
+        <View style={{ marginTop: 12 }}>
+          <WhiteInput label={"Morada"} />
+        </View>
+
+        <View style={{ flexDirection: "row", marginTop: 12 }}>
+          <WhiteInput w={"50%"} label={"Código Postal"} marginRight={"6px"} />
+          <WhiteInput w={"50%"} label={"Região"} marginRight={"6px"} />
+        </View>
+        <View style={{ marginTop: 12 }}>
+          <WhiteInput label={"Telefone"} />
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
