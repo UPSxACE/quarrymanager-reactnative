@@ -1,5 +1,4 @@
 import { StyleSheet, View, Text } from 'react-native';
-
 export default function LoteDescription({
   mat,
   cor,
@@ -11,7 +10,13 @@ export default function LoteDescription({
 }) {
   return (
     <View>
-      <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'center',
+          marginBottom: 4,
+        }}
+      >
         <Text style={loteDescriptionStyle.titleStyle}>GRN_LRJ_00326</Text>
       </View>
       <View style={loteDescriptionStyle.borderStyle}>
@@ -90,7 +95,7 @@ const loteDescriptionStyle = StyleSheet.create({
     borderColor: '#BAB9B9',
     paddingBottom: 10,
     paddingTop: 10,
-    marginEnd: 10,
-    marginStart: 10,
+    marginEnd: 4,
+    marginStart: 4,
   },
 });

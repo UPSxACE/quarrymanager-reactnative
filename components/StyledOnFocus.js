@@ -8,6 +8,8 @@ StyledOnFocus.Input = ({
   onFocusStyle,
   inputRightElement,
   containerStyle,
+  rightStyle,
+  rightFocusStyle,
   ...props
 }) => {
   const [focus, setFocus] = useState(false);
@@ -35,7 +37,31 @@ StyledOnFocus.Input = ({
       >
         {children}
       </TextInput>
-      {inputRightElement && inputRightElement}
+
+      {inputRightElement && (
+        <View
+          style={
+            focus
+              ? rightStyle
+                ? rightFocusStyle
+                  ? { width: 40, ...rightStyle, ...rightFocusStyle }
+                  : { width: 40, ...rightStyle }
+                : rightFocusStyle
+                ? { width: 40, ...rightFocusStyle }
+                : { width: 40 }
+              : rightStyle
+              ? {
+                  width: 40,
+                  ...rightStyle,
+                }
+              : {
+                  width: 40,
+                }
+          }
+        >
+          {inputRightElement}
+        </View>
+      )}
     </View>
   );
 };

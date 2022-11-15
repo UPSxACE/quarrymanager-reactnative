@@ -31,12 +31,16 @@ import {
   CustomBottomTab,
 } from "./Theme";
 import OrderProduct from "./screens/store/OrderProduct";
+import Product from "./screens/store/Product";
+import DashboardLotes from "./screens/dashboard/DashboardLotes";
 
 function isRootStack(routeName) {
   switch (routeName) {
     case "Tests2":
       return true;
     case "Tests3":
+      return true;
+    case "Produto":
       return true;
     default:
       return false;
@@ -45,27 +49,31 @@ function isRootStack(routeName) {
 
 const RootStack = createNativeStackNavigator();
 const HomeTab = createBottomTabNavigator();
-
-function HomeTabs({ navigation, route }) {
-  return (
-    <HomeTab.Navigator
-      screenOptions={{
-        ...gradientHeaderOptions,
-        //...gradientTabBarOptions,
-        tabBarStyle: { display: "none" },
-      }}
-    >
-      <HomeTab.Screen name="Home" component={OrderProduct} />
-      <HomeTab.Screen name="Orders" component={Orders} />
-      <HomeTab.Screen name="Profile" component={Profile} />
-      <HomeTab.Screen name="Settings" component={SettingsPage} />
-    </HomeTab.Navigator>
-  );
-}
-
 export default function App() {
   const theme = extendTheme(theme_obj);
   const [dashboard, setDashboard] = useState(false);
+
+  const Settings = () => <SettingsPage setDashboard={setDashboard} />;
+
+  function HomeTabs({ navigation, route }) {
+    return (
+      <HomeTab.Navigator
+        screenOptions={{
+          ...gradientHeaderOptions,
+          //...gradientTabBarOptions,
+          tabBarStyle: { display: "none" },
+        }}
+      >
+        <HomeTab.Screen name="Home" component={OrderProduct} />
+        <HomeTab.Screen name="Orders" component={Orders} />
+        <HomeTab.Screen name="Profile" component={Profile} />
+        <HomeTab.Screen name="Settings" component={Settings} />
+        <HomeTab.Screen name="Dashboard" component={DashboardHome} />
+        <HomeTab.Screen name="Lotes" component={DashboardLotes} />
+      </HomeTab.Navigator>
+    );
+  }
+
   return (
     <NativeBaseProvider theme={theme} config={theme_config}>
       <GestureHandlerRootView style={{ flex: 1 }}>
@@ -93,9 +101,14 @@ export default function App() {
               component={TestPage3}
               options={{ ...gradientHeaderOptions }}
             ></RootStack.Screen>
+            <RootStack.Screen
+              name="Produto"
+              component={Product}
+              options={{ ...gradientHeaderOptions }}
+            ></RootStack.Screen>
           </RootStack.Navigator>
           <StatusBar style="light" />
-          <CustomBottomTab />
+          <CustomBottomTab dashboard={dashboard} setDashboard={setDashboard} />
         </NavigationContainer>
       </GestureHandlerRootView>
     </NativeBaseProvider>

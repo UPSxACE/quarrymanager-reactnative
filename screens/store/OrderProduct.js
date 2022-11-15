@@ -206,8 +206,12 @@ export default function OrderProduct({ navigation, title, reference }) {
         </View>
 
         <View style={{ flexDirection: "row", marginTop: 12 }}>
-          <WhiteInput w={"50%"} label={"Código Postal"} marginRight={"6px"} />
-          <WhiteInput w={"50%"} label={"Região"} marginRight={"6px"} />
+          <View style={{ width: "50%", paddingRight: 6 }}>
+            <WhiteInput label={"Código Postal"} />
+          </View>
+          <View style={{ width: "50%", paddingLeft: 6 }}>
+            <WhiteInput label={"Região"} />
+          </View>
         </View>
         <View style={{ marginTop: 12 }}>
           <WhiteInput label={"Telefone"} />

@@ -16,6 +16,7 @@ export const themeColors = {
     mainTextColor: '#464748',
     secondaryTextColor: '#6E7173',
     weakGrey: '#959595',
+    dashboardBackground: '#F3F3F3',
   },
 };
 
@@ -88,14 +89,27 @@ export const theme_config = {
   },
 };
 
-const tabRoutes = [
-  { destiny: ['HomeStack', 'Home'], icon: 'home' },
-  { destiny: ['HomeStack', 'Orders'], icon: 'package' },
-  { destiny: ['HomeStack', 'Profile'], icon: 'user' },
-  { destiny: ['HomeStack', 'Settings'], icon: 'menu' },
-];
+export function CustomBottomTab({ dashboard, setDashboard }) {
+  const tabRoutes = [
+    { destiny: ['HomeStack', 'Home'], icon: 'home' },
+    { destiny: ['HomeStack', 'Orders'], icon: 'package' },
+    { destiny: ['HomeStack', 'Profile'], icon: 'user' },
+    { destiny: ['HomeStack', 'Settings'], icon: 'menu' },
+  ];
 
-export function CustomBottomTab() {
+  const dashboardRoutes = [
+    { destiny: ['HomeStack', 'Dashboard'], icon: 'home' },
+    { destiny: ['HomeStack', 'Lotes'], icon: 'layers' },
+    {
+      destiny: ['HomeStack', 'Home'],
+      icon: 'log-out',
+      onPressEvent: async () => {
+        await navigation.navigate('HomeStack', { screen: 'Home' });
+        setDashboard(false);
+      },
+    },
+  ];
+
   const navigation = useNavigation();
   return (
     <View>
@@ -110,27 +124,51 @@ export function CustomBottomTab() {
         start={{ x: 0, y: 0.5 }}
         justifyContent={'space-evenly'}
       >
-        {tabRoutes.map((tab, index) => {
-          return (
-            <Pressable
-              key={index}
-              onPressIn={() => {
-                navigation.navigate(tab.destiny[0], {
-                  screen: tab.destiny[1],
-                  RID: tab.destiny[0],
-                });
-              }}
-              style={{
-                flex: 1,
-                height: 50,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <Feather name={tab.icon} size={25} color={'white'} />
-            </Pressable>
-          );
-        })}
+        {dashboard
+          ? dashboardRoutes.map((tab, index) => {
+              return (
+                <Pressable
+                  key={index}
+                  onPressIn={() => {
+                    tab.onPressEvent
+                      ? tab.onPressEvent()
+                      : navigation.navigate(tab.destiny[0], {
+                          screen: tab.destiny[1],
+                          RID: tab.destiny[0],
+                        });
+                  }}
+                  style={{
+                    flex: 1,
+                    height: 50,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Feather name={tab.icon} size={25} color={'white'} />
+                </Pressable>
+              );
+            })
+          : tabRoutes.map((tab, index) => {
+              return (
+                <Pressable
+                  key={index}
+                  onPressIn={() => {
+                    navigation.navigate(tab.destiny[0], {
+                      screen: tab.destiny[1],
+                      RID: tab.destiny[0],
+                    });
+                  }}
+                  style={{
+                    flex: 1,
+                    height: 50,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Feather name={tab.icon} size={25} color={'white'} />
+                </Pressable>
+              );
+            })}
       </LinearGradient>
     </View>
   );

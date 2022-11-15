@@ -3,12 +3,21 @@ import { Text, StyleSheet, View, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { themeColors } from '../../Theme';
 
-export default function ArrowButton({ label, destiny }) {
+export default function ArrowButton({ label, destiny, onPressEvent }) {
   const navigation = useNavigation();
   return (
     <Pressable
       style={{ width: '100%' }}
-      onPress={() => navigation.navigate(destiny[0], { screen: destiny[1] })}
+      onPress={
+        /*onPressEvent
+          ? () => {
+              navigation.navigate(destiny[0], { screen: destiny[1] });
+              onPressEvent();
+            }
+          :*/ onPressEvent
+          ? onPressEvent
+          : () => navigation.navigate(destiny[0], { screen: destiny[1] })
+      }
     >
       <View style={styles.container}>
         <View style={{ height: 40, paddingLeft: 12, justifyContent: 'center' }}>

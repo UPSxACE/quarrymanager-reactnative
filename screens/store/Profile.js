@@ -45,20 +45,26 @@ export default function Profile({ navigation }) {
         </View>
 
         <View style={{ flexDirection: 'row', marginTop: 12 }}>
-          <WhiteInput
-            w={'50%'}
-            label={'Data de Nascimento'}
-            marginRight={'6px'}
-          />
-          <WhiteInput w={'50%'} label={'Gênero'} />
+          <View style={{ width: '50%', marginRight: 6 }}>
+            <WhiteInput label={'Data de Nascimento'} />
+          </View>
+
+          <View style={{ width: '50%' }}>
+            <WhiteInput label={'Gênero'} />
+          </View>
         </View>
         <View style={{ marginTop: 12 }}>
           <WhiteInput label={'Morada'} />
         </View>
 
         <View style={{ flexDirection: 'row', marginTop: 12 }}>
-          <WhiteInput w={'50%'} label={'Código Postal'} marginRight={'6px'} />
-          <WhiteInput w={'50%'} label={'Região'} marginRight={'6px'} />
+          <View style={{ width: '50%', marginRight: 6 }}>
+            <WhiteInput label={'Código Postal'} />
+          </View>
+
+          <View style={{ width: '50%', marginRight: 6 }}>
+            <WhiteInput label={'Região'} />
+          </View>
         </View>
         <View style={{ marginTop: 12 }}>
           <WhiteInput label={'Telefone'} />
@@ -92,7 +98,6 @@ export default function Profile({ navigation }) {
 const page_styles = StyleSheet.create({
   container: {
     flex: 1,
-
     backgroundColor: '#fff',
     padding: 12,
   },

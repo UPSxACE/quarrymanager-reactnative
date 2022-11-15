@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native';
 import ScrollableTabs from '../../components/store/ScrollableTabs';
-import { FlatList, HStack, Image, ScrollView, VStack } from 'native-base';
+import { FlatList, Image, ScrollView } from 'react-native';
 import PagerView from 'react-native-pager-view';
 import HorizontalCategory from '../../components/store/HorizontalCategory';
 
@@ -121,7 +121,7 @@ export default function Store() {
         style={{ backgroundColor: 'white', elevation: 15, zIndex: 1 }}
       />
 
-      <View key={'1'} width={'100%'}>
+      <View key={'1'} style={{ width: '100%' }}>
         <Image
           alt="Main Picture"
           style={page_styles.mainPicture}
@@ -131,26 +131,38 @@ export default function Store() {
         />
       </View>
 
-      <VStack bgColor={'#CDD3D3'}>
-        <HStack bgColor={'white'} marginBottom={'4px'}>
+      <View style={{ backgroundColor: '#CDD3D3' }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            backgroundColor: 'white',
+            marginBottom: 4,
+          }}
+        >
           <HorizontalCategory
             categoryTitle={'Mármores'}
             data={CATEGORY_DATA1}
           />
-        </HStack>
-        <HStack bgColor={'white'} marginBottom={'4px'}>
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            backgroundColor: 'white',
+            marginBottom: 4,
+          }}
+        >
           <HorizontalCategory
             categoryTitle={'Granitos'}
             data={CATEGORY_DATA2}
           />
-        </HStack>
-        <HStack bgColor={'white'}>
+        </View>
+        <View style={{ flexDirection: 'row', backgroundColor: 'white' }}>
           <HorizontalCategory
             categoryTitle={'Esmeraldas'}
             data={CATEGORY_DATA3}
           />
-        </HStack>
-      </VStack>
+        </View>
+      </View>
     </ScrollView>
   );
   return (
