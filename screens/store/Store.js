@@ -121,7 +121,7 @@ export default function Store() {
         style={{ backgroundColor: 'white', elevation: 15, zIndex: 1 }}
       />
 
-      <View key={'1'} style={{ width: '100%' }}>
+      <View key={'1'} style={{ width: '100%', backgroundColor: 'white' }}>
         <Image
           alt="Main Picture"
           style={page_styles.mainPicture}
@@ -185,7 +185,7 @@ const page_styles = StyleSheet.create({
   },
 
   mainPicture: {
-    width: 360,
+    width: '100%',
     height: 260,
   },
 });
