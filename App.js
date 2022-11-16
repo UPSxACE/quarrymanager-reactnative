@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Animated, Button, StyleSheet, Text } from 'react-native';
+import { Animated, Button, Pressable, StyleSheet, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TestPage from './screens/store/TestPage';
@@ -71,38 +71,6 @@ export default function App() {
           name="Home"
           options={{
             headerTintColor: 'white',
-            headerBackground: () => (
-              <View style={{ flex: 1 }}>
-                <LinearGradient
-                  style={{
-                    flexDirection: 'row',
-                    height: '100%',
-                    width: '100%',
-                    justifyContent: 'space-evenly',
-                  }}
-                  colors={[themeColors.main.D, themeColors.main.C]}
-                  start={{ x: 0, y: 0.5 }}
-                ></LinearGradient>
-              </View>
-            ),
-            headerTitle: () => (
-              <View style={{ width: '100%', backgroundColor: 'black' }}>
-                <StyledOnFocus.Input
-                  containerStyle={{
-                    backgroundColor: 'black',
-                    width: '100%',
-                  }}
-                  style={{
-                    width: '100%',
-                    backgroundColor: 'black',
-                    borderWidth: 1,
-                    borderColor: 'black',
-                    placeholderTextColor: '#BDBDBD',
-                  }}
-                  placeholder={'O que você procura?'}
-                ></StyledOnFocus.Input>
-              </View>
-            ),
             header: () => (
               <View style={{ height: 85 }}>
                 <LinearGradient
@@ -119,6 +87,7 @@ export default function App() {
                     style={{
                       width: '100%',
                       justifyContent: 'flex-end',
+                      paddingHorizontal: 12,
                     }}
                   >
                     <StyledOnFocus.Input
@@ -126,19 +95,58 @@ export default function App() {
                         width: '100%',
                         height: 40,
                         marginBottom: 8,
-                        paddingHorizontal: 12,
-                      }}
-                      style={{
                         backgroundColor: 'white',
                         borderRadius: 4,
-                        width: '100%',
                         borderWidth: 1.5,
-                        borderColor: '#0891B2',
+                        borderColor: themeColors.main.mainTextColor,
+                        //borderColor: '#0891B2',
+                      }}
+                      containerFocusStyle={{ borderColor: '#0891B2' }}
+                      style={{
+                        width: '100%',
                         placeholderTextColor: '#BDBDBD',
-                        paddingHorizontal: 12,
+                        paddingHorizontal: 0,
                       }}
                       placeholder={'O que você procura?'}
-                      placeholderTextColor={'black'}
+                      placeholderTextColor={themeColors.main.mainTextColor}
+                      inputRightElement={
+                        <View>
+                          <Pressable
+                            style={{
+                              height: 38.5,
+                              justifyContent: 'center',
+                              paddingHorizontal: 12,
+                              //borderTopRightRadius: 4,
+                              //borderBottomRightRadius: 4,
+                            }}
+                          >
+                            <Feather
+                              size={16}
+                              color={themeColors.main.mainTextColor}
+                              name={'mic'}
+                            />
+                          </Pressable>
+                        </View>
+                      }
+                      inputLeftElement={
+                        <View>
+                          <Pressable
+                            style={{
+                              height: 38.5,
+                              justifyContent: 'center',
+                              paddingHorizontal: 12,
+                              //borderTopRightRadius: 4,
+                              //borderBottomRightRadius: 4,
+                            }}
+                          >
+                            <Feather
+                              size={16}
+                              color={themeColors.main.mainTextColor}
+                              name={'search'}
+                            />
+                          </Pressable>
+                        </View>
+                      }
                     />
                   </View>
                 </LinearGradient>
