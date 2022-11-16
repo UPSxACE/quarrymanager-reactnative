@@ -32,6 +32,8 @@ import {
 } from './Theme';
 import Product from './screens/store/Product';
 import DashboardLotes from './screens/dashboard/DashboardLotes';
+import { themeColors } from './Theme';
+import StyledOnFocus from './components/StyledOnFocus';
 
 function isRootStack(routeName) {
   switch (routeName) {
@@ -52,6 +54,7 @@ const HomeTab = createBottomTabNavigator();
 export default function App() {
   const theme = extendTheme(theme_obj);
   const [dashboard, setDashboard] = useState(false);
+  const [search, setSearch] = useState('');
 
   const Settings = () => <SettingsPage setDashboard={setDashboard} />;
 
@@ -64,7 +67,86 @@ export default function App() {
           tabBarStyle: { display: 'none' },
         }}
       >
-        <HomeTab.Screen name="Home" component={TestPage} />
+        <HomeTab.Screen
+          name="Home"
+          options={{
+            headerTintColor: 'white',
+            headerBackground: () => (
+              <View style={{ flex: 1 }}>
+                <LinearGradient
+                  style={{
+                    flexDirection: 'row',
+                    height: '100%',
+                    width: '100%',
+                    justifyContent: 'space-evenly',
+                  }}
+                  colors={[themeColors.main.D, themeColors.main.C]}
+                  start={{ x: 0, y: 0.5 }}
+                ></LinearGradient>
+              </View>
+            ),
+            headerTitle: () => (
+              <View style={{ width: '100%', backgroundColor: 'black' }}>
+                <StyledOnFocus.Input
+                  containerStyle={{
+                    backgroundColor: 'black',
+                    width: '100%',
+                  }}
+                  style={{
+                    width: '100%',
+                    backgroundColor: 'black',
+                    borderWidth: 1,
+                    borderColor: 'black',
+                    placeholderTextColor: '#BDBDBD',
+                  }}
+                  placeholder={'O que você procura?'}
+                ></StyledOnFocus.Input>
+              </View>
+            ),
+            header: () => (
+              <View style={{ height: 85 }}>
+                <LinearGradient
+                  style={{
+                    flexDirection: 'row',
+                    height: '100%',
+                    width: '100%',
+                    justifyContent: 'space-evenly',
+                  }}
+                  colors={[themeColors.main.D, themeColors.main.C]}
+                  start={{ x: 0, y: 0.5 }}
+                >
+                  <View
+                    style={{
+                      width: '100%',
+                      justifyContent: 'flex-end',
+                    }}
+                  >
+                    <StyledOnFocus.Input
+                      containerStyle={{
+                        width: '100%',
+                        height: 40,
+                        marginBottom: 8,
+                        paddingHorizontal: 12,
+                      }}
+                      style={{
+                        backgroundColor: 'white',
+                        borderRadius: 4,
+                        width: '100%',
+                        borderWidth: 1.5,
+                        borderColor: '#0891B2',
+                        placeholderTextColor: '#BDBDBD',
+                        paddingHorizontal: 12,
+                      }}
+                      placeholder={'O que você procura?'}
+                      placeholderTextColor={'black'}
+                    />
+                  </View>
+                </LinearGradient>
+              </View>
+            ),
+          }}
+          component={Store}
+        />
         <HomeTab.Screen name="Orders" component={Orders} />
         <HomeTab.Screen name="Profile" component={Profile} />
         <HomeTab.Screen name="Settings" component={Settings} />
