@@ -2,6 +2,8 @@ import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { View, Pressable } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { useEffect } from 'react';
+import StyledOnFocus from './components/StyledOnFocus';
 
 export const themeColors = {
   main: {
@@ -53,6 +55,94 @@ export const gradientTabBarOptions = {
       ></LinearGradient>
     </View>
   ),
+};
+
+export const SearchBarHeader = ({ searchState }) => {
+  const { state } = searchState;
+  const { setState } = searchState;
+
+  return (
+    <View style={{ height: 85 }}>
+      <LinearGradient
+        style={{
+          flexDirection: 'row',
+          height: '100%',
+          width: '100%',
+          justifyContent: 'space-evenly',
+        }}
+        colors={[themeColors.main.D, themeColors.main.C]}
+        start={{ x: 0, y: 0.5 }}
+      >
+        <View
+          style={{
+            width: '100%',
+            justifyContent: 'flex-end',
+            paddingHorizontal: 12,
+          }}
+        >
+          <StyledOnFocus.Input
+            onChangeText={(value) => setState(value)}
+            containerStyle={{
+              width: '100%',
+              height: 40,
+              marginBottom: 8,
+              backgroundColor: 'white',
+              borderRadius: 4,
+              borderWidth: 1.5,
+              borderColor: themeColors.main.mainTextColor,
+              //borderColor: '#0891B2',
+            }}
+            containerFocusStyle={{ borderColor: '#0891B2' }}
+            style={{
+              width: '100%',
+              placeholderTextColor: '#BDBDBD',
+              paddingHorizontal: 0,
+            }}
+            placeholder={'O que você procura?'}
+            placeholderTextColor={themeColors.main.mainTextColor}
+            inputRightElement={
+              <View>
+                <Pressable
+                  style={{
+                    height: 38.5,
+                    justifyContent: 'center',
+                    paddingHorizontal: 12,
+                    //borderTopRightRadius: 4,
+                    //borderBottomRightRadius: 4,
+                  }}
+                >
+                  <Feather
+                    size={16}
+                    color={themeColors.main.mainTextColor}
+                    name={'mic'}
+                  />
+                </Pressable>
+              </View>
+            }
+            inputLeftElement={
+              <View>
+                <Pressable
+                  style={{
+                    height: 38.5,
+                    justifyContent: 'center',
+                    paddingHorizontal: 12,
+                    //borderTopRightRadius: 4,
+                    //borderBottomRightRadius: 4,
+                  }}
+                >
+                  <Feather
+                    size={16}
+                    color={themeColors.main.mainTextColor}
+                    name={'search'}
+                  />
+                </Pressable>
+              </View>
+            }
+          />
+        </View>
+      </LinearGradient>
+    </View>
+  );
 };
 
 export const theme_obj = {

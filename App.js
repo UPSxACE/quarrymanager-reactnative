@@ -17,7 +17,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
 import TestPage2 from './screens/store/TestPage2';
 import TestPage3 from './screens/store/TestPage3';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Store from './screens/store/Store';
 import DashboardHome from './screens/dashboard/DashboardHome';
 import Orders from './screens/store/Orders';
@@ -29,6 +29,7 @@ import {
   theme_obj,
   theme_config,
   CustomBottomTab,
+  SearchBarHeader,
 } from './Theme';
 import Product from './screens/store/Product';
 import DashboardLotes from './screens/dashboard/DashboardLotes';
@@ -54,11 +55,12 @@ const HomeTab = createBottomTabNavigator();
 export default function App() {
   const theme = extendTheme(theme_obj);
   const [dashboard, setDashboard] = useState(false);
-  const [search, setSearch] = useState('');
 
   const Settings = () => <SettingsPage setDashboard={setDashboard} />;
 
   function HomeTabs({ navigation, route }) {
+    const [search, setSearch] = useState('');
+
     return (
       <HomeTab.Navigator
         screenOptions={{
@@ -71,87 +73,13 @@ export default function App() {
           name="Home"
           options={{
             headerTintColor: 'white',
-            header: () => (
-              <View style={{ height: 85 }}>
-                <LinearGradient
-                  style={{
-                    flexDirection: 'row',
-                    height: '100%',
-                    width: '100%',
-                    justifyContent: 'space-evenly',
-                  }}
-                  colors={[themeColors.main.D, themeColors.main.C]}
-                  start={{ x: 0, y: 0.5 }}
-                >
-                  <View
-                    style={{
-                      width: '100%',
-                      justifyContent: 'flex-end',
-                      paddingHorizontal: 12,
-                    }}
-                  >
-                    <StyledOnFocus.Input
-                      containerStyle={{
-                        width: '100%',
-                        height: 40,
-                        marginBottom: 8,
-                        backgroundColor: 'white',
-                        borderRadius: 4,
-                        borderWidth: 1.5,
-                        borderColor: themeColors.main.mainTextColor,
-                        //borderColor: '#0891B2',
-                      }}
-                      containerFocusStyle={{ borderColor: '#0891B2' }}
-                      style={{
-                        width: '100%',
-                        placeholderTextColor: '#BDBDBD',
-                        paddingHorizontal: 0,
-                      }}
-                      placeholder={'O que você procura?'}
-                      placeholderTextColor={themeColors.main.mainTextColor}
-                      inputRightElement={
-                        <View>
-                          <Pressable
-                            style={{
-                              height: 38.5,
-                              justifyContent: 'center',
-                              paddingHorizontal: 12,
-                              //borderTopRightRadius: 4,
-                              //borderBottomRightRadius: 4,
-                            }}
-                          >
-                            <Feather
-                              size={16}
-                              color={themeColors.main.mainTextColor}
-                              name={'mic'}
-                            />
-                          </Pressable>
-                        </View>
-                      }
-                      inputLeftElement={
-                        <View>
-                          <Pressable
-                            style={{
-                              height: 38.5,
-                              justifyContent: 'center',
-                              paddingHorizontal: 12,
-                              //borderTopRightRadius: 4,
-                              //borderBottomRightRadius: 4,
-                            }}
-                          >
-                            <Feather
-                              size={16}
-                              color={themeColors.main.mainTextColor}
-                              name={'search'}
-                            />
-                          </Pressable>
-                        </View>
-                      }
-                    />
-                  </View>
-                </LinearGradient>
-              </View>
-            ),
+            header: () => {
+              return (
+                <SearchBarHeader
+                  searchState={{ state: search, setState: setSearch }}
+                />
+              );
+            },
           }}
           component={Store}
         />
