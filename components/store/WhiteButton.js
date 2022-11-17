@@ -1,6 +1,6 @@
-import { Text, View } from 'react-native';
-import { themeColors } from '../../Theme';
-import StyledOnPress from '../StyledOnPressed';
+import { Text, View } from "react-native";
+import { themeColors } from "../../Theme";
+import StyledOnPress from "../StyledOnPressed";
 
 export default function WhiteButton({ label }) {
   return (
@@ -14,16 +14,16 @@ export default function WhiteButton({ label }) {
             borderBottomColor: themeColors.main.B,
           }}
           //onPressStyle={{ height: 80 }}
-          onPressColor={'#d4d4d8'}
+          onPressColor={"#d4d4d8"}
         >
           <Text
             style={{
               fontSize: 14,
               color: themeColors.main.greyComponentText,
-              fontWeight: 'bold',
+              fontWeight: "bold",
             }}
           >
-            Submit
+            {label}
           </Text>
         </StyledOnPress.Button>
       </View>
