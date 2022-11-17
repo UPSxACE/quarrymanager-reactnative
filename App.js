@@ -32,6 +32,7 @@ import {
 } from "./Theme";
 import Product from "./screens/store/Product";
 import DashboardLotes from "./screens/dashboard/DashboardLotes";
+import Login from "./screens/store/Login";
 
 function isRootStack(routeName) {
   switch (routeName) {
@@ -70,6 +71,7 @@ export default function App() {
         <HomeTab.Screen name="Settings" component={Settings} />
         <HomeTab.Screen name="Dashboard" component={DashboardHome} />
         <HomeTab.Screen name="Lotes" component={DashboardLotes} />
+        <HomeTab.Screen name="Login" component={Login} />
       </HomeTab.Navigator>
     );
   }

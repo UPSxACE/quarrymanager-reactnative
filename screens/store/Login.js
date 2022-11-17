@@ -1,11 +1,12 @@
-import { View, Text, Linking, StyleSheet } from "react-native";
+import { View, Text, Linking, StyleSheet, ScrollView } from "react-native";
 import BlueInput from "../../components/store/BlueInput";
 import BlueButton from "../../components/store/BlueButton";
 import { Feather } from "@expo/vector-icons";
+import { themeColors } from "../../Theme";
 
 export default function Login() {
   return (
-    <View>
+    <ScrollView contentContainerStyle={{ justifyContent: "center" }}>
       <View style={loginStyles.logo}>
         <Text style={loginStyles.logoText}>weROCK</Text>
       </View>
@@ -13,7 +14,7 @@ export default function Login() {
       <View style={loginStyles.inputBox}>
         <BlueInput
           containerStyle={{ borderRadius: 4 }}
-          label="Nome"
+          label="Username"
           onChangeText={(value) => setData({ ...formData, name: value })}
         />
       </View>
@@ -26,7 +27,10 @@ export default function Login() {
       </View>
 
       <View style={loginStyles.btn}>
-        <BlueButton label="Submit" />
+        <BlueButton
+          label="Iniciar sessao"
+          style={{ backgroundColor: "#394A58" }}
+        />
       </View>
       <Text
         style={loginStyles.link}
@@ -37,52 +41,67 @@ export default function Login() {
         Esqueceste-te da palavra passe?
       </Text>
 
-      <View style={{ flexDirection: "row", alignItems: "center" }}>
-        <View style={{ flex: 1, height: 1, backgroundColor: "black" }} />
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          width: "100%",
+          paddingHorizontal: 20,
+          paddingBottom: 40,
+          paddingTop: 20,
+        }}
+      >
+        <View
+          style={{
+            flex: 1,
+            height: 1,
+            backgroundColor: "black",
+          }}
+        />
         <View>
           <Text style={{ width: 50, textAlign: "center" }}>OU</Text>
         </View>
-        <View style={{ flex: 1, height: 1, backgroundColor: "black" }} />
+        <View
+          style={{
+            flex: 1,
+            height: 1,
+            backgroundColor: "black",
+          }}
+        />
       </View>
-      <View style={loginStyles.iconView}>
-        <Feather color="#000" size={22} name="facebook">
-          <Text
-            style={loginStyles.iconText}
-            onPress={() => {
-              Linking.openURL("https://pt-br.facebook.com/");
-            }}
-          >
-            Continuar com Facebook
-          </Text>
-        </Feather>
-
-        <Feather color="#000" size={22} name="mail">
-          <Text
-            style={loginStyles.iconText}
-            onPress={() => {
-              Linking.openURL("https://outlook.live.com/owa/");
-            }}
-          >
-            Continuar com E-mail
-          </Text>
-        </Feather>
+      <View
+        style={{
+          flexDirection: "row",
+          width: "100%",
+          justifyContent: "center",
+        }}
+      >
+        <View style={loginStyles.iconstyle}>
+          <Feather color="white" size={22} name="facebook"></Feather>
+        </View>
+        <View style={loginStyles.iconstyle}>
+          <Feather color="white" size={22} name="twitter"></Feather>
+        </View>
+        <View style={loginStyles.iconstyle}>
+          <Feather color="white" size={22} name="mail"></Feather>
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const loginStyles = StyleSheet.create({
   logo: {
     height: 168,
-    width: 360,
-    padding: 41,
+    width: "100%",
+    padding: 40,
   },
   logoText: {
     fontSize: 64,
     fontWeight: "bold",
     textAlign: "center",
 
-    color: "#4C6177",
+    color: themeColors.main.A,
   },
   inputBox: {
     paddingBottom: 24,
@@ -91,15 +110,25 @@ const loginStyles = StyleSheet.create({
   },
 
   link: {
-    color: "blue",
+    color: themeColors.main.A,
     textAlign: "center",
-    height: 100,
+    marginBottom: 20,
   },
-  btn: { paddingRight: 52, paddingLeft: 52 },
+  btn: { paddingRight: 52, paddingLeft: 52, paddingBottom: 12 },
   iconText: {
     fontSize: 14,
   },
   iconView: {
+    width: 240,
     backgroundColor: "yellow",
+  },
+  iconstyle: {
+    height: 48,
+    width: 48,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 4,
+    marginHorizontal: 8,
+    backgroundColor: themeColors.main.A,
   },
 });
