@@ -79,6 +79,15 @@ export default function DashboardLotes() {
                   borderRadius: 4,
                   flex: 1,
                   overflow: 'scroll',
+                  paddingBottom: 0,
+                  shadowColor: '#000',
+                  shadowOffset: {
+                    width: 0,
+                    height: 2,
+                  },
+                  shadowOpacity: 0.25,
+                  shadowRadius: 3.84,
+                  elevation: 1,
                 }}
               >
                 <BatchPictures horizontalPadding={32} />
@@ -133,18 +142,18 @@ export default function DashboardLotes() {
             },
             shadowOpacity: 0.25,
             shadowRadius: 3.84,
-            elevation: 4,
+            elevation: 1,
             flexDirection: 'row',
             alignItems: 'center',
           }}
         >
-          <Feather size={28} name='chevron-left' />
+          <Feather size={28} name="chevron-left" />
           <Text style={{ fontSize: 20, lineHeight: 24, marginLeft: 'auto' }}>
             1/4
           </Text>
           <Feather
             size={28}
-            name='chevron-right'
+            name="chevron-right"
             style={{ marginLeft: 'auto' }}
           />
         </View>
