@@ -60,6 +60,9 @@ export default function TestPage({ navigation }) {
       <HStack pl={"12px"} pr={"12px"}>
         <ArrowButton label="Login" destiny={["HomeStack", "Login"]} />
       </HStack>
+      <HStack pl={"12px"} pr={"12px"}>
+        <ArrowButton label="Register" destiny={["HomeStack", "Register"]} />
+      </HStack>
 
       <Text
         style={page_styles.text1}

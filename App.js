@@ -39,6 +39,7 @@ import StyledOnFocus from "./components/StyledOnFocus";
 import ChangeUsername from "./screens/store/ChangeUsername";
 import ChangeEmail from "./screens/store/ChangeEmail";
 import ChangePassword from "./screens/store/ChangePassword";
+import Register from "./screens/store/Register";
 
 function isRootStack(routeName) {
   switch (routeName) {
@@ -91,7 +92,7 @@ export default function App() {
               );
             },
           }}
-          component={Store}
+          component={Register}
         />
         <HomeTab.Screen name="Orders" component={Orders} />
         <HomeTab.Screen name="Profile" component={Profile} />
@@ -99,6 +100,7 @@ export default function App() {
         <HomeTab.Screen name="Dashboard" component={DashboardHome} />
         <HomeTab.Screen name="Lotes" component={DashboardLotes} />
         <HomeTab.Screen name="Login" component={Login} />
+        <HomeTab.Screen name="Register" component={Register} />
       </HomeTab.Navigator>
     );
   }

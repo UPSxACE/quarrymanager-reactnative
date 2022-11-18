@@ -13,7 +13,6 @@ export default function Login() {
 
       <View style={loginStyles.inputBox}>
         <BlueInput
-          containerStyle={{ borderRadius: 4 }}
           label="Username"
           onChangeText={(value) => setData({ ...formData, name: value })}
         />
