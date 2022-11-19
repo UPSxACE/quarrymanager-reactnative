@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
+import { CommonActions, useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { View, Pressable } from 'react-native';
 import { Feather } from '@expo/vector-icons';
@@ -179,6 +179,11 @@ export const theme_config = {
   },
 };
 
+const resetActionHome = CommonActions.reset({
+  index: 0,
+  routes: [{ name: 'HomeStack', params: { screen: 'Home' } }],
+});
+
 export function CustomBottomTab({ dashboard, setDashboard, login }) {
   const tabRoutes = [
     { destiny: ['HomeStack', 'Home'], icon: 'home' },
@@ -194,7 +199,7 @@ export function CustomBottomTab({ dashboard, setDashboard, login }) {
       destiny: ['HomeStack', 'Home'],
       icon: 'log-out',
       onPressEvent: async () => {
-        await navigation.navigate('HomeStack', { screen: 'Home' });
+        await navigation.dispatch(resetActionHome);
         setDashboard(false);
       },
     },

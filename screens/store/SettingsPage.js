@@ -1,10 +1,18 @@
 import * as React from 'react';
 import ArrowButton from '../../components/store/ArrowButton';
 import { View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { CommonActions, useNavigation } from '@react-navigation/native';
 
 export default function SettingsPage({ setDashboard, setLogin }) {
   const navigation = useNavigation();
+  const resetActionLogout = CommonActions.reset({
+    index: 0,
+    routes: [{ name: 'HomeStack', params: { screen: 'Login' } }],
+  });
+  const resetActionDashboard = CommonActions.reset({
+    index: 0,
+    routes: [{ name: 'HomeStack', params: { screen: 'Dashboard' } }],
+  });
 
   return (
     <View style={{ backgroundColor: 'white', flex: 1 }}>
@@ -19,7 +27,7 @@ export default function SettingsPage({ setDashboard, setLogin }) {
           label="Dashboard"
           destiny={['HomeStack', 'Dashboard']}
           onPressEvent={async () => {
-            await navigation.navigate('HomeStack', { screen: 'Dashboard' });
+            await navigation.dispatch(resetActionDashboard);
             setDashboard(true);
           }}
         />
@@ -62,7 +70,7 @@ export default function SettingsPage({ setDashboard, setLogin }) {
           label="Terminar Sessão"
           destiny={['HomeStack', 'Login']}
           onPressEvent={async () => {
-            await navigation.navigate('HomeStack', { screen: 'Login' });
+            await navigation.dispatch(resetActionLogout);
             setLogin(false);
           }}
         />

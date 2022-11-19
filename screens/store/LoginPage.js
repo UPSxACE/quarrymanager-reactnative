@@ -4,11 +4,15 @@ import BlueButton from '../../components/store/BlueButton';
 import { Feather } from '@expo/vector-icons';
 import { themeColors } from '../../Theme';
 import React from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { CommonActions, useNavigation } from '@react-navigation/native';
 
 export default function LoginPage({ setLogin }) {
   const [formData, setData] = React.useState({});
   const navigation = useNavigation();
+  const resetActionLogin = CommonActions.reset({
+    index: 0,
+    routes: [{ name: 'HomeStack', params: { screen: 'Home' } }],
+  });
 
   return (
     <ScrollView
@@ -42,7 +46,7 @@ export default function LoginPage({ setLogin }) {
           label="Iniciar sessao"
           style={{ backgroundColor: '#394A58' }}
           onPressEvent={async () => {
-            await navigation.navigate('HomeStack', { screen: 'Home' });
+            await navigation.dispatch(resetActionLogin);
             setLogin(true);
           }}
         />
