@@ -3,7 +3,7 @@ import ArrowButton from '../../components/store/ArrowButton';
 import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export default function SettingsPage({ setDashboard }) {
+export default function SettingsPage({ setDashboard, setLogin }) {
   const navigation = useNavigation();
 
   return (
@@ -58,7 +58,14 @@ export default function SettingsPage({ setDashboard }) {
           paddingBottom: 12,
         }}
       >
-        <ArrowButton label="Terminar Sessão" destiny={['BtHome', 'Home']} />
+        <ArrowButton
+          label="Terminar Sessão"
+          destiny={['HomeStack', 'Login']}
+          onPressEvent={async () => {
+            await navigation.navigate('HomeStack', { screen: 'Login' });
+            setLogin(false);
+          }}
+        />
       </View>
     </View>
   );

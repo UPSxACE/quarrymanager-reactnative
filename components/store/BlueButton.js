@@ -1,6 +1,6 @@
 import { Pressable, View, Text, Alert } from 'react-native';
 
-export default function BlueButton({ label }) {
+export default function BlueButton({ label, onPressEvent }) {
   return (
     <View style={{ justifyContent: 'center', width: '100%' }}>
       <Pressable
@@ -9,7 +9,7 @@ export default function BlueButton({ label }) {
           paddingVertical: 8,
           borderRadius: 4,
         }}
-        onPress={() => Alert.alert('Simple button pressed')}
+        onPress={onPressEvent ? onPressEvent : null}
       >
         <Text style={{ color: 'white', textAlign: 'center' }}>{label}</Text>
       </Pressable>

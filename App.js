@@ -31,7 +31,6 @@ import {
   CustomBottomTab,
   SearchBarHeader,
 } from './Theme';
-import Login from './screens/store/Login';
 import Product from './screens/store/Product';
 import DashboardLotes from './screens/dashboard/DashboardLotes';
 import { themeColors } from './Theme';
@@ -39,6 +38,7 @@ import StyledOnFocus from './components/StyledOnFocus';
 import ChangeUsername from './screens/store/ChangeUsername';
 import ChangeEmail from './screens/store/ChangeEmail';
 import ChangePassword from './screens/store/ChangePassword';
+import LoginPage from './screens/store/LoginPage';
 
 function isRootStack(routeName) {
   switch (routeName) {
@@ -65,8 +65,12 @@ const HomeTab = createBottomTabNavigator();
 export default function App() {
   const theme = extendTheme(theme_obj);
   const [dashboard, setDashboard] = useState(false);
+  const [login, setLogin] = useState(false);
 
-  const Settings = () => <SettingsPage setDashboard={setDashboard} />;
+  const Settings = () => (
+    <SettingsPage setDashboard={setDashboard} setLogin={setLogin} />
+  );
+  const Login = () => <LoginPage setLogin={setLogin} />;
 
   function HomeTabs({ navigation, route }) {
     const [search, setSearch] = useState('');
@@ -80,6 +84,13 @@ export default function App() {
         }}
       >
         <HomeTab.Screen
+          name="Login"
+          options={{
+            headerShown: false,
+          }}
+          component={Login}
+        />
+        <HomeTab.Screen
           name="Home"
           options={{
             headerTintColor: 'white',
@@ -91,14 +102,13 @@ export default function App() {
               );
             },
           }}
-          component={TestPage}
+          component={Store}
         />
         <HomeTab.Screen name="Orders" component={Orders} />
         <HomeTab.Screen name="Profile" component={Profile} />
         <HomeTab.Screen name="Settings" component={Settings} />
         <HomeTab.Screen name="Dashboard" component={DashboardHome} />
         <HomeTab.Screen name="Lotes" component={DashboardLotes} />
-        <HomeTab.Screen name="Login" component={Login} />
       </HomeTab.Navigator>
     );
   }
@@ -151,8 +161,12 @@ export default function App() {
               options={{ ...gradientHeaderOptions }}
             ></RootStack.Screen>
           </RootStack.Navigator>
-          <StatusBar style="light" />
-          <CustomBottomTab dashboard={dashboard} setDashboard={setDashboard} />
+          <StatusBar style={login ? 'light' : 'dark'} />
+          <CustomBottomTab
+            login={login}
+            dashboard={dashboard}
+            setDashboard={setDashboard}
+          />
         </NavigationContainer>
       </GestureHandlerRootView>
     </NativeBaseProvider>

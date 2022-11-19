@@ -179,7 +179,7 @@ export const theme_config = {
   },
 };
 
-export function CustomBottomTab({ dashboard, setDashboard }) {
+export function CustomBottomTab({ dashboard, setDashboard, login }) {
   const tabRoutes = [
     { destiny: ['HomeStack', 'Home'], icon: 'home' },
     { destiny: ['HomeStack', 'Orders'], icon: 'package' },
@@ -201,6 +201,11 @@ export function CustomBottomTab({ dashboard, setDashboard }) {
   ];
 
   const navigation = useNavigation();
+
+  if (!login) {
+    return <></>;
+  }
+
   return (
     <View>
       <LinearGradient

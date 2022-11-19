@@ -4,9 +4,11 @@ import BlueButton from '../../components/store/BlueButton';
 import { Feather } from '@expo/vector-icons';
 import { themeColors } from '../../Theme';
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Login() {
+export default function LoginPage({ setLogin }) {
   const [formData, setData] = React.useState({});
+  const navigation = useNavigation();
 
   return (
     <ScrollView
@@ -39,6 +41,10 @@ export default function Login() {
         <BlueButton
           label="Iniciar sessao"
           style={{ backgroundColor: '#394A58' }}
+          onPressEvent={async () => {
+            await navigation.navigate('HomeStack', { screen: 'Home' });
+            setLogin(true);
+          }}
         />
       </View>
       <Text
