@@ -1,11 +1,22 @@
 import { Feather } from '@expo/vector-icons';
-import { StyleSheet, View, Text, FlatList, ScrollView } from 'react-native';
+import { useRef, useState } from 'react';
+import {
+  StyleSheet,
+  View,
+  Text,
+  FlatList,
+  ScrollView,
+  Pressable,
+} from 'react-native';
 import PagerView from 'react-native-pager-view';
 import BatchPictures from '../../components/dashboard/BatchPictures';
 import LoteDescription from '../../components/LoteDescription';
 import { themeColors } from '../../Theme';
 
 export default function DashboardLotes() {
+  const [position, setPosition] = useState(0);
+  const PagerViewRef = useRef(PagerView);
+
   const data = [
     {
       mat: 'Mármore',
@@ -52,7 +63,15 @@ export default function DashboardLotes() {
         backgroundColor: themeColors.main.dashboardBackground,
       }}
     >
-      <PagerView style={styles.viewPager} initialPage={0}>
+      <PagerView
+        style={styles.viewPager}
+        initialPage={0}
+        onPageSelected={(pageSelected) => {
+          //console.log(pageSelected.nativeEvent.position);
+          setPosition(pageSelected.nativeEvent.position);
+        }}
+        ref={PagerViewRef}
+      >
         {data.map((obj, index) => {
           return (
             <View
@@ -132,7 +151,7 @@ export default function DashboardLotes() {
         <View
           style={{
             flex: 1,
-            padding: 12,
+            paddingVertical: 12,
             borderRadius: 4,
             backgroundColor: 'white',
             shadowColor: '#000',
@@ -147,15 +166,39 @@ export default function DashboardLotes() {
             alignItems: 'center',
           }}
         >
-          <Feather size={28} name="chevron-left" />
-          <Text style={{ fontSize: 20, lineHeight: 24, marginLeft: 'auto' }}>
-            1/4
+          <Pressable
+            style={{
+              height: 54,
+              backgroundColor: 'white',
+              justifyContent: 'center',
+              marginRight: 'auto',
+              backgroundColor: 'white',
+              paddingHorizontal: 12,
+            }}
+            onPress={() => {
+              PagerViewRef.current.setPage(position - 1);
+            }}
+          >
+            <Feather size={28} name="chevron-left" />
+          </Pressable>
+          <Text style={{ fontSize: 20, lineHeight: 24 }}>
+            {position + 1}/{data.length}
           </Text>
-          <Feather
-            size={28}
-            name="chevron-right"
-            style={{ marginLeft: 'auto' }}
-          />
+          <Pressable
+            style={{
+              height: 54,
+              backgroundColor: 'white',
+              justifyContent: 'center',
+              marginLeft: 'auto',
+              backgroundColor: 'white',
+              paddingHorizontal: 12,
+            }}
+            onPress={() => {
+              PagerViewRef.current.setPage(position + 1);
+            }}
+          >
+            <Feather size={28} name="chevron-right" />
+          </Pressable>
         </View>
       </View>
     </View>
