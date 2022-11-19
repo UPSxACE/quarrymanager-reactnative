@@ -1,12 +1,26 @@
-import { View, Text, Linking, StyleSheet, ScrollView } from "react-native";
-import BlueInput from "../../components/store/BlueInput";
-import BlueButton from "../../components/store/BlueButton";
-import { Feather } from "@expo/vector-icons";
-import { themeColors } from "../../Theme";
+import { View, Text, Linking, StyleSheet, ScrollView } from 'react-native';
+import BlueInput from '../../components/store/BlueInput';
+import BlueButton from '../../components/store/BlueButton';
+import { Feather } from '@expo/vector-icons';
+import { themeColors } from '../../Theme';
+import React from 'react';
+import { CommonActions, useNavigation } from '@react-navigation/native';
 
-export default function Login() {
+export default function LoginPage({ setLogin }) {
+  const [formData, setData] = React.useState({});
+  const navigation = useNavigation();
+  const resetActionLogin = CommonActions.reset({
+    index: 0,
+    routes: [{ name: 'HomeStack', params: { screen: 'Home' } }],
+  });
+
   return (
-    <ScrollView contentContainerStyle={{ justifyContent: "center" }}>
+    <ScrollView
+      contentContainerStyle={{
+        justifyContent: 'center',
+        flex: 1,
+      }}
+    >
       <View style={loginStyles.logo}>
         <Text style={loginStyles.logoText}>weROCK</Text>
       </View>
@@ -19,6 +33,7 @@ export default function Login() {
       </View>
       <View style={loginStyles.inputBox}>
         <BlueInput
+          containerStyle={{ borderRadius: 4 }}
           label="Password"
           onChangeText={(value) => setData({ ...formData, name: value })}
           secret
@@ -28,13 +43,17 @@ export default function Login() {
       <View style={loginStyles.btn}>
         <BlueButton
           label="Iniciar sessao"
-          style={{ backgroundColor: "#394A58" }}
+          style={{ backgroundColor: '#394A58' }}
+          onPressEvent={async () => {
+            await navigation.dispatch(resetActionLogin);
+            setLogin(true);
+          }}
         />
       </View>
       <Text
         style={loginStyles.link}
         onPress={() => {
-          Linking.openURL("https://twitter.com/?lang=pt");
+          Linking.openURL('https://twitter.com/?lang=pt');
         }}
       >
         Esqueceste-te da palavra passe?
@@ -42,9 +61,9 @@ export default function Login() {
 
       <View
         style={{
-          flexDirection: "row",
-          alignItems: "center",
-          width: "100%",
+          flexDirection: 'row',
+          alignItems: 'center',
+          width: '100%',
           paddingHorizontal: 20,
           paddingBottom: 40,
           paddingTop: 20,
@@ -54,25 +73,25 @@ export default function Login() {
           style={{
             flex: 1,
             height: 1,
-            backgroundColor: "black",
+            backgroundColor: 'black',
           }}
         />
         <View>
-          <Text style={{ width: 50, textAlign: "center" }}>OU</Text>
+          <Text style={{ width: 50, textAlign: 'center' }}>OU</Text>
         </View>
         <View
           style={{
             flex: 1,
             height: 1,
-            backgroundColor: "black",
+            backgroundColor: 'black',
           }}
         />
       </View>
       <View
         style={{
-          flexDirection: "row",
-          width: "100%",
-          justifyContent: "center",
+          flexDirection: 'row',
+          width: '100%',
+          justifyContent: 'center',
         }}
       >
         <View style={loginStyles.iconstyle}>
@@ -91,14 +110,14 @@ export default function Login() {
 
 const loginStyles = StyleSheet.create({
   logo: {
-    height: 168,
-    width: "100%",
+    width: '100%',
     padding: 40,
+    paddingTop: 0,
   },
   logoText: {
     fontSize: 64,
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: 'bold',
+    textAlign: 'center',
 
     color: themeColors.main.A,
   },
@@ -110,7 +129,7 @@ const loginStyles = StyleSheet.create({
 
   link: {
     color: themeColors.main.A,
-    textAlign: "center",
+    textAlign: 'center',
     marginBottom: 20,
   },
   btn: { paddingRight: 52, paddingLeft: 52, paddingBottom: 12 },
@@ -119,13 +138,13 @@ const loginStyles = StyleSheet.create({
   },
   iconView: {
     width: 240,
-    backgroundColor: "yellow",
+    backgroundColor: 'yellow',
   },
   iconstyle: {
     height: 48,
     width: 48,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     borderRadius: 4,
     marginHorizontal: 8,
     backgroundColor: themeColors.main.A,
