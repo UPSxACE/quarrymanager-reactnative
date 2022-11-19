@@ -7,7 +7,7 @@ export default function SettingsPage({ setDashboard }) {
   const navigation = useNavigation();
 
   return (
-    <View h={'100%'}>
+    <View style={{ backgroundColor: 'white', flex: 1 }}>
       <View
         style={{
           flexDirection: 'row',
