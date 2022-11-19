@@ -1,28 +1,28 @@
-import { StatusBar } from "expo-status-bar";
-import { Animated, Button, Pressable, StyleSheet, Text } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import TestPage from "./screens/store/TestPage";
+import { StatusBar } from 'expo-status-bar';
+import { Animated, Button, Pressable, StyleSheet, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import TestPage from './screens/store/TestPage';
 import {
   NativeBaseProvider,
   extendTheme,
   View,
   Box,
   HStack,
-} from "native-base";
-import { LinearGradient } from "expo-linear-gradient";
-import Profile from "./screens/store/Profile";
-import SettingsPage from "./screens/store/SettingsPage";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Feather } from "@expo/vector-icons";
-import TestPage2 from "./screens/store/TestPage2";
-import TestPage3 from "./screens/store/TestPage3";
-import { useEffect, useState } from "react";
-import Store from "./screens/store/Store";
-import DashboardHome from "./screens/dashboard/DashboardHome";
-import Orders from "./screens/store/Orders";
-import StoreCategories from "./screens/store/StoreCategories";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+} from 'native-base';
+import { LinearGradient } from 'expo-linear-gradient';
+import Profile from './screens/store/Profile';
+import SettingsPage from './screens/store/SettingsPage';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Feather } from '@expo/vector-icons';
+import TestPage2 from './screens/store/TestPage2';
+import TestPage3 from './screens/store/TestPage3';
+import { useEffect, useState } from 'react';
+import Store from './screens/store/Store';
+import DashboardHome from './screens/dashboard/DashboardHome';
+import Orders from './screens/store/Orders';
+import StoreCategories from './screens/store/StoreCategories';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import {
   gradientHeaderOptions,
   gradientTabBarOptions,
@@ -30,29 +30,29 @@ import {
   theme_config,
   CustomBottomTab,
   SearchBarHeader,
-} from "./Theme";
-import Login from "./screens/store/Login";
-import Product from "./screens/store/Product";
-import DashboardLotes from "./screens/dashboard/DashboardLotes";
-import { themeColors } from "./Theme";
-import StyledOnFocus from "./components/StyledOnFocus";
-import ChangeUsername from "./screens/store/ChangeUsername";
-import ChangeEmail from "./screens/store/ChangeEmail";
-import ChangePassword from "./screens/store/ChangePassword";
+} from './Theme';
+import Login from './screens/store/Login';
+import Product from './screens/store/Product';
+import DashboardLotes from './screens/dashboard/DashboardLotes';
+import { themeColors } from './Theme';
+import StyledOnFocus from './components/StyledOnFocus';
+import ChangeUsername from './screens/store/ChangeUsername';
+import ChangeEmail from './screens/store/ChangeEmail';
+import ChangePassword from './screens/store/ChangePassword';
 
 function isRootStack(routeName) {
   switch (routeName) {
-    case "Tests2":
+    case 'Tests2':
       return true;
-    case "Tests3":
+    case 'Tests3':
       return true;
-    case "Produto":
+    case 'Produto':
       return true;
-    case "Alterar Username":
+    case 'Alterar Username':
       return true;
-    case "Alterar Email":
+    case 'Alterar Email':
       return true;
-    case "Alterar Palavra-Passe":
+    case 'Alterar Palavra-Passe':
       return true;
     default:
       return false;
@@ -69,20 +69,20 @@ export default function App() {
   const Settings = () => <SettingsPage setDashboard={setDashboard} />;
 
   function HomeTabs({ navigation, route }) {
-    const [search, setSearch] = useState("");
+    const [search, setSearch] = useState('');
 
     return (
       <HomeTab.Navigator
         screenOptions={{
           ...gradientHeaderOptions,
           //...gradientTabBarOptions,
-          tabBarStyle: { display: "none" },
+          tabBarStyle: { display: 'none' },
         }}
       >
         <HomeTab.Screen
           name="Home"
           options={{
-            headerTintColor: "white",
+            headerTintColor: 'white',
             header: () => {
               return (
                 <SearchBarHeader
@@ -91,7 +91,7 @@ export default function App() {
               );
             },
           }}
-          component={Store}
+          component={TestPage}
         />
         <HomeTab.Screen name="Orders" component={Orders} />
         <HomeTab.Screen name="Profile" component={Profile} />
@@ -122,7 +122,7 @@ export default function App() {
               component={TestPage2}
               options={{
                 ...gradientHeaderOptions,
-                gestureDirection: "horizontal",
+                gestureDirection: 'horizontal',
               }}
             ></RootStack.Screen>
             <RootStack.Screen
