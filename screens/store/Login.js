@@ -102,7 +102,8 @@ export default function Login() {
 const loginStyles = StyleSheet.create({
   logo: {
     width: '100%',
-    padding: 32,
+    padding: 40,
+    paddingTop: 0,
   },
   logoText: {
     fontSize: 64,
