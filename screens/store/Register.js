@@ -32,12 +32,12 @@ export default function Register() {
           secret
         />
       </View>
-      <View style={registerStyle.inputBox2}>
+      <View>
         <View style={registerStyle.inputBox}>
-          <BlueInput label="Data de Nascimento"></BlueInput>
+          <BlueInput label="dd/mm/aa"></BlueInput>
         </View>
         <View style={registerStyle.inputBox}>
-          <BlueInput label="Gênero"></BlueInput>
+          <BlueInput label="Feminino"></BlueInput>
         </View>
       </View>
 
@@ -67,13 +67,6 @@ const registerStyle = StyleSheet.create({
     paddingBottom: 24,
     paddingLeft: 20,
     paddingRight: 20,
-    backgroundColor: "black",
-  },
-  inputBox2: {
-    paddingBottom: 24,
-    paddingLeft: 20,
-    paddingRight: 20,
-    backgroundColor: "yellow",
   },
   rightInput: {
     marginLeft: "auto",

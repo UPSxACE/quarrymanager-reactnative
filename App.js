@@ -92,7 +92,7 @@ export default function App() {
               );
             },
           }}
-          component={Register}
+          component={Store}
         />
         <HomeTab.Screen name="Orders" component={Orders} />
         <HomeTab.Screen name="Profile" component={Profile} />
