@@ -25,7 +25,7 @@ export default function SettingsPage({ setDashboard, setLogin }) {
       >
         <ArrowButton
           label="Dashboard"
-          destiny={['HomeStack', 'Dashboard']}
+          destiny={['HomeStack', 'Home']}
           onPressEvent={async () => {
             await navigation.dispatch(resetActionDashboard);
             setDashboard(true);
