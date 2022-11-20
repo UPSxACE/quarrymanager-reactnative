@@ -4,6 +4,7 @@ import BasicLoader from '../../components/BasicLoader';
 import BasicList from '../../components/store/BasicList';
 import ScrollableTabs from '../../components/store/ScrollableTabs';
 import StoreCategory from '../../components/store/StoreCategory';
+import * as SplashScreen from 'expo-splash-screen';
 
 export default function Orders() {
   const TABS_DATA = ['Todos', 'Ativos', 'Finalizados', 'Favoritos'];
@@ -25,6 +26,9 @@ export default function Orders() {
       imageUrl: require('../../assets/Samples/marmore-preto.png'),
     },
   ];
+
+  // Is this in the right place?
+  SplashScreen.preventAutoHideAsync();
 
   return (
     <BasicLoader>

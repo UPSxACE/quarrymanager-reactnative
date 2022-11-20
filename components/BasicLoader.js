@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, View, Text } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 
-// bug to solve
+// Line below moved to components where <BasicLoader> is called (before the return)
 // SplashScreen.preventAutoHideAsync();
 
 export default function BasicLoader({ children }) {
@@ -15,7 +15,8 @@ export default function BasicLoader({ children }) {
         //await Font.loadAsync(Entype.font);
         // Artificially delay for two seconds to simulate a slow loading
         // experience. Please remove this if you copy and paste the code!
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        // fake 2 seconds load:
+        // await new Promise((resolve) => setTimeout(resolve, 2000));
       } catch (e) {
         console.warn(e);
       } finally {
