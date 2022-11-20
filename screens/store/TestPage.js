@@ -58,10 +58,10 @@ export default function TestPage({ navigation }) {
         <ArrowButton label="Tests3" destiny={['Tests3', '']} />
       </HStack>
       <HStack pl={'12px'} pr={'12px'}>
-        <ArrowButton label="Login" destiny={['HomeStack', 'Login']} />
+        <ArrowButton label="Login" destiny={['HomeStack', 'Home']} />
       </HStack>
-      <HStack pl={"12px"} pr={"12px"}>
-        <ArrowButton label="Register" destiny={["HomeStack", "Register"]} />
+      <HStack pl={'12px'} pr={'12px'}>
+        <ArrowButton label="Register" destiny={['HomeStack', 'Register']} />
       </HStack>
 
       <Text

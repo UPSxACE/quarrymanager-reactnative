@@ -68,7 +68,7 @@ export default function SettingsPage({ setDashboard, setLogin }) {
       >
         <ArrowButton
           label="Terminar Sessão"
-          destiny={['HomeStack', 'Login']}
+          destiny={['HomeStack', 'Home']}
           onPressEvent={async () => {
             await navigation.dispatch(resetActionLogout);
             setLogin(false);
