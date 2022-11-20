@@ -40,7 +40,9 @@ export default function TestPage({ navigation }) {
         destiny={['BtSettings', 'Settings']}
         title={'Mármore Preto'}
         state={'Em processamento'}
-        imageUrl="https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg"
+        imageUrl={{
+          uri: 'https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg',
+        }}
       />
 
       <HStack pl={'12px'} pr={'12px'}>
@@ -60,8 +62,8 @@ export default function TestPage({ navigation }) {
       <HStack pl={'12px'} pr={'12px'}>
         <ArrowButton label="Login" destiny={['HomeStack', 'Login']} />
       </HStack>
-      <HStack pl={"12px"} pr={"12px"}>
-        <ArrowButton label="Register" destiny={["HomeStack", "Register"]} />
+      <HStack pl={'12px'} pr={'12px'}>
+        <ArrowButton label="Register" destiny={['HomeStack', 'Register']} />
       </HStack>
 
       <Text

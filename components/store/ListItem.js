@@ -24,9 +24,7 @@ export default function ListItem({
         <Image
           alt="Product Picture"
           style={page_styles.productPicture}
-          source={{
-            uri: imageUrl,
-          }}
+          source={imageUrl}
         />
         <View style={{ alignItems: 'center', flex: 1 }}>
           {newMessage && <Badge label={'Resposta!'} color="#FFFB94" />}
