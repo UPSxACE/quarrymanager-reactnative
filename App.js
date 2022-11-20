@@ -108,7 +108,11 @@ export default function App() {
         <HomeTab.Screen name="Settings" component={Settings} />
         <HomeTab.Screen name="Lotes" component={DashboardLotes} />
 
-        <HomeTab.Screen name="Register" component={Register} />
+        <HomeTab.Screen
+          options={{ headerShown: false }}
+          name="Register"
+          component={Register}
+        />
       </HomeTab.Navigator>
     );
   }

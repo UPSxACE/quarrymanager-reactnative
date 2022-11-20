@@ -1,13 +1,13 @@
-import { View, Text, Linking, StyleSheet, ScrollView } from "react-native";
-import BlueInput from "../../components/store/BlueInput";
-import BlueButton from "../../components/store/BlueButton";
-import { Feather } from "@expo/vector-icons";
-import { themeColors } from "../../Theme";
-import { Input } from "native-base";
+import { View, Text, Linking, StyleSheet, ScrollView } from 'react-native';
+import BlueInput from '../../components/store/BlueInput';
+import BlueButton from '../../components/store/BlueButton';
+import { Feather } from '@expo/vector-icons';
+import { themeColors } from '../../Theme';
+import { Input } from 'native-base';
 
 export default function Register() {
   return (
-    <ScrollView contentContainerStyle={{ justifyContent: "center" }}>
+    <ScrollView contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
       <View style={registerStyle.logo}>
         <Text style={registerStyle.logoText}>weROCK</Text>
       </View>
@@ -44,7 +44,7 @@ export default function Register() {
       <View style={registerStyle.btn}>
         <BlueButton
           label="Registar-se"
-          style={{ backgroundColor: "#394A58" }}
+          style={{ backgroundColor: '#394A58' }}
         />
       </View>
     </ScrollView>
@@ -52,14 +52,14 @@ export default function Register() {
 }
 const registerStyle = StyleSheet.create({
   logo: {
-    height: 168,
-    width: "100%",
+    width: '100%',
     padding: 40,
+    paddingTop: 0,
   },
   logoText: {
     fontSize: 64,
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: 'bold',
+    textAlign: 'center',
 
     color: themeColors.main.A,
   },
@@ -69,7 +69,7 @@ const registerStyle = StyleSheet.create({
     paddingRight: 20,
   },
   rightInput: {
-    marginLeft: "auto",
+    marginLeft: 'auto',
   },
   btn: { paddingRight: 52, paddingLeft: 52, paddingBottom: 12, marginTop: 28 },
   iconText: {
