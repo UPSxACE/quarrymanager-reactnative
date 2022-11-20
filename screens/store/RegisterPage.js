@@ -21,12 +21,14 @@ export default function RegisterPage({ setLogin }) {
 
       <View style={registerStyle.inputBox}>
         <BlueInput
+          containerStyle={{ borderRadius: 4 }}
           label="Username"
           onChangeText={(value) => setData({ ...formData, name: value })}
         />
       </View>
       <View style={registerStyle.inputBox}>
         <BlueInput
+          containerStyle={{ borderRadius: 4 }}
           label="Password"
           onChangeText={(value) => setData({ ...formData, name: value })}
           secret
@@ -34,6 +36,7 @@ export default function RegisterPage({ setLogin }) {
       </View>
       <View style={registerStyle.inputBox}>
         <BlueInput
+          containerStyle={{ borderRadius: 4 }}
           label="Confirmar Palavra-Passe"
           onChangeText={(value) => setData({ ...formData, name: value })}
           secret
@@ -43,12 +46,18 @@ export default function RegisterPage({ setLogin }) {
         <View
           style={[registerStyle.inputBox, { width: '50%', paddingRight: 12 }]}
         >
-          <BlueInput label="dd/mm/aa"></BlueInput>
+          <BlueInput
+            containerStyle={{ borderRadius: 4 }}
+            label="dd/mm/aa"
+          ></BlueInput>
         </View>
         <View
           style={[registerStyle.inputBox, { width: '50%', paddingLeft: 12 }]}
         >
-          <BlueInput label="Feminino"></BlueInput>
+          <BlueInput
+            containerStyle={{ borderRadius: 4 }}
+            label="Feminino"
+          ></BlueInput>
         </View>
       </View>
 

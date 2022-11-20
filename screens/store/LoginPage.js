@@ -1,4 +1,11 @@
-import { View, Text, Linking, StyleSheet, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  Linking,
+  StyleSheet,
+  ScrollView,
+  Pressable,
+} from 'react-native';
 import BlueInput from '../../components/store/BlueInput';
 import BlueButton from '../../components/store/BlueButton';
 import { Feather } from '@expo/vector-icons';
@@ -29,6 +36,7 @@ export default function LoginPage({ setLogin }) {
 
         <View style={loginStyles.inputBox}>
           <BlueInput
+            containerStyle={{ borderRadius: 4 }}
             label="Username"
             onChangeText={(value) => setData({ ...formData, name: value })}
           />
@@ -55,7 +63,7 @@ export default function LoginPage({ setLogin }) {
         <Text
           style={loginStyles.link}
           onPress={() => {
-            Linking.openURL('https://twitter.com/?lang=pt');
+            // Linking.openURL('https://twitter.com/?lang=pt');
           }}
         >
           Esqueceste-te da palavra passe?
@@ -96,15 +104,15 @@ export default function LoginPage({ setLogin }) {
             justifyContent: 'center',
           }}
         >
-          <View style={loginStyles.iconstyle}>
+          <Pressable style={loginStyles.iconstyle}>
             <Feather color="white" size={22} name="facebook"></Feather>
-          </View>
-          <View style={loginStyles.iconstyle}>
+          </Pressable>
+          <Pressable style={loginStyles.iconstyle}>
             <Feather color="white" size={22} name="twitter"></Feather>
-          </View>
-          <View style={loginStyles.iconstyle}>
+          </Pressable>
+          <Pressable style={loginStyles.iconstyle}>
             <Feather color="white" size={22} name="mail"></Feather>
-          </View>
+          </Pressable>
         </View>
       </ScrollView>
       <HomeFooter />
