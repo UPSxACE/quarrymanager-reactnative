@@ -193,7 +193,7 @@ export function CustomBottomTab({ dashboard, setDashboard, login }) {
   ];
 
   const dashboardRoutes = [
-    { destiny: ['HomeStack', 'Home'], icon: 'home' },
+    { destiny: ['HomeStack', 'Dashboard'], icon: 'home' },
     { destiny: ['HomeStack', 'Lotes'], icon: 'layers' },
     {
       destiny: ['HomeStack', 'Home'],
