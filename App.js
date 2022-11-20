@@ -87,9 +87,10 @@ export default function App() {
         }}
       >
         <HomeTab.Screen
-          name={dashboard ? 'Dashboard' : 'Home'}
+          name={dashboard ? 'Dashboard' : login ? 'Home' : 'Login'}
           options={{
             headerTintColor: 'white',
+            headerShown: !login ? false : true,
             header: dashboard
               ? undefined
               : () => {
@@ -100,14 +101,7 @@ export default function App() {
                   );
                 },
           }}
-          component={dashboard ? DashboardHome : Store}
-        />
-        <HomeTab.Screen
-          name="Login"
-          options={{
-            headerShown: false,
-          }}
-          component={Login}
+          component={dashboard ? DashboardHome : login ? Store : Login}
         />
         <HomeTab.Screen name="Orders" component={Orders} />
         <HomeTab.Screen name="Profile" component={Profile} />

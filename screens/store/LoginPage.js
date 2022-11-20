@@ -5,6 +5,7 @@ import { Feather } from '@expo/vector-icons';
 import { themeColors } from '../../Theme';
 import React from 'react';
 import { CommonActions, useNavigation } from '@react-navigation/native';
+import HomeFooter from '../../components/store/HomeFooter';
 
 export default function LoginPage({ setLogin }) {
   const [formData, setData] = React.useState({});
@@ -15,96 +16,99 @@ export default function LoginPage({ setLogin }) {
   });
 
   return (
-    <ScrollView
-      contentContainerStyle={{
-        justifyContent: 'center',
-        flex: 1,
-      }}
-    >
-      <View style={loginStyles.logo}>
-        <Text style={loginStyles.logoText}>weROCK</Text>
-      </View>
-
-      <View style={loginStyles.inputBox}>
-        <BlueInput
-          label="Username"
-          onChangeText={(value) => setData({ ...formData, name: value })}
-        />
-      </View>
-      <View style={loginStyles.inputBox}>
-        <BlueInput
-          containerStyle={{ borderRadius: 4 }}
-          label="Password"
-          onChangeText={(value) => setData({ ...formData, name: value })}
-          secret
-        />
-      </View>
-
-      <View style={loginStyles.btn}>
-        <BlueButton
-          label="Iniciar sessao"
-          style={{ backgroundColor: '#394A58' }}
-          onPressEvent={async () => {
-            await navigation.dispatch(resetActionLogin);
-            setLogin(true);
-          }}
-        />
-      </View>
-      <Text
-        style={loginStyles.link}
-        onPress={() => {
-          Linking.openURL('https://twitter.com/?lang=pt');
-        }}
-      >
-        Esqueceste-te da palavra passe?
-      </Text>
-
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          width: '100%',
-          paddingHorizontal: 20,
-          paddingBottom: 40,
-          paddingTop: 20,
-        }}
-      >
-        <View
-          style={{
-            flex: 1,
-            height: 1,
-            backgroundColor: 'black',
-          }}
-        />
-        <View>
-          <Text style={{ width: 50, textAlign: 'center' }}>OU</Text>
-        </View>
-        <View
-          style={{
-            flex: 1,
-            height: 1,
-            backgroundColor: 'black',
-          }}
-        />
-      </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          width: '100%',
+    <View style={{ flex: 1 }}>
+      <ScrollView
+        contentContainerStyle={{
           justifyContent: 'center',
+          flex: 1,
         }}
       >
-        <View style={loginStyles.iconstyle}>
-          <Feather color="white" size={22} name="facebook"></Feather>
+        <View style={loginStyles.logo}>
+          <Text style={loginStyles.logoText}>weROCK</Text>
         </View>
-        <View style={loginStyles.iconstyle}>
-          <Feather color="white" size={22} name="twitter"></Feather>
+
+        <View style={loginStyles.inputBox}>
+          <BlueInput
+            label="Username"
+            onChangeText={(value) => setData({ ...formData, name: value })}
+          />
         </View>
-        <View style={loginStyles.iconstyle}>
-          <Feather color="white" size={22} name="mail"></Feather>
+        <View style={loginStyles.inputBox}>
+          <BlueInput
+            containerStyle={{ borderRadius: 4 }}
+            label="Password"
+            onChangeText={(value) => setData({ ...formData, name: value })}
+            secret
+          />
         </View>
-      </View>
-    </ScrollView>
+
+        <View style={loginStyles.btn}>
+          <BlueButton
+            label="Iniciar sessao"
+            style={{ backgroundColor: '#394A58' }}
+            onPressEvent={async () => {
+              await navigation.dispatch(resetActionLogin);
+              setLogin(true);
+            }}
+          />
+        </View>
+        <Text
+          style={loginStyles.link}
+          onPress={() => {
+            Linking.openURL('https://twitter.com/?lang=pt');
+          }}
+        >
+          Esqueceste-te da palavra passe?
+        </Text>
+
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            width: '100%',
+            paddingHorizontal: 20,
+            paddingBottom: 40,
+            paddingTop: 20,
+          }}
+        >
+          <View
+            style={{
+              flex: 1,
+              height: 1,
+              backgroundColor: 'black',
+            }}
+          />
+          <View>
+            <Text style={{ width: 50, textAlign: 'center' }}>OU</Text>
+          </View>
+          <View
+            style={{
+              flex: 1,
+              height: 1,
+              backgroundColor: 'black',
+            }}
+          />
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            width: '100%',
+            justifyContent: 'center',
+          }}
+        >
+          <View style={loginStyles.iconstyle}>
+            <Feather color="white" size={22} name="facebook"></Feather>
+          </View>
+          <View style={loginStyles.iconstyle}>
+            <Feather color="white" size={22} name="twitter"></Feather>
+          </View>
+          <View style={loginStyles.iconstyle}>
+            <Feather color="white" size={22} name="mail"></Feather>
+          </View>
+        </View>
+      </ScrollView>
+      <HomeFooter />
+    </View>
   );
 }
 
