@@ -26,8 +26,7 @@ const footer_styles = StyleSheet.create({
   footerContainer: {
     width: '100%',
     backgroundColor: '#576F89',
-    paddingTop: Platform.OS === 'ios' ? 12 : 0,
-    paddingBottom: Platform.OS === 'ios' ? 12 : 0,
+    paddingBottom: Platform.OS === 'ios' ? 12 : 12,
   },
   whiteText: {
     color: 'white',
