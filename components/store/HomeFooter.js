@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Platform } from 'react-native';
 
 export default function HomeFooter() {
   const navigation = useNavigation();
@@ -26,6 +26,7 @@ const footer_styles = StyleSheet.create({
   footerContainer: {
     width: '100%',
     backgroundColor: '#576F89',
+    paddingBottom: Platform.OS === 'ios' ? 12 : 0,
   },
   whiteText: {
     color: 'white',
