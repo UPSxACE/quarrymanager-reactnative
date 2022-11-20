@@ -39,7 +39,7 @@ import StyledOnFocus from './components/StyledOnFocus';
 import ChangeUsername from './screens/store/ChangeUsername';
 import ChangeEmail from './screens/store/ChangeEmail';
 import ChangePassword from './screens/store/ChangePassword';
-import Register from './screens/store/Register';
+import RegisterPage from './screens/store/RegisterPage';
 import LoginPage from './screens/store/LoginPage';
 
 function isRootStack(routeName) {
@@ -73,6 +73,8 @@ export default function App() {
     <SettingsPage setDashboard={setDashboard} setLogin={setLogin} />
   );
   const Login = () => <LoginPage setLogin={setLogin} />;
+
+  const Register = () => <RegisterPage setLogin={setLogin} />;
 
   function HomeTabs({ navigation, route }) {
     const [search, setSearch] = useState('');

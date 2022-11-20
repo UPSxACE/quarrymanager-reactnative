@@ -4,8 +4,15 @@ import BlueButton from '../../components/store/BlueButton';
 import { Feather } from '@expo/vector-icons';
 import { themeColors } from '../../Theme';
 import { Input } from 'native-base';
+import { CommonActions, useNavigation } from '@react-navigation/native';
 
-export default function Register() {
+export default function RegisterPage({ setLogin }) {
+  const navigation = useNavigation();
+  const resetActionHome = CommonActions.reset({
+    index: 0,
+    routes: [{ name: 'HomeStack', params: { screen: 'Home' } }],
+  });
+
   return (
     <ScrollView contentContainerStyle={{ justifyContent: 'center', flex: 1 }}>
       <View style={registerStyle.logo}>
@@ -32,17 +39,25 @@ export default function Register() {
           secret
         />
       </View>
-      <View>
-        <View style={registerStyle.inputBox}>
+      <View style={{ flexDirection: 'row' }}>
+        <View
+          style={[registerStyle.inputBox, { width: '50%', paddingRight: 12 }]}
+        >
           <BlueInput label="dd/mm/aa"></BlueInput>
         </View>
-        <View style={registerStyle.inputBox}>
+        <View
+          style={[registerStyle.inputBox, { width: '50%', paddingLeft: 12 }]}
+        >
           <BlueInput label="Feminino"></BlueInput>
         </View>
       </View>
 
       <View style={registerStyle.btn}>
         <BlueButton
+          onPressEvent={async () => {
+            await navigation.dispatch(resetActionHome);
+            setLogin(true);
+          }}
           label="Registar-se"
           style={{ backgroundColor: '#394A58' }}
         />
