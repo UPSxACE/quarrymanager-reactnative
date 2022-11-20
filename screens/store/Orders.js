@@ -1,9 +1,11 @@
-import { Text, View } from 'react-native';
+import { useCallback, useEffect, useState } from 'react';
+import { ActivityIndicator, Text, View } from 'react-native';
+import BasicLoader from '../../components/BasicLoader';
 import BasicList from '../../components/store/BasicList';
 import ScrollableTabs from '../../components/store/ScrollableTabs';
 import StoreCategory from '../../components/store/StoreCategory';
 
-export default function Orders(props) {
+export default function Orders() {
   const TABS_DATA = ['Todos', 'Ativos', 'Finalizados', 'Favoritos'];
   const CATEGORY_DATA = [
     {
@@ -25,10 +27,12 @@ export default function Orders(props) {
   ];
 
   return (
-    <View>
-      <ScrollableTabs tabs={TABS_DATA} />
-      <StoreCategory data={CATEGORY_DATA} categoryResults={'Resultados'} />
-      <BasicList />
-    </View>
+    <BasicLoader>
+      <View>
+        <ScrollableTabs tabs={TABS_DATA} />
+        <StoreCategory data={CATEGORY_DATA} categoryResults={'Resultados'} />
+        <BasicList />
+      </View>
+    </BasicLoader>
   );
 }
