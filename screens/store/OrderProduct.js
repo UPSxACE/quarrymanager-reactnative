@@ -62,7 +62,7 @@ export default function OrderProduct({ navigation, title, reference }) {
           marginBottom: 2,
           marginLeft: 12,
           paddingLeft: 12,
-          paddingVertical: 4,
+          paddingVertical: 6,
         }}
       >
         <View
@@ -144,7 +144,7 @@ export default function OrderProduct({ navigation, title, reference }) {
           marginBottom: 2,
           marginLeft: 12,
           paddingLeft: 12,
-          paddingVertical: 4,
+          paddingVertical: 6,
         }}
       >
         <Text
@@ -165,7 +165,7 @@ export default function OrderProduct({ navigation, title, reference }) {
           marginLeft: 12,
           paddingHorizontal: 12,
           flexDirection: "row",
-          paddingVertical: 4,
+          paddingVertical: 6,
         }}
       >
         <Text
@@ -224,7 +224,7 @@ export default function OrderProduct({ navigation, title, reference }) {
           marginBottom: 2,
           marginLeft: 12,
           paddingLeft: 12,
-          paddingVertical: 4,
+          paddingVertical: 6,
         }}
       >
         <Text
@@ -233,7 +233,7 @@ export default function OrderProduct({ navigation, title, reference }) {
             fontWeight: "bold",
           }}
         >
-          Pedido
+          Mensagem
         </Text>
       </View>
       <View
@@ -246,7 +246,7 @@ export default function OrderProduct({ navigation, title, reference }) {
       >
         <TextInput
           style={page_styles.input}
-          placeholder="Mudar este estilo depois, hehehe..."
+          placeholder="Mudar este estilo depois, tá feio..."
         />
       </View>
     </ScrollView>

@@ -64,7 +64,7 @@ export default function App() {
           tabBarStyle: { display: "none" },
         }}
       >
-        <HomeTab.Screen name="Home" component={OrderProduct} />
+        <HomeTab.Screen name="Home" component={TestPage} />
         <HomeTab.Screen name="Orders" component={Orders} />
         <HomeTab.Screen name="Profile" component={Profile} />
         <HomeTab.Screen name="Settings" component={Settings} />
