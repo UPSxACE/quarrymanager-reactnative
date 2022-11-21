@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, FlatList } from 'react-native';
 export default function LoteDescription({
   mat,
   cor,
@@ -7,18 +7,21 @@ export default function LoteDescription({
   localar,
   dataex,
   horaex,
+  hideTitle,
 }) {
   return (
     <View>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'center',
-          marginBottom: 4,
-        }}
-      >
-        <Text style={loteDescriptionStyle.titleStyle}>GRN_LRJ_00326</Text>
-      </View>
+      {!hideTitle && (
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            marginBottom: 4,
+          }}
+        >
+          <Text style={loteDescriptionStyle.titleStyle}>GRN_LRJ_00326</Text>
+        </View>
+      )}
       <View style={loteDescriptionStyle.borderStyle}>
         <View style={{ flexDirection: 'row' }}>
           <Text>Material</Text>

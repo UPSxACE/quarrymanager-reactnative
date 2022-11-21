@@ -7,7 +7,7 @@ export default function Profile({ navigation }) {
   return (
     <ScrollView style={page_styles.container}>
       <View style={page_styles.profilePictureContainer}>
-        <View style={{ width: '100%' }}>
+        <View style={{ width: '100%', flexDirection: 'row' }}>
           <Text>Foto de perfil</Text>
 
           <Pressable
@@ -74,18 +74,18 @@ export default function Profile({ navigation }) {
       <View style={{ paddingBottom: 50 }}>
         <Pressable
           style={{ marginTop: 12 }}
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => navigation.navigate('Alterar Username')}
         >
           <Text>Alterar Username</Text>
         </Pressable>
         <Pressable
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => navigation.navigate('Alterar Email')}
           style={{ marginTop: 12 }}
         >
           <Text>Alterar E-mail</Text>
         </Pressable>
         <Pressable
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => navigation.navigate('Alterar Palavra-Passe')}
           style={{ marginTop: 12 }}
         >
           <Text>Alterar Palavra-Passe</Text>

@@ -1,13 +1,21 @@
 import * as React from 'react';
 import ArrowButton from '../../components/store/ArrowButton';
 import { View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { CommonActions, useNavigation } from '@react-navigation/native';
 
-export default function SettingsPage({ setDashboard }) {
+export default function SettingsPage({ setDashboard, setLogin }) {
   const navigation = useNavigation();
+  const resetActionLogout = CommonActions.reset({
+    index: 0,
+    routes: [{ name: 'HomeStack', params: { screen: 'Login' } }],
+  });
+  const resetActionDashboard = CommonActions.reset({
+    index: 0,
+    routes: [{ name: 'HomeStack', params: { screen: 'Dashboard' } }],
+  });
 
   return (
-    <View h={'100%'}>
+    <View style={{ backgroundColor: 'white', flex: 1 }}>
       <View
         style={{
           flexDirection: 'row',
@@ -17,9 +25,9 @@ export default function SettingsPage({ setDashboard }) {
       >
         <ArrowButton
           label="Dashboard"
-          destiny={['HomeStack', 'Dashboard']}
+          destiny={['HomeStack', 'Home']}
           onPressEvent={async () => {
-            await navigation.navigate('HomeStack', { screen: 'Dashboard' });
+            await navigation.dispatch(resetActionDashboard);
             setDashboard(true);
           }}
         />
@@ -58,7 +66,14 @@ export default function SettingsPage({ setDashboard }) {
           paddingBottom: 12,
         }}
       >
-        <ArrowButton label="Terminar Sessão" destiny={['BtHome', 'Home']} />
+        <ArrowButton
+          label="Terminar Sessão"
+          destiny={['HomeStack', 'Login']}
+          onPressEvent={async () => {
+            await navigation.dispatch(resetActionLogout);
+            setLogin(false);
+          }}
+        />
       </View>
     </View>
   );

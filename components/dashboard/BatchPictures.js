@@ -5,38 +5,52 @@ import {
   Image,
   FlatList,
   Dimensions,
-} from "react-native";
-import { Feather } from "@expo/vector-icons";
+} from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
 export default function Characteristics({ horizontalPadding = 0 }) {
   const data = [
     {
-      id: "1",
-      pic: "https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg",
+      id: '1',
+      pic: {
+        uri: 'https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg',
+      },
     },
     {
-      id: "2",
-      pic: "https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg",
+      id: '2',
+      pic: {
+        uri: 'https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg',
+      },
     },
     {
-      id: "3",
-      pic: "https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg",
+      id: '3',
+      pic: {
+        uri: 'https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg',
+      },
     },
     {
-      id: "4",
-      pic: "https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg",
+      id: '4',
+      pic: {
+        uri: 'https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg',
+      },
     },
     {
-      id: "5",
-      pic: "https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg",
+      id: '5',
+      pic: {
+        uri: 'https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg',
+      },
     },
     {
-      id: "6",
-      pic: "https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg",
+      id: '6',
+      pic: {
+        uri: 'https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg',
+      },
     },
     {
-      id: "7",
-      pic: "https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg",
+      id: '7',
+      pic: {
+        uri: 'https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Johnny-Depp2.jpg',
+      },
     },
   ];
   const Item = ({ item, index }) => {
@@ -48,17 +62,15 @@ export default function Characteristics({ horizontalPadding = 0 }) {
             marginLeft:
               index == 1
                 ? 0
-                : (Dimensions.get("window").width - 36 - horizontalPadding) *
+                : (Dimensions.get('window').width - 36 - horizontalPadding) *
                   0.05,
             height:
-              (Dimensions.get("window").width - 36 - horizontalPadding) * 0.16,
+              (Dimensions.get('window').width - 36 - horizontalPadding) * 0.16,
             width:
-              (Dimensions.get("window").width - 36 - horizontalPadding) * 0.16,
+              (Dimensions.get('window').width - 36 - horizontalPadding) * 0.16,
           }}
           alt="Batch picture"
-          source={{
-            uri: item.pic,
-          }}
+          source={item.pic}
         />
       );
     } else if (index == 5) {
@@ -66,17 +78,17 @@ export default function Characteristics({ horizontalPadding = 0 }) {
         <View
           style={{
             height:
-              (Dimensions.get("window").width - 36 - horizontalPadding) * 0.16,
+              (Dimensions.get('window').width - 36 - horizontalPadding) * 0.16,
             width:
-              (Dimensions.get("window").width - 36 - horizontalPadding) * 0.16,
+              (Dimensions.get('window').width - 36 - horizontalPadding) * 0.16,
             borderRadius: 4,
             marginLeft:
-              (Dimensions.get("window").width - 36 - horizontalPadding) * 0.05,
+              (Dimensions.get('window').width - 36 - horizontalPadding) * 0.05,
             marginRight:
-              (Dimensions.get("window").width - 36 - horizontalPadding) * 0.16,
-            backgroundColor: "#394A58",
-            justifyContent: "center",
-            alignItems: "center",
+              (Dimensions.get('window').width - 36 - horizontalPadding) * 0.16,
+            backgroundColor: '#394A58',
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
           <Feather color="#ffff" size={28} name="chevron-right" />
@@ -89,26 +101,24 @@ export default function Characteristics({ horizontalPadding = 0 }) {
   };
 
   return (
-    <View style={{ alignItems: "center" }}>
+    <View style={{ alignItems: 'center' }}>
       <View>
         <Image
           style={{
-            width: Dimensions.get("window").width - 36 - horizontalPadding,
+            width: Dimensions.get('window').width - 36 - horizontalPadding,
             height: 175,
             borderRadius: 4,
           }}
           alt="Batch picture"
-          source={{
-            uri: data[0].pic,
-          }}
+          source={data[0].pic}
         />
       </View>
 
       <FlatList
         style={{ paddingTop: 16 }}
         contentContainerStyle={{
-          flexDirection: "row",
-          width: Dimensions.get("window").width - 36 - horizontalPadding,
+          flexDirection: 'row',
+          width: Dimensions.get('window').width - 36 - horizontalPadding,
         }}
         scrollEnabled={false}
         data={data}

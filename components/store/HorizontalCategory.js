@@ -15,9 +15,7 @@ function Item({ id, title, price, imageUrl }) {
         <Image
           alt="Product Picture"
           style={page_styles.productPicture}
-          source={{
-            uri: imageUrl,
-          }}
+          source={imageUrl}
         />
       </View>
 

@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Animated, Button, StyleSheet, Text } from "react-native";
+import { Animated, Button, Pressable, StyleSheet, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TestPage from "./screens/store/TestPage";
@@ -17,7 +17,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
 import TestPage2 from "./screens/store/TestPage2";
 import TestPage3 from "./screens/store/TestPage3";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Store from "./screens/store/Store";
 import DashboardHome from "./screens/dashboard/DashboardHome";
 import Orders from "./screens/store/Orders";
@@ -29,10 +29,19 @@ import {
   theme_obj,
   theme_config,
   CustomBottomTab,
+  SearchBarHeader,
 } from "./Theme";
-import OrderProduct from "./screens/store/OrderProduct";
+
 import Product from "./screens/store/Product";
 import DashboardLotes from "./screens/dashboard/DashboardLotes";
+import { themeColors } from "./Theme";
+import StyledOnFocus from "./components/StyledOnFocus";
+import ChangeUsername from "./screens/store/ChangeUsername";
+import ChangeEmail from "./screens/store/ChangeEmail";
+import ChangePassword from "./screens/store/ChangePassword";
+import RegisterPage from "./screens/store/RegisterPage";
+import LoginPage from "./screens/store/LoginPage";
+import OrderProduct from "./screens/store/OrderProduct";
 
 function isRootStack(routeName) {
   switch (routeName) {
@@ -41,6 +50,12 @@ function isRootStack(routeName) {
     case "Tests3":
       return true;
     case "Produto":
+      return true;
+    case "Alterar Username":
+      return true;
+    case "Alterar Email":
+      return true;
+    case "Alterar Palavra-Passe":
       return true;
     default:
       return false;
@@ -52,24 +67,54 @@ const HomeTab = createBottomTabNavigator();
 export default function App() {
   const theme = extendTheme(theme_obj);
   const [dashboard, setDashboard] = useState(false);
+  const [login, setLogin] = useState(false);
 
-  const Settings = () => <SettingsPage setDashboard={setDashboard} />;
+  const Settings = () => (
+    <SettingsPage setDashboard={setDashboard} setLogin={setLogin} />
+  );
+  const Login = () => <LoginPage setLogin={setLogin} />;
+
+  const Register = () => <RegisterPage setLogin={setLogin} />;
 
   function HomeTabs({ navigation, route }) {
+    const [search, setSearch] = useState("");
+
     return (
       <HomeTab.Navigator
+        initialRouteName={"Login"}
         screenOptions={{
           ...gradientHeaderOptions,
           //...gradientTabBarOptions,
           tabBarStyle: { display: "none" },
         }}
       >
-        <HomeTab.Screen name="Home" component={TestPage} />
+        <HomeTab.Screen
+          name={dashboard ? "Dashboard" : login ? "Home" : "Login"}
+          options={{
+            headerTintColor: "white",
+            headerShown: !login ? false : true,
+            header: dashboard
+              ? undefined
+              : () => {
+                  return (
+                    <SearchBarHeader
+                      searchState={{ state: search, setState: setSearch }}
+                    />
+                  );
+                },
+          }}
+          component={dashboard ? DashboardHome : login ? Store : Login}
+        />
         <HomeTab.Screen name="Orders" component={Orders} />
         <HomeTab.Screen name="Profile" component={Profile} />
         <HomeTab.Screen name="Settings" component={Settings} />
-        <HomeTab.Screen name="Dashboard" component={DashboardHome} />
         <HomeTab.Screen name="Lotes" component={DashboardLotes} />
+
+        <HomeTab.Screen
+          options={{ headerShown: false }}
+          name="Register"
+          component={Register}
+        />
       </HomeTab.Navigator>
     );
   }
@@ -106,9 +151,28 @@ export default function App() {
               component={Product}
               options={{ ...gradientHeaderOptions }}
             ></RootStack.Screen>
+            <RootStack.Screen
+              name="Alterar Username"
+              component={ChangeUsername}
+              options={{ ...gradientHeaderOptions }}
+            ></RootStack.Screen>
+            <RootStack.Screen
+              name="Alterar Email"
+              component={ChangeEmail}
+              options={{ ...gradientHeaderOptions }}
+            ></RootStack.Screen>
+            <RootStack.Screen
+              name="Alterar Palavra-Passe"
+              component={ChangePassword}
+              options={{ ...gradientHeaderOptions }}
+            ></RootStack.Screen>
           </RootStack.Navigator>
-          <StatusBar style="light" />
-          <CustomBottomTab dashboard={dashboard} setDashboard={setDashboard} />
+          <StatusBar style={login ? "light" : "dark"} />
+          <CustomBottomTab
+            login={login}
+            dashboard={dashboard}
+            setDashboard={setDashboard}
+          />
         </NavigationContainer>
       </GestureHandlerRootView>
     </NativeBaseProvider>

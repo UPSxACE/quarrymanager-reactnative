@@ -7,14 +7,74 @@ StyledOnFocus.Input = ({
   children,
   onFocusStyle,
   inputRightElement,
+  inputLeftElement,
   containerStyle,
+  containerFocusStyle,
   rightStyle,
   rightFocusStyle,
+  leftStyle,
+  leftFocusStyle,
   ...props
 }) => {
   const [focus, setFocus] = useState(false);
   return (
-    <View style={{ flexDirection: 'row', ...containerStyle }}>
+    <View
+      style={
+        focus
+          ? containerStyle
+            ? containerFocusStyle
+              ? {
+                  flexDirection: 'row',
+                  overflow: 'hidden',
+                  ...containerStyle,
+                  ...containerFocusStyle,
+                }
+              : { flexDirection: 'row', overflow: 'hidden', ...containerStyle }
+            : containerFocusStyle
+            ? {
+                flexDirection: 'row',
+                overflow: 'hidden',
+                ...containerFocusStyle,
+              }
+            : { flexDirection: 'row', overflow: 'hidden' }
+          : containerStyle
+          ? {
+              flexDirection: 'row',
+              overflow: 'hidden',
+              ...containerStyle,
+            }
+          : {
+              flexDirection: 'row',
+              overflow: 'hidden',
+            }
+      }
+      //style={{ flexDirection: 'row', overflow: 'hidden', ...containerStyle }}
+    >
+      {inputLeftElement && (
+        <View
+          style={
+            focus
+              ? leftStyle
+                ? leftFocusStyle
+                  ? { width: 40, ...leftStyle, ...leftFocusStyle }
+                  : { width: 40, ...leftStyle }
+                : leftFocusStyle
+                ? { width: 40, ...leftFocusStyle }
+                : { width: 40 }
+              : leftStyle
+              ? {
+                  width: 40,
+                  ...leftStyle,
+                }
+              : {
+                  width: 40,
+                }
+          }
+        >
+          {inputLeftElement}
+        </View>
+      )}
+
       <TextInput
         {...props}
         style={

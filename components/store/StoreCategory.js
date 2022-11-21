@@ -20,9 +20,7 @@ function Item({ id, title, price, imageUrl, description }) {
         <Image
           alt="Product Picture"
           style={page_styles.productPicture}
-          source={{
-            uri: imageUrl,
-          }}
+          source={imageUrl}
         />
 
         <Text style={{ fontWeight: 'bold', fontSize: 16 }}>{title}</Text>
