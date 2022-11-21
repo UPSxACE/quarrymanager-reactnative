@@ -1,15 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
-import { Animated, Button, Pressable, StyleSheet, Text } from 'react-native';
+import {
+  ActivityIndicator,
+  Animated,
+  Button,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TestPage from './screens/store/TestPage';
-import {
-  NativeBaseProvider,
-  extendTheme,
-  View,
-  Box,
-  HStack,
-} from 'native-base';
+import { NativeBaseProvider, extendTheme, Box, HStack } from 'native-base';
 import { LinearGradient } from 'expo-linear-gradient';
 import Profile from './screens/store/Profile';
 import SettingsPage from './screens/store/SettingsPage';
@@ -17,7 +19,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
 import TestPage2 from './screens/store/TestPage2';
 import TestPage3 from './screens/store/TestPage3';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Store from './screens/store/Store';
 import DashboardHome from './screens/dashboard/DashboardHome';
 import Orders from './screens/store/Orders';
@@ -41,6 +43,9 @@ import ChangeEmail from './screens/store/ChangeEmail';
 import ChangePassword from './screens/store/ChangePassword';
 import RegisterPage from './screens/store/RegisterPage';
 import LoginPage from './screens/store/LoginPage';
+import * as SplashScreen from 'expo-splash-screen';
+
+SplashScreen.preventAutoHideAsync();
 
 function isRootStack(routeName) {
   switch (routeName) {
@@ -68,6 +73,38 @@ export default function App() {
   const theme = extendTheme(theme_obj);
   const [dashboard, setDashboard] = useState(false);
   const [login, setLogin] = useState(false);
+  const [appIsReady, setAppIsReady] = useState(false);
+
+  useEffect(() => {
+    async function prepare() {
+      try {
+        // Pre-load fonts, make any API calls you need to do here
+        //await Font.loadAsync(Entype.font);
+        // Artificially delay for two seconds to simulate a slow loading
+        // experience. Please remove this if you copy and paste the code!
+        // fake 2 seconds load:
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        // Tell the application to render
+        setAppIsReady(true);
+      }
+    }
+
+    prepare();
+  }, []);
+  const onLayoutRootView = useCallback(async () => {
+    console.log('USED!');
+    if (appIsReady) {
+      // This tells the splash screen to hide immediately! If we call this after
+      // `setAppIsReady`, then we may see a blank screen while the app is
+      // loading its initial state and rendering its first pixels. So instead,
+      // we hide the splash screen once we know the root view has already
+      // performed layout.
+      await SplashScreen.hideAsync();
+    }
+  }, [appIsReady]);
 
   const Settings = () => (
     <SettingsPage setDashboard={setDashboard} setLogin={setLogin} />
@@ -119,63 +156,79 @@ export default function App() {
     );
   }
 
+  if (!appIsReady) {
+    console.log('return 1');
+    return null;
+    return (
+      <View
+        style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+        onLayout={onLayoutRootView}
+      >
+        <Text>Loading...</Text>
+        <ActivityIndicator size={'large'} />
+      </View>
+    );
+  }
+
   return (
-    <NativeBaseProvider theme={theme} config={theme_config}>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <NavigationContainer>
-          <RootStack.Navigator
-            screenOptions={({ route }) => ({
-              //animation: 'slide_from_right',
-              headerShown: isRootStack(route.name) ? true : false,
-            })}
-          >
-            <RootStack.Screen
-              name="HomeStack"
-              component={HomeTabs}
-            ></RootStack.Screen>
-            <RootStack.Screen
-              name="Tests2"
-              component={TestPage2}
-              options={{
-                ...gradientHeaderOptions,
-                gestureDirection: 'horizontal',
-              }}
-            ></RootStack.Screen>
-            <RootStack.Screen
-              name="Tests3"
-              component={TestPage3}
-              options={{ ...gradientHeaderOptions }}
-            ></RootStack.Screen>
-            <RootStack.Screen
-              name="Produto"
-              component={Product}
-              options={{ ...gradientHeaderOptions }}
-            ></RootStack.Screen>
-            <RootStack.Screen
-              name="Alterar Username"
-              component={ChangeUsername}
-              options={{ ...gradientHeaderOptions }}
-            ></RootStack.Screen>
-            <RootStack.Screen
-              name="Alterar Email"
-              component={ChangeEmail}
-              options={{ ...gradientHeaderOptions }}
-            ></RootStack.Screen>
-            <RootStack.Screen
-              name="Alterar Palavra-Passe"
-              component={ChangePassword}
-              options={{ ...gradientHeaderOptions }}
-            ></RootStack.Screen>
-          </RootStack.Navigator>
-          <StatusBar style={login ? 'light' : 'dark'} />
-          <CustomBottomTab
-            login={login}
-            dashboard={dashboard}
-            setDashboard={setDashboard}
-          />
-        </NavigationContainer>
-      </GestureHandlerRootView>
-    </NativeBaseProvider>
+    <View style={{ flex: 1 }}>
+      <NativeBaseProvider theme={theme} config={theme_config}>
+        <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
+          <NavigationContainer>
+            <RootStack.Navigator
+              screenOptions={({ route }) => ({
+                //animation: 'slide_from_right',
+                headerShown: isRootStack(route.name) ? true : false,
+              })}
+            >
+              <RootStack.Screen
+                name="HomeStack"
+                component={HomeTabs}
+              ></RootStack.Screen>
+              <RootStack.Screen
+                name="Tests2"
+                component={TestPage2}
+                options={{
+                  ...gradientHeaderOptions,
+                  gestureDirection: 'horizontal',
+                }}
+              ></RootStack.Screen>
+              <RootStack.Screen
+                name="Tests3"
+                component={TestPage3}
+                options={{ ...gradientHeaderOptions }}
+              ></RootStack.Screen>
+              <RootStack.Screen
+                name="Produto"
+                component={Product}
+                options={{ ...gradientHeaderOptions }}
+              ></RootStack.Screen>
+              <RootStack.Screen
+                name="Alterar Username"
+                component={ChangeUsername}
+                options={{ ...gradientHeaderOptions }}
+              ></RootStack.Screen>
+              <RootStack.Screen
+                name="Alterar Email"
+                component={ChangeEmail}
+                options={{ ...gradientHeaderOptions }}
+              ></RootStack.Screen>
+              <RootStack.Screen
+                name="Alterar Palavra-Passe"
+                component={ChangePassword}
+                options={{ ...gradientHeaderOptions }}
+              ></RootStack.Screen>
+            </RootStack.Navigator>
+            <StatusBar style={login ? 'light' : 'dark'} />
+            <CustomBottomTab
+              login={login}
+              dashboard={dashboard}
+              setDashboard={setDashboard}
+            />
+          </NavigationContainer>
+        </GestureHandlerRootView>
+      </NativeBaseProvider>
+    </View>
   );
 }
 
