@@ -64,7 +64,8 @@ export default function RegisterPage({ setLogin }) {
       <View style={registerStyle.btn}>
         <BlueButton
           onPressEvent={async () => {
-            await navigation.dispatch(resetActionHome);
+            // await
+            navigation.dispatch(resetActionHome);
             setLogin(true);
           }}
           label="Registar-se"

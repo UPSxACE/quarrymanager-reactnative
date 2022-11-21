@@ -31,12 +31,10 @@ export default function Orders() {
   SplashScreen.preventAutoHideAsync();
 
   return (
-    <BasicLoader>
-      <View>
-        <ScrollableTabs tabs={TABS_DATA} />
-        <StoreCategory data={CATEGORY_DATA} categoryResults={'Resultados'} />
-        <BasicList />
-      </View>
-    </BasicLoader>
+    <View>
+      <ScrollableTabs tabs={TABS_DATA} />
+      <StoreCategory data={CATEGORY_DATA} categoryResults={'Resultados'} />
+      <BasicList />
+    </View>
   );
 }

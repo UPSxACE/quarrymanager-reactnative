@@ -55,7 +55,8 @@ export default function LoginPage({ setLogin }) {
             label="Iniciar sessao"
             style={{ backgroundColor: '#394A58' }}
             onPressEvent={async () => {
-              await navigation.dispatch(resetActionLogin);
+              // await
+              navigation.dispatch(resetActionLogin);
               setLogin(true);
             }}
           />

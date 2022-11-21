@@ -199,7 +199,8 @@ export function CustomBottomTab({ dashboard, setDashboard, login }) {
       destiny: ['HomeStack', 'Home'],
       icon: 'log-out',
       onPressEvent: async () => {
-        await navigation.dispatch(resetActionHome);
+        // await
+        navigation.dispatch(resetActionHome);
         setDashboard(false);
       },
     },

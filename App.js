@@ -1,4 +1,4 @@
-import { StatusBar } from "expo-status-bar";
+import { StatusBar } from 'expo-status-bar';
 import {
   ActivityIndicator,
   Animated,
@@ -7,24 +7,24 @@ import {
   StyleSheet,
   Text,
   View,
-} from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import TestPage from "./screens/store/TestPage";
-import { NativeBaseProvider, extendTheme, Box, HStack } from "native-base";
-import { LinearGradient } from "expo-linear-gradient";
-import Profile from "./screens/store/Profile";
-import SettingsPage from "./screens/store/SettingsPage";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Feather } from "@expo/vector-icons";
-import TestPage2 from "./screens/store/TestPage2";
-import TestPage3 from "./screens/store/TestPage3";
-import { useCallback, useEffect, useState } from "react";
-import Store from "./screens/store/Store";
-import DashboardHome from "./screens/dashboard/DashboardHome";
-import Orders from "./screens/store/Orders";
-import StoreCategories from "./screens/store/StoreCategories";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import TestPage from './screens/store/TestPage';
+import { NativeBaseProvider, extendTheme, Box, HStack } from 'native-base';
+import { LinearGradient } from 'expo-linear-gradient';
+import Profile from './screens/store/Profile';
+import SettingsPage from './screens/store/SettingsPage';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Feather } from '@expo/vector-icons';
+import TestPage2 from './screens/store/TestPage2';
+import TestPage3 from './screens/store/TestPage3';
+import { useCallback, useEffect, useState } from 'react';
+import Store from './screens/store/Store';
+import DashboardHome from './screens/dashboard/DashboardHome';
+import Orders from './screens/store/Orders';
+import StoreCategories from './screens/store/StoreCategories';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import {
   gradientHeaderOptions,
   gradientTabBarOptions,
@@ -32,34 +32,34 @@ import {
   theme_config,
   CustomBottomTab,
   SearchBarHeader,
-} from "./Theme";
-import Product from "./screens/store/Product";
-import DashboardLotes from "./screens/dashboard/DashboardLotes";
-import { themeColors } from "./Theme";
-import StyledOnFocus from "./components/StyledOnFocus";
-import ChangeUsername from "./screens/store/ChangeUsername";
-import ChangeEmail from "./screens/store/ChangeEmail";
-import ChangePassword from "./screens/store/ChangePassword";
-import RegisterPage from "./screens/store/RegisterPage";
-import LoginPage from "./screens/store/LoginPage";
-import * as SplashScreen from "expo-splash-screen";
-import OrderProduct from "./screens/store/OrderProduct";
+} from './Theme';
+import Product from './screens/store/Product';
+import DashboardLotes from './screens/dashboard/DashboardLotes';
+import { themeColors } from './Theme';
+import StyledOnFocus from './components/StyledOnFocus';
+import ChangeUsername from './screens/store/ChangeUsername';
+import ChangeEmail from './screens/store/ChangeEmail';
+import ChangePassword from './screens/store/ChangePassword';
+import RegisterPage from './screens/store/RegisterPage';
+import LoginPage from './screens/store/LoginPage';
+import * as SplashScreen from 'expo-splash-screen';
+import OrderProduct from './screens/store/OrderProduct';
 
 SplashScreen.preventAutoHideAsync();
 
 function isRootStack(routeName) {
   switch (routeName) {
-    case "Tests2":
+    case 'Tests2':
       return true;
-    case "Tests3":
+    case 'Tests3':
       return true;
-    case "Produto":
+    case 'Produto':
       return true;
-    case "Alterar Username":
+    case 'Alterar Username':
       return true;
-    case "Alterar Email":
+    case 'Alterar Email':
       return true;
-    case "Alterar Palavra-Passe":
+    case 'Alterar Palavra-Passe':
       return true;
     default:
       return false;
@@ -94,7 +94,7 @@ export default function App() {
     prepare();
   }, []);
   const onLayoutRootView = useCallback(async () => {
-    console.log("USED!");
+    console.log('USED!');
     if (appIsReady) {
       // This tells the splash screen to hide immediately! If we call this after
       // `setAppIsReady`, then we may see a blank screen while the app is
@@ -113,21 +113,21 @@ export default function App() {
   const Register = () => <RegisterPage setLogin={setLogin} />;
 
   function HomeTabs({ navigation, route }) {
-    const [search, setSearch] = useState("");
+    const [search, setSearch] = useState('');
 
     return (
       <HomeTab.Navigator
-        initialRouteName={"Login"}
+        initialRouteName={'Login'}
         screenOptions={{
           ...gradientHeaderOptions,
           //...gradientTabBarOptions,
-          tabBarStyle: { display: "none" },
+          tabBarStyle: { display: 'none' },
         }}
       >
         <HomeTab.Screen
-          name={dashboard ? "Dashboard" : login ? "Home" : "Login"}
+          name={dashboard ? 'Dashboard' : login ? 'Home' : 'Login'}
           options={{
-            headerTintColor: "white",
+            headerTintColor: 'white',
             headerShown: !login ? false : true,
             header: dashboard
               ? undefined
@@ -156,15 +156,15 @@ export default function App() {
   }
 
   if (!appIsReady) {
-    console.log("return 1");
+    console.log('return 1');
     return null;
     return (
       <View
-        style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
         onLayout={onLayoutRootView}
       >
         <Text>Loading...</Text>
-        <ActivityIndicator size={"large"} />
+        <ActivityIndicator size={'large'} />
       </View>
     );
   }
@@ -189,7 +189,7 @@ export default function App() {
                 component={TestPage2}
                 options={{
                   ...gradientHeaderOptions,
-                  gestureDirection: "horizontal",
+                  gestureDirection: 'horizontal',
                 }}
               ></RootStack.Screen>
               <RootStack.Screen
@@ -218,7 +218,7 @@ export default function App() {
                 options={{ ...gradientHeaderOptions }}
               ></RootStack.Screen>
             </RootStack.Navigator>
-            <StatusBar style={login ? "light" : "dark"} />
+            <StatusBar style={login ? 'light' : 'dark'} />
             <CustomBottomTab
               login={login}
               dashboard={dashboard}

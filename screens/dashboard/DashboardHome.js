@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native';
+import { ActivityIndicator, Text, View } from 'react-native';
 import DashboardCard from '../../components/dashboard/DashboardCard';
 import HorizontalList from '../../components/dashboard/HorizontalList';
 
@@ -24,6 +24,16 @@ const HLDATA = [
 ];
 
 export default function DashboardHome() {
+  /*return (
+    <View
+      style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+      //onLayout={onLayoutRootView}
+    >
+      <Text>Loading...</Text>
+      <ActivityIndicator size={'large'} />
+    </View>
+  );*/
+
   return (
     <View style={{ paddingHorizontal: 20 }}>
       <View

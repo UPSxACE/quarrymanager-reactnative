@@ -27,7 +27,8 @@ export default function SettingsPage({ setDashboard, setLogin }) {
           label="Dashboard"
           destiny={['HomeStack', 'Home']}
           onPressEvent={async () => {
-            await navigation.dispatch(resetActionDashboard);
+            //await
+            navigation.dispatch(resetActionDashboard);
             setDashboard(true);
           }}
         />
@@ -70,7 +71,8 @@ export default function SettingsPage({ setDashboard, setLogin }) {
           label="Terminar Sessão"
           destiny={['HomeStack', 'Login']}
           onPressEvent={async () => {
-            await navigation.dispatch(resetActionLogout);
+            // await
+            navigation.dispatch(resetActionLogout);
             setLogin(false);
           }}
         />
