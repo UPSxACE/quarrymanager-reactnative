@@ -44,6 +44,7 @@ import RegisterPage from './screens/store/RegisterPage';
 import LoginPage from './screens/store/LoginPage';
 import * as SplashScreen from 'expo-splash-screen';
 import OrderProduct from './screens/store/OrderProduct';
+import TestPage4 from './screens/store/TestPage4';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -141,14 +142,14 @@ export default function App() {
           }}
           component={dashboard ? DashboardHome : login ? Store : Login}
         />
-        <HomeTab.Screen name="Orders" component={Orders} />
-        <HomeTab.Screen name="Profile" component={Profile} />
-        <HomeTab.Screen name="Settings" component={Settings} />
-        <HomeTab.Screen name="Lotes" component={DashboardLotes} />
+        <HomeTab.Screen name='Orders' component={TestPage4} />
+        <HomeTab.Screen name='Profile' component={Profile} />
+        <HomeTab.Screen name='Settings' component={Settings} />
+        <HomeTab.Screen name='Lotes' component={DashboardLotes} />
 
         <HomeTab.Screen
           options={{ headerShown: false }}
-          name="Register"
+          name='Register'
           component={Register}
         />
       </HomeTab.Navigator>
@@ -181,11 +182,11 @@ export default function App() {
               })}
             >
               <RootStack.Screen
-                name="HomeStack"
+                name='HomeStack'
                 component={HomeTabs}
               ></RootStack.Screen>
               <RootStack.Screen
-                name="Tests2"
+                name='Tests2'
                 component={TestPage2}
                 options={{
                   ...gradientHeaderOptions,
@@ -193,28 +194,33 @@ export default function App() {
                 }}
               ></RootStack.Screen>
               <RootStack.Screen
-                name="Tests3"
+                name='Tests3'
                 component={TestPage3}
                 options={{ ...gradientHeaderOptions }}
               ></RootStack.Screen>
               <RootStack.Screen
-                name="Produto"
+                name='Produto'
                 component={Product}
                 options={{ ...gradientHeaderOptions }}
               ></RootStack.Screen>
               <RootStack.Screen
-                name="Alterar Username"
+                name='Alterar Username'
                 component={ChangeUsername}
                 options={{ ...gradientHeaderOptions }}
               ></RootStack.Screen>
               <RootStack.Screen
-                name="Alterar Email"
+                name='Alterar Email'
                 component={ChangeEmail}
                 options={{ ...gradientHeaderOptions }}
               ></RootStack.Screen>
               <RootStack.Screen
-                name="Alterar Palavra-Passe"
+                name='Alterar Palavra-Passe'
                 component={ChangePassword}
+                options={{ ...gradientHeaderOptions }}
+              ></RootStack.Screen>
+              <RootStack.Screen
+                name='Encomendar Produto'
+                component={OrderProduct}
                 options={{ ...gradientHeaderOptions }}
               ></RootStack.Screen>
             </RootStack.Navigator>

@@ -88,11 +88,11 @@ export const SearchBarHeader = ({ searchState }) => {
               marginBottom: 8,
               backgroundColor: 'white',
               borderRadius: 4,
-              borderWidth: 1.5,
+              borderWidth: 1,
               borderColor: themeColors.main.mainTextColor,
               //borderColor: '#0891B2',
             }}
-            containerFocusStyle={{ borderColor: '#0891B2' }}
+            containerFocusStyle={{ borderColor: '#0891B2', borderWidth: 1.5 }}
             style={{
               width: '100%',
               placeholderTextColor: '#BDBDBD',
