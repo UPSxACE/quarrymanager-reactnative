@@ -27,9 +27,6 @@ export default function Orders() {
     },
   ];
 
-  // Is this in the right place?
-  SplashScreen.preventAutoHideAsync();
-
   return (
     <View>
       <ScrollableTabs tabs={TABS_DATA} />
