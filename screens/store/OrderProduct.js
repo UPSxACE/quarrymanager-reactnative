@@ -108,7 +108,7 @@ export default function OrderProduct({ navigation, title, reference }) {
                 alignItems: "flex-end",
               }}
               inputRightElement={
-                <Feather size={16} name={"edit"} color={"gray"} />
+                <Feather size={16} name={"edit-3"} color={"gray"} />
               }
               keyboardType={Platform.OS == "android" ? "numeric" : "number-pad"}
             ></StyledOnFocus.Input>
