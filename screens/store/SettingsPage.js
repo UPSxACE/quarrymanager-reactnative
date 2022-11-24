@@ -2,6 +2,7 @@ import * as React from "react";
 import ArrowButton from "../../components/store/ArrowButton";
 import { View } from "react-native";
 import { CommonActions, useNavigation } from "@react-navigation/native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function SettingsPage({ setDashboard, setLogin }) {
   const navigation = useNavigation();
@@ -24,6 +25,7 @@ export default function SettingsPage({ setDashboard, setLogin }) {
         }}
       >
         <ArrowButton
+
           label="Dashboard"
           destiny={["HomeStack", "Home"]}
           onPressEvent={async () => {
@@ -74,6 +76,7 @@ export default function SettingsPage({ setDashboard, setLogin }) {
             // await
             navigation.dispatch(resetActionLogout);
             setLogin(false);
+            AsyncStorage.removeItem('login');
           }}
         />
       </View>
