@@ -286,6 +286,7 @@ export default function OrderProduct({ navigation, title, reference }) {
           <TextInput
             style={page_styles.input}
             placeholder="Mudar este estilo depois, tá feio..."
+            textAlignVertical="top"
           />
         </View>
       </View>
