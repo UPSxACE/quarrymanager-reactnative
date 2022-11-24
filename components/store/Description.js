@@ -1,6 +1,9 @@
 import { Text, StyleSheet, View, Button } from "react-native";
+import BlueButton from "./BlueButton";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Description({ descricao, preco }) {
+  const navigation = useNavigation();
   return (
     <View style={{ backgroundColor: "white" }}>
       <View style={descriptionStyles.alignHead}>
@@ -15,7 +18,14 @@ export default function Description({ descricao, preco }) {
         <Text style={descriptionStyles.descriptionText}>{descricao}</Text>
       </View>
       <View style={descriptionStyles.alignDiv}>
-        <Button title="Pedir Orçamento" style={descriptionStyles.buttonStyle} />
+        <View style={{ width: 130 }}>
+          <BlueButton
+            label={"Pedir orçamento"}
+            onPressEvent={() => {
+              navigation.navigate("Pedido de Orçamento");
+            }}
+          />
+        </View>
       </View>
     </View>
   );
@@ -46,10 +56,7 @@ const descriptionStyles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 16,
   },
-  buttonStyle: {
-    height: 40,
-    width: 160,
-  },
+
   descriptionText: {
     fontSize: 14,
   },
