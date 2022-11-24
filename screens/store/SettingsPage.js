@@ -2,6 +2,7 @@ import * as React from 'react';
 import ArrowButton from '../../components/store/ArrowButton';
 import { View } from 'react-native';
 import { CommonActions, useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function SettingsPage({ setDashboard, setLogin }) {
   const navigation = useNavigation();
@@ -24,7 +25,7 @@ export default function SettingsPage({ setDashboard, setLogin }) {
         }}
       >
         <ArrowButton
-          label="Dashboard"
+          label='Dashboard'
           destiny={['HomeStack', 'Home']}
           onPressEvent={async () => {
             //await
@@ -40,7 +41,7 @@ export default function SettingsPage({ setDashboard, setLogin }) {
           paddingBottom: 12,
         }}
       >
-        <ArrowButton label="Definições da Conta" destiny={['BtHome', 'Home']} />
+        <ArrowButton label='Definições da Conta' destiny={['BtHome', 'Home']} />
       </View>
       <View
         style={{
@@ -49,7 +50,7 @@ export default function SettingsPage({ setDashboard, setLogin }) {
           paddingBottom: 12,
         }}
       >
-        <ArrowButton label="Pedidos" destiny={['BtHome', 'Home']} />
+        <ArrowButton label='Pedidos' destiny={['BtHome', 'Home']} />
       </View>
       <View
         style={{
@@ -58,7 +59,7 @@ export default function SettingsPage({ setDashboard, setLogin }) {
           paddingBottom: 12,
         }}
       >
-        <ArrowButton label="Notificações" destiny={['BtHome', 'Home']} />
+        <ArrowButton label='Notificações' destiny={['BtHome', 'Home']} />
       </View>
       <View
         style={{
@@ -68,12 +69,13 @@ export default function SettingsPage({ setDashboard, setLogin }) {
         }}
       >
         <ArrowButton
-          label="Terminar Sessão"
+          label='Terminar Sessão'
           destiny={['HomeStack', 'Login']}
           onPressEvent={async () => {
             // await
             navigation.dispatch(resetActionLogout);
             setLogin(false);
+            AsyncStorage.removeItem('login');
           }}
         />
       </View>
