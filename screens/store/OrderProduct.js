@@ -41,8 +41,6 @@ export default function OrderProduct({ navigation, title, reference }) {
       </View>
       <View
         style={{
-          borderRadius: 4,
-          overflow: "hidden",
           paddingHorizontal: 12,
           paddingBottom: 12,
         }}
