@@ -45,6 +45,7 @@ import LoginPage from './screens/store/LoginPage';
 import * as SplashScreen from 'expo-splash-screen';
 import OrderProduct from './screens/store/OrderProduct';
 import TestPage4 from './screens/store/TestPage4';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -74,6 +75,14 @@ export default function App() {
   const [dashboard, setDashboard] = useState(false);
   const [login, setLogin] = useState(false);
   const [appIsReady, setAppIsReady] = useState(false);
+
+  useEffect(() => {
+    async function checkLogin() {
+      setLogin((await AsyncStorage.getItem('login')) === 'true' ? true : false);
+    }
+
+    checkLogin();
+  }, []);
 
   useEffect(() => {
     async function prepare() {
@@ -142,7 +151,7 @@ export default function App() {
           }}
           component={dashboard ? DashboardHome : login ? Store : Login}
         />
-        <HomeTab.Screen name='Orders' component={TestPage4} />
+        <HomeTab.Screen name='Orders' component={Orders} />
         <HomeTab.Screen name='Profile' component={Profile} />
         <HomeTab.Screen name='Settings' component={Settings} />
         <HomeTab.Screen name='Lotes' component={DashboardLotes} />

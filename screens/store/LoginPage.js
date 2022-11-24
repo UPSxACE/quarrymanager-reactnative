@@ -13,6 +13,7 @@ import { themeColors } from '../../Theme';
 import React from 'react';
 import { CommonActions, useNavigation } from '@react-navigation/native';
 import HomeFooter from '../../components/store/HomeFooter';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function LoginPage({ setLogin }) {
   const [formData, setData] = React.useState({});
@@ -37,14 +38,14 @@ export default function LoginPage({ setLogin }) {
         <View style={loginStyles.inputBox}>
           <BlueInput
             containerStyle={{ borderRadius: 4 }}
-            label="Username"
+            label='Username'
             onChangeText={(value) => setData({ ...formData, name: value })}
           />
         </View>
         <View style={loginStyles.inputBox}>
           <BlueInput
             containerStyle={{ borderRadius: 4 }}
-            label="Password"
+            label='Password'
             onChangeText={(value) => setData({ ...formData, name: value })}
             secret
           />
@@ -52,12 +53,13 @@ export default function LoginPage({ setLogin }) {
 
         <View style={loginStyles.btn}>
           <BlueButton
-            label="Iniciar sessao"
+            label='Iniciar sessao'
             style={{ backgroundColor: '#394A58' }}
             onPressEvent={async () => {
               // await
               navigation.dispatch(resetActionLogin);
               setLogin(true);
+              AsyncStorage.setItem('login', 'true');
             }}
           />
         </View>
@@ -106,13 +108,13 @@ export default function LoginPage({ setLogin }) {
           }}
         >
           <Pressable style={loginStyles.iconstyle}>
-            <Feather color="white" size={22} name="facebook"></Feather>
+            <Feather color='white' size={22} name='facebook'></Feather>
           </Pressable>
           <Pressable style={loginStyles.iconstyle}>
-            <Feather color="white" size={22} name="twitter"></Feather>
+            <Feather color='white' size={22} name='twitter'></Feather>
           </Pressable>
           <Pressable style={loginStyles.iconstyle}>
-            <Feather color="white" size={22} name="mail"></Feather>
+            <Feather color='white' size={22} name='mail'></Feather>
           </Pressable>
         </View>
       </ScrollView>
