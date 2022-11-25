@@ -32,7 +32,6 @@ import {
   theme_config,
   CustomBottomTab,
   SearchBarHeader,
-
 } from './Theme';
 import Product from './screens/store/Product';
 import DashboardLotes from './screens/dashboard/DashboardLotes';
@@ -47,20 +46,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import OrderProduct from './screens/store/OrderProduct';
 import TestPage4 from './screens/store/TestPage4';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Product from "./screens/store/Product";
-import DashboardLotes from "./screens/dashboard/DashboardLotes";
-import { themeColors } from "./Theme";
-import StyledOnFocus from "./components/StyledOnFocus";
-import ChangeUsername from "./screens/store/ChangeUsername";
-import ChangeEmail from "./screens/store/ChangeEmail";
-import ChangePassword from "./screens/store/ChangePassword";
-import RegisterPage from "./screens/store/RegisterPage";
-import LoginPage from "./screens/store/LoginPage";
-import * as SplashScreen from "expo-splash-screen";
-import OrderProduct from "./screens/store/OrderProduct";
-import TestPage4 from "./screens/store/TestPage4";
-import NotificationsScreen from "./screens/store/NotificationsScreen";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import NotificationsScreen from './screens/store/NotificationsScreen';
 import Chat from './screens/store/Chat';
 SplashScreen.preventAutoHideAsync();
 
@@ -78,9 +64,9 @@ function isRootStack(routeName) {
       return true;
     case 'Alterar Palavra-Passe':
       return true;
-    case "Notificações":
+    case 'Notificações':
       return true;
-    case "Pedido de Orçamento":
+    case 'Pedido de Orçamento':
       return true;
     default:
       return false;
@@ -171,7 +157,6 @@ export default function App() {
           component={dashboard ? DashboardHome : login ? Store : Login}
         />
 
-
         <HomeTab.Screen name='Orders' component={Orders} />
         <HomeTab.Screen name='Profile' component={Profile} />
         <HomeTab.Screen name='Settings' component={Settings} />
@@ -255,7 +240,7 @@ export default function App() {
                 options={{ ...gradientHeaderOptions }}
               ></RootStack.Screen>
               <RootStack.Screen
-                name="Notificações"
+                name='Notificações'
                 component={NotificationsScreen}
                 options={{ ...gradientHeaderOptions }}
               ></RootStack.Screen>
