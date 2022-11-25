@@ -30,7 +30,6 @@ export default function Orders() {
   return (
     <View>
       <ScrollableTabs tabs={TABS_DATA} />
-      <StoreCategory data={CATEGORY_DATA} categoryResults={'Resultados'} />
       <BasicList />
     </View>
   );

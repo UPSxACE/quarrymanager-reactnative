@@ -20,7 +20,6 @@ import { Feather } from '@expo/vector-icons';
 import TestPage2 from './screens/store/TestPage2';
 import TestPage3 from './screens/store/TestPage3';
 import { useCallback, useEffect, useState } from 'react';
-import Store from './screens/store/Store';
 import DashboardHome from './screens/dashboard/DashboardHome';
 import Orders from './screens/store/Orders';
 import StoreCategories from './screens/store/StoreCategories';
@@ -48,6 +47,7 @@ import TestPage4 from './screens/store/TestPage4';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NotificationsScreen from './screens/store/NotificationsScreen';
 import Chat from './screens/store/Chat';
+import StorePage from './screens/store/StorePage';
 SplashScreen.preventAutoHideAsync();
 
 function isRootStack(routeName) {
@@ -129,6 +129,10 @@ export default function App() {
 
   function HomeTabs({ navigation, route }) {
     const [search, setSearch] = useState('');
+
+    const Store = () => (
+      <StorePage searchState={{ state: search, setState: setSearch }} />
+    );
 
     return (
       <HomeTab.Navigator

@@ -1,11 +1,15 @@
 import { useNavigation } from '@react-navigation/native';
 import { Pressable, StyleSheet, Text, FlatList } from 'react-native';
 
-const item = ({ item, index }) => {
-  return <Text style={styles.itemText}>{item.toUpperCase()}</Text>;
-};
+const ScrollableTabs = ({ destiny, tabs, setSearch, ...props }) => {
+  const item = ({ item, index }) => {
+    return (
+      <Text onPress={() => setSearch(item)} style={styles.itemText}>
+        {item.toUpperCase()}
+      </Text>
+    );
+  };
 
-const ScrollableTabs = ({ destiny, tabs, ...props }) => {
   return (
     <FlatList
       style={styles.flatlist}

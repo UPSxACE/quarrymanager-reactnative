@@ -81,6 +81,7 @@ export const SearchBarHeader = ({ searchState }) => {
           }}
         >
           <StyledOnFocus.Input
+            value={state}
             onChangeText={(value) => setState(value)}
             containerStyle={{
               width: '100%',
