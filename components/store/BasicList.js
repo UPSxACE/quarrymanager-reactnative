@@ -33,7 +33,7 @@ function Item({ id, state, title, newMessage, imageUrl }) {
       title={title}
       state={state}
       imageUrl={imageUrl}
-      destiny={['BtHome', 'Home']}
+      destiny={['HomeStack', 'Chat']}
     ></ListItem>
   );
 }
