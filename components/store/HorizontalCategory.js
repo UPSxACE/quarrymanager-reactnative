@@ -16,7 +16,7 @@ export default function HorizontalCategory({ categoryTitle, data }) {
       <Pressable
         style={list_styles.item}
         onPress={() => {
-          navigation.navigate("Pedido de Orçamento");
+          navigation.navigate("Produto");
         }}
       >
         <View

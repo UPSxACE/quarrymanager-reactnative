@@ -13,6 +13,7 @@ import WhiteInput from "../../components/store/WhiteInput";
 import StyledOnFocus from "../../components/StyledOnFocus";
 import { Feather } from "@expo/vector-icons";
 import { useState } from "react";
+import BlueButton from "../../components/store/BlueButton";
 
 export default function OrderProduct({ navigation, title, reference }) {
   const [quantity, setQuantity] = useState("");
@@ -90,10 +91,9 @@ export default function OrderProduct({ navigation, title, reference }) {
                 backgroundColor: "white",
                 borderRadius: 4,
                 borderWidth: 1,
-                borderColor: "black",
-                //borderColor: '#0891B2',
+                borderColor: "#9FB6D4",
               }}
-              containerFocusStyle={{ borderColor: "#0891B2", borderWidth: 1.5 }}
+              containerFocusStyle={{ borderColor: "black", borderWidth: 1 }}
               style={{
                 width: "100%",
                 placeholderTextColor: "#BDBDBD",
@@ -107,7 +107,9 @@ export default function OrderProduct({ navigation, title, reference }) {
                 justifyContent: "center",
                 alignItems: "flex-end",
               }}
-              inputRightElement={<Feather size={16} name={"edit"} />}
+              inputRightElement={
+                <Feather size={16} name={"edit-3"} color={"gray"} />
+              }
               keyboardType={Platform.OS == "android" ? "numeric" : "number-pad"}
             ></StyledOnFocus.Input>
           </View>
@@ -262,7 +264,6 @@ export default function OrderProduct({ navigation, title, reference }) {
             backgroundColor: "white",
             width: "100%",
             marginBottom: 2,
-
             paddingLeft: 12,
             paddingVertical: 6,
           }}
@@ -285,10 +286,57 @@ export default function OrderProduct({ navigation, title, reference }) {
         >
           <TextInput
             style={page_styles.input}
-            placeholder="Mudar este estilo depois, tá feio..."
+            placeholder="Digite aqui sua mensagem... xD"
             textAlignVertical="top"
           />
         </View>
+      </View>
+      <View style={{ paddingBottom: 12, paddingHorizontal: 12 }}>
+        <View
+          style={{
+            backgroundColor: "white",
+            width: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: 24,
+          }}
+        >
+          <Text
+            style={{
+              color: "#576F89",
+              fontWeight: "bold",
+              fontSize: 20,
+              paddingBottom: 12,
+            }}
+          >
+            Upload Imagens
+          </Text>
+          <Image
+            alt="Product Picture"
+            style={{ width: 40, height: 42, opacity: 0.4 }}
+            source={require("../../assets/upload-background.png")}
+          />
+        </View>
+      </View>
+      <View
+        style={{
+          alignItems: "center",
+          paddingHorizontal: 12,
+          paddingBottom: 20,
+        }}
+      >
+        <Text
+          style={{
+            textAlign: "center",
+            paddingHorizontal: 12,
+            paddingBottom: 16,
+          }}
+        >
+          Ao enviar o pedido, confirmas que concordas com os nossos termos de
+          <Text style={{ color: "#0050A7" }}> privacidade</Text> e
+          <Text style={{ color: "#0050A7" }}> uso</Text>.
+        </Text>
+        <BlueButton label={"Enviar Pedido"} />
       </View>
     </ScrollView>
   );
@@ -323,12 +371,11 @@ const page_styles = StyleSheet.create({
   },
 
   input: {
-    height: 160,
+    height: 80,
     margin: 12,
     borderWidth: 1,
     padding: 12,
     borderColor: "#9FB6D4",
-    backgroundColor: "#F5F5F5",
     borderRadius: 4,
   },
 });
