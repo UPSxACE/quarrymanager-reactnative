@@ -37,15 +37,12 @@ export default function StorePage({ searchState }) {
   const TABS_DATA = [
     'Mármores',
     'Granitos',
-    'Esmeraldas',
-    'Diamantes',
+    'Cerâmicas',
     'Porcelana',
-    'Pedras',
-    'Rochas',
     'Favoritos',
   ];
 
-  const CATEGORY_DATA1 = [
+  const CATEGORY_DATA0 = [
     {
       id: 1,
       title: 'Mármore Preto',
@@ -109,6 +106,27 @@ export default function StorePage({ searchState }) {
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/marmore-branco.png'),
+    },
+  ];
+
+  const CATEGORY_DATA1 = [
+    {
+      id: 1,
+      title: 'Mármore Preto',
+      price: '10,99€/m²',
+      imageUrl: require('../../assets/Samples/marmore-preto.png'),
+    },
+    {
+      id: 2,
+      title: 'Mármore Branco',
+      price: '10,99€/m²',
+      imageUrl: require('../../assets/Samples/marmore-branco.png'),
+    },
+    {
+      id: 3,
+      title: 'Mármore Cinza',
+      price: '10,99€/m²',
+      imageUrl: require('../../assets/Samples/granito-cinza.png'),
     },
   ];
 
@@ -215,7 +233,18 @@ export default function StorePage({ searchState }) {
             ) : (
               <>
                 <StoreCategory
-                  data={CATEGORY_DATA1}
+                  data={CATEGORY_DATA0.filter((item) =>
+                    item.title
+                      .toLowerCase()
+                      .normalize('NFD')
+                      .replace(/[\u0300-\u036f]/g, '')
+                      .includes(
+                        state
+                          .toLowerCase()
+                          .normalize('NFD')
+                          .replace(/[\u0300-\u036f]/g, '')
+                      )
+                  )}
                   categoryResults={'Resultados'}
                 />
               </>
