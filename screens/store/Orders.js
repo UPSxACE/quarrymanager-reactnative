@@ -7,6 +7,7 @@ import StoreCategory from '../../components/store/StoreCategory';
 import * as SplashScreen from 'expo-splash-screen';
 
 export default function Orders() {
+  const [category, setCategory] = useState();
   const TABS_DATA = ['Todos', 'Ativos', 'Finalizados', 'Favoritos'];
   const CATEGORY_DATA = [
     {
@@ -29,7 +30,11 @@ export default function Orders() {
 
   return (
     <View>
-      <ScrollableTabs tabs={TABS_DATA} />
+      <ScrollableTabs
+        tabs={TABS_DATA}
+        setSearch={setCategory}
+        style={{ backgroundColor: 'white', elevation: 15, zIndex: 1 }}
+      />
       <BasicList />
     </View>
   );
