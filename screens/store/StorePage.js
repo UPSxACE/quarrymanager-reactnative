@@ -346,7 +346,11 @@ export default function StorePage({ searchState }) {
                     />
                   </View>
                   <View
-                    style={{ flexDirection: "row", backgroundColor: "white" }}
+                    style={{
+                      flexDirection: "row",
+                      backgroundColor: "white",
+                      marginBottom: 4,
+                    }}
                   >
                     <HorizontalCategory
                       categoryTitle={"Cerâmicas"}

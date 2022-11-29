@@ -31,9 +31,7 @@ export default function OrderProduct({ navigation, title, reference }) {
         <Image
           alt="Order Pic"
           style={page_styles.orderPicture}
-          source={{
-            uri: "https://media-manager.noticiasaominuto.com/1920/naom_5fa664745ba42.jpg",
-          }}
+          source={require("../../assets/Samples/marmore-preto.png")}
         />
         <View style={{ alignItems: "center", flex: 1 }}>
           <Text style={page_styles.titleText}>Mármore Preto</Text>
