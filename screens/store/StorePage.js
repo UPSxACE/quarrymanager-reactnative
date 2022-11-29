@@ -35,9 +35,9 @@ export default function StorePage({ searchState }) {
   const { setState } = searchState;
 
   const TABS_DATA = [
-    'Mármores',
-    'Granitos',
-    'Cerâmicas',
+    'Mármore',
+    'Granito',
+    'Cerâmica',
     'Porcelana',
     'Favoritos',
   ];
@@ -171,6 +171,27 @@ export default function StorePage({ searchState }) {
       imageUrl: require('../../assets/Samples/granito-cinza.png'),
     },
   ];
+
+  const CATEGORY_DATA4 = [
+    {
+      id: 1,
+      title: 'Mármore Preto',
+      price: '10,99€/m²',
+      imageUrl: require('../../assets/Samples/marmore-preto.png'),
+    },
+    {
+      id: 2,
+      title: 'Mármore Branco',
+      price: '10,99€/m²',
+      imageUrl: require('../../assets/Samples/marmore-branco.png'),
+    },
+    {
+      id: 3,
+      title: 'Mármore Cinza',
+      price: '10,99€/m²',
+      imageUrl: require('../../assets/Samples/granito-cinza.png'),
+    },
+  ];
   return (
     <FlatList
       ListHeaderComponent={() => {
@@ -224,7 +245,15 @@ export default function StorePage({ searchState }) {
                     style={{ flexDirection: 'row', backgroundColor: 'white' }}
                   >
                     <HorizontalCategory
-                      categoryTitle={'Esmeraldas'}
+                      categoryTitle={'Cerâmicas'}
+                      data={CATEGORY_DATA3}
+                    />
+                  </View>
+                  <View
+                    style={{ flexDirection: 'row', backgroundColor: 'white' }}
+                  >
+                    <HorizontalCategory
+                      categoryTitle={'Porcelana'}
                       data={CATEGORY_DATA3}
                     />
                   </View>
