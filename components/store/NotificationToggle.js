@@ -18,14 +18,12 @@ export default function NotificationToggle({
           alignItems: "center",
         }}
       >
-        <Feather size={28} color={"#6C6B6B"} name={"bell-off"}>
-          {iconName}
-        </Feather>
+        <Feather size={28} color={"#6C6B6B"} name={iconName}></Feather>
       </View>
       <View style={{ textAlign: "center", flex: 1, justifyContent: "center" }}>
-        <Text>Ativar Notificações de Telemóvel</Text>
+        <Text>{label}</Text>
         <Text style={{ color: themeColors.main.secondaryTextColor }}>
-          {label}
+          Desativado
         </Text>
       </View>
       <View
