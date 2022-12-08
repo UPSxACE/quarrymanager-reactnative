@@ -19,7 +19,7 @@ export default function StoreCategories(props) {
       title: 'Mármore Preto',
       description:
         'When an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, ',
-      price: '99,99€/m²',
+      price: '99,99',
       imageUrl: require('../../assets/Samples/marmore-preto.png'),
     },
     {
@@ -27,7 +27,7 @@ export default function StoreCategories(props) {
       title: 'Mármore Branco',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      price: '20,99€/m²',
+      price: '20,99',
       imageUrl: require('../../assets/Samples/marmore-branco.png'),
     },
     {
@@ -35,7 +35,7 @@ export default function StoreCategories(props) {
       title: 'Mármore Laranja',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      price: '304,99€/m²',
+      price: '304,99',
       imageUrl: require('../../assets/Samples/marmore-laranja.png'),
     },
     {
@@ -43,7 +43,7 @@ export default function StoreCategories(props) {
       title: 'Mármore Castanho',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      price: '1.345,99€/m²',
+      price: '1.345,99',
       imageUrl: require('../../assets/Samples/granito-cinza-laranja.png'),
     },
     {
@@ -51,7 +51,7 @@ export default function StoreCategories(props) {
       title: 'Mármore Cinza',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      price: '202,99€/m²',
+      price: '202,99',
       imageUrl: require('../../assets/Samples/granito-cinza.png'),
     },
     {
@@ -59,7 +59,7 @@ export default function StoreCategories(props) {
       title: 'Mármore Preto',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      price: '202,99€/m²',
+      price: '202,99',
       imageUrl: require('../../assets/Samples/marmore-preto.png'),
     },
     {
@@ -67,7 +67,7 @@ export default function StoreCategories(props) {
       title: 'Mármore Preto',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      price: '202,99€/m²',
+      price: '202,99',
       imageUrl: require('../../assets/Samples/marmore-preto.png'),
     },
     {
@@ -75,7 +75,7 @@ export default function StoreCategories(props) {
       title: 'Mármore Preto',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      price: '202,99€/m²',
+      price: '202,99',
       imageUrl: require('../../assets/Samples/marmore-preto.png'),
     },
   ];

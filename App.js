@@ -109,7 +109,6 @@ export default function App() {
     prepare();
   }, []);
   const onLayoutRootView = useCallback(async () => {
-    console.log('USED!');
     if (appIsReady) {
       // This tells the splash screen to hide immediately! If we call this after
       // `setAppIsReady`, then we may see a blank screen while the app is
@@ -161,15 +160,15 @@ export default function App() {
           component={dashboard ? DashboardHome : login ? Store : Login}
         />
 
-        <HomeTab.Screen name='Orders' component={Orders} />
-        <HomeTab.Screen name='Profile' component={Profile} />
-        <HomeTab.Screen name='Settings' component={Settings} />
-        <HomeTab.Screen name='Lotes' component={DashboardLotes} />
-        <HomeTab.Screen name='Chat' component={Chat} />
+        <HomeTab.Screen name="Orders" component={Orders} />
+        <HomeTab.Screen name="Profile" component={Profile} />
+        <HomeTab.Screen name="Settings" component={Settings} />
+        <HomeTab.Screen name="Lotes" component={DashboardLotes} />
+        <HomeTab.Screen name="Chat" component={Chat} />
 
         <HomeTab.Screen
           options={{ headerShown: false }}
-          name='Register'
+          name="Register"
           component={Register}
         />
       </HomeTab.Navigator>
@@ -177,7 +176,6 @@ export default function App() {
   }
 
   if (!appIsReady) {
-    console.log('return 1');
     return null;
     return (
       <View
@@ -202,11 +200,11 @@ export default function App() {
               })}
             >
               <RootStack.Screen
-                name='HomeStack'
+                name="HomeStack"
                 component={HomeTabs}
               ></RootStack.Screen>
               <RootStack.Screen
-                name='Tests2'
+                name="Tests2"
                 component={TestPage2}
                 options={{
                   ...gradientHeaderOptions,
@@ -214,37 +212,42 @@ export default function App() {
                 }}
               ></RootStack.Screen>
               <RootStack.Screen
-                name='Tests3'
+                name="Tests3"
                 component={TestPage3}
                 options={{ ...gradientHeaderOptions }}
               ></RootStack.Screen>
               <RootStack.Screen
-                name='Produto'
+                name="Produto"
                 component={Product}
-                options={{ ...gradientHeaderOptions }}
+                options={({ route }) => {
+                  return {
+                    ...gradientHeaderOptions,
+                    headerTitle: route.params.title,
+                  };
+                }}
               ></RootStack.Screen>
               <RootStack.Screen
-                name='Alterar Username'
+                name="Alterar Username"
                 component={ChangeUsername}
                 options={{ ...gradientHeaderOptions }}
               ></RootStack.Screen>
               <RootStack.Screen
-                name='Alterar Email'
+                name="Alterar Email"
                 component={ChangeEmail}
                 options={{ ...gradientHeaderOptions }}
               ></RootStack.Screen>
               <RootStack.Screen
-                name='Alterar Palavra-Passe'
+                name="Alterar Palavra-Passe"
                 component={ChangePassword}
                 options={{ ...gradientHeaderOptions }}
               ></RootStack.Screen>
               <RootStack.Screen
-                name='Pedido de Orçamento'
+                name="Pedido de Orçamento"
                 component={OrderProduct}
                 options={{ ...gradientHeaderOptions }}
               ></RootStack.Screen>
               <RootStack.Screen
-                name='Notificações'
+                name="Notificações"
                 component={NotificationsScreen}
                 options={{ ...gradientHeaderOptions }}
               ></RootStack.Screen>
