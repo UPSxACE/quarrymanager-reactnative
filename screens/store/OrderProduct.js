@@ -23,8 +23,34 @@ export default function OrderProduct({ navigation, route }) {
   const [message, setMessage] = useState('');
   const [edit, setEdit] = useState(false);
   const [modal, setModal] = useState(false);
+  const [discountData, setDiscountData] = useState({ raw: 0, multiplier: 1 });
   const [discount, setDiscount] = useState('');
   const [discountInput, setDiscountInput] = useState('');
+  const [calculatedDiscount, setCalculatedDiscount] = useState(0);
+
+  useEffect(() => {
+    const dsc_data = discountData;
+    if (discount.toUpperCase() === 'RAWDISCOUNT') {
+      dsc_data.raw = 5;
+    } else {
+      dsc_data.raw = 0;
+    }
+
+    if (discount.toUpperCase() === 'MULTDISCOUNT') {
+      dsc_data.multiplier = 0.8;
+    } else {
+      dsc_data.multiplier = 1;
+    }
+
+    setDiscountData(dsc_data);
+    setCalculatedDiscount(calculateDiscount(dsc_data.multiplier, dsc_data.raw));
+  }, [discount]);
+
+  useEffect(() => {
+    setCalculatedDiscount(
+      calculateDiscount(discountData.multiplier, discountData.raw)
+    );
+  }, [discountData, quantity]);
 
   const showModal = () => setModal(false);
   const hideModal = () => setModal(false);
@@ -32,10 +58,35 @@ export default function OrderProduct({ navigation, route }) {
   function calculate() {
     const result =
       Math.ceil(Number(quantity) * Number(params.preco) * 100) / 100;
+    return result;
+  }
+
+  function calculateDiscount(mult, raw) {
+    const result = Math.floor((calculate() * (1 - mult) + raw) * 100) / 100;
+
     if (isNaN(result)) {
       return '???';
     }
-    return result;
+
+    if (result === 0) {
+      return 0;
+    }
+
+    return result.toFixed(2);
+  }
+
+  function calculateTotal(calctd_dsc) {
+    const result = calculate() - calctd_dsc;
+
+    if (isNaN(result)) {
+      return '???';
+    }
+
+    if (result === 0 || result < 0) {
+      return 0;
+    }
+
+    return result.toFixed(2);
   }
 
   return (
@@ -62,7 +113,7 @@ export default function OrderProduct({ navigation, route }) {
                 paddingHorizontal: 8,
                 height: 40,
               }}
-              value={discountInput}
+              defaultValue={discountInput}
               onChangeText={setDiscountInput}
             />
             <BlueButton
@@ -74,7 +125,6 @@ export default function OrderProduct({ navigation, route }) {
               }}
               label={'Guardar'}
               onPressEvent={() => {
-                console.log(discountInput);
                 setModal(false);
                 setDiscount(discountInput);
               }}
@@ -144,7 +194,9 @@ export default function OrderProduct({ navigation, route }) {
             >
               <Text>Quantidade(m²):</Text>
               <StyledOnFocus.Input
-                onChangeText={(value) => setQuantity(value)}
+                onChangeText={(value) => {
+                  setQuantity(value);
+                }}
                 containerStyle={{
                   marginLeft: 'auto',
                   width: 100,
@@ -207,7 +259,7 @@ export default function OrderProduct({ navigation, route }) {
                   marginLeft: 'auto',
                 }}
               >
-                0€
+                {calculatedDiscount}€
               </Text>
             </View>
             <View
@@ -233,7 +285,7 @@ export default function OrderProduct({ navigation, route }) {
                   fontWeight: 'bold',
                 }}
               >
-                {calculate()}€
+                {calculateTotal(calculatedDiscount)}€
               </Text>
             </View>
           </View>
