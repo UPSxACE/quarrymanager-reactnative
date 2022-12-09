@@ -40,19 +40,19 @@ const CATEGORY_DATA = [
   {
     id: 1,
     title: 'Mármore Preto',
-    price: '10,99€/m²',
+    price: '10.99€/m²',
     imageUrl: require('../../assets/Samples/marmore-preto.png'),
   },
   {
     id: 2,
     title: 'Mármore Branco',
-    price: '10,99€/m²',
+    price: '10.99€/m²',
     imageUrl: require('../../assets/Samples/marmore-branco.png'),
   },
   {
     id: 3,
     title: 'Mármore Cinza',
-    price: '10,99€/m²',
+    price: '10.99€/m²',
     imageUrl: require('../../assets/Samples/granito-cinza.png'),
   },
 ];

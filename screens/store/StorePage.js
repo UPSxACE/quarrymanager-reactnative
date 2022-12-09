@@ -46,7 +46,7 @@ export default function StorePage({ searchState }) {
     {
       id: 1,
       title: 'Mármore Preto',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/marmore-preto.png'),
@@ -54,7 +54,7 @@ export default function StorePage({ searchState }) {
     {
       id: 2,
       title: 'Mármore Branco',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/marmore-branco.png'),
@@ -62,7 +62,7 @@ export default function StorePage({ searchState }) {
     {
       id: 3,
       title: 'Mármore Cinza',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/granito-cinza.png'),
@@ -70,7 +70,7 @@ export default function StorePage({ searchState }) {
     {
       id: 4,
       title: 'Granito Cinza',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/granito-cinza.png'),
@@ -78,7 +78,7 @@ export default function StorePage({ searchState }) {
     {
       id: 5,
       title: 'Granito Cinza A...',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/granito-cinza-laranja.png'),
@@ -86,7 +86,7 @@ export default function StorePage({ searchState }) {
     {
       id: 6,
       title: 'Granito Laranja',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/granito-laranja-cinza.png'),
@@ -94,7 +94,7 @@ export default function StorePage({ searchState }) {
     {
       id: 7,
       title: 'Granito Branco',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/granito-branco.png'),
@@ -102,7 +102,7 @@ export default function StorePage({ searchState }) {
     {
       id: 8,
       title: 'Cerâmica Preta',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/ceramica-preta.png'),
@@ -110,7 +110,7 @@ export default function StorePage({ searchState }) {
     {
       id: 9,
       title: 'Cerâmica Verde',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/ceramica-verde.png'),
@@ -118,7 +118,7 @@ export default function StorePage({ searchState }) {
     {
       id: 10,
       title: 'Cerâmica Branca',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/ceramica-branca.png'),
@@ -126,7 +126,7 @@ export default function StorePage({ searchState }) {
     {
       id: 11,
       title: 'Cerâmica Bege',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/ceramica-bege.png'),
@@ -134,7 +134,7 @@ export default function StorePage({ searchState }) {
     {
       id: 12,
       title: 'Porcelana Branca R...',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/porcelana-branca-rustica.png'),
@@ -142,7 +142,7 @@ export default function StorePage({ searchState }) {
     {
       id: 13,
       title: 'Porcelana Cinza C...',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/porcelana-cinza-claro.png'),
@@ -150,7 +150,7 @@ export default function StorePage({ searchState }) {
     {
       id: 14,
       title: 'Porcelana Azul',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/porcelana-azul.png'),
@@ -158,7 +158,7 @@ export default function StorePage({ searchState }) {
     {
       id: 15,
       title: 'Porcelana Laranja',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/porcelana-alaranjada.png'),
@@ -169,7 +169,7 @@ export default function StorePage({ searchState }) {
     {
       id: 1,
       title: 'Mármore Preto',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/marmore-preto.png'),
@@ -177,7 +177,7 @@ export default function StorePage({ searchState }) {
     {
       id: 2,
       title: 'Mármore Branco',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/marmore-branco.png'),
@@ -185,7 +185,7 @@ export default function StorePage({ searchState }) {
     {
       id: 3,
       title: 'Mármore Cinza',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/granito-cinza.png'),
@@ -196,7 +196,7 @@ export default function StorePage({ searchState }) {
     {
       id: 1,
       title: 'Granito Cinza',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/granito-cinza.png'),
@@ -204,7 +204,7 @@ export default function StorePage({ searchState }) {
     {
       id: 2,
       title: 'Granito Cinza A...',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/granito-cinza-laranja.png'),
@@ -212,7 +212,7 @@ export default function StorePage({ searchState }) {
     {
       id: 3,
       title: 'Granito Laranja',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/granito-laranja-cinza.png'),
@@ -220,7 +220,7 @@ export default function StorePage({ searchState }) {
     {
       id: 4,
       title: 'Granito Branco',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/granito-branco.png'),
@@ -231,7 +231,7 @@ export default function StorePage({ searchState }) {
     {
       id: 1,
       title: 'Cerâmica Preta',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/ceramica-preta.png'),
@@ -239,7 +239,7 @@ export default function StorePage({ searchState }) {
     {
       id: 2,
       title: 'Cerâmica Verde',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/ceramica-verde.png'),
@@ -247,7 +247,7 @@ export default function StorePage({ searchState }) {
     {
       id: 3,
       title: 'Cerâmica Branca',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/ceramica-branca.png'),
@@ -255,7 +255,7 @@ export default function StorePage({ searchState }) {
     {
       id: 4,
       title: 'Cerâmica Bege',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/ceramica-bege.png'),
@@ -266,7 +266,7 @@ export default function StorePage({ searchState }) {
     {
       id: 1,
       title: 'Porcelana Branca R...',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/porcelana-branca-rustica.png'),
@@ -274,7 +274,7 @@ export default function StorePage({ searchState }) {
     {
       id: 2,
       title: 'Porcelana Cinza C...',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/porcelana-cinza-claro.png'),
@@ -282,7 +282,7 @@ export default function StorePage({ searchState }) {
     {
       id: 3,
       title: 'Porcelana Azul',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/porcelana-azul.png'),
@@ -290,7 +290,7 @@ export default function StorePage({ searchState }) {
     {
       id: 4,
       title: 'Porcelana Laranja',
-      price: '10,99',
+      price: '10.99',
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
       imageUrl: require('../../assets/Samples/porcelana-alaranjada.png'),

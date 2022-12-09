@@ -7,22 +7,26 @@ const CATEGORY_DATA1 = [
   {
     id: 1,
     title: 'Mármore Preto',
-    price: '10,99',
+    price: '10.99',
     imageUrl: require('../../assets/Samples/marmore-preto.png'),
   },
   {
     id: 2,
     title: 'Mármore Branco',
-    price: '10,99',
+    price: '10.99',
     imageUrl: require('../../assets/Samples/marmore-branco.png'),
   },
   {
     id: 3,
     title: 'Mármore Cinza',
-    price: '10,99',
+    price: '10.99',
     imageUrl: require('../../assets/Samples/granito-cinza.png'),
   },
 ];
+
+function padWithZero(num, targetLength) {
+  return String(num).padStart(targetLength, '0');
+}
 
 function ProductPage({ route }) {
   const params = route.params;
@@ -38,10 +42,12 @@ function ProductPage({ route }) {
       </View>
       <View style={{ marginBottom: 12 }}>
         <Description
-          preco={`${params.price}€/m²`}
+          preco={params.price}
           descricao={
             'Pode ser utilizado em superfícies de ambientes internos como: cozinhas, banheiros, lavabos, áreas de serviços, pisos, escadas, mesas e muito mais. Para limpeza do material, nós recomendamos que se use um pano com detergente neutro ou esponja scott brite com sapólio em pó.'
           }
+          title={params.title}
+          refr={String(params.id).padStart(8, '0')}
         />
       </View>
       <View style={{ marginBottom: 12 }}>

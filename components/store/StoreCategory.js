@@ -14,7 +14,7 @@ function Item({ id, title, price, imageUrl, description }) {
     <Pressable
       style={page_styles.container}
       onPress={() => {
-        navigation.navigate('Produto', { title, price, imageUrl });
+        navigation.push('Produto', { id, title, price, imageUrl });
       }}
     >
       <View
@@ -85,7 +85,7 @@ export default function StoreCategory({ categoryResults, data }) {
           {categoryResults.toUpperCase()}
         </Text>
         <Text style={{ fontSize: 16, marginLeft: 'auto', color: '#a8a29e' }}>
-          8-100
+          {data.length + ' / ' + data.length}
         </Text>
       </View>
       <FlatList
