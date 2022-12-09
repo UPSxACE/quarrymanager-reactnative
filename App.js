@@ -164,7 +164,21 @@ export default function App() {
         <HomeTab.Screen name="Profile" component={Profile} />
         <HomeTab.Screen name="Settings" component={Settings} />
         <HomeTab.Screen name="Lotes" component={DashboardLotes} />
-        <HomeTab.Screen name="Chat" component={Chat} />
+        <HomeTab.Screen
+          name="Chat"
+          options={({ route }) => {
+            if (route.params) {
+              return {
+                ...gradientHeaderOptions,
+                headerTitle: route.params.title,
+              };
+            }
+            return {
+              ...gradientHeaderOptions,
+            };
+          }}
+          component={Chat}
+        />
 
         <HomeTab.Screen
           options={{ headerShown: false }}

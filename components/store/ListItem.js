@@ -1,8 +1,8 @@
-import React from "react";
-import Badge from "../Badge";
-import { Pressable, StyleSheet, Text, Image, View, Icon } from "react-native";
-import { Feather } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import React from 'react';
+import Badge from '../Badge';
+import { Pressable, StyleSheet, Text, Image, View, Icon } from 'react-native';
+import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 export default function ListItem({
   newMessage,
@@ -16,7 +16,10 @@ export default function ListItem({
     <Pressable
       onPress={() => {
         if (destiny) {
-          navigation.navigate(destiny[0], { screen: destiny[1] });
+          navigation.push(destiny[0], {
+            screen: destiny[1],
+            params: { title: title },
+          });
         }
       }}
     >
@@ -26,8 +29,8 @@ export default function ListItem({
           style={page_styles.productPicture}
           source={imageUrl}
         />
-        <View style={{ alignItems: "center", flex: 1 }}>
-          {newMessage && <Badge label={"Resposta!"} color="#FFFB94" />}
+        <View style={{ alignItems: 'center', flex: 1 }}>
+          {newMessage && <Badge label={'Resposta!'} color="#FFFB94" />}
           <Text
             style={newMessage ? new_style.titleText : page_styles.titleText}
           >
@@ -39,11 +42,11 @@ export default function ListItem({
             {state}
           </Text>
         </View>
-        <View style={{ flexDirection: "row", marginHorizontal: 12 }}>
+        <View style={{ flexDirection: 'row', marginHorizontal: 12 }}>
           {destiny && (
             <Feather
               size={28}
-              color={newMessage ? "#fff" : "#000"}
+              color={newMessage ? '#fff' : '#000'}
               name="chevron-right"
             />
           )}
@@ -60,24 +63,24 @@ const styles = StyleSheet.create({
 const page_styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "row",
-    backgroundColor: "#f5f5f5",
+    flexDirection: 'row',
+    backgroundColor: '#f5f5f5',
 
-    width: "100%",
+    width: '100%',
     borderBottomWidth: 0.5,
-    borderColor: "#6E7173",
-    alignItems: "center",
+    borderColor: '#6E7173',
+    alignItems: 'center',
   },
 
   titleText: {
-    color: "black",
-    fontWeight: "bold",
+    color: 'black',
+    fontWeight: 'bold',
     lineHeight: 16,
   },
 
   processText: {
-    color: "#6E7173",
-    fontStyle: "italic",
+    color: '#6E7173',
+    fontStyle: 'italic',
     lineHeight: 16,
   },
 
@@ -88,30 +91,30 @@ const page_styles = StyleSheet.create({
     marginHorizontal: 12,
     marginTop: 12,
     marginBottom: 12,
-    alignSelf: "center",
+    alignSelf: 'center',
   },
 });
 
 const new_style = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "row",
-    backgroundColor: "#7C9BC2",
-    width: "100%",
+    flexDirection: 'row',
+    backgroundColor: '#7C9BC2',
+    width: '100%',
     borderWidth: 0.5,
-    borderColor: "#6E7173",
-    alignItems: "center",
+    borderColor: '#6E7173',
+    alignItems: 'center',
   },
 
   titleText: {
-    color: "white",
+    color: 'white',
     lineHeight: 16,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
 
   processText: {
-    color: "white",
-    fontStyle: "italic",
+    color: 'white',
+    fontStyle: 'italic',
     lineHeight: 16,
   },
 });

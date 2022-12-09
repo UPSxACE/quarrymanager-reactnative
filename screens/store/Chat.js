@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
-import { GiftedChat } from "react-native-gifted-chat";
-import { View, Text } from "react-native";
+import { useCallback, useEffect, useState } from 'react';
+import { GiftedChat } from 'react-native-gifted-chat';
+import { View, Text } from 'react-native';
 
 export default function Chat() {
   const [messages, setMessages] = useState([]);
@@ -9,13 +9,14 @@ export default function Chat() {
     setMessages([
       {
         _id: 1,
-        text: "Hello developer",
+        text: 'Os dados de morada são inválidos.\nPeço que nos envie a morada e código postal corretos.',
+        //Enviaremos a sua encomenda o mais rápido possível. Obrigado.
         createdAt: new Date(),
         user: {
           _id: 2,
-          name: "React Native",
+          name: 'React Native',
           avatar:
-            "https://lighthouse.mq.edu.au/__data/assets/image/0004/917194/women-ceo-tile700x400.jpg",
+            'https://lighthouse.mq.edu.au/__data/assets/image/0004/917194/women-ceo-tile700x400.jpg',
         },
       },
     ]);
@@ -28,7 +29,7 @@ export default function Chat() {
   }, []);
 
   return (
-    <View style={{ flex: 1, backgroundColor: "white" }} testID="main">
+    <View style={{ flex: 1, backgroundColor: 'white' }} testID="main">
       <GiftedChat
         messages={messages}
         onSend={(messages) => onSend(messages)}
