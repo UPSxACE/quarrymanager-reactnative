@@ -14,6 +14,7 @@ import StyledOnFocus from '../../components/StyledOnFocus';
 import { Feather } from '@expo/vector-icons';
 import { useEffect, useState } from 'react';
 import BlueButton from '../../components/store/BlueButton';
+import { Modal, Portal, Provider } from 'react-native-paper';
 
 export default function OrderProduct({ navigation, route }) {
   const params = route.params;
@@ -21,6 +22,12 @@ export default function OrderProduct({ navigation, route }) {
   const [profile, setProfile] = useState(route.params.profile);
   const [message, setMessage] = useState('');
   const [edit, setEdit] = useState(false);
+  const [modal, setModal] = useState(false);
+  const [discount, setDiscount] = useState('');
+  const [discountInput, setDiscountInput] = useState('');
+
+  const showModal = () => setModal(false);
+  const hideModal = () => setModal(false);
 
   function calculate() {
     const result =
@@ -32,398 +39,443 @@ export default function OrderProduct({ navigation, route }) {
   }
 
   return (
-    <ScrollView style={page_styles.container}>
-      <View
-        style={{
-          alignItems: 'center',
-          flexDirection: 'row',
-          backgroundColor: 'white',
-          width: '100%',
-          marginBottom: 12,
-        }}
-      >
-        <Image
-          alt="Order Pic"
-          style={page_styles.orderPicture}
-          source={require('../../assets/Samples/marmore-preto.png')}
-        />
-        <View style={{ alignItems: 'center', flex: 1 }}>
-          <Text style={page_styles.titleText}>{params.title}</Text>
-          <Text style={page_styles.processText}>Ref: {params.refr}</Text>
-        </View>
-      </View>
-      <View
-        style={{
-          paddingHorizontal: 12,
-          paddingBottom: 12,
-        }}
-      >
-        <View
-          style={{
-            backgroundColor: 'white',
-            width: '100%',
-            marginBottom: 2,
-            paddingLeft: 12,
-            paddingVertical: 4,
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: 'bold',
+    <Provider>
+      <ScrollView style={page_styles.container}>
+        <Portal>
+          <Modal
+            visible={modal}
+            onDismiss={hideModal}
+            contentContainerStyle={{
+              backgroundColor: 'white',
+              padding: 20,
+              marginHorizontal: 24,
+              maxWidth: 600,
             }}
           >
-            Pedido
-          </Text>
-        </View>
-        <View
-          style={{
-            backgroundColor: 'white',
-            width: '100%',
-            marginBottom: 2,
-            paddingLeft: 12,
-            paddingVertical: 6,
-          }}
-        >
-          <View
-            style={{
-              flexDirection: 'row',
-              paddingRight: 12,
-              alignItems: 'center',
-              height: 24,
-            }}
-          >
-            <Text>Quantidade(m²):</Text>
-            <StyledOnFocus.Input
-              onChangeText={(value) => setQuantity(value)}
-              containerStyle={{
-                marginLeft: 'auto',
-                width: 100,
-                height: 24,
-                backgroundColor: 'white',
-                borderRadius: 4,
+            <Text style={{ paddingBottom: 4, fontSize: 16 }}>
+              Insira um Código de Desconto:
+            </Text>
+            <TextInput
+              style={{
                 borderWidth: 1,
-                borderColor: '#9FB6D4',
+                borderRadius: 2,
+                paddingHorizontal: 8,
+                height: 40,
               }}
-              containerFocusStyle={{ borderColor: 'black', borderWidth: 1 }}
+              value={discountInput}
+              onChangeText={setDiscountInput}
+            />
+            <BlueButton
+              containerStyle={{ paddingTop: 6 }}
               style={{
-                width: '100%',
-                placeholderTextColor: '#BDBDBD',
-                paddingHorizontal: 4,
+                alignSelf: 'flex-start',
+                paddingHorizontal: 12,
+                borderRadius: 2,
               }}
-              placeholder={'0'}
-              placeholderTextColor={'#pink'}
-              rightStyle={{
-                marginLeft: 'auto',
-                paddingHorizontal: 4,
-                justifyContent: 'center',
-                alignItems: 'flex-end',
+              label={'Guardar'}
+              onPressEvent={() => {
+                console.log(discountInput);
+                setModal(false);
+                setDiscount(discountInput);
               }}
-              inputRightElement={
-                <Feather size={16} name={'edit-3'} color={'gray'} />
-              }
-              keyboardType={Platform.OS == 'android' ? 'numeric' : 'number-pad'}
-            ></StyledOnFocus.Input>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              paddingRight: 12,
-              height: 24,
-              alignItems: 'center',
-            }}
-          >
-            <Text>Preço(€/m²):</Text>
-            <Text
-              style={{
-                marginLeft: 'auto',
-              }}
-            >
-              {params.preco + '€/m²'}
-            </Text>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              paddingRight: 12,
-              height: 24,
-              alignItems: 'center',
-            }}
-          >
-            <Text>Desconto:</Text>
-            <Text
-              style={{
-                marginLeft: 'auto',
-              }}
-            >
-              0€
-            </Text>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              paddingRight: 12,
-              height: 24,
-              alignItems: 'center',
-            }}
-          >
-            <Text
-              style={{
-                fontSize: 20,
-                fontWeight: 'bold',
-              }}
-            >
-              Total:
-            </Text>
-            <Text
-              style={{
-                marginLeft: 'auto',
-                fontSize: 20,
-                fontWeight: 'bold',
-              }}
-            >
-              {calculate()}€
-            </Text>
-          </View>
-        </View>
+            />
+          </Modal>
+        </Portal>
 
-        <Pressable
-          onPress={() => navigation.navigate('Home')}
-          style={{
-            backgroundColor: 'white',
-            width: '100%',
-
-            paddingLeft: 12,
-            paddingVertical: 6,
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 16,
-              color: '#0050A7',
-            }}
-          >
-            Adicionar Código de Desconto
-          </Text>
-        </Pressable>
-      </View>
-
-      <View style={{ paddingBottom: 12, paddingHorizontal: 12 }}>
         <View
           style={{
-            backgroundColor: 'white',
-            width: '100%',
-            marginBottom: 2,
-            paddingHorizontal: 12,
+            alignItems: 'center',
             flexDirection: 'row',
-            paddingVertical: 6,
+            backgroundColor: 'white',
+            width: '100%',
+            marginBottom: 12,
           }}
         >
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: 'bold',
-            }}
-          >
-            Dados de entrega
-          </Text>
-
-          <Pressable
-            onPress={() => setEdit(!edit)}
-            style={{ marginLeft: 'auto' }}
-          >
-            <Text style={{ color: '#0050A7', fontSize: 20 }}>
-              {edit ? 'Guardar' : 'Editar'}
-            </Text>
-          </Pressable>
+          <Image
+            alt="Order Pic"
+            style={page_styles.orderPicture}
+            source={require('../../assets/Samples/marmore-preto.png')}
+          />
+          <View style={{ alignItems: 'center', flex: 1 }}>
+            <Text style={page_styles.titleText}>{params.title}</Text>
+            <Text style={page_styles.processText}>Ref: {params.refr}</Text>
+          </View>
         </View>
         <View
           style={{
-            backgroundColor: 'white',
-            width: '100%',
-            marginBottom: 2,
-
             paddingHorizontal: 12,
-            paddingTop: 12,
             paddingBottom: 12,
           }}
         >
-          <View>
-            <WhiteInput
-              label={'Primeiro Nome'}
-              value={profile.firstName}
-              onChangeText={(value) => {
-                setProfile({ ...profile, firstName: value });
-              }}
-              editable={edit}
-              style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
-              placeholderTextColor={
-                edit ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.25)'
-              }
-            />
-          </View>
-          <View style={{ marginTop: 12 }}>
-            <WhiteInput
-              label={'Último Nome'}
-              value={profile.lastName}
-              onChangeText={(value) => {
-                setProfile({ ...profile, lastName: value });
-              }}
-              editable={edit}
-              style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
-              placeholderTextColor={
-                edit ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.25)'
-              }
-            />
-          </View>
-          <View style={{ marginTop: 12 }}>
-            <WhiteInput
-              label={'Morada'}
-              value={profile.address}
-              onChangeText={(value) => {
-                setProfile({ ...profile, address: value });
-              }}
-              editable={edit}
-              style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
-              placeholderTextColor={
-                edit ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.25)'
-              }
-            />
-          </View>
-
-          <View style={{ flexDirection: 'row', marginTop: 12 }}>
-            <View style={{ width: '50%', paddingRight: 6 }}>
-              <WhiteInput
-                label={'Código Postal'}
-                value={profile.zipCode}
-                onChangeText={(value) => {
-                  setProfile({ ...profile, zipCode: value });
-                }}
-                editable={edit}
-                style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
-                placeholderTextColor={
-                  edit ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.25)'
-                }
-              />
-            </View>
-            <View style={{ width: '50%', paddingLeft: 6 }}>
-              <WhiteInput
-                label={'Região'}
-                value={profile.city}
-                onChangeText={(value) => {
-                  setProfile({ ...profile, city: value });
-                }}
-                editable={edit}
-                style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
-                placeholderTextColor={
-                  edit ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.25)'
-                }
-              />
-            </View>
-          </View>
-          <View style={{ marginTop: 12 }}>
-            <WhiteInput
-              label={'Telefone'}
-              value={profile.phone}
-              onChangeText={(value) => {
-                setProfile({ ...profile, phone: value });
-              }}
-              editable={edit}
-              style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
-              placeholderTextColor={
-                edit ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.25)'
-              }
-            />
-          </View>
-        </View>
-      </View>
-
-      <View style={{ paddingBottom: 12, paddingHorizontal: 12 }}>
-        <View
-          style={{
-            backgroundColor: 'white',
-            width: '100%',
-            marginBottom: 2,
-            paddingLeft: 12,
-            paddingVertical: 6,
-          }}
-        >
-          <Text
+          <View
             style={{
-              fontSize: 20,
-              fontWeight: 'bold',
+              backgroundColor: 'white',
+              width: '100%',
+              marginBottom: 2,
+              paddingLeft: 12,
+              paddingVertical: 4,
             }}
           >
-            Mensagem
-          </Text>
-        </View>
-        <View
-          style={{
-            backgroundColor: 'white',
-            width: '100%',
-            marginBottom: 2,
-          }}
-        >
-          <TextInput
-            style={page_styles.input}
-            placeholder="Digite aqui sua mensagem... xD"
-            textAlignVertical="top"
-            onChangeText={setMessage}
-          />
-        </View>
-      </View>
-      <View style={{ paddingBottom: 12, paddingHorizontal: 12 }}>
-        <View
-          style={{
-            backgroundColor: 'white',
-            width: '100%',
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: 24,
-          }}
-        >
-          <Text
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: 'bold',
+              }}
+            >
+              Pedido
+            </Text>
+          </View>
+          <View
             style={{
-              color: '#576F89',
-              fontWeight: 'bold',
-              fontSize: 20,
+              backgroundColor: 'white',
+              width: '100%',
+              marginBottom: 2,
+              paddingLeft: 12,
+              paddingVertical: 6,
+            }}
+          >
+            <View
+              style={{
+                flexDirection: 'row',
+                paddingRight: 12,
+                alignItems: 'center',
+                height: 24,
+              }}
+            >
+              <Text>Quantidade(m²):</Text>
+              <StyledOnFocus.Input
+                onChangeText={(value) => setQuantity(value)}
+                containerStyle={{
+                  marginLeft: 'auto',
+                  width: 100,
+                  height: 24,
+                  backgroundColor: 'white',
+                  borderRadius: 4,
+                  borderWidth: 1,
+                  borderColor: '#9FB6D4',
+                }}
+                containerFocusStyle={{ borderColor: 'black', borderWidth: 1 }}
+                style={{
+                  width: '100%',
+                  placeholderTextColor: '#BDBDBD',
+                  paddingHorizontal: 4,
+                }}
+                placeholder={'0'}
+                placeholderTextColor={'#pink'}
+                rightStyle={{
+                  marginLeft: 'auto',
+                  paddingHorizontal: 4,
+                  justifyContent: 'center',
+                  alignItems: 'flex-end',
+                }}
+                inputRightElement={
+                  <Feather size={16} name={'edit-3'} color={'gray'} />
+                }
+                keyboardType={
+                  Platform.OS == 'android' ? 'numeric' : 'number-pad'
+                }
+              ></StyledOnFocus.Input>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                paddingRight: 12,
+                height: 24,
+                alignItems: 'center',
+              }}
+            >
+              <Text>Preço(€/m²):</Text>
+              <Text
+                style={{
+                  marginLeft: 'auto',
+                }}
+              >
+                {params.preco + '€/m²'}
+              </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                paddingRight: 12,
+                height: 24,
+                alignItems: 'center',
+              }}
+            >
+              <Text>Desconto:</Text>
+              <Text
+                style={{
+                  marginLeft: 'auto',
+                }}
+              >
+                0€
+              </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                paddingRight: 12,
+                height: 24,
+                alignItems: 'center',
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontWeight: 'bold',
+                }}
+              >
+                Total:
+              </Text>
+              <Text
+                style={{
+                  marginLeft: 'auto',
+                  fontSize: 20,
+                  fontWeight: 'bold',
+                }}
+              >
+                {calculate()}€
+              </Text>
+            </View>
+          </View>
+
+          <Pressable
+            onPress={() => setModal(true)}
+            style={{
+              backgroundColor: 'white',
+              width: '100%',
+              paddingLeft: 12,
+              paddingVertical: 6,
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 16,
+                color: '#0050A7',
+                textDecorationLine: discount ? 'underline' : 'none',
+              }}
+            >
+              {discount ? discount : 'Adicionar Código de Desconto'}
+            </Text>
+          </Pressable>
+        </View>
+
+        <View style={{ paddingBottom: 12, paddingHorizontal: 12 }}>
+          <View
+            style={{
+              backgroundColor: 'white',
+              width: '100%',
+              marginBottom: 2,
+              paddingHorizontal: 12,
+              flexDirection: 'row',
+              paddingVertical: 6,
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: 'bold',
+              }}
+            >
+              Dados de entrega
+            </Text>
+
+            <Pressable
+              onPress={() => setEdit(!edit)}
+              style={{ marginLeft: 'auto' }}
+            >
+              <Text style={{ color: '#0050A7', fontSize: 20 }}>
+                {edit ? 'Guardar' : 'Editar'}
+              </Text>
+            </Pressable>
+          </View>
+          <View
+            style={{
+              backgroundColor: 'white',
+              width: '100%',
+              marginBottom: 2,
+
+              paddingHorizontal: 12,
+              paddingTop: 12,
               paddingBottom: 12,
             }}
           >
-            Upload Imagens
-          </Text>
-          <Image
-            alt="Product Picture"
-            style={{ width: 40, height: 42, opacity: 0.4 }}
-            source={require('../../assets/upload-background.png')}
-          />
+            <View>
+              <WhiteInput
+                label={'Primeiro Nome'}
+                value={profile.firstName}
+                onChangeText={(value) => {
+                  setProfile({ ...profile, firstName: value });
+                }}
+                editable={edit}
+                style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
+                placeholderTextColor={
+                  edit ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.25)'
+                }
+              />
+            </View>
+            <View style={{ marginTop: 12 }}>
+              <WhiteInput
+                label={'Último Nome'}
+                value={profile.lastName}
+                onChangeText={(value) => {
+                  setProfile({ ...profile, lastName: value });
+                }}
+                editable={edit}
+                style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
+                placeholderTextColor={
+                  edit ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.25)'
+                }
+              />
+            </View>
+            <View style={{ marginTop: 12 }}>
+              <WhiteInput
+                label={'Morada'}
+                value={profile.address}
+                onChangeText={(value) => {
+                  setProfile({ ...profile, address: value });
+                }}
+                editable={edit}
+                style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
+                placeholderTextColor={
+                  edit ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.25)'
+                }
+              />
+            </View>
+
+            <View style={{ flexDirection: 'row', marginTop: 12 }}>
+              <View style={{ width: '50%', paddingRight: 6 }}>
+                <WhiteInput
+                  label={'Código Postal'}
+                  value={profile.zipCode}
+                  onChangeText={(value) => {
+                    setProfile({ ...profile, zipCode: value });
+                  }}
+                  editable={edit}
+                  style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
+                  placeholderTextColor={
+                    edit ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.25)'
+                  }
+                />
+              </View>
+              <View style={{ width: '50%', paddingLeft: 6 }}>
+                <WhiteInput
+                  label={'Região'}
+                  value={profile.city}
+                  onChangeText={(value) => {
+                    setProfile({ ...profile, city: value });
+                  }}
+                  editable={edit}
+                  style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
+                  placeholderTextColor={
+                    edit ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.25)'
+                  }
+                />
+              </View>
+            </View>
+            <View style={{ marginTop: 12 }}>
+              <WhiteInput
+                label={'Telefone'}
+                value={profile.phone}
+                onChangeText={(value) => {
+                  setProfile({ ...profile, phone: value });
+                }}
+                editable={edit}
+                style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
+                placeholderTextColor={
+                  edit ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.25)'
+                }
+              />
+            </View>
+          </View>
         </View>
-      </View>
-      <View
-        style={{
-          alignItems: 'center',
-          paddingHorizontal: 12,
-          paddingBottom: 20,
-        }}
-      >
-        <Text
+
+        <View style={{ paddingBottom: 12, paddingHorizontal: 12 }}>
+          <View
+            style={{
+              backgroundColor: 'white',
+              width: '100%',
+              marginBottom: 2,
+              paddingLeft: 12,
+              paddingVertical: 6,
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: 'bold',
+              }}
+            >
+              Mensagem
+            </Text>
+          </View>
+          <View
+            style={{
+              backgroundColor: 'white',
+              width: '100%',
+              marginBottom: 2,
+            }}
+          >
+            <TextInput
+              style={page_styles.input}
+              placeholder="Digite aqui sua mensagem... xD"
+              textAlignVertical="top"
+              onChangeText={setMessage}
+            />
+          </View>
+        </View>
+        <View style={{ paddingBottom: 12, paddingHorizontal: 12 }}>
+          <View
+            style={{
+              backgroundColor: 'white',
+              width: '100%',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: 24,
+            }}
+          >
+            <Text
+              style={{
+                color: '#576F89',
+                fontWeight: 'bold',
+                fontSize: 20,
+                paddingBottom: 12,
+              }}
+            >
+              Upload Imagens
+            </Text>
+            <Image
+              alt="Product Picture"
+              style={{ width: 40, height: 42, opacity: 0.4 }}
+              source={require('../../assets/upload-background.png')}
+            />
+          </View>
+        </View>
+        <View
           style={{
-            textAlign: 'center',
+            alignItems: 'center',
             paddingHorizontal: 12,
-            paddingBottom: 16,
+            paddingBottom: 20,
           }}
         >
-          Ao enviar o pedido, confirmas que concordas com os nossos termos de
-          <Text style={{ color: '#0050A7' }}> privacidade</Text> e
-          <Text style={{ color: '#0050A7' }}> uso</Text>.
-        </Text>
-        <BlueButton
-          editable={false}
-          disabled={quantity == 0 || isNaN(quantity)}
-          label={'Enviar Pedido'}
-        />
-      </View>
-    </ScrollView>
+          <Text
+            style={{
+              textAlign: 'center',
+              paddingHorizontal: 12,
+              paddingBottom: 16,
+            }}
+          >
+            Ao enviar o pedido, confirmas que concordas com os nossos termos de
+            <Text style={{ color: '#0050A7' }}> privacidade</Text> e
+            <Text style={{ color: '#0050A7' }}> uso</Text>.
+          </Text>
+          <BlueButton
+            editable={false}
+            disabled={quantity == 0 || isNaN(quantity)}
+            label={'Enviar Pedido'}
+          />
+        </View>
+      </ScrollView>
+    </Provider>
   );
 }
 
