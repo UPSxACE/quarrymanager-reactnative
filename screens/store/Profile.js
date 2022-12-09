@@ -14,7 +14,7 @@ export default function Profile({ navigation }) {
             onPress={() => navigation.navigate("Home")}
             style={{ marginLeft: "auto" }}
           >
-            <Text>Editar</Text>
+            <Text style={{ color: "#0050A7" }}>Editar</Text>
           </Pressable>
         </View>
         <Image
@@ -33,7 +33,7 @@ export default function Profile({ navigation }) {
           onPress={() => navigation.navigate("Home")}
           style={{ marginLeft: "auto" }}
         >
-          <Text>Editar</Text>
+          <Text style={{ color: "#0050A7" }}>Editar</Text>
         </Pressable>
       </View>
       <View>
