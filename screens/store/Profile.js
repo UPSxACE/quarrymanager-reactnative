@@ -38,36 +38,36 @@ export default function Profile({ navigation }) {
       </View>
       <View>
         <View style={{ marginTop: 12 }}>
-          <WhiteInput label={"Primeiro Nome"} />
+          <WhiteInput label={"Linda"} />
         </View>
         <View style={{ marginTop: 12 }}>
-          <WhiteInput label={"Último Nome"} />
+          <WhiteInput label={"Addams"} />
         </View>
 
         <View style={{ flexDirection: "row", marginTop: 12 }}>
           <View style={{ width: "50%", marginRight: 6 }}>
-            <WhiteInput label={"Data de Nascimento"} />
+            <WhiteInput label={"09/12/1994"} />
           </View>
 
           <View style={{ width: "50%" }}>
-            <WhiteInput label={"Gênero"} />
+            <WhiteInput label={"Feminino"} />
           </View>
         </View>
         <View style={{ marginTop: 12 }}>
-          <WhiteInput label={"Morada"} />
+          <WhiteInput label={"Rua: Bragança, nº 93"} />
         </View>
 
         <View style={{ flexDirection: "row", marginTop: 12 }}>
           <View style={{ width: "50%", marginRight: 6 }}>
-            <WhiteInput label={"Código Postal"} />
+            <WhiteInput label={"52000-123"} />
           </View>
 
           <View style={{ width: "50%", marginRight: 6 }}>
-            <WhiteInput label={"Região"} />
+            <WhiteInput label={"Bragança"} />
           </View>
         </View>
         <View style={{ marginTop: 12 }}>
-          <WhiteInput label={"Telefone"} />
+          <WhiteInput label={"+351912354697"} />
         </View>
       </View>
 
