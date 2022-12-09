@@ -19,6 +19,7 @@ export default function OrderProduct({ navigation, route }) {
   const params = route.params;
   const [quantity, setQuantity] = useState('');
   const [profile, setProfile] = useState(route.params.profile);
+  const [message, setMessage] = useState('');
   const [edit, setEdit] = useState(false);
 
   function calculate() {
@@ -228,10 +229,12 @@ export default function OrderProduct({ navigation, route }) {
           </Text>
 
           <Pressable
-            onPress={() => navigation.navigate('Home')}
+            onPress={() => setEdit(!edit)}
             style={{ marginLeft: 'auto' }}
           >
-            <Text style={{ color: '#0050A7', fontSize: 20 }}>Editar</Text>
+            <Text style={{ color: '#0050A7', fontSize: 20 }}>
+              {edit ? 'Guardar' : 'Editar'}
+            </Text>
           </Pressable>
         </View>
         <View
@@ -253,6 +256,10 @@ export default function OrderProduct({ navigation, route }) {
                 setProfile({ ...profile, firstName: value });
               }}
               editable={edit}
+              style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
+              placeholderTextColor={
+                edit ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.25)'
+              }
             />
           </View>
           <View style={{ marginTop: 12 }}>
@@ -263,6 +270,10 @@ export default function OrderProduct({ navigation, route }) {
                 setProfile({ ...profile, lastName: value });
               }}
               editable={edit}
+              style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
+              placeholderTextColor={
+                edit ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.25)'
+              }
             />
           </View>
           <View style={{ marginTop: 12 }}>
@@ -273,6 +284,10 @@ export default function OrderProduct({ navigation, route }) {
                 setProfile({ ...profile, address: value });
               }}
               editable={edit}
+              style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
+              placeholderTextColor={
+                edit ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.25)'
+              }
             />
           </View>
 
@@ -285,6 +300,10 @@ export default function OrderProduct({ navigation, route }) {
                   setProfile({ ...profile, zipCode: value });
                 }}
                 editable={edit}
+                style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
+                placeholderTextColor={
+                  edit ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.25)'
+                }
               />
             </View>
             <View style={{ width: '50%', paddingLeft: 6 }}>
@@ -295,6 +314,10 @@ export default function OrderProduct({ navigation, route }) {
                   setProfile({ ...profile, city: value });
                 }}
                 editable={edit}
+                style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
+                placeholderTextColor={
+                  edit ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.25)'
+                }
               />
             </View>
           </View>
@@ -306,6 +329,10 @@ export default function OrderProduct({ navigation, route }) {
                 setProfile({ ...profile, phone: value });
               }}
               editable={edit}
+              style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
+              placeholderTextColor={
+                edit ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.25)'
+              }
             />
           </View>
         </View>
@@ -341,6 +368,7 @@ export default function OrderProduct({ navigation, route }) {
             style={page_styles.input}
             placeholder="Digite aqui sua mensagem... xD"
             textAlignVertical="top"
+            onChangeText={setMessage}
           />
         </View>
       </View>
@@ -389,7 +417,11 @@ export default function OrderProduct({ navigation, route }) {
           <Text style={{ color: '#0050A7' }}> privacidade</Text> e
           <Text style={{ color: '#0050A7' }}> uso</Text>.
         </Text>
-        <BlueButton label={'Enviar Pedido'} />
+        <BlueButton
+          editable={false}
+          disabled={quantity == 0 || isNaN(quantity)}
+          label={'Enviar Pedido'}
+        />
       </View>
     </ScrollView>
   );
