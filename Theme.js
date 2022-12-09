@@ -188,9 +188,9 @@ const resetActionHome = CommonActions.reset({
 export function CustomBottomTab({ dashboard, setDashboard, login }) {
   const tabRoutes = [
     { destiny: ['HomeStack', 'Home'], icon: 'home' },
-    { destiny: ['HomeStack', 'Orders'], icon: 'package' },
-    { destiny: ['HomeStack', 'Profile'], icon: 'user' },
-    { destiny: ['HomeStack', 'Settings'], icon: 'menu' },
+    { destiny: ['HomeStack', 'Pedidos'], icon: 'package' },
+    { destiny: ['HomeStack', 'Perfil'], icon: 'user' },
+    { destiny: ['HomeStack', 'Definições'], icon: 'menu' },
   ];
 
   const dashboardRoutes = [

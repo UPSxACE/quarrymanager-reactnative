@@ -160,9 +160,9 @@ export default function App() {
           component={dashboard ? DashboardHome : login ? Store : Login}
         />
 
-        <HomeTab.Screen name="Orders" component={Orders} />
-        <HomeTab.Screen name="Profile" component={Profile} />
-        <HomeTab.Screen name="Settings" component={Settings} />
+        <HomeTab.Screen name="Pedidos" component={Orders} />
+        <HomeTab.Screen name="Perfil" component={Profile} />
+        <HomeTab.Screen name="Definições" component={Settings} />
         <HomeTab.Screen name="Lotes" component={DashboardLotes} />
         <HomeTab.Screen
           name="Chat"

@@ -37,7 +37,7 @@ export default function TestPage({ navigation }) {
     <ScrollView style={page_styles.container}>
       <ListItem
         newMessage
-        destiny={['BtSettings', 'Settings']}
+        destiny={['BtSettings', 'Definições']}
         title={'Mármore Preto'}
         state={'Em processamento'}
         imageUrl={{
