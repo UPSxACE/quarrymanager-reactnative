@@ -50,7 +50,4 @@ const styles = StyleSheet.create({
     paddingStart: 8,
     paddingEnd: 8,
   },
-  NotificationToggle: {
-    color: "#82A2CC",
-  },
 });
