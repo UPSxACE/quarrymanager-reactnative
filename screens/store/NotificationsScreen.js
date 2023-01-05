@@ -1,5 +1,5 @@
-import NotificationToggle from '../../components/store/NotificationToggle';
-import { View, Text, StyleSheet } from 'react-native';
+import NotificationToggle from "../../components/store/NotificationToggle";
+import { View, Text, StyleSheet } from "react-native";
 
 export default function NotificationsScreen() {
   return (
@@ -9,30 +9,30 @@ export default function NotificationsScreen() {
 
         <View style={{ paddingHorizontal: 8 }}>
           <NotificationToggle
-            label={'Ativar Notificações de Telemóvel'}
-            iconName={'bell-off'}
+            label={"Ativar Notificações de Telemóvel"}
+            iconName={"bell-off"}
           />
         </View>
         <View style={{ paddingHorizontal: 8 }}>
           <NotificationToggle
-            label={'Som das Notificações'}
-            iconName={'volume-x'}
+            label={"Som das Notificações"}
+            iconName={"volume-x"}
           />
         </View>
       </View>
       <View style={styles.viewStyle}>
         <Text style={styles.title}>Notificações Personalizadas</Text>
         <View style={{ paddingHorizontal: 8 }}>
-          <NotificationToggle label={'Mensagem'} iconName={'mail'} />
+          <NotificationToggle label={"Mensagem"} iconName={"mail"} />
         </View>
         <View style={{ paddingHorizontal: 8 }}>
-          <NotificationToggle label={'Encomendas'} iconName={'box'} />
+          <NotificationToggle label={"Encomendas"} iconName={"box"} />
         </View>
         <View style={{ paddingHorizontal: 8 }}>
-          <NotificationToggle label={'Promoções'} iconName={'dollar-sign'} />
+          <NotificationToggle label={"Promoções"} iconName={"dollar-sign"} />
         </View>
         <View style={{ paddingHorizontal: 8 }}>
-          <NotificationToggle label={'Novidades'} iconName={'tag'} />
+          <NotificationToggle label={"Novidades"} iconName={"tag"} />
         </View>
       </View>
     </View>
@@ -40,7 +40,7 @@ export default function NotificationsScreen() {
 }
 const styles = StyleSheet.create({
   title: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 18,
     marginTop: 20,
     paddingStart: 8,
@@ -49,5 +49,8 @@ const styles = StyleSheet.create({
   viewStyle: {
     paddingStart: 8,
     paddingEnd: 8,
+  },
+  NotificationToggle: {
+    color: "#82A2CC",
   },
 });
