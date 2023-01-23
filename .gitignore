@@ -940,4 +940,6 @@ FodyWeavers.xsd
 
 # End of https://www.toptal.com/developers/gitignore/api/node,visualstudiocode,phpstorm,visualstudio,windows,linux,git,reactnative,react
 
+# Arquivo de configuração do firebase
+firebase-config.js
 
