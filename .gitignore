@@ -943,3 +943,6 @@ FodyWeavers.xsd
 # Arquivo de configuração do firebase
 firebase-config.js
 
+# Arquivo de configuração da api
+api-config.js
+
