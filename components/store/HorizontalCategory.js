@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 import {
   Text,
   Image,
@@ -6,7 +6,8 @@ import {
   View,
   StyleSheet,
   Pressable,
-} from 'react-native';
+} from "react-native";
+import apiconfig from "../../api-config";
 
 export default function HorizontalCategory({ categoryTitle, data }) {
   const navigation = useNavigation();
@@ -16,14 +17,14 @@ export default function HorizontalCategory({ categoryTitle, data }) {
       <Pressable
         style={list_styles.item}
         onPress={() => {
-          navigation.push('Produto', { id, title, price, imageUrl });
+          navigation.push("Produto", { id, title, price, imageUrl });
         }}
       >
         <View
           style={{
             elevation: 4,
-            shadowColor: '#000',
-            backgroundColor: 'white',
+            shadowColor: "#000",
+            backgroundColor: "white",
             marginTop: 12,
             borderRadius: 4,
           }}
@@ -31,12 +32,12 @@ export default function HorizontalCategory({ categoryTitle, data }) {
           <Image
             alt="Product Picture"
             style={page_styles.productPicture}
-            source={imageUrl}
+            source={{ uri: imageUrl }}
           />
         </View>
 
-        <Text style={{ textAlign: 'center' }}>{title}</Text>
-        <Text style={{ textAlign: 'center' }}>{price + '€/m²'}</Text>
+        <Text style={{ textAlign: "center" }}>{title}</Text>
+        <Text style={{ textAlign: "center" }}>{price + "€/m²"}</Text>
       </Pressable>
     );
   }
@@ -45,9 +46,11 @@ export default function HorizontalCategory({ categoryTitle, data }) {
     return (
       <Item
         id={item.id}
-        title={item.title}
-        price={item.price}
-        imageUrl={item.imageUrl}
+        title={item.tituloArtigo}
+        price={item.preco}
+        imageUrl={
+          "http://" + apiconfig.serverIP + "/uploads/" + item.url_fotografia
+        }
       />
     );
   }
@@ -71,9 +74,9 @@ const page_styles = StyleSheet.create({
     width: 130,
     height: 100,
     borderRadius: 4,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     elevation: 10,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
 });
 
@@ -85,13 +88,13 @@ const list_styles = StyleSheet.create({
   },
 
   text: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 18,
   },
 
   item: {
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
+    justifyContent: "space-evenly",
+    alignItems: "center",
     marginRight: 12,
   },
 });
