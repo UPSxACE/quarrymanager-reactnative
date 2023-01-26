@@ -40,7 +40,9 @@ export default function DashboardHome() {
   );*/
 
   const [info_status, setInfoStatus] = useState({});
+  const [info_transportadora, setInfoTransportadora] = useState([]);
 
+  // LISTAR STATUS (CARDS)
   useEffect(() => {
     const sendRequest = async () => {
       const result = await axios.get(api.listar_status, {
@@ -57,6 +59,24 @@ export default function DashboardHome() {
     });
   }, []);
 
+  // LISTAR TRANSPORTADORAS
+  useEffect(() => {
+    const sendRequest = async () => {
+      const result = await axios.get(api.listar_transportadora, {
+        headers: {
+          Authorization: apiconfig.adminToken,
+        },
+      });
+
+      setInfoTransportadora(result.data);
+    };
+
+    sendRequest().catch((error) => {
+      console.log(error);
+    });
+  }, []);
+
+  console.log(info_transportadora.nome);
   return (
     <View style={{ paddingHorizontal: 20 }}>
       <View
@@ -112,8 +132,8 @@ export default function DashboardHome() {
         <View style={{ marginTop: 12 }}>
           <HorizontalList
             title="Transportadoras"
-            data={HLDATA}
-            mainText="customer"
+            data={info_transportadora}
+            mainText={info_transportadora.nome ? info_transportadora.nome : ""}
           />
         </View>
         <View style={{ marginTop: 12 }}>
