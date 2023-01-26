@@ -18,7 +18,7 @@ export default function Profile({ navigation }) {
           Authorization: apiconfig.adminToken,
         },
       });
-      console.log(informacoes_profile);
+
       setInformacoesProfile(result.data);
     };
 
@@ -67,46 +67,77 @@ export default function Profile({ navigation }) {
         <View style={{ marginTop: 12 }}>
           <WhiteInput
             editable={false}
-            label={"informacoes_profile.full_name"}
+            label={"Nome Completo"}
+            value={
+              informacoes_profile.full_name ? informacoes_profile.full_name : ""
+            }
           />
-        </View>
-        <View style={{ marginTop: 12 }}>
-          <WhiteInput editable={false} label={"Addams"} />
         </View>
 
         <View style={{ flexDirection: "row", marginTop: 12 }}>
           <View style={{ width: "50%", marginRight: 6 }}>
             <WhiteInput
               editable={false}
-              label={"informacoes_profile.dataNascimento"}
+              label={"Data de Nascimento"}
+              value={
+                informacoes_profile.dataNascimento
+                  ? informacoes_profile.dataNascimento
+                  : ""
+              }
             />
           </View>
 
           <View style={{ width: "50%" }}>
-            <WhiteInput editable={false} label={"informacoes_profile.genero"} />
+            <WhiteInput
+              editable={false}
+              label={"Gênero"}
+              value={
+                informacoes_profile.genero ? informacoes_profile.genero : ""
+              }
+            />
           </View>
         </View>
         <View style={{ marginTop: 12 }}>
-          <WhiteInput editable={false} label={"informacoes_profile.morada"} />
+          <WhiteInput
+            editable={false}
+            label={"Morada"}
+            value={informacoes_profile.morada ? informacoes_profile.morada : ""}
+          />
         </View>
 
         <View style={{ flexDirection: "row", marginTop: 12 }}>
           <View style={{ width: "50%", marginRight: 6 }}>
             <WhiteInput
               editable={false}
-              label={"informacoes_profile.codPostal"}
+              label={"Código Postal"}
+              value={
+                informacoes_profile.codPostal
+                  ? informacoes_profile.codPostal
+                  : ""
+              }
             />
           </View>
 
           <View style={{ width: "50%", marginRight: 6 }}>
             <WhiteInput
               editable={false}
-              label={"informacoes_profile.localidade"}
+              label={"Localidade"}
+              value={
+                informacoes_profile.localidade
+                  ? informacoes_profile.localidade
+                  : ""
+              }
             />
           </View>
         </View>
         <View style={{ marginTop: 12 }}>
-          <WhiteInput editable={false} label={"informacoes_profile.telefone"} />
+          <WhiteInput
+            editable={false}
+            label={"Telefone"}
+            value={
+              informacoes_profile.telefone ? informacoes_profile.telefone : ""
+            }
+          />
         </View>
       </View>
 
