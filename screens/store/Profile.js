@@ -1,91 +1,130 @@
-import { StyleSheet, Text } from 'react-native';
-import * as React from 'react';
-import { Pressable, Image, View, ScrollView } from 'react-native';
-import WhiteInput from '../../components/store/WhiteInput';
+import { StyleSheet, Text } from "react-native";
+import * as React from "react";
+import { Pressable, Image, View, ScrollView } from "react-native";
+import WhiteInput from "../../components/store/WhiteInput";
+import { useEffect } from "react";
+import axios from "axios";
+import api from "../../api";
+import { useState } from "react";
+import apiconfig from "../../api-config";
 
 export default function Profile({ navigation }) {
+  const [informacoes_profile, setInformacoesProfile] = useState({});
+
+  useEffect(() => {
+    const sendRequest = async () => {
+      const result = await axios.get(api.listar_profile, {
+        headers: {
+          Authorization: apiconfig.adminToken,
+        },
+      });
+      console.log(informacoes_profile);
+      setInformacoesProfile(result.data);
+    };
+
+    sendRequest().catch((error) => {
+      console.log(error);
+    });
+  }, []);
+
   return (
     <ScrollView style={page_styles.container}>
       <View style={page_styles.profilePictureContainer}>
-        <View style={{ width: '100%', flexDirection: 'row' }}>
+        <View style={{ width: "100%", flexDirection: "row" }}>
           <Text>Foto de perfil</Text>
 
           <Pressable
-            onPress={() => navigation.navigate('Home')}
-            style={{ marginLeft: 'auto' }}
+            onPress={() => navigation.navigate("Home")}
+            style={{ marginLeft: "auto" }}
           >
-            <Text style={{ color: '#0050A7' }}>Editar</Text>
+            <Text style={{ color: "#0050A7" }}>Editar</Text>
           </Pressable>
         </View>
         <Image
           alt="Profile Picture"
           style={page_styles.userPicture}
           source={{
-            uri: 'https://lighthouse.mq.edu.au/__data/assets/image/0004/917194/women-ceo-tile700x400.jpg',
+            uri:
+              "http://" +
+              apiconfig.serverIP +
+              "/uploads/" +
+              informacoes_profile.profilePic,
           }}
         />
       </View>
 
-      <View style={{ flexDirection: 'row', width: '100%', marginTop: 12 }}>
+      <View style={{ flexDirection: "row", width: "100%", marginTop: 12 }}>
         <Text>Dados de entrega</Text>
 
         <Pressable
-          onPress={() => navigation.navigate('Home')}
-          style={{ marginLeft: 'auto' }}
+          onPress={() => navigation.navigate("Home")}
+          style={{ marginLeft: "auto" }}
         >
-          <Text style={{ color: '#0050A7' }}>Editar</Text>
+          <Text style={{ color: "#0050A7" }}>Editar</Text>
         </Pressable>
       </View>
       <View>
         <View style={{ marginTop: 12 }}>
-          <WhiteInput editable={false} label={'Linda'} />
+          <WhiteInput
+            editable={false}
+            label={"informacoes_profile.full_name"}
+          />
         </View>
         <View style={{ marginTop: 12 }}>
-          <WhiteInput editable={false} label={'Addams'} />
+          <WhiteInput editable={false} label={"Addams"} />
         </View>
 
-        <View style={{ flexDirection: 'row', marginTop: 12 }}>
-          <View style={{ width: '50%', marginRight: 6 }}>
-            <WhiteInput editable={false} label={'09/12/1994'} />
+        <View style={{ flexDirection: "row", marginTop: 12 }}>
+          <View style={{ width: "50%", marginRight: 6 }}>
+            <WhiteInput
+              editable={false}
+              label={"informacoes_profile.dataNascimento"}
+            />
           </View>
 
-          <View style={{ width: '50%' }}>
-            <WhiteInput editable={false} label={'Feminino'} />
-          </View>
-        </View>
-        <View style={{ marginTop: 12 }}>
-          <WhiteInput editable={false} label={'Rua: Bragança, nº 93'} />
-        </View>
-
-        <View style={{ flexDirection: 'row', marginTop: 12 }}>
-          <View style={{ width: '50%', marginRight: 6 }}>
-            <WhiteInput editable={false} label={'52000-123'} />
-          </View>
-
-          <View style={{ width: '50%', marginRight: 6 }}>
-            <WhiteInput editable={false} label={'Bragança'} />
+          <View style={{ width: "50%" }}>
+            <WhiteInput editable={false} label={"informacoes_profile.genero"} />
           </View>
         </View>
         <View style={{ marginTop: 12 }}>
-          <WhiteInput editable={false} label={'+351912354697'} />
+          <WhiteInput editable={false} label={"informacoes_profile.morada"} />
+        </View>
+
+        <View style={{ flexDirection: "row", marginTop: 12 }}>
+          <View style={{ width: "50%", marginRight: 6 }}>
+            <WhiteInput
+              editable={false}
+              label={"informacoes_profile.codPostal"}
+            />
+          </View>
+
+          <View style={{ width: "50%", marginRight: 6 }}>
+            <WhiteInput
+              editable={false}
+              label={"informacoes_profile.localidade"}
+            />
+          </View>
+        </View>
+        <View style={{ marginTop: 12 }}>
+          <WhiteInput editable={false} label={"informacoes_profile.telefone"} />
         </View>
       </View>
 
       <View style={{ paddingBottom: 50 }}>
         <Pressable
           style={{ marginTop: 12 }}
-          onPress={() => navigation.navigate('Alterar Username')}
+          onPress={() => navigation.navigate("Alterar Username")}
         >
           <Text>Alterar Username</Text>
         </Pressable>
         <Pressable
-          onPress={() => navigation.navigate('Alterar Email')}
+          onPress={() => navigation.navigate("Alterar Email")}
           style={{ marginTop: 12 }}
         >
           <Text>Alterar E-mail</Text>
         </Pressable>
         <Pressable
-          onPress={() => navigation.navigate('Alterar Palavra-Passe')}
+          onPress={() => navigation.navigate("Alterar Palavra-Passe")}
           style={{ marginTop: 12 }}
         >
           <Text>Alterar Palavra-Passe</Text>
@@ -98,18 +137,18 @@ export default function Profile({ navigation }) {
 const page_styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     padding: 12,
   },
 
   profilePictureContainer: {
     paddingBottom: 12,
     borderBottomWidth: 1,
-    borderColor: '#9FB6D4',
+    borderColor: "#9FB6D4",
   },
 
   text1: {
-    color: 'grey',
+    color: "grey",
   },
 
   userPicture: {
@@ -117,11 +156,11 @@ const page_styles = StyleSheet.create({
     height: 110,
     borderRadius: 100,
     marginTop: 12,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
 
   coverPicture: {
-    width: '100%',
+    width: "100%",
     height: 120,
   },
 });

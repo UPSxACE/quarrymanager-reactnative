@@ -27,6 +27,7 @@ const api = {
         "&fields=tituloArtigo,preco,Res_Compressao,Res_Flexao,Massa_Vol_Aparente,Absorcao_Agua,descricaoProduto"
     );
   },
+  listar_profile: criarUrl("profile/get-profile"),
 };
 
 export default api;
