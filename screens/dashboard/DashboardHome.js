@@ -48,7 +48,7 @@ export default function DashboardHome() {
           Authorization: apiconfig.adminToken,
         },
       });
-      console.log(info_status);
+
       setInfoStatus(result.data);
     };
 
