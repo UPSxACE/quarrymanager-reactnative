@@ -38,7 +38,11 @@ export default function StorePage({ searchState }) {
   const { state } = searchState;
   const { setState } = searchState;
   const [CATEGORY_DATA1, setCategoryData1] = useState([]);
+  const [CATEGORY_DATA2, setCategoryData2] = useState([]);
+  const [CATEGORY_DATA3, setCategoryData3] = useState([]);
+  const [CATEGORY_DATA4, setCategoryData4] = useState([]);
 
+  // LISTAR MÁRMORES:
   useEffect(() => {
     const sendRequest = async () => {
       const result = await axios.get(api.listar_marmores, {
@@ -46,8 +50,59 @@ export default function StorePage({ searchState }) {
           Authorization: apiconfig.adminToken,
         },
       });
-      console.log(result.data);
+
       setCategoryData1(result.data);
+    };
+
+    sendRequest().catch((error) => {
+      console.log(error);
+    });
+  }, []);
+
+  // LISTAR GRANITOS:
+  useEffect(() => {
+    const sendRequest = async () => {
+      const result = await axios.get(api.listar_granitos, {
+        headers: {
+          Authorization: apiconfig.adminToken,
+        },
+      });
+
+      setCategoryData2(result.data);
+    };
+
+    sendRequest().catch((error) => {
+      console.log(error);
+    });
+  }, []);
+
+  // LISTAR CERÂMICAS:
+  useEffect(() => {
+    const sendRequest = async () => {
+      const result = await axios.get(api.listar_ceramicas, {
+        headers: {
+          Authorization: apiconfig.adminToken,
+        },
+      });
+
+      setCategoryData3(result.data);
+    };
+
+    sendRequest().catch((error) => {
+      console.log(error);
+    });
+  }, []);
+
+  // LISTAR PORCELANAS:
+  useEffect(() => {
+    const sendRequest = async () => {
+      const result = await axios.get(api.listar_porcelanas, {
+        headers: {
+          Authorization: apiconfig.adminToken,
+        },
+      });
+
+      setCategoryData4(result.data);
     };
 
     sendRequest().catch((error) => {
@@ -186,137 +241,6 @@ export default function StorePage({ searchState }) {
     },
   ];
 
-  // const CATEGORY_DATA1 = [
-  //   {
-  //     id: 1,
-  //     title: "Mármore Preto",
-  //     price: "10.99",
-  //     description:
-  //       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-  //     imageUrl: require("../../assets/Samples/marmore-preto.png"),
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Mármore Branco",
-  //     price: "10.99",
-  //     description:
-  //       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-  //     imageUrl: require("../../assets/Samples/marmore-branco.png"),
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Mármore Cinza",
-  //     price: "10.99",
-  //     description:
-  //       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-  //     imageUrl: require("../../assets/Samples/granito-cinza.png"),
-  //   },
-  // ];
-
-  const CATEGORY_DATA2 = [
-    {
-      id: 1,
-      title: "Granito Cinza",
-      price: "10.99",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      imageUrl: require("../../assets/Samples/granito-cinza.png"),
-    },
-    {
-      id: 2,
-      title: "Granito Cinza A...",
-      price: "10.99",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      imageUrl: require("../../assets/Samples/granito-cinza-laranja.png"),
-    },
-    {
-      id: 3,
-      title: "Granito Laranja",
-      price: "10.99",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      imageUrl: require("../../assets/Samples/granito-laranja-cinza.png"),
-    },
-    {
-      id: 4,
-      title: "Granito Branco",
-      price: "10.99",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      imageUrl: require("../../assets/Samples/granito-branco.png"),
-    },
-  ];
-
-  const CATEGORY_DATA3 = [
-    {
-      id: 1,
-      title: "Cerâmica Preta",
-      price: "10.99",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      imageUrl: require("../../assets/Samples/ceramica-preta.png"),
-    },
-    {
-      id: 2,
-      title: "Cerâmica Verde",
-      price: "10.99",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      imageUrl: require("../../assets/Samples/ceramica-verde.png"),
-    },
-    {
-      id: 3,
-      title: "Cerâmica Branca",
-      price: "10.99",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      imageUrl: require("../../assets/Samples/ceramica-branca.png"),
-    },
-    {
-      id: 4,
-      title: "Cerâmica Bege",
-      price: "10.99",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      imageUrl: require("../../assets/Samples/ceramica-bege.png"),
-    },
-  ];
-
-  const CATEGORY_DATA4 = [
-    {
-      id: 1,
-      title: "Porcelana Branca R...",
-      price: "10.99",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      imageUrl: require("../../assets/Samples/porcelana-branca-rustica.png"),
-    },
-    {
-      id: 2,
-      title: "Porcelana Cinza C...",
-      price: "10.99",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      imageUrl: require("../../assets/Samples/porcelana-cinza-claro.png"),
-    },
-    {
-      id: 3,
-      title: "Porcelana Azul",
-      price: "10.99",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      imageUrl: require("../../assets/Samples/porcelana-azul.png"),
-    },
-    {
-      id: 4,
-      title: "Porcelana Laranja",
-      price: "10.99",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-      imageUrl: require("../../assets/Samples/porcelana-alaranjada.png"),
-    },
-  ];
   return (
     <FlatList
       ListHeaderComponent={() => {

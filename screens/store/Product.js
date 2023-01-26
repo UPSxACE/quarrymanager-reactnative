@@ -1,28 +1,12 @@
+import axios from "axios";
+import { useEffect } from "react";
+import { useState } from "react";
 import { View, FlatList, Image, StyleSheet } from "react-native";
+import api from "../../api";
+import apiconfig from "../../api-config";
 import Characteristics from "../../components/store/Characteristics";
 import Description from "../../components/store/Description";
 import HorizontalCategory from "../../components/store/HorizontalCategory";
-
-const CATEGORY_DATA1 = [
-  {
-    id: 1,
-    title: "Mármore Preto",
-    price: "10.99",
-    imageUrl: require("../../assets/Samples/marmore-preto.png"),
-  },
-  {
-    id: 2,
-    title: "Mármore Branco",
-    price: "10.99",
-    imageUrl: require("../../assets/Samples/marmore-branco.png"),
-  },
-  {
-    id: 3,
-    title: "Mármore Cinza",
-    price: "10.99",
-    imageUrl: require("../../assets/Samples/granito-cinza.png"),
-  },
-];
 
 function padWithZero(num, targetLength) {
   return String(num).padStart(targetLength, "0");
@@ -30,6 +14,41 @@ function padWithZero(num, targetLength) {
 
 function ProductPage({ route }) {
   const params = route.params;
+  const [CATEGORY_DATA1, setCategoryData1] = useState([]);
+  const [informacoes_produto, setInformacoesProduto] = useState({});
+
+  // VEJA TAMBÉM:
+  useEffect(() => {
+    const sendRequest = async () => {
+      const result = await axios.get(api.listar_marmores, {
+        headers: {
+          Authorization: apiconfig.adminToken,
+        },
+      });
+
+      setCategoryData1(result.data);
+    };
+
+    sendRequest().catch((error) => {
+      console.log(error);
+    });
+  }, []);
+
+  // INFORMAÇÕES DO PRODUTO:
+  useEffect(() => {
+    const sendRequest = async () => {
+      const result = await axios.get(api.produto_detalhe(params.id), {
+        headers: {
+          Authorization: apiconfig.adminToken,
+        },
+      });
+      setInformacoesProduto(result.data);
+    };
+
+    sendRequest().catch((error) => {
+      console.log(error);
+    });
+  }, []);
 
   return (
     <View style={Productpage_styles.backgroundPage}>
@@ -37,24 +56,31 @@ function ProductPage({ route }) {
         <Image
           alt="Product Picture"
           style={Productpage_styles.imageSize}
-          source={params.imageUrl}
+          source={{ uri: params.imageUrl }}
         />
       </View>
       <View style={{ marginBottom: 12 }}>
         <Description
           preco={params.price}
-          descricao={
-            "Pode ser utilizado em superfícies de ambientes internos como: cozinhas, banheiros, lavabos, áreas de serviços, pisos, escadas, mesas e muito mais. Para limpeza do material, nós recomendamos que se use um pano com detergente neutro ou esponja scott brite com sapólio em pó."
-          }
+          descricao={informacoes_produto.descricaoProduto}
           title={params.title}
           refr={String(params.id).padStart(8, "0")}
+          imageUrl={params.imageUrl}
         />
       </View>
       <View style={{ marginBottom: 12 }}>
-        <Characteristics resCom={6} resFlex={2} mva={6} maa={3} />
+        <Characteristics
+          resCom={informacoes_produto.Res_Compressao}
+          resFlex={informacoes_produto.Res_Flexao}
+          mva={informacoes_produto.Massa_Vol_Aparente}
+          maa={informacoes_produto.Absorcao_Agua}
+        />
       </View>
       <View style={Productpage_styles.backgroundComp}>
-        <HorizontalCategory categoryTitle={"Mármores"} data={CATEGORY_DATA1} />
+        <HorizontalCategory
+          categoryTitle={"Veja também"}
+          data={CATEGORY_DATA1}
+        />
       </View>
     </View>
   );

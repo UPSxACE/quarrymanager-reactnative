@@ -9,7 +9,24 @@ const api = {
   listar_marmores: criarUrl(
     "produto/produtos-loja?fields=tituloArtigo,preco&expand=id,url_fotografia"
   ),
+  listar_granitos: criarUrl(
+    "produto/produtos-loja?fields=tituloArtigo,preco&expand=id,url_fotografia"
+  ),
+  listar_ceramicas: criarUrl(
+    "produto/produtos-loja?fields=tituloArtigo,preco&expand=id,url_fotografia"
+  ),
+  listar_porcelanas: criarUrl(
+    "produto/produtos-loja?fields=tituloArtigo,preco&expand=id,url_fotografia"
+  ),
   listar_material: criarUrl("material/listar"),
+
+  produto_detalhe: (id) => {
+    return criarUrl(
+      "produto/find?id=" +
+        id +
+        "&fields=tituloArtigo,preco,Res_Compressao,Res_Flexao,Massa_Vol_Aparente,Absorcao_Agua,descricaoProduto"
+    );
+  },
 };
 
 export default api;
