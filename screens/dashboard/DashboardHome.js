@@ -82,12 +82,16 @@ export default function DashboardHome() {
           />
         </View>
         <View style={{ width: "50%", paddingRight: 8, marginBottom: 16 }}>
-          <DashboardCard pedidos="938" label="Cancelados" cardColor="#EB3E26" />
+          <DashboardCard
+            pedidos={info_status.cancelados}
+            label="Cancelados"
+            cardColor="#EB3E26"
+          />
         </View>
         <View style={{ width: "50%", paddingLeft: 8 }}>
           <DashboardCard
             style={{ marginLeft: "auto" }}
-            pedidos="10 mil"
+            pedidos={info_status.finalizados}
             label="Finalizados"
             cardColor="#2CA739"
           />
