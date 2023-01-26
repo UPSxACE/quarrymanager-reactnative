@@ -28,6 +28,10 @@ const api = {
     );
   },
   listar_profile: criarUrl("profile/get-profile"),
+
+  listar_lote: criarUrl("lote/listar"),
+
+  listar_status: criarUrl("home/stats"),
 };
 
 export default api;

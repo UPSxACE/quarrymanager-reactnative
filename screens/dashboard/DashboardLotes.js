@@ -1,5 +1,7 @@
-import { Feather } from '@expo/vector-icons';
-import { useRef, useState } from 'react';
+import { Feather } from "@expo/vector-icons";
+import axios from "axios";
+import { useEffect } from "react";
+import { useRef, useState } from "react";
 import {
   StyleSheet,
   View,
@@ -7,11 +9,13 @@ import {
   FlatList,
   ScrollView,
   Pressable,
-} from 'react-native';
-import PagerView from 'react-native-pager-view';
-import BatchPictures from '../../components/dashboard/BatchPictures';
-import LoteDescription from '../../components/LoteDescription';
-import { themeColors } from '../../Theme';
+} from "react-native";
+import PagerView from "react-native-pager-view";
+import api from "../../api";
+import apiconfig from "../../api-config";
+import BatchPictures from "../../components/dashboard/BatchPictures";
+import LoteDescription from "../../components/LoteDescription";
+import { themeColors } from "../../Theme";
 
 export default function DashboardLotes() {
   const [position, setPosition] = useState(0);
@@ -19,42 +23,59 @@ export default function DashboardLotes() {
 
   const data = [
     {
-      mat: 'Mármore',
-      cor: 'Laranja',
-      quant: '425m^2',
-      localex: 'Moca',
-      localar: 'Areeiro da Serra',
-      dataex: '2022-04-22',
-      horaex: '23:19:01',
+      mat: "Mármore",
+      cor: "Laranja",
+      quant: "425m^2",
+      localex: "Moca",
+      localar: "Areeiro da Serra",
+      dataex: "2022-04-22",
+      horaex: "23:19:01",
     },
     {
-      mat: 'Granito',
-      cor: 'Preto',
-      quant: '300m^2',
-      localex: 'Moca',
-      localar: 'Areeiro da Serra',
-      dataex: '2022-04-22',
-      horaex: '23:19:01',
+      mat: "Granito",
+      cor: "Preto",
+      quant: "300m^2",
+      localex: "Moca",
+      localar: "Areeiro da Serra",
+      dataex: "2022-04-22",
+      horaex: "23:19:01",
     },
     {
-      mat: 'Mármore',
-      cor: 'Laranja',
-      quant: '500m^2',
-      localex: 'Moca',
-      localar: 'Areeiro da Serra',
-      dataex: '2022-04-22',
-      horaex: '23:19:01',
+      mat: "Mármore",
+      cor: "Laranja",
+      quant: "500m^2",
+      localex: "Moca",
+      localar: "Areeiro da Serra",
+      dataex: "2022-04-22",
+      horaex: "23:19:01",
     },
     {
-      mat: 'Mármore',
-      cor: 'Brancp',
-      quant: '235m^2',
-      localex: 'Moca',
-      localar: 'Areeiro da Serra',
-      dataex: '2022-04-22',
-      horaex: '23:19:01',
+      mat: "Mármore",
+      cor: "Brancp",
+      quant: "235m^2",
+      localex: "Moca",
+      localar: "Areeiro da Serra",
+      dataex: "2022-04-22",
+      horaex: "23:19:01",
     },
   ];
+
+  const [informacoes_lote, setInformacoesLote] = useState([]);
+
+  useEffect(() => {
+    const sendRequest = async () => {
+      const result = await axios.get(api.listar_lote, {
+        headers: {
+          Authorization: apiconfig.adminToken,
+        },
+      });
+      setInformacoesLote(result.data);
+    };
+
+    sendRequest().catch((error) => {
+      console.log(error);
+    });
+  }, []);
 
   return (
     <View
@@ -72,14 +93,14 @@ export default function DashboardLotes() {
         }}
         ref={PagerViewRef}
       >
-        {data.map((obj, index) => {
+        {informacoes_lote.map((obj, index) => {
           return (
             <View
               style={{
                 padding: 16,
                 paddingBottom: 8,
                 flex: 1,
-                shadowColor: '#000',
+                shadowColor: "#000",
                 shadowOffset: {
                   width: 0,
                   height: 2,
@@ -92,14 +113,14 @@ export default function DashboardLotes() {
             >
               <View
                 style={{
-                  backgroundColor: 'white',
+                  backgroundColor: "white",
                   padding: 12,
                   paddingTop: 16,
                   borderRadius: 4,
                   flex: 1,
-                  overflow: 'scroll',
+                  overflow: "scroll",
                   paddingBottom: 0,
-                  shadowColor: '#000',
+                  shadowColor: "#000",
                   shadowOffset: {
                     width: 0,
                     height: 2,
@@ -110,26 +131,17 @@ export default function DashboardLotes() {
                 }}
               >
                 <BatchPictures horizontalPadding={32} />
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                    marginTop: 8,
-                    marginBottom: 4,
-                  }}
-                >
-                  <Text style={styles.titleStyle}>GRN_LRJ_00326</Text>
-                </View>
+
                 <ScrollView>
                   <LoteDescription
-                    mat={obj.mat}
-                    cor={obj.cor}
-                    quant={obj.quant}
-                    localex={obj.localex}
-                    localar={obj.localar}
-                    dataex={obj.dataex}
-                    horaex={obj.horaex}
-                    hideTitle
+                    mat={obj.idProduto0.idMaterial0.nome}
+                    cor={obj.idProduto0.idCor0.nome}
+                    quant={obj.quantidade}
+                    localex={obj.idLocalExtracao0.nome}
+                    localar={obj.idLocalArmazem0.nome}
+                    dataex={obj.dataHora}
+                    horaex={obj.dataHora}
+                    codLote={obj.codigo_lote}
                   />
                 </ScrollView>
 
@@ -145,7 +157,7 @@ export default function DashboardLotes() {
           paddingTop: 8,
           borderRadius: 4,
           height: 80,
-          overflow: 'scroll',
+          overflow: "scroll",
         }}
       >
         <View
@@ -153,8 +165,8 @@ export default function DashboardLotes() {
             flex: 1,
             paddingVertical: 12,
             borderRadius: 4,
-            backgroundColor: 'white',
-            shadowColor: '#000',
+            backgroundColor: "white",
+            shadowColor: "#000",
             shadowOffset: {
               width: 0,
               height: 2,
@@ -162,17 +174,17 @@ export default function DashboardLotes() {
             shadowOpacity: 0.25,
             shadowRadius: 3.84,
             elevation: 1,
-            flexDirection: 'row',
-            alignItems: 'center',
+            flexDirection: "row",
+            alignItems: "center",
           }}
         >
           <Pressable
             style={{
               height: 54,
-              backgroundColor: 'white',
-              justifyContent: 'center',
-              marginRight: 'auto',
-              backgroundColor: 'white',
+              backgroundColor: "white",
+              justifyContent: "center",
+              marginRight: "auto",
+              backgroundColor: "white",
               paddingHorizontal: 12,
             }}
             onPress={() => {
@@ -182,15 +194,15 @@ export default function DashboardLotes() {
             <Feather size={28} name="chevron-left" />
           </Pressable>
           <Text style={{ fontSize: 20, lineHeight: 24 }}>
-            {position + 1}/{data.length}
+            {position + 1}/{informacoes_lote.length}
           </Text>
           <Pressable
             style={{
               height: 54,
-              backgroundColor: 'white',
-              justifyContent: 'center',
-              marginLeft: 'auto',
-              backgroundColor: 'white',
+              backgroundColor: "white",
+              justifyContent: "center",
+              marginLeft: "auto",
+              backgroundColor: "white",
               paddingHorizontal: 12,
             }}
             onPress={() => {
@@ -212,7 +224,7 @@ const styles = StyleSheet.create({
   },
 
   titleStyle: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 21,
   },
 });
