@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { useEffect } from 'react';
 import { FlatList, View, Text } from 'react-native';
 import ListItem from './ListItem';
 
@@ -26,35 +28,54 @@ const DATA = [
   },
 ];
 
-function Item({ id, state, title, newMessage, imageUrl }) {
-  return (
-    <ListItem
-      newMessage={newMessage}
-      title={title}
-      state={state}
-      imageUrl={imageUrl}
-      destiny={['HomeStack', 'Chat']}
-    ></ListItem>
-  );
-}
+export default function BasicList({ data, user_id }) {
+  const [channels, setChannels] = useState([]);
 
-function renderItem({ item }) {
-  return (
-    <Item
-      id={item.id}
-      title={item.title}
-      newMessage={item.newMessage}
-      state={item.state}
-      imageUrl={item.imageUrl}
-    />
-  );
-}
+  function Item({ id, state, title, newMessage, imageUrl }) {
+    return (
+      <ListItem
+        id={id}
+        newMessage={newMessage}
+        title={title}
+        state={state}
+        imageUrl={imageUrl}
+        destiny={['HomeStack', 'Chat']}
+        user_id={user_id}
+      ></ListItem>
+    );
+  }
 
-export default function BasicList() {
+  function renderItem({ item }) {
+    // código que verifica se há nova mensagem:
+    return (
+      <Item
+        id={item.id}
+        title={item.titulo}
+        newMessage={false}
+        state={item.estado}
+        imageUrl={item.pic}
+      />
+    );
+  }
+
+  useEffect(() => {
+    const result = [];
+    for (let [key, value] of data) {
+      result.unshift({ ...value, id: key });
+    }
+    setChannels(result);
+  }, [data]);
+
+  /*
+  useEffect(() => {
+    console.log('Canais: ', channels);
+  }, [channels]);
+  */
+
   return (
     <View>
       <FlatList
-        data={DATA}
+        data={channels}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />
