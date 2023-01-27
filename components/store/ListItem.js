@@ -5,6 +5,7 @@ import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 export default function ListItem({
+  id,
   newMessage,
   destiny,
   title,
@@ -18,7 +19,7 @@ export default function ListItem({
         if (destiny) {
           navigation.push(destiny[0], {
             screen: destiny[1],
-            params: { title: title },
+            params: { id: id, title: title },
           });
         }
       }}
@@ -27,7 +28,7 @@ export default function ListItem({
         <Image
           alt="Product Picture"
           style={page_styles.productPicture}
-          source={imageUrl}
+          source={{ uri: imageUrl }}
         />
         <View style={{ alignItems: 'center', flex: 1 }}>
           {newMessage && <Badge label={'Resposta!'} color="#FFFB94" />}
