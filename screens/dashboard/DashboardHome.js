@@ -68,7 +68,7 @@ export default function DashboardHome() {
           Authorization: apiconfig.adminToken,
         },
       });
-      console.log("res: ", result.data);
+
       setInfoTransportadora(result.data);
     };
 
@@ -85,7 +85,7 @@ export default function DashboardHome() {
           Authorization: apiconfig.adminToken,
         },
       });
-      // console.log("uhuprodutos: ", result.data);
+
       setInfoProduto(result.data);
     };
 
