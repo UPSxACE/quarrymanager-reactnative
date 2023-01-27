@@ -33,6 +33,7 @@ const api = {
   listar_lote: criarUrl("lote/listar"),
   listar_status: criarUrl("home/stats"),
   listar_transportadora: criarUrl("transportadora/listar"),
+  listar_pedido: criarUrl("estado-pedido/listar-encomendas"),
 };
 
 export default api;

@@ -9,6 +9,9 @@ export default function HorizontalList({
   subText,
   date,
   tag,
+  mainTextPedido,
+  subTextPedido,
+  tagPedido,
 }) {
   function Item({ tag, mainText, subText, date }) {
     return (
@@ -37,10 +40,28 @@ export default function HorizontalList({
   function renderItem({ item, index }) {
     return (
       <Item
-        mainText={typeof mainText !== "undefined" ? item[mainText] : ""}
-        tag={typeof tag !== "undefined" ? item[tag] : "#" + (index + 1)}
+        mainText={
+          typeof mainText !== "undefined"
+            ? mainTextPedido
+              ? item.idPedido0.idUser0.profile.full_name
+              : item[mainText]
+            : ""
+        }
+        tag={
+          typeof tag !== "undefined"
+            ? tagPedido
+              ? item.idPedido0.idProduto0.tituloArtigo
+              : item[tag]
+            : "#" + (index + 1)
+        }
         date={typeof date !== "undefined" ? item[date] : ""}
-        subText={typeof subText !== "undefined" ? item[subText] : ""}
+        subText={
+          typeof subText !== "undefined"
+            ? subTextPedido
+              ? item.idPedido0.idUser0.profile.morada
+              : item[subText]
+            : ""
+        }
       />
     );
   }
