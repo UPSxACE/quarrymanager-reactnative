@@ -1,11 +1,42 @@
 import { useCallback, useEffect, useState } from 'react';
 import { GiftedChat } from 'react-native-gifted-chat';
 import { View, Text } from 'react-native';
+import {
+  limitToLast,
+  onValue,
+  orderByKey,
+  query,
+  ref,
+} from 'firebase/database';
+import { firebase_db } from '../../firebase';
 
-export default function Chat() {
+export default function Chat({ route }) {
   const [messages, setMessages] = useState([]);
+  const params = route.params;
+  const canal_mensagens_ref = (id_canal) =>
+    query(
+      ref(firebase_db, '/pedidos-mensagens/' + id_canal),
+      orderByKey('createdAt'),
+      limitToLast(100)
+    );
+  console.log(params);
 
   useEffect(() => {
+    onValue(canal_mensagens_ref(params.id), (snapshot) => {
+      console.log('Mensagens canal ' + params.id + ': ', snapshot.val());
+      const result_map = new Map();
+      const result = [];
+      for (const [key, value] of Object.entries(snapshot.val())) {
+        if (!result_map.has(value._id)) {
+          result_map.set(value._id, value);
+        }
+      }
+      for (const [key, value] of result_map) {
+        result.unshift(value);
+      }
+      setMessages(result);
+    });
+    /*
     setMessages([
       {
         _id: 1,
@@ -20,6 +51,7 @@ export default function Chat() {
         },
       },
     ]);
+    */
   }, []);
 
   const onSend = useCallback((newMessages = []) => {
