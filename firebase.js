@@ -1,12 +1,13 @@
-// Import the functions you need from the SDKs you need
-import firebase from 'firebase';
-import 'firebase/database';
+import { initializeApp } from 'firebase/app';
 // Arquivo local de configuração (é ignorado via gitignore)
-import config from './firebase-config';
+import firebaseConfig from './firebase-config';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
+import { getDatabase } from 'firebase/database';
 
 // Initialize Firebase
-firebase.initializeApp(config);
-export const firebase_db = firebase;
+const app = initializeApp(firebaseConfig);
+
+// Initialize Realtime Database and get a reference to the service
+export const firebase_db = getDatabase(app);
