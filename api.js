@@ -28,6 +28,11 @@ const api = {
     );
   },
   listar_profile: criarUrl("profile/get-profile"),
+
+  // DASHBOARD
+  listar_lote: criarUrl("lote/listar"),
+  listar_status: criarUrl("home/stats"),
+  listar_transportadora: criarUrl("transportadora/listar"),
 };
 
 export default api;
