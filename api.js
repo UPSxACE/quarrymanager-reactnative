@@ -1,38 +1,39 @@
-import apiconfig from "./api-config";
+import apiconfig from './api-config';
 
 const criarUrl = (endpoint) => {
-  return "http://" + apiconfig.serverIP + "/api/" + endpoint;
+  return 'http://' + apiconfig.serverIP + '/api/' + endpoint;
 };
 
 const api = {
-  listar_produto: criarUrl("produto/listar"),
+  listar_produto: criarUrl('produto/listar'),
   listar_marmores: criarUrl(
-    "produto/produtos-loja?fields=tituloArtigo,preco&expand=id,url_fotografia"
+    'produto/produtos-loja?fields=tituloArtigo,preco&expand=id,url_fotografia'
   ),
   listar_granitos: criarUrl(
-    "produto/produtos-loja?fields=tituloArtigo,preco&expand=id,url_fotografia"
+    'produto/produtos-loja?fields=tituloArtigo,preco&expand=id,url_fotografia'
   ),
   listar_ceramicas: criarUrl(
-    "produto/produtos-loja?fields=tituloArtigo,preco&expand=id,url_fotografia"
+    'produto/produtos-loja?fields=tituloArtigo,preco&expand=id,url_fotografia'
   ),
   listar_porcelanas: criarUrl(
-    "produto/produtos-loja?fields=tituloArtigo,preco&expand=id,url_fotografia"
+    'produto/produtos-loja?fields=tituloArtigo,preco&expand=id,url_fotografia'
   ),
-  listar_material: criarUrl("material/listar"),
+  listar_material: criarUrl('material/listar'),
 
   produto_detalhe: (id) => {
     return criarUrl(
-      "produto/find?id=" +
+      'produto/find?id=' +
         id +
-        "&fields=tituloArtigo,preco,Res_Compressao,Res_Flexao,Massa_Vol_Aparente,Absorcao_Agua,descricaoProduto"
+        '&fields=tituloArtigo,preco,Res_Compressao,Res_Flexao,Massa_Vol_Aparente,Absorcao_Agua,descricaoProduto'
     );
   },
-  listar_profile: criarUrl("profile/get-profile"),
+  listar_profile: criarUrl('profile/get-profile'),
 
   // DASHBOARD
-  listar_lote: criarUrl("lote/listar"),
-  listar_status: criarUrl("home/stats"),
-  listar_transportadora: criarUrl("transportadora/listar"),
+  listar_lote: criarUrl('lote/listar'),
+  listar_status: criarUrl('home/stats'),
+  listar_transportadora: criarUrl('transportadora/listar'),
+  novo_pedido: criarUrl('pedido/pedido-orcamento-v2'),
 };
 
 export default api;
