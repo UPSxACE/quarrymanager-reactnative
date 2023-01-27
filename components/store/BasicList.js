@@ -28,34 +28,35 @@ const DATA = [
   },
 ];
 
-function Item({ id, state, title, newMessage, imageUrl }) {
-  return (
-    <ListItem
-      id={id}
-      newMessage={newMessage}
-      title={title}
-      state={state}
-      imageUrl={imageUrl}
-      destiny={['HomeStack', 'Chat']}
-    ></ListItem>
-  );
-}
-
-function renderItem({ item }) {
-  // código que verifica se há nova mensagem:
-  return (
-    <Item
-      id={item.id}
-      title={item.titulo}
-      newMessage={false}
-      state={item.estado}
-      imageUrl={item.pic}
-    />
-  );
-}
-
-export default function BasicList({ data }) {
+export default function BasicList({ data, user_id }) {
   const [channels, setChannels] = useState([]);
+
+  function Item({ id, state, title, newMessage, imageUrl }) {
+    return (
+      <ListItem
+        id={id}
+        newMessage={newMessage}
+        title={title}
+        state={state}
+        imageUrl={imageUrl}
+        destiny={['HomeStack', 'Chat']}
+        user_id={user_id}
+      ></ListItem>
+    );
+  }
+
+  function renderItem({ item }) {
+    // código que verifica se há nova mensagem:
+    return (
+      <Item
+        id={item.id}
+        title={item.titulo}
+        newMessage={false}
+        state={item.estado}
+        imageUrl={item.pic}
+      />
+    );
+  }
 
   useEffect(() => {
     const result = [];
@@ -65,9 +66,11 @@ export default function BasicList({ data }) {
     setChannels(result);
   }, [data]);
 
+  /*
   useEffect(() => {
     console.log('Canais: ', channels);
   }, [channels]);
+  */
 
   return (
     <View>

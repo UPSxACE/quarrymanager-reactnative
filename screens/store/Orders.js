@@ -29,24 +29,23 @@ export default function Orders() {
     if (channel_list) {
       setChannels(new Map(channel_list.set(key, value)));
     }
-    console.log(channel_list);
   }
 
   useEffect(() => {
     onValue(canais_lista_ref, (snapshot) => {
-      console.log('OnValue!');
-      console.log('Snapshot: ', snapshot.val());
-
-      for (const [key, value] of Object.entries(snapshot.val())) {
-        // caso o mapa de canais já contenha este canal não executar código
-        if (!channel_list.has(key)) {
-          console.log('Alterou!');
-          //updateChannels(key, {});
-          onValue(canal_info_ref(key), (snapshot) => {
-            console.log('Valor canal_info: ', snapshot);
-            updateChannels(key, snapshot.val());
-          });
+      try {
+        for (const [key, value] of Object.entries(snapshot.val())) {
+          // caso o mapa de canais já contenha este canal não executar código
+          if (!channel_list.has(key)) {
+            //updateChannels(key, {});
+            onValue(canal_info_ref(key), (snapshot) => {
+              //console.log('Valor canal_info: ', snapshot);
+              updateChannels(key, snapshot.val());
+            });
+          }
         }
+      } catch {
+        //
       }
     });
   }, []);
@@ -81,7 +80,7 @@ export default function Orders() {
         setSearch={setCategory}
         style={{ backgroundColor: 'white', elevation: 15, zIndex: 1 }}
       />
-      <BasicList data={channel_list} />
+      <BasicList data={channel_list} user_id={user} />
     </View>
   );
 }

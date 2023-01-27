@@ -11,6 +11,7 @@ export default function ListItem({
   title,
   state,
   imageUrl,
+  user_id,
 }) {
   const navigation = useNavigation();
   return (
@@ -19,7 +20,7 @@ export default function ListItem({
         if (destiny) {
           navigation.push(destiny[0], {
             screen: destiny[1],
-            params: { id: id, title: title },
+            params: { id: id, title: title, user_id: user_id },
           });
         }
       }}
