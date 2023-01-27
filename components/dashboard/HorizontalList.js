@@ -17,7 +17,7 @@ export default function HorizontalList({
         <View style={styles.itemContent}>
           {subText ? (
             <View style={styles.itemContentInner1}>
-              <Text style={styles.tag1}>testeeee2</Text>
+              <Text style={styles.tag1}>{tag}</Text>
               <Text style={styles.mainText1}>{mainText}</Text>
               <Text style={styles.subText}>{subText}</Text>
               <Text style={styles.date}>{date}</Text>
