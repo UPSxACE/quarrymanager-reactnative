@@ -41,6 +41,8 @@ export default function DashboardHome() {
 
   const [info_status, setInfoStatus] = useState({});
   const [info_transportadora, setInfoTransportadora] = useState([]);
+  const [info_produto, setInfoProduto] = useState([]);
+  const [info_pedido, setInfoPedido] = useState(false);
 
   // LISTAR STATUS (CARDS)
   useEffect(() => {
@@ -76,7 +78,40 @@ export default function DashboardHome() {
     });
   }, []);
 
-  console.log(info_transportadora.nome);
+  // LISTAR PRODUTOS
+  useEffect(() => {
+    const sendRequest = async () => {
+      const result = await axios.get(api.listar_produto, {
+        headers: {
+          Authorization: apiconfig.adminToken,
+        },
+      });
+
+      setInfoProduto(result.data);
+    };
+
+    sendRequest().catch((error) => {
+      console.log(error);
+    });
+  }, []);
+
+  // LISTAR PEDIDOS
+  useEffect(() => {
+    const sendRequest = async () => {
+      const result = await axios.get(api.listar_pedido, {
+        headers: {
+          Authorization: apiconfig.adminToken,
+        },
+      });
+
+      setInfoPedido(result.data);
+    };
+
+    sendRequest().catch((error) => {
+      console.log(error);
+    });
+  }, []);
+
   return (
     <View style={{ paddingHorizontal: 20 }}>
       <View
@@ -122,22 +157,29 @@ export default function DashboardHome() {
         <View>
           <HorizontalList
             title="Pedidos"
-            data={HLDATA}
-            mainText="customer"
-            subText="address"
-            date="date"
-            tag="product"
+            data={info_pedido ? info_pedido : []}
+            mainText="full_name"
+            subText="morada"
+            date="dataEstado"
+            tag="tituloArtigo"
+            subTextPedido
+            mainTextPedido
+            tagPedido
           />
         </View>
         <View style={{ marginTop: 12 }}>
           <HorizontalList
             title="Transportadoras"
             data={info_transportadora}
-            mainText={info_transportadora.nome ? info_transportadora.nome : ""}
+            mainText="nome"
           />
         </View>
         <View style={{ marginTop: 12 }}>
-          <HorizontalList title="Produtos" data={HLDATA} mainText="customer" />
+          <HorizontalList
+            title="Produtos"
+            data={info_produto}
+            mainText="tituloArtigo"
+          />
         </View>
       </View>
     </View>

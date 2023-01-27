@@ -30,9 +30,11 @@ const api = {
   listar_profile: criarUrl('profile/get-profile'),
 
   // DASHBOARD
+
   listar_lote: criarUrl('lote/listar'),
   listar_status: criarUrl('home/stats'),
   listar_transportadora: criarUrl('transportadora/listar'),
+  listar_pedido: criarUrl('estado-pedido/listar-encomendas'),
   novo_pedido: criarUrl('pedido/pedido-orcamento-v2'),
 };
 
