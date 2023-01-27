@@ -43,19 +43,85 @@ export default function OrderProduct({ navigation, route }) {
   const [image, setImage] = useState([]);
   const [imagesToUpload, setImagesToUpload] = useState(null);
 
+  useEffect(() => {
+    const sendRequest = async () => {
+      const resp = await axios.get(api.obter_perfil, {
+        headers: {
+          Authorization: apiconfig.adminToken,
+        },
+      });
+
+      setProfile(resp.data);
+    };
+
+    sendRequest();
+  }, []);
+
   const submit = () => {
     const sendRequest = async () => {
+      const data = new FormData();
+
+      const addBodyToFormData = (data, body = {}) => {
+        const newData = data;
+
+        Object.keys(body).forEach((key) => {
+          newData.append(key, body[key]);
+        });
+
+        return newData;
+      };
+
+      if (imagesToUpload) {
+        imagesToUpload.map((picture, index) => {
+          data.append('file' + index, {
+            name: getFileName(picture.uri),
+            type: 'image/' + getExtension(picture.uri),
+            uri:
+              Platform.OS === 'ios'
+                ? picture.uri.replace('file://', '')
+                : picture.uri,
+          });
+        });
+      }
+
+      fetch(api.editar_perfil, {
+        method: 'POST',
+        headers: {
+          Authorization: apiconfig.adminToken,
+          //'content-type': 'multipart/form-data',
+        },
+        body: {
+          full_name: profile.full_name,
+          morada: profile.morada,
+          localidade: profile.localidade,
+          codPostal: profile.codPostal,
+          telefone: profile.telefone,
+        },
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          //console.log('response 1', response);
+        })
+        .catch((error) => {
+          console.log('error', error);
+        });
+
       fetch(api.novo_pedido, {
         method: 'POST',
         headers: {
           Authorization: apiconfig.adminToken,
-          'content-type': 'multipart/form-data',
+          //'content-type': 'multipart/form-data',
         },
-        body: imagesToUpload,
+        body: addBodyToFormData(data, {
+          idProduto: params.id,
+          quantidade: quantity,
+          codigo_desconto: discount,
+          mensagem: message,
+        }),
       })
         .then((response) => response.json())
         .then((response) => {
-          console.log('response', response);
+          //console.log('response 2', response);
         })
         .catch((error) => {
           console.log('error', error);
@@ -76,30 +142,19 @@ export default function OrderProduct({ navigation, route }) {
       quality: 1,
     });
 
-    console.log(JSON.stringify(result, null, 4));
     if (!result.cancelled) {
-      const data = new FormData();
       let result_upload = [];
       if (!result.selected) {
         result_upload = [result];
         setImage([result]);
       } else {
         result_upload = result.selected;
-        setImage(result.selected);
+        if (result_upload.length > 4) {
+          result_upload = result_upload.slice(0, 4);
+        }
+        setImage(result_upload);
       }
-      result_upload.map((picture, index) => {
-        data.append('file' + index, {
-          name: getFileName(picture.uri),
-          type: 'image/' + getExtension(picture.uri),
-          uri:
-            Platform.OS === 'ios'
-              ? picture.uri.replace('file://', '')
-              : picture.uri,
-        });
-      });
-      console.log('HERE: ');
-      console.log(JSON.stringify(data, null, 4));
-      setImagesToUpload(data);
+      setImagesToUpload(result_upload);
     }
   };
 
@@ -429,9 +484,9 @@ export default function OrderProduct({ navigation, route }) {
             <View>
               <WhiteInput
                 label={'Primeiro Nome'}
-                value={profile.firstName}
+                value={profile.full_name}
                 onChangeText={(value) => {
-                  setProfile({ ...profile, firstName: value });
+                  setProfile({ ...profile, full_name: value });
                 }}
                 editable={edit}
                 style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
@@ -443,9 +498,9 @@ export default function OrderProduct({ navigation, route }) {
             <View style={{ marginTop: 12 }}>
               <WhiteInput
                 label={'Último Nome'}
-                value={profile.lastName}
+                value={profile.date}
                 onChangeText={(value) => {
-                  setProfile({ ...profile, lastName: value });
+                  setProfile({ ...profile, date: value });
                 }}
                 editable={edit}
                 style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
@@ -457,9 +512,9 @@ export default function OrderProduct({ navigation, route }) {
             <View style={{ marginTop: 12 }}>
               <WhiteInput
                 label={'Morada'}
-                value={profile.address}
+                value={profile.morada}
                 onChangeText={(value) => {
-                  setProfile({ ...profile, address: value });
+                  setProfile({ ...profile, morada: value });
                 }}
                 editable={edit}
                 style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
@@ -473,9 +528,9 @@ export default function OrderProduct({ navigation, route }) {
               <View style={{ width: '50%', paddingRight: 6 }}>
                 <WhiteInput
                   label={'Código Postal'}
-                  value={profile.zipCode}
+                  value={profile.codPostal}
                   onChangeText={(value) => {
-                    setProfile({ ...profile, zipCode: value });
+                    setProfile({ ...profile, codPostal: value });
                   }}
                   editable={edit}
                   style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
@@ -487,9 +542,9 @@ export default function OrderProduct({ navigation, route }) {
               <View style={{ width: '50%', paddingLeft: 6 }}>
                 <WhiteInput
                   label={'Região'}
-                  value={profile.city}
+                  value={profile.localidade}
                   onChangeText={(value) => {
-                    setProfile({ ...profile, city: value });
+                    setProfile({ ...profile, localidade: value });
                   }}
                   editable={edit}
                   style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
@@ -502,9 +557,9 @@ export default function OrderProduct({ navigation, route }) {
             <View style={{ marginTop: 12 }}>
               <WhiteInput
                 label={'Telefone'}
-                value={profile.phone}
+                value={profile.telefone}
                 onChangeText={(value) => {
-                  setProfile({ ...profile, phone: value });
+                  setProfile({ ...profile, telefone: value });
                 }}
                 editable={edit}
                 style={{ color: edit ? 'black' : 'rgba(0,0,0,0.5)' }}
@@ -552,16 +607,34 @@ export default function OrderProduct({ navigation, route }) {
         </View>
         <Pressable
           onPress={pickImage}
-          style={{ paddingBottom: 12, paddingHorizontal: 12, height: 200 }}
+          style={{ paddingBottom: 12, paddingHorizontal: 12, height: 240 }}
         >
+          <View
+            style={{
+              backgroundColor: 'white',
+              width: '100%',
+              marginBottom: 2,
+              paddingLeft: 12,
+              paddingVertical: 6,
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: 'bold',
+              }}
+            >
+              Anexos (máx. 4)
+            </Text>
+          </View>
           {image.length < 1 ? (
             <View
               style={{
                 backgroundColor: 'white',
-                width: '100%',
                 justifyContent: 'center',
                 alignItems: 'center',
                 padding: 24,
+                flex: 1,
               }}
             >
               <Text
@@ -599,7 +672,7 @@ export default function OrderProduct({ navigation, route }) {
                     style={{
                       width: '23%',
                       height: '100%',
-                      opacity: 1,
+                      opalocalidade: 1,
                       marginLeft: '1%',
                       marginRight: '1%',
                     }}
@@ -633,7 +706,11 @@ export default function OrderProduct({ navigation, route }) {
             editable={false}
             disabled={quantity == 0 || isNaN(quantity)}
             label={'Enviar Pedido'}
-            onPressEvent={submit}
+            onPressEvent={() => {
+              if (!(quantity == 0 || isNaN(quantity))) {
+                submit();
+              }
+            }}
           />
         </View>
       </ScrollView>

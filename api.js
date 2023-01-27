@@ -36,6 +36,8 @@ const api = {
   listar_transportadora: criarUrl('transportadora/listar'),
   listar_pedido: criarUrl('estado-pedido/listar-encomendas'),
   novo_pedido: criarUrl('pedido/pedido-orcamento-v2'),
+  obter_perfil: criarUrl('profile/get-profile'),
+  editar_perfil: criarUrl('profile/editar'),
 };
 
 export default api;

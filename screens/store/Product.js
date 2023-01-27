@@ -1,15 +1,15 @@
-import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
-import { View, FlatList, Image, StyleSheet } from "react-native";
-import api from "../../api";
-import apiconfig from "../../api-config";
-import Characteristics from "../../components/store/Characteristics";
-import Description from "../../components/store/Description";
-import HorizontalCategory from "../../components/store/HorizontalCategory";
+import axios from 'axios';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { View, FlatList, Image, StyleSheet } from 'react-native';
+import api from '../../api';
+import apiconfig from '../../api-config';
+import Characteristics from '../../components/store/Characteristics';
+import Description from '../../components/store/Description';
+import HorizontalCategory from '../../components/store/HorizontalCategory';
 
 function padWithZero(num, targetLength) {
-  return String(num).padStart(targetLength, "0");
+  return String(num).padStart(targetLength, '0');
 }
 
 function ProductPage({ route }) {
@@ -64,7 +64,8 @@ function ProductPage({ route }) {
           preco={params.price}
           descricao={informacoes_produto.descricaoProduto}
           title={params.title}
-          refr={String(params.id).padStart(8, "0")}
+          refr={String(params.id).padStart(8, '0')}
+          id={params.id}
           imageUrl={params.imageUrl}
         />
       </View>
@@ -78,7 +79,7 @@ function ProductPage({ route }) {
       </View>
       <View style={Productpage_styles.backgroundComp}>
         <HorizontalCategory
-          categoryTitle={"Veja também"}
+          categoryTitle={'Veja também'}
           data={CATEGORY_DATA1}
         />
       </View>
@@ -92,8 +93,8 @@ export default function Product(props) {
 
 const Productpage_styles = StyleSheet.create({
   imageShadow: {
-    backgroundColor: "white",
-    shadowColor: "#000",
+    backgroundColor: 'white',
+    shadowColor: '#000',
     shadowOpacity: 1,
     shadowRadius: 3,
     elevation: 15,
@@ -104,9 +105,9 @@ const Productpage_styles = StyleSheet.create({
     height: 293,
   },
   backgroundPage: {
-    backgroundColor: "#D9D9D9",
+    backgroundColor: '#D9D9D9',
   },
   backgroundComp: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
   },
 });
