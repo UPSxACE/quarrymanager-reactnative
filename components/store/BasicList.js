@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { FlatList, View, Text } from 'react-native';
+import apiconfig from '../../api-config';
 import ListItem from './ListItem';
 
 const DATA = [
@@ -53,7 +54,7 @@ export default function BasicList({ data, user_id }) {
         title={item.titulo}
         newMessage={false}
         state={item.estado}
-        imageUrl={item.pic}
+        imageUrl={'http://' + apiconfig.serverIP + '/uploads/' + item.pic}
       />
     );
   }

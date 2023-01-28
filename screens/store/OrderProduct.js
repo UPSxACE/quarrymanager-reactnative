@@ -43,6 +43,8 @@ export default function OrderProduct({ navigation, route }) {
   const [image, setImage] = useState([]);
   const [imagesToUpload, setImagesToUpload] = useState(null);
 
+  const user = '-NMi-_Mpex6W2O4PMLKf';
+
   useEffect(() => {
     const sendRequest = async () => {
       const resp = await axios.get(api.obter_perfil, {
@@ -100,7 +102,7 @@ export default function OrderProduct({ navigation, route }) {
       })
         .then((response) => response.json())
         .then((response) => {
-          //console.log('response 1', response);
+          console.log('response 1', response);
         })
         .catch((error) => {
           console.log('error', error);
@@ -117,11 +119,14 @@ export default function OrderProduct({ navigation, route }) {
           quantidade: quantity,
           codigo_desconto: discount,
           mensagem: message,
+          user_uid: user,
+          user_name: 'Cliente',
+          user_avatar: 'profilePictures/CEO1.jpg',
         }),
       })
         .then((response) => response.json())
         .then((response) => {
-          //console.log('response 2', response);
+          console.log('response 2', JSON.stringify(response, null, 4));
         })
         .catch((error) => {
           console.log('error', error);
