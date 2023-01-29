@@ -12,6 +12,8 @@ import {
   update,
 } from 'firebase/database';
 import { firebase_db } from '../../firebase';
+import api from '../../api';
+import apiconfig from '../../api-config';
 
 export default function Chat({ route }) {
   const [messages, setMessages] = useState([]);
@@ -44,6 +46,10 @@ export default function Chat({ route }) {
           }
         }
         for (const [key, value] of result_map) {
+          if (value.anexos) {
+            value.image =
+              'http://' + apiconfig.serverIP + '/uploads/' + value.anexos[0];
+          }
           result.unshift(value);
         }
         setMessages(result);
@@ -53,7 +59,7 @@ export default function Chat({ route }) {
     });
   }, []);
 
-  const onSend = useCallback((newMessages = []) => {
+  const onSend = useCallback(async (newMessages = []) => {
     setMessages((previousMessages) =>
       GiftedChat.append(previousMessages, newMessages)
     );
@@ -63,7 +69,7 @@ export default function Chat({ route }) {
       child(ref(firebase_db), 'pedidos-mensagens/' + params.id)
     ).key;
 
-    const updates = {};
+    let updates = {};
     updates['/pedidos-mensagens/' + params.id + '/' + newPostKey] = {
       ...newMessages[0],
       createdAt_Local: new Date().getTime(),
@@ -75,6 +81,11 @@ export default function Chat({ route }) {
       '/pedidos-listagem/' + params.id + '/ultima-lida/' + params.user_id
     ] = { '.sv': 'timestamp' };
 
+    await update(ref(firebase_db), updates);
+    updates = {};
+    updates[
+      '/pedidos-mensagens/' + params.id + '/' + newPostKey + '/sent'
+    ] = true;
     update(ref(firebase_db), updates);
   }, []);
 
