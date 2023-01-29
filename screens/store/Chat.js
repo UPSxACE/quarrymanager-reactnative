@@ -42,7 +42,6 @@ export default function Chat({ route }) {
 
   useEffect(() => {
     onValue(canal_mensagens_ref(params.id), (snapshot) => {
-      //console.log('Mensagens canal ' + params.id + ': ', snapshot.val());
       const result_map = new Map();
       const result = [];
       try {
@@ -64,13 +63,11 @@ export default function Chat({ route }) {
                 'http://' + apiconfig.serverIP + '/uploads/' + img_link;
               return;
             });
-            console.log('str_r: ', string_result);
             value.image = string_result;
             /*
             value.image =
               'http://' + apiconfig.serverIP + '/uploads/' + value.anexos[0];*/
           }
-          console.log('dep');
           result.unshift(value);
         }
         setMessages(result);
@@ -111,25 +108,62 @@ export default function Chat({ route }) {
   }, []);
 
   const customMessageImages = (props) => {
-    console.log('ze');
-    console.log(props.currentMessage.image);
+    const getRadius = (index) => {
+      const amount_of_radius = 8;
+      switch (index) {
+        case 0:
+          return { borderTopLeftRadius: amount_of_radius };
+        case 1:
+          return { borderTopRightRadius: amount_of_radius };
+        case 2:
+          return { borderBottomLeftRadius: amount_of_radius };
+        case 3:
+          return { borderBottomRightRadius: amount_of_radius };
+      }
+    };
+
     if (props.currentMessage.image) {
-      console.log('funfa');
       const imgs = props.currentMessage.image.split(',');
-      const result = imgs.map((img, index) => (
-        <Image key={index} source={{ uri: img }} />
-      ));
-      console.log('Q', result);
       return (
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', maxWidth: 200 }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            width: 200,
+            height: 200,
+          }}
+        >
           {imgs.map((img, index) => (
-            <Image
-              style={{
-                height: 100,
-                width: 100,
+            <MessageImage
+              containerStyle={{
+                height: 93.5,
+                width: 93.5,
+                margin: 2,
               }}
-              key={index}
-              source={{ uri: img }}
+              lightboxProps={{
+                style: {
+                  height: 93.5,
+                  width: 93.5,
+                },
+              }}
+              imageStyle={{
+                height: 93.5,
+                width: 93.5,
+                backgroundColor: 'red',
+                borderRadius: 0,
+                ...getRadius(index),
+              }}
+              imageProps={{
+                style: {
+                  height: 93.5,
+                  width: 93.5,
+                  backgroundColor: 'green',
+                },
+              }}
+              currentMessage={{
+                text: 'HEY',
+                image: img,
+              }}
             />
           ))}
         </View>
@@ -141,7 +175,6 @@ export default function Chat({ route }) {
     <View style={{ flex: 1 }} testID="main">
       <GiftedChat
         renderMessageImage={(props) => {
-          console.log('exec');
           return customMessageImages(props);
         }}
         messages={messages}
