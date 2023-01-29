@@ -56,7 +56,7 @@ export default function Orders() {
   const TABS_DATA = ['Todos', 'Ativos', 'Finalizados', 'Favoritos'];
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <ScrollableTabs
         tabs={TABS_DATA}
         setSearch={setCategory}

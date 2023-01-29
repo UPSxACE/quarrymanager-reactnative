@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { GiftedChat } from 'react-native-gifted-chat';
-import { View, Text } from 'react-native';
+import { View, Text, Platform, KeyboardAvoidingView } from 'react-native';
 import {
   child,
   limitToLast,
@@ -51,22 +51,6 @@ export default function Chat({ route }) {
         //
       }
     });
-    /*
-    setMessages([
-      {
-        _id: 1,
-        text: 'Os dados de morada são inválidos.\nPeço que nos envie a morada e código postal corretos.',
-        //Enviaremos a sua encomenda o mais rápido possível. Obrigado.
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: 'React Native',
-          avatar:
-            'https://lighthouse.mq.edu.au/__data/assets/image/0004/917194/women-ceo-tile700x400.jpg',
-        },
-      },
-    ]);
-    */
   }, []);
 
   const onSend = useCallback((newMessages = []) => {
@@ -95,7 +79,7 @@ export default function Chat({ route }) {
   }, []);
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }} testID="main">
+    <View style={{ flex: 1 }} testID="main">
       <GiftedChat
         messages={messages}
         onSend={(messages) => onSend(messages)}
@@ -105,6 +89,18 @@ export default function Chat({ route }) {
           avatar:
             'https://lighthouse.mq.edu.au/__data/assets/image/0004/917194/women-ceo-tile700x400.jpg',
         }}
+        messagesContainerStyle={
+          Platform.OS === 'android'
+            ? {
+                marginTop: -30,
+              }
+            : false
+        }
+        listViewProps={
+          Platform.OS === 'android'
+            ? { style: { flex: 1, marginBottom: -30 } }
+            : false
+        }
       />
     </View>
   );
