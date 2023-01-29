@@ -111,7 +111,7 @@ export default function OrderProduct({ navigation, route }) {
           //console.log('response 1', response);
         })
         .catch((error) => {
-          console.log('error', error); //
+          console.log('error', error);
         });
 
       fetch(api.novo_pedido, {
@@ -144,7 +144,7 @@ export default function OrderProduct({ navigation, route }) {
         })
         .catch((error) => {
           setOrderComplete(true);
-          console.log('error', error); //
+          console.log('error', error);
         });
     };
 
