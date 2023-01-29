@@ -135,6 +135,7 @@ export default function Chat({ route }) {
         >
           {imgs.map((img, index) => (
             <MessageImage
+              key={index}
               containerStyle={{
                 height: 93.5,
                 width: 93.5,

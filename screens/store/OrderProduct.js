@@ -130,13 +130,15 @@ export default function OrderProduct({ navigation, route }) {
           user_avatar: 'profilePictures/CEO1.jpg',
         }),
       })
-        .then((response) => {
+        .then(async (response) => {
           if (response.ok) {
             setOrderSuccess(true);
             setOrderComplete(true);
           } else {
             setOrderComplete(true);
+            console.log(await response.json());
           }
+
           return response.json();
         })
         .then((response) => {
