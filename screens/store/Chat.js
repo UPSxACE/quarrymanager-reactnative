@@ -1,6 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
 import { GiftedChat } from 'react-native-gifted-chat';
-import { View, Text, Platform, KeyboardAvoidingView } from 'react-native';
+import {
+  View,
+  Text,
+  Platform,
+  KeyboardAvoidingView,
+  Image,
+} from 'react-native';
 import {
   child,
   limitToLast,
@@ -47,9 +53,24 @@ export default function Chat({ route }) {
         }
         for (const [key, value] of result_map) {
           if (value.anexos) {
+            let string_result = '';
+            value.anexos.map((img_link, index) => {
+              if (index !== 0) {
+                string_result +=
+                  ',' + 'http://' + apiconfig.serverIP + '/uploads/' + img_link;
+                return;
+              }
+              string_result +=
+                'http://' + apiconfig.serverIP + '/uploads/' + img_link;
+              return;
+            });
+            console.log('str_r: ', string_result);
+            value.image = string_result;
+            /*
             value.image =
-              'http://' + apiconfig.serverIP + '/uploads/' + value.anexos[0];
+              'http://' + apiconfig.serverIP + '/uploads/' + value.anexos[0];*/
           }
+          console.log('dep');
           result.unshift(value);
         }
         setMessages(result);
@@ -89,9 +110,37 @@ export default function Chat({ route }) {
     update(ref(firebase_db), updates);
   }, []);
 
+  const customMessageImages = (props) => {
+    console.log('ze');
+    console.log(props.currentMessage.image);
+    if (props.currentMessage.image) {
+      console.log('funfa');
+      const imgs = props.currentMessage.image.split(',');
+      const result = imgs.map((img, index) => (
+        <Image key={index} source={{ uri: img }} />
+      ));
+      console.log('Q', result);
+      return (
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', maxWidth: 200 }}>
+          {imgs.map((img, index) => (
+            <Image
+              style={{ height: 100, width: 100 }}
+              key={index}
+              source={{ uri: img }}
+            />
+          ))}
+        </View>
+      );
+    }
+  };
+
   return (
     <View style={{ flex: 1 }} testID="main">
       <GiftedChat
+        renderMessageImage={(props) => {
+          console.log('exec');
+          return customMessageImages(props);
+        }}
         messages={messages}
         onSend={(messages) => onSend(messages)}
         user={{
