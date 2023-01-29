@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { Pressable, StyleSheet, Text, FlatList } from 'react-native';
+import { Pressable, StyleSheet, Text, FlatList, View } from 'react-native';
 
 const ScrollableTabs = ({ destiny, tabs, setSearch, ...props }) => {
   const item = ({ item, index }) => {
@@ -11,21 +11,25 @@ const ScrollableTabs = ({ destiny, tabs, setSearch, ...props }) => {
   };
 
   return (
-    <FlatList
-      style={styles.flatlist}
-      horizontal={true}
-      data={tabs}
-      renderItem={item}
-      keyExtractor={(item, index) => index.toString()}
-      showsHorizontalScrollIndicator={false}
-      {...props}
-    />
+    <View>
+      <FlatList
+        style={styles.flatlist}
+        horizontal={true}
+        data={tabs}
+        renderItem={item}
+        keyExtractor={(item, index) => index.toString()}
+        showsHorizontalScrollIndicator={false}
+        {...props}
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   flatlist: {
     backgroundColor: 'white',
+    elevation: 15,
+    zIndex: 1,
   },
 
   itemText: {

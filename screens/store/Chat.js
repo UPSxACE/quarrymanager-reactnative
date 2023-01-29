@@ -98,7 +98,9 @@ export default function Chat({ route }) {
         }
         listViewProps={
           Platform.OS === 'android'
-            ? { style: { flex: 1, marginBottom: -30 } }
+            ? {
+                style: { flex: 1, marginBottom: -30, backgroundColor: 'white' },
+              }
             : false
         }
       />

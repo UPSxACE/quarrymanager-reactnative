@@ -57,11 +57,7 @@ export default function Orders() {
 
   return (
     <View style={{ flex: 1 }}>
-      <ScrollableTabs
-        tabs={TABS_DATA}
-        setSearch={setCategory}
-        style={{ backgroundColor: 'white', elevation: 15, zIndex: 1 }}
-      />
+      <ScrollableTabs tabs={TABS_DATA} setSearch={setCategory} />
       <BasicList data={channel_list} user_id={user} />
     </View>
   );
