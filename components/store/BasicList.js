@@ -40,7 +40,7 @@ export default function BasicList({ data, user_id }) {
         title={title}
         state={state}
         imageUrl={imageUrl}
-        destiny={['HomeStack', 'Chat']}
+        destiny={['Chat', '']}
         user_id={user_id}
       ></ListItem>
     );

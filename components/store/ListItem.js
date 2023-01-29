@@ -14,14 +14,21 @@ export default function ListItem({
   user_id,
 }) {
   const navigation = useNavigation();
+  const params_obj = destiny[1]
+    ? {
+        screen: destiny[1],
+        params: { id: id, title: title, user_id: user_id },
+      }
+    : {
+        id: id,
+        title: title,
+        user_id: user_id,
+      };
   return (
     <Pressable
       onPress={() => {
         if (destiny) {
-          navigation.push(destiny[0], {
-            screen: destiny[1],
-            params: { id: id, title: title, user_id: user_id },
-          });
+          navigation.push(destiny[0], params_obj);
         }
       }}
     >

@@ -57,9 +57,9 @@ export const gradientTabBarOptions = {
   ),
 };
 
-export const SearchBarHeader = ({ searchState }) => {
-  const { state } = searchState;
-  const { setState } = searchState;
+export const SearchBarHeader = ({ state, setState }) => {
+  //const { state } = searchState;
+  //const { setState } = searchState;
 
   return (
     <View style={{ height: 85 }}>

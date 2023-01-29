@@ -68,6 +68,8 @@ function isRootStack(routeName) {
       return true;
     case 'Pedido de Orçamento':
       return true;
+    case 'Chat':
+      return true;
     default:
       return false;
   }
@@ -127,12 +129,6 @@ export default function App() {
   const Register = () => <RegisterPage setLogin={setLogin} />;
 
   function HomeTabs({ navigation, route }) {
-    const [search, setSearch] = useState('');
-
-    const Store = () => (
-      <StorePage searchState={{ state: search, setState: setSearch }} />
-    );
-
     return (
       <HomeTab.Navigator
         initialRouteName={'Login'}
@@ -150,35 +146,16 @@ export default function App() {
             header: dashboard
               ? undefined
               : () => {
-                  return (
-                    <SearchBarHeader
-                      searchState={{ state: search, setState: setSearch }}
-                    />
-                  );
+                  return <></>;
                 },
           }}
-          component={dashboard ? DashboardHome : login ? Store : Login}
+          component={dashboard ? DashboardHome : login ? StorePage : Login}
         />
 
         <HomeTab.Screen name="Pedidos" component={Orders} />
         <HomeTab.Screen name="Perfil" component={Profile} />
         <HomeTab.Screen name="Definições" component={Settings} />
         <HomeTab.Screen name="Lotes" component={DashboardLotes} />
-        <HomeTab.Screen
-          name="Chat"
-          options={({ route }) => {
-            if (route.params) {
-              return {
-                ...gradientHeaderOptions,
-                headerTitle: route.params.title,
-              };
-            }
-            return {
-              ...gradientHeaderOptions,
-            };
-          }}
-          component={Chat}
-        />
 
         <HomeTab.Screen
           options={{ headerShown: false }}
@@ -265,6 +242,21 @@ export default function App() {
                 component={NotificationsScreen}
                 options={{ ...gradientHeaderOptions }}
               ></RootStack.Screen>
+              <RootStack.Screen
+                name="Chat"
+                options={({ route }) => {
+                  if (route.params) {
+                    return {
+                      ...gradientHeaderOptions,
+                      headerTitle: route.params.title,
+                    };
+                  }
+                  return {
+                    ...gradientHeaderOptions,
+                  };
+                }}
+                component={Chat}
+              />
             </RootStack.Navigator>
             <StatusBar style={login ? 'light' : 'dark'} />
             <CustomBottomTab

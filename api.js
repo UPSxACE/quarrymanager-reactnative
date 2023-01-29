@@ -7,16 +7,16 @@ const criarUrl = (endpoint) => {
 const api = {
   listar_produto: criarUrl('produto/listar'),
   listar_marmores: criarUrl(
-    'produto/produtos-loja?fields=tituloArtigo,preco&expand=id,url_fotografia'
+    'pedido/loja-pesquisa?titulo=Marmore&fields=tituloArtigo,preco&expand=id,url_fotografia'
   ),
   listar_granitos: criarUrl(
-    'produto/produtos-loja?fields=tituloArtigo,preco&expand=id,url_fotografia'
+    'pedido/loja-pesquisa?titulo=Granito&fields=tituloArtigo,preco&expand=id,url_fotografia'
   ),
   listar_ceramicas: criarUrl(
-    'produto/produtos-loja?fields=tituloArtigo,preco&expand=id,url_fotografia'
+    'pedido/loja-pesquisa?titulo=Ceramica&fields=tituloArtigo,preco&expand=id,url_fotografia'
   ),
   listar_porcelanas: criarUrl(
-    'produto/produtos-loja?fields=tituloArtigo,preco&expand=id,url_fotografia'
+    'pedido/loja-pesquisa?titulo=Porcelana&fields=tituloArtigo,preco&expand=id,url_fotografia'
   ),
   listar_material: criarUrl('material/listar'),
 
@@ -38,6 +38,9 @@ const api = {
   novo_pedido: criarUrl('pedido/pedido-orcamento-v2'),
   obter_perfil: criarUrl('profile/get-profile'),
   editar_perfil: criarUrl('profile/editar'),
+  obter_produtos_loja: criarUrl(
+    'produto/produtos-loja?fields=tituloArtigo,preco&expand=id,url_fotografia'
+  ),
 };
 
 export default api;

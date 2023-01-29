@@ -7,6 +7,7 @@ import {
   FlatList,
   Pressable,
 } from 'react-native';
+import apiconfig from '../../api-config';
 
 function Item({ id, title, price, imageUrl, description }) {
   const navigation = useNavigation();
@@ -34,7 +35,7 @@ function Item({ id, title, price, imageUrl, description }) {
         <Image
           alt="Product Picture"
           style={page_styles.productPicture}
-          source={imageUrl}
+          source={{ uri: imageUrl }}
         />
 
         <Text style={{ fontWeight: 'bold', fontSize: 16 }}>{title}</Text>
@@ -62,10 +63,12 @@ function renderItem({ item }) {
   return (
     <Item
       id={item.id}
-      title={item.title}
-      price={item.price}
-      imageUrl={item.imageUrl}
-      description={item.description}
+      title={item.tituloArtigo}
+      price={item.preco}
+      imageUrl={
+        'http://' + apiconfig.serverIP + '/uploads/' + item.url_fotografia
+      }
+      description={item.descricaoProduto}
     />
   );
 }
