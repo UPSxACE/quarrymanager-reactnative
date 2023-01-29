@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { GiftedChat } from 'react-native-gifted-chat';
+import { GiftedChat, MessageImage } from 'react-native-gifted-chat';
 import {
   View,
   Text,
@@ -124,7 +124,10 @@ export default function Chat({ route }) {
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', maxWidth: 200 }}>
           {imgs.map((img, index) => (
             <Image
-              style={{ height: 100, width: 100 }}
+              style={{
+                height: 100,
+                width: 100,
+              }}
               key={index}
               source={{ uri: img }}
             />
