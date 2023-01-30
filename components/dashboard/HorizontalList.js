@@ -1,5 +1,6 @@
+import { useNavigation } from "@react-navigation/native";
 import { InfoIcon } from "native-base";
-import { FlatList, StyleSheet, View, Text } from "react-native";
+import { FlatList, StyleSheet, View, Text, Pressable } from "react-native";
 import { themeColors } from "../../Theme";
 
 export default function HorizontalList({
@@ -12,10 +13,17 @@ export default function HorizontalList({
   mainTextPedido,
   subTextPedido,
   tagPedido,
+  destiny,
 }) {
+  const navigation = useNavigation();
   function Item({ tag, mainText, subText, date }) {
     return (
-      <View style={styles.item}>
+      <Pressable
+        style={styles.item}
+        onPress={() => {
+          navigation.navigate(destiny);
+        }}
+      >
         <View style={styles.blueBar} />
         <View style={styles.itemContent}>
           {subText ? (
@@ -33,7 +41,7 @@ export default function HorizontalList({
             </View>
           )}
         </View>
-      </View>
+      </Pressable>
     );
   }
 
