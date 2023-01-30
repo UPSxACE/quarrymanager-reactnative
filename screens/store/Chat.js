@@ -130,7 +130,6 @@ export default function Chat({ route }) {
             flexDirection: 'row',
             flexWrap: 'wrap',
             width: 200,
-            height: 200,
           }}
         >
           {imgs.map((img, index) => (
@@ -150,7 +149,6 @@ export default function Chat({ route }) {
               imageStyle={{
                 height: 93.5,
                 width: 93.5,
-                backgroundColor: 'red',
                 borderRadius: 0,
                 ...getRadius(index),
               }}
@@ -158,11 +156,9 @@ export default function Chat({ route }) {
                 style: {
                   height: 93.5,
                   width: 93.5,
-                  backgroundColor: 'green',
                 },
               }}
               currentMessage={{
-                text: 'HEY',
                 image: img,
               }}
             />
