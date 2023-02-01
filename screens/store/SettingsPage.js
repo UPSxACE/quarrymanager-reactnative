@@ -74,8 +74,8 @@ export default function SettingsPage({ setDashboard, setLogin }) {
           onPressEvent={async () => {
             // await
             navigation.dispatch(resetActionLogout);
+            AsyncStorage.removeItem('auth_token');
             setLogin(false);
-            AsyncStorage.removeItem('login');
           }}
         />
       </View>
