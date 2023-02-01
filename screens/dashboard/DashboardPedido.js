@@ -5,13 +5,15 @@ import { View, Text, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import api from "../../api";
 import apiconfig from "../../api-config";
-import LoteDescription from "../../components/LoteDescription";
 
-export default function DashboardPedido() {
-  const params = {
+export default function DashboardPedido({ route }) {
+  console.log("herree: ", JSON.stringify(route.params, null, 4));
+  const params = route.params.full_data;
+
+  /* const params = {
     idUser0: {
       profile: {
-        full_name: "Maria",
+        full_name: "maria",
         morada: "Rua Tal",
         codPostal: "5300-304",
         email: "mariabraganca@gmail.com",
@@ -27,24 +29,10 @@ export default function DashboardPedido() {
       ultimo_estado: "Recebido",
       idCor0: { nome: "Branco" },
     },
+    codigo_desconto: "here",
   };
 
-  const [informacoes_lote, setInformacoesLote] = useState([]);
-
-  useEffect(() => {
-    const sendRequest = async () => {
-      const result = await axios.get(api.listar_lote, {
-        headers: {
-          Authorization: apiconfig.adminToken,
-        },
-      });
-      setInformacoesLote(result.data);
-    };
-
-    sendRequest().catch((error) => {
-      console.log(error);
-    });
-  }, []);
+  */
 
   return (
     <ScrollView
@@ -82,7 +70,7 @@ export default function DashboardPedido() {
           </View>
           <View style={{ flexDirection: "row", marginLeft: "auto" }}>
             <Text style={loteDescriptionStyle.text2}>
-              {params.idUser0.profile.full_name}
+              {params.idPedido0.idUser0.profile.full_name}
             </Text>
           </View>
         </View>
@@ -92,7 +80,7 @@ export default function DashboardPedido() {
           </View>
           <View style={{ flexDirection: "row", marginLeft: "auto" }}>
             <Text style={loteDescriptionStyle.text2}>
-              {params.idUser0.profile.morada}
+              {params.idPedido0.idUser0.profile.morada}
             </Text>
           </View>
         </View>
@@ -103,7 +91,7 @@ export default function DashboardPedido() {
           </View>
           <View style={{ flexDirection: "row", marginLeft: "auto" }}>
             <Text style={loteDescriptionStyle.text2}>
-              {params.idUser0.profile.codPostal}
+              {params.idPedido0.idUser0.profile.codPostal}
             </Text>
           </View>
         </View>
@@ -114,7 +102,7 @@ export default function DashboardPedido() {
           </View>
           <View style={{ flexDirection: "row", marginLeft: "auto" }}>
             <Text style={loteDescriptionStyle.text2}>
-              {params.idUser0.profile.email}
+              {params.idPedido0.idUser0.profile.email}
             </Text>
           </View>
         </View>
@@ -124,7 +112,7 @@ export default function DashboardPedido() {
           </View>
           <View style={{ flexDirection: "row", marginLeft: "auto" }}>
             <Text style={loteDescriptionStyle.text2}>
-              {params.idUser0.profile.telefone}
+              {params.idPedido0.idUser0.profile.telefone}
             </Text>
           </View>
         </View>
@@ -158,7 +146,7 @@ export default function DashboardPedido() {
           </View>
           <View style={{ flexDirection: "row", marginLeft: "auto" }}>
             <Text style={loteDescriptionStyle.text2}>
-              {params.idProduto0.tituloArtigo}
+              {params.idPedido0.idProduto0.tituloArtigo}
             </Text>
           </View>
         </View>
@@ -168,59 +156,63 @@ export default function DashboardPedido() {
           </View>
           <View style={{ flexDirection: "row", marginLeft: "auto" }}>
             <Text style={loteDescriptionStyle.text2}>
-              {params.idProduto0.idCor0.nome}
+              {params.idPedido0.idProduto0.idCor0.nome}
             </Text>
           </View>
         </View>
 
         <View style={loteDescriptionStyle.borderStyle}>
           <View style={{ flexDirection: "row" }}>
-            <Text>Quantidade</Text>
+            <Text>Quantidade:</Text>
           </View>
           <View style={{ flexDirection: "row", marginLeft: "auto" }}>
             <Text style={loteDescriptionStyle.text2}>
-              {params.idProduto0.quantidade_vendida}m²
+              {params.idPedido0.idProduto0.quantidade_vendida}m²
+            </Text>
+          </View>
+        </View>
+        <View style={loteDescriptionStyle.borderStyle}>
+          <View style={{ flexDirection: "row" }}>
+            <Text>Código de Desconto:</Text>
+          </View>
+          <View style={{ flexDirection: "row", marginLeft: "auto" }}>
+            <Text style={loteDescriptionStyle.text2}>
+              {params.idPedido0.codigo_desconto
+                ? params.idPedido0.codigo_desconto
+                : ""}
             </Text>
           </View>
         </View>
 
         <View style={loteDescriptionStyle.borderStyle}>
           <View style={{ flexDirection: "row" }}>
-            <Text>Preço:</Text>
+            <Text>Preço Inicial:</Text>
           </View>
           <View style={{ flexDirection: "row", marginLeft: "auto" }}>
             <Text style={loteDescriptionStyle.text2}>
-              {params.idProduto0.preco}€
+              {params.idPedido0.idProduto0.preco}€
             </Text>
           </View>
         </View>
+
         <View style={loteDescriptionStyle.borderStyle}>
           <View style={{ flexDirection: "row" }}>
-            <Text>Local da extração</Text>
+            <Text>Preço Final:</Text>
           </View>
           <View style={{ flexDirection: "row", marginLeft: "auto" }}>
             <Text style={loteDescriptionStyle.text2}>
-              Achar endpoint Local Extracao
+              {params.idPedido0.idProduto0.preco}€
             </Text>
           </View>
         </View>
-        <View style={loteDescriptionStyle.borderStyle}>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Local de Armazém</Text>
-          </View>
-          <View style={{ flexDirection: "row", marginLeft: "auto" }}>
-            <Text style={loteDescriptionStyle.text2}>
-              Endpoint local armazem
-            </Text>
-          </View>
-        </View>
+
         <View style={loteDescriptionStyle.borderStyle}>
           <View style={{ flexDirection: "row" }}>
             <Text>Data e Hora Extração:</Text>
           </View>
           <View style={{ flexDirection: "row", marginLeft: "auto" }}>
             <Text style={loteDescriptionStyle.text2}>
-              {params.idProduto0.ultima_atualizacao}
+              {params.idPedido0.ultima_atualizacao}
             </Text>
           </View>
         </View>
@@ -230,7 +222,7 @@ export default function DashboardPedido() {
           </View>
           <View style={{ flexDirection: "row", marginLeft: "auto" }}>
             <Text style={loteDescriptionStyle.text2}>
-              {params.idProduto0.ultimo_estado}
+              {params.idPedido0.ultimo_estado}
             </Text>
           </View>
         </View>

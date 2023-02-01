@@ -16,12 +16,12 @@ export default function HorizontalList({
   destiny,
 }) {
   const navigation = useNavigation();
-  function Item({ tag, mainText, subText, date }) {
+  function Item({ tag, mainText, subText, date, full_data }) {
     return (
       <Pressable
         style={styles.item}
         onPress={() => {
-          navigation.navigate(destiny);
+          navigation.navigate(destiny, { full_data: full_data });
         }}
       >
         <View style={styles.blueBar} />
@@ -70,6 +70,7 @@ export default function HorizontalList({
               : item[subText]
             : ""
         }
+        full_data={item}
       />
     );
   }
