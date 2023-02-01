@@ -67,14 +67,8 @@ export default function BasicList({ data, user_id }) {
     setChannels(result);
   }, [data]);
 
-  /*
-  useEffect(() => {
-    console.log('Canais: ', channels);
-  }, [channels]);
-  */
-
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <FlatList
         data={channels}
         renderItem={renderItem}
