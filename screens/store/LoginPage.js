@@ -41,11 +41,15 @@ export default function LoginPage({ setLogin }) {
   const trylogin = () => {
     const sendRequest = async () => {
       const result = await axios.post(api.login, { ...formData });
+      return result.data.acess_token;
     };
 
     sendRequest()
-      .then(() => {
-        console.log('sucesso');
+      .then(async (acess_token) => {
+        await AsyncStorage.setItem('auth_token', acess_token);
+        console.log(await AsyncStorage.getItem('auth_token'));
+        setDismissable(true);
+        setLogin(true);
       })
       .catch((reason) => {
         setLoginError(reason.response.data[0].message);

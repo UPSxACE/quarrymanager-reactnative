@@ -1,4 +1,4 @@
-import { StatusBar } from "expo-status-bar";
+import { StatusBar } from 'expo-status-bar';
 import {
   ActivityIndicator,
   Animated,
@@ -7,23 +7,23 @@ import {
   StyleSheet,
   Text,
   View,
-} from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import TestPage from "./screens/store/TestPage";
-import { NativeBaseProvider, extendTheme, Box, HStack } from "native-base";
-import { LinearGradient } from "expo-linear-gradient";
-import Profile from "./screens/store/Profile";
-import SettingsPage from "./screens/store/SettingsPage";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Feather } from "@expo/vector-icons";
-import TestPage2 from "./screens/store/TestPage2";
-import TestPage3 from "./screens/store/TestPage3";
-import { useCallback, useEffect, useState } from "react";
-import DashboardHome from "./screens/dashboard/DashboardHome";
-import Orders from "./screens/store/Orders";
-import StoreCategories from "./screens/store/StoreCategories";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import TestPage from './screens/store/TestPage';
+import { NativeBaseProvider, extendTheme, Box, HStack } from 'native-base';
+import { LinearGradient } from 'expo-linear-gradient';
+import Profile from './screens/store/Profile';
+import SettingsPage from './screens/store/SettingsPage';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Feather } from '@expo/vector-icons';
+import TestPage2 from './screens/store/TestPage2';
+import TestPage3 from './screens/store/TestPage3';
+import { useCallback, useEffect, useState } from 'react';
+import DashboardHome from './screens/dashboard/DashboardHome';
+import Orders from './screens/store/Orders';
+import StoreCategories from './screens/store/StoreCategories';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import {
   gradientHeaderOptions,
   gradientTabBarOptions,
@@ -31,45 +31,45 @@ import {
   theme_config,
   CustomBottomTab,
   SearchBarHeader,
-} from "./Theme";
-import Product from "./screens/store/Product";
-import DashboardLotes from "./screens/dashboard/DashboardLotes";
-import { themeColors } from "./Theme";
-import StyledOnFocus from "./components/StyledOnFocus";
-import ChangeUsername from "./screens/store/ChangeUsername";
-import ChangeEmail from "./screens/store/ChangeEmail";
-import ChangePassword from "./screens/store/ChangePassword";
-import RegisterPage from "./screens/store/RegisterPage";
-import LoginPage from "./screens/store/LoginPage";
-import * as SplashScreen from "expo-splash-screen";
-import OrderProduct from "./screens/store/OrderProduct";
-import TestPage4 from "./screens/store/TestPage4";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import NotificationsScreen from "./screens/store/NotificationsScreen";
-import Chat from "./screens/store/Chat";
-import StorePage from "./screens/store/StorePage";
-import DashboardPedido from "./screens/dashboard/DashboardPedido";
+} from './Theme';
+import Product from './screens/store/Product';
+import DashboardLotes from './screens/dashboard/DashboardLotes';
+import { themeColors } from './Theme';
+import StyledOnFocus from './components/StyledOnFocus';
+import ChangeUsername from './screens/store/ChangeUsername';
+import ChangeEmail from './screens/store/ChangeEmail';
+import ChangePassword from './screens/store/ChangePassword';
+import RegisterPage from './screens/store/RegisterPage';
+import LoginPage from './screens/store/LoginPage';
+import * as SplashScreen from 'expo-splash-screen';
+import OrderProduct from './screens/store/OrderProduct';
+import TestPage4 from './screens/store/TestPage4';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import NotificationsScreen from './screens/store/NotificationsScreen';
+import Chat from './screens/store/Chat';
+import StorePage from './screens/store/StorePage';
+import DashboardPedido from './screens/dashboard/DashboardPedido';
 SplashScreen.preventAutoHideAsync();
 
 function isRootStack(routeName) {
   switch (routeName) {
-    case "Pedido":
+    case 'Pedido':
       return true;
-    case "Tests3":
+    case 'Tests3':
       return true;
-    case "Produto":
+    case 'Produto':
       return true;
-    case "Alterar Username":
+    case 'Alterar Username':
       return true;
-    case "Alterar Email":
+    case 'Alterar Email':
       return true;
-    case "Alterar Palavra-Passe":
+    case 'Alterar Palavra-Passe':
       return true;
-    case "Notificações":
+    case 'Notificações':
       return true;
-    case "Pedido de Orçamento":
+    case 'Pedido de Orçamento':
       return true;
-    case "Chat":
+    case 'Chat':
       return true;
     default:
       return false;
@@ -86,7 +86,7 @@ export default function App() {
 
   useEffect(() => {
     async function checkLogin() {
-      setLogin((await AsyncStorage.getItem("login")) === "true" ? true : false);
+      setLogin((await AsyncStorage.getItem('auth_token')) ? true : false);
     }
 
     checkLogin();
@@ -132,17 +132,17 @@ export default function App() {
   function HomeTabs({ navigation, route }) {
     return (
       <HomeTab.Navigator
-        initialRouteName={"Login"}
+        initialRouteName={'Login'}
         screenOptions={{
           ...gradientHeaderOptions,
           //...gradientTabBarOptions,
-          tabBarStyle: { display: "none" },
+          tabBarStyle: { display: 'none' },
         }}
       >
         <HomeTab.Screen
-          name={dashboard ? "Dashboard" : login ? "Home" : "Login"}
+          name={dashboard ? 'Dashboard' : login ? 'Home' : 'Login'}
           options={{
-            headerTintColor: "white",
+            headerTintColor: 'white',
             headerShown: !login ? false : true,
             header: dashboard
               ? undefined
@@ -171,11 +171,11 @@ export default function App() {
     return null;
     return (
       <View
-        style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
         onLayout={onLayoutRootView}
       >
         <Text>Loading...</Text>
-        <ActivityIndicator size={"large"} />
+        <ActivityIndicator size={'large'} />
       </View>
     );
   }
@@ -258,7 +258,7 @@ export default function App() {
                 component={Chat}
               />
             </RootStack.Navigator>
-            <StatusBar style={login ? "light" : "dark"} />
+            <StatusBar style={login ? 'light' : 'dark'} />
             <CustomBottomTab
               login={login}
               dashboard={dashboard}
