@@ -79,7 +79,6 @@ export default function RegisterPage({ setLogin }) {
     sendRequest()
       .then(async (access_token) => {
         await AsyncStorage.setItem('auth_token', access_token);
-        console.log(await AsyncStorage.getItem('auth_token'));
         setDismissable(true);
         setLogin(true);
         navigation.navigate('Home');

@@ -47,7 +47,6 @@ export default function LoginPage({ setLogin }) {
     sendRequest()
       .then(async (acess_token) => {
         await AsyncStorage.setItem('auth_token', acess_token);
-        console.log(await AsyncStorage.getItem('auth_token'));
         setDismissable(true);
         setLogin(true);
       })
@@ -130,12 +129,6 @@ export default function LoginPage({ setLogin }) {
                 }
                 showModal();
                 setTimeout(trylogin, 750);
-                //trylogin();
-                return;
-                // await
-                navigation.dispatch(resetActionLogin);
-                setLogin(true);
-                AsyncStorage.setItem('login', 'true');
               }}
             />
           </View>
