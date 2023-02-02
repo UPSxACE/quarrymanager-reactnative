@@ -39,7 +39,9 @@
     "react-navigation-tabs": "^2.11.2",
     "expo-image-picker": "~13.3.1",
     "@react-native-community/datetimepicker": "6.2.0",
-    "@react-native-picker/picker": "2.4.2"
+    "@react-native-picker/picker": "2.4.2",
+    "expo-notifications": "~0.16.1",
+    "expo-device": "~4.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

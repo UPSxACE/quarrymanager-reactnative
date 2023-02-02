@@ -1,10 +1,17 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import apiconfig from './api-config';
+import { Buffer } from 'buffer';
 
 const criarUrl = (endpoint) => {
   return 'http://' + apiconfig.serverIP + '/api/' + endpoint;
 };
 
 const api = {
+  gerar_auth_header: async () => {
+    const auth_token = await AsyncStorage.getItem('auth_token');
+    const encripted_token = Buffer.from(auth_token + ':').toString('base64');
+    return { Authorization: 'Basic ' + encripted_token };
+  },
   listar_produto: criarUrl('produto/listar'),
   listar_marmores: criarUrl(
     'pedido/loja-pesquisa?titulo=Marmore&fields=tituloArtigo,preco&expand=id,url_fotografia'
@@ -43,6 +50,8 @@ const api = {
   ),
   login: criarUrl('auth/login'),
   register: criarUrl('auth/register'),
+  refresh_token: (push_token) =>
+    criarUrl('auth/refresh-token?push_token=' + push_token),
 };
 
 export default api;
