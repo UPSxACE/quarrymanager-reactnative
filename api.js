@@ -42,6 +42,7 @@ const api = {
     'produto/produtos-loja?fields=tituloArtigo,preco&expand=id,url_fotografia'
   ),
   login: criarUrl('auth/login'),
+  register: criarUrl('auth/register'),
 };
 
 export default api;

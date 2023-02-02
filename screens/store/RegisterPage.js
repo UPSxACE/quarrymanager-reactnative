@@ -21,6 +21,9 @@ import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Picker } from '@react-native-picker/picker';
 import { useEffect } from 'react';
+import axios from 'axios';
+import api from '../../api';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function RegisterPage({ setLogin }) {
   const navigation = useNavigation();
@@ -60,7 +63,32 @@ export default function RegisterPage({ setLogin }) {
   const [dismissable, setDismissable] = useState(false);
   const [registerError, setRegisterError] = useState(false);
 
-  const hideRegisterModal = () => setRegisterAttemptModal(false);
+  const hideRegisterModal = () => {
+    setDismissable(false);
+    setRegisterAttemptModal(false);
+    setRegisterError(false);
+  };
+  const showRegisterModal = () => setRegisterAttemptModal(true);
+
+  const tryregister = () => {
+    const sendRequest = async () => {
+      const result = await axios.post(api.register, { ...data });
+      return result.data;
+    };
+
+    sendRequest()
+      .then(async (access_token) => {
+        await AsyncStorage.setItem('auth_token', access_token);
+        console.log(await AsyncStorage.getItem('auth_token'));
+        setDismissable(true);
+        setLogin(true);
+        navigation.navigate('Home');
+      })
+      .catch((reason) => {
+        setDismissable(true);
+        setRegisterError(reason.response.data[0].message);
+      });
+  };
 
   useEffect(() => {
     console.log(data);
@@ -117,6 +145,13 @@ export default function RegisterPage({ setLogin }) {
               containerStyle={{ borderRadius: 4 }}
               label="Username"
               onChangeText={(value) => setData({ ...data, username: value })}
+            />
+          </View>
+          <View style={registerStyle.inputBox}>
+            <BlueInput
+              containerStyle={{ borderRadius: 4 }}
+              label="Email"
+              onChangeText={(value) => setData({ ...data, email: value })}
             />
           </View>
           <View style={registerStyle.inputBox}>
@@ -215,10 +250,8 @@ export default function RegisterPage({ setLogin }) {
           <View style={registerStyle.btn}>
             <BlueButton
               onPressEvent={async () => {
-                // await
-                navigation.dispatch(resetActionHome);
-                setLogin(true);
-                AsyncStorage.setItem('login', 'true');
+                showRegisterModal();
+                setTimeout(tryregister, 750);
               }}
               label="Registar-se"
               style={{ backgroundColor: '#394A58' }}

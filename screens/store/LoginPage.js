@@ -52,8 +52,8 @@ export default function LoginPage({ setLogin }) {
         setLogin(true);
       })
       .catch((reason) => {
-        setLoginError(reason.response.data[0].message);
         setDismissable(true);
+        setLoginError(reason.response.data[0].message);
       });
   };
 
