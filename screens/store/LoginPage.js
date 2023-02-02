@@ -116,6 +116,18 @@ export default function LoginPage({ setLogin }) {
               label="Iniciar sessao"
               style={{ backgroundColor: '#394A58' }}
               onPressEvent={async () => {
+                if (!formData.email) {
+                  setDismissable(true);
+                  setLoginError('Insira um username.');
+                  showModal();
+                  return;
+                }
+                if (!formData.password) {
+                  setDismissable(true);
+                  setLoginError('Insira a sua password.');
+                  showModal();
+                  return;
+                }
                 showModal();
                 setTimeout(trylogin, 750);
                 //trylogin();

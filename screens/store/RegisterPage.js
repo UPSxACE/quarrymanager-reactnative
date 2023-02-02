@@ -166,7 +166,9 @@ export default function RegisterPage({ setLogin }) {
             <BlueInput
               containerStyle={{ borderRadius: 4 }}
               label="Confirmar Palavra-Passe"
-              onChangeText={(value) => setData({ ...data })}
+              onChangeText={(value) =>
+                setData({ ...data, confirmPassword: value })
+              }
               secret
             />
           </View>
@@ -250,6 +252,30 @@ export default function RegisterPage({ setLogin }) {
           <View style={registerStyle.btn}>
             <BlueButton
               onPressEvent={async () => {
+                if (!data.username) {
+                  setDismissable(true);
+                  setRegisterError('Escolha um username válido.');
+                  setRegisterAttemptModal(true);
+                  return;
+                }
+                if (!data.email) {
+                  setDismissable(true);
+                  setRegisterError('Escolha um email válido.');
+                  setRegisterAttemptModal(true);
+                  return;
+                }
+                if (!data.newPassword) {
+                  setDismissable(true);
+                  setRegisterError('Escolha uma password válida.');
+                  setRegisterAttemptModal(true);
+                  return;
+                }
+                if (data.newPassword !== data.confirmPassword) {
+                  setDismissable(true);
+                  setRegisterError('As passwords não coincidem.');
+                  setRegisterAttemptModal(true);
+                  return;
+                }
                 showRegisterModal();
                 setTimeout(tryregister, 750);
               }}
