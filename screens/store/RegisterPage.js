@@ -19,6 +19,7 @@ import { Modal, Portal, Provider } from 'react-native-paper';
 import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Picker } from '@react-native-picker/picker';
+import { useEffect } from 'react';
 
 export default function RegisterPage({ setLogin }) {
   const navigation = useNavigation();
@@ -53,6 +54,10 @@ export default function RegisterPage({ setLogin }) {
     return day + '/' + (month + 1) + '/' + year;
   };
 
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   return (
     <Provider>
       <Portal>
@@ -85,18 +90,14 @@ export default function RegisterPage({ setLogin }) {
             <BlueInput
               containerStyle={{ borderRadius: 4 }}
               label="Username"
-              onChangeText={(value) =>
-                setData({ ...formData, username: value })
-              }
+              onChangeText={(value) => setData({ ...data, username: value })}
             />
           </View>
           <View style={registerStyle.inputBox}>
             <BlueInput
               containerStyle={{ borderRadius: 4 }}
               label="Password"
-              onChangeText={(value) =>
-                setData({ ...formData, newPassword: value })
-              }
+              onChangeText={(value) => setData({ ...data, newPassword: value })}
               secret
             />
           </View>
@@ -104,7 +105,7 @@ export default function RegisterPage({ setLogin }) {
             <BlueInput
               containerStyle={{ borderRadius: 4 }}
               label="Confirmar Palavra-Passe"
-              onChangeText={(value) => setData({ ...formData })}
+              onChangeText={(value) => setData({ ...data })}
               secret
             />
           </View>
@@ -175,15 +176,6 @@ export default function RegisterPage({ setLogin }) {
                     left: 4,
                     borderTop: -12,
                     color: 'white',
-                    /*height: 40,
-                  borderRadius: 4,
-                  backgroundColor: '#576F89',
-                  borderWidth: 0,
-                  borderBottomWidth: 1,
-                  borderBottomColor: '#576F89',
-                  color: 'white',
-                  paddingLeft: 12,
-                  paddingRight: 12,*/
                   }}
                   dropdownIconColor={'white'}
                 >
