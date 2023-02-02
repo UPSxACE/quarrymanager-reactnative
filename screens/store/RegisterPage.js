@@ -18,6 +18,7 @@ import { useState } from 'react';
 import { Modal, Portal, Provider } from 'react-native-paper';
 import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { Picker } from '@react-native-picker/picker';
 
 export default function RegisterPage({ setLogin }) {
   const navigation = useNavigation();
@@ -29,6 +30,7 @@ export default function RegisterPage({ setLogin }) {
   const [visible, setVisible] = useState(false);
   const [date, setDate] = useState(null);
   const [mode, setMode] = useState('date');
+  const [selectedGender, setSelectedGender] = useState(0);
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
@@ -115,7 +117,7 @@ export default function RegisterPage({ setLogin }) {
             >
               <Pressable
                 onPress={() => {
-                  if (Platform.OS !== 'android') {
+                  if (Platform.OS === 'android') {
                     DateTimePickerAndroid.open({
                       testID: 'dateTimePicker',
                       value: date ? date : new Date(),
@@ -152,10 +154,43 @@ export default function RegisterPage({ setLogin }) {
                 { width: '50%', paddingLeft: 12 },
               ]}
             >
-              <BlueInput
-                containerStyle={{ borderRadius: 4 }}
-                label="Feminino"
-              ></BlueInput>
+              <View
+                style={{
+                  borderRadius: 4,
+                  borderWidth: 0,
+                  overflow: 'hidden',
+                  height: 40,
+                  padding: 0,
+                  backgroundColor: '#576F89',
+                }}
+              >
+                <Picker
+                  selectedValue={selectedGender}
+                  onValueChange={(itemValue, itemIndex) =>
+                    setSelectedGender(itemValue)
+                  }
+                  style={{
+                    position: 'relative',
+                    top: -8,
+                    left: 4,
+                    borderTop: -12,
+                    color: 'white',
+                    /*height: 40,
+                  borderRadius: 4,
+                  backgroundColor: '#576F89',
+                  borderWidth: 0,
+                  borderBottomWidth: 1,
+                  borderBottomColor: '#576F89',
+                  color: 'white',
+                  paddingLeft: 12,
+                  paddingRight: 12,*/
+                  }}
+                  dropdownIconColor={'white'}
+                >
+                  <Picker.Item label="Masculino" value={0} />
+                  <Picker.Item label="Feminino" value={1} />
+                </Picker>
+              </View>
             </View>
           </View>
 
