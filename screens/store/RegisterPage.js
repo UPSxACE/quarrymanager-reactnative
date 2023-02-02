@@ -6,10 +6,11 @@ import {
   ScrollView,
   Pressable,
   Platform,
+  ActivityIndicator,
 } from 'react-native';
 import BlueInput from '../../components/store/BlueInput';
 import BlueButton from '../../components/store/BlueButton';
-import { Feather } from '@expo/vector-icons';
+import { Feather, MaterialIcons } from '@expo/vector-icons';
 import { themeColors } from '../../Theme';
 import { Button, Input } from 'native-base';
 import { CommonActions, useNavigation } from '@react-navigation/native';
@@ -36,6 +37,7 @@ export default function RegisterPage({ setLogin }) {
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
   const containerStyle = { backgroundColor: 'white', padding: 20 };
+  const containerStyle2 = { backgroundColor: 'white', padding: 20 };
 
   const onChangeDate = (event, selectedDate) => {
     const currentDate = selectedDate;
@@ -53,6 +55,12 @@ export default function RegisterPage({ setLogin }) {
 
     return day + '/' + (month + 1) + '/' + year;
   };
+
+  const [registerAttemptModal, setRegisterAttemptModal] = useState(false);
+  const [dismissable, setDismissable] = useState(false);
+  const [registerError, setRegisterError] = useState(false);
+
+  const hideRegisterModal = () => setRegisterAttemptModal(false);
 
   useEffect(() => {
     console.log(data);
@@ -76,6 +84,24 @@ export default function RegisterPage({ setLogin }) {
           <Button bgColor={themeColors.main.A} onPress={closeCalendar}>
             Ok
           </Button>
+        </Modal>
+      </Portal>
+      <Portal>
+        <Modal
+          visible={registerAttemptModal}
+          onDismiss={hideRegisterModal}
+          dismissable={dismissable}
+          contentContainerStyle={containerStyle2}
+          style={{ justifyContent: 'center', alignItems: 'center' }}
+        >
+          {registerError ? (
+            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+              <MaterialIcons size={80} color={'red'} name={'error'} />
+              <Text>{registerError}</Text>
+            </View>
+          ) : (
+            <ActivityIndicator color={themeColors.main.A} size={80} />
+          )}
         </Modal>
       </Portal>
       <View style={{ flex: 1 }}>
