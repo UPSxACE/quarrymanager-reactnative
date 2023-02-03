@@ -1,12 +1,19 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { View, FlatList, Image, StyleSheet } from 'react-native';
+import {
+  View,
+  FlatList,
+  Image,
+  StyleSheet,
+  ActivityIndicator,
+} from 'react-native';
 import api from '../../api';
 import apiconfig from '../../api-config';
 import Characteristics from '../../components/store/Characteristics';
 import Description from '../../components/store/Description';
 import HorizontalCategory from '../../components/store/HorizontalCategory';
+import { themeColors } from '../../Theme';
 
 function padWithZero(num, targetLength) {
   return String(num).padStart(targetLength, '0');
@@ -59,24 +66,40 @@ function ProductPage({ route }) {
           source={{ uri: params.imageUrl }}
         />
       </View>
-      <View style={{ marginBottom: 12 }}>
-        <Description
-          preco={params.price}
-          descricao={informacoes_produto.descricaoProduto}
-          title={params.title}
-          refr={String(params.id).padStart(8, '0')}
-          id={params.id}
-          imageUrl={params.imageUrl}
-        />
-      </View>
-      <View style={{ marginBottom: 12 }}>
-        <Characteristics
-          resCom={informacoes_produto.Res_Compressao}
-          resFlex={informacoes_produto.Res_Flexao}
-          mva={informacoes_produto.Massa_Vol_Aparente}
-          maa={informacoes_produto.Absorcao_Agua}
-        />
-      </View>
+
+      {Object.keys(informacoes_produto).length !== 0 ? (
+        <>
+          <View style={{ marginBottom: 12 }}>
+            <Description
+              preco={params.price}
+              descricao={informacoes_produto.descricaoProduto}
+              title={params.title}
+              refr={String(params.id).padStart(8, '0')}
+              id={params.id}
+              imageUrl={params.imageUrl}
+            />
+          </View>
+          <View style={{ marginBottom: 12 }}>
+            <Characteristics
+              resCom={informacoes_produto.Res_Compressao}
+              resFlex={informacoes_produto.Res_Flexao}
+              mva={informacoes_produto.Massa_Vol_Aparente}
+              maa={informacoes_produto.Absorcao_Agua}
+            />
+          </View>
+        </>
+      ) : (
+        <View
+          style={{
+            backgroundColor: 'white',
+            paddingVertical: 60,
+            marginBottom: 12,
+          }}
+        >
+          <ActivityIndicator size={80} color={themeColors.main.A} />
+        </View>
+      )}
+
       <View style={Productpage_styles.backgroundComp}>
         <HorizontalCategory
           categoryTitle={'Veja também'}
