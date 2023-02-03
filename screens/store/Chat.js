@@ -164,33 +164,37 @@ export default function Chat({ route }) {
           style={{
             flexDirection: 'row',
             flexWrap: 'wrap',
-            width: 200,
+            minWidth: 200,
           }}
         >
           {imgs.map((img, index) => (
             <MessageImage
               key={index}
               containerStyle={{
-                height: 93.5,
-                width: 93.5,
-                margin: 2,
+                minHeight: 93.5,
+                minWidth: 93.5,
+                width: '50%',
+                padding: 2,
               }}
               lightboxProps={{
                 style: {
-                  height: 93.5,
-                  width: 93.5,
+                  minHeight: 93.5,
+                  minWidth: 93.5,
+                  width: '50%',
                 },
               }}
               imageStyle={{
-                height: 93.5,
-                width: 93.5,
+                minHeight: 93.5,
+                minWidth: 93.5,
+                flex: 1,
                 borderRadius: 0,
                 ...getRadius(index),
               }}
               imageProps={{
                 style: {
-                  height: 93.5,
-                  width: 93.5,
+                  minHeight: 93.5,
+                  minWidth: 93.5,
+                  width: '50%',
                 },
               }}
               currentMessage={{

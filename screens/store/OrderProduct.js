@@ -164,13 +164,13 @@ export default function OrderProduct({ navigation, route }) {
       quality: 1,
     });
 
-    if (!result.cancelled) {
+    if (!result.canceled) {
       let result_upload = [];
-      if (!result.selected) {
-        result_upload = [result];
-        setImage([result]);
+      if (result.assets.length < 2) {
+        result_upload = [result.assets];
+        setImage([result.assets]);
       } else {
-        result_upload = result.selected;
+        result_upload = result.assets;
         if (result_upload.length > 4) {
           result_upload = result_upload.slice(0, 4);
         }
