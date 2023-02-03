@@ -166,16 +166,13 @@ export default function OrderProduct({ navigation, route }) {
 
     if (!result.canceled) {
       let result_upload = [];
-      if (result.assets.length < 2) {
-        result_upload = [result.assets];
-        setImage([result.assets]);
-      } else {
-        result_upload = result.assets;
-        if (result_upload.length > 4) {
-          result_upload = result_upload.slice(0, 4);
-        }
-        setImage(result_upload);
+
+      result_upload = result.assets;
+      if (result_upload.length > 4) {
+        result_upload = result_upload.slice(0, 4);
       }
+      setImage(result_upload);
+
       setImagesToUpload(result_upload);
     }
   };

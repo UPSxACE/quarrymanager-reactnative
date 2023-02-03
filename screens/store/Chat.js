@@ -143,8 +143,14 @@ export default function Chat({ route }) {
   }, []);
 
   const customMessageImages = (props) => {
-    const getRadius = (index) => {
+    const getRadius = (index, size) => {
       const amount_of_radius = 8;
+      if (size === 1) {
+        return {
+          borderTopLeftRadius: amount_of_radius,
+          borderTopRightRadius: amount_of_radius,
+        };
+      }
       switch (index) {
         case 0:
           return { borderTopLeftRadius: amount_of_radius };
@@ -159,6 +165,7 @@ export default function Chat({ route }) {
 
     if (props.currentMessage.image) {
       const imgs = props.currentMessage.image.split(',');
+      const size = imgs.length;
       return (
         <View
           style={{
@@ -172,29 +179,29 @@ export default function Chat({ route }) {
               key={index}
               containerStyle={{
                 minHeight: 93.5,
-                minWidth: 93.5,
-                width: '50%',
+                minWidth: size < 3 ? 80 : 93.5,
+                flex: 1,
                 padding: 2,
+                paddingRight: 8,
               }}
               lightboxProps={{
                 style: {
                   minHeight: 93.5,
-                  minWidth: 93.5,
-                  width: '50%',
+                  minWidth: size < 3 ? 80 : 93.5,
+                  width: '100%',
                 },
               }}
               imageStyle={{
                 minHeight: 93.5,
-                minWidth: 93.5,
-                flex: 1,
+                minWidth: size < 3 ? 80 : 93.5,
+                width: '100%',
                 borderRadius: 0,
-                ...getRadius(index),
+                ...getRadius(index, size),
               }}
               imageProps={{
                 style: {
                   minHeight: 93.5,
-                  minWidth: 93.5,
-                  width: '50%',
+                  minWidth: size < 3 ? 80 : 93.5,
                 },
               }}
               currentMessage={{
