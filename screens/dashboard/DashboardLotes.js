@@ -11,6 +11,7 @@ import {
   Pressable,
 } from 'react-native';
 import PagerView from 'react-native-pager-view';
+import { ActivityIndicator } from 'react-native-paper';
 import api from '../../api';
 import apiconfig from '../../api-config';
 import BatchPictures from '../../components/dashboard/BatchPictures';
@@ -45,22 +46,93 @@ export default function DashboardLotes() {
         backgroundColor: themeColors.main.dashboardBackground,
       }}
     >
-      <PagerView
-        style={styles.viewPager}
-        initialPage={0}
-        onPageSelected={(pageSelected) => {
-          //console.log(pageSelected.nativeEvent.position);
-          setPosition(pageSelected.nativeEvent.position);
-        }}
-        ref={PagerViewRef}
-      >
-        {informacoes_lote.map((obj, index) => {
-          return (
+      {informacoes_lote.length !== 0 ? (
+        <>
+          <PagerView
+            style={styles.viewPager}
+            initialPage={0}
+            onPageSelected={(pageSelected) => {
+              //console.log(pageSelected.nativeEvent.position);
+              setPosition(pageSelected.nativeEvent.position);
+            }}
+            ref={PagerViewRef}
+          >
+            {informacoes_lote.map((obj, index) => {
+              return (
+                <View
+                  style={{
+                    padding: 16,
+                    paddingBottom: 8,
+                    flex: 1,
+                    shadowColor: '#000',
+                    shadowOffset: {
+                      width: 0,
+                      height: 2,
+                    },
+                    shadowOpacity: 0.25,
+                    shadowRadius: 3.84,
+                    elevation: 4,
+                  }}
+                  key={index + 1}
+                >
+                  <View
+                    style={{
+                      backgroundColor: 'white',
+                      padding: 12,
+                      paddingTop: 16,
+                      borderRadius: 4,
+                      flex: 1,
+                      overflow: 'scroll',
+                      paddingBottom: 0,
+                      shadowColor: '#000',
+                      shadowOffset: {
+                        width: 0,
+                        height: 2,
+                      },
+                      shadowOpacity: 0.25,
+                      shadowRadius: 3.84,
+                      elevation: 1,
+                    }}
+                  >
+                    <BatchPictures
+                      horizontalPadding={32}
+                      data={obj.fotografiaLotes}
+                    />
+
+                    <ScrollView>
+                      <LoteDescription
+                        mat={obj.idProduto0.idMaterial0.nome}
+                        cor={obj.idProduto0.idCor0.nome}
+                        quant={obj.quantidade}
+                        localex={obj.idLocalExtracao0.nome}
+                        localar={obj.idLocalArmazem0.nome}
+                        dataex={obj.dataHora}
+                        horaex={obj.dataHora}
+                        codLote={obj.codigo_lote}
+                      />
+                    </ScrollView>
+
+                    <Text>{obj.text}</Text>
+                  </View>
+                </View>
+              );
+            })}
+          </PagerView>
+          <View
+            style={{
+              padding: 16,
+              paddingTop: 8,
+              borderRadius: 4,
+              height: 80,
+              overflow: 'scroll',
+            }}
+          >
             <View
               style={{
-                padding: 16,
-                paddingBottom: 8,
                 flex: 1,
+                paddingVertical: 12,
+                borderRadius: 4,
+                backgroundColor: 'white',
                 shadowColor: '#000',
                 shadowOffset: {
                   width: 0,
@@ -68,115 +140,58 @@ export default function DashboardLotes() {
                 },
                 shadowOpacity: 0.25,
                 shadowRadius: 3.84,
-                elevation: 4,
+                elevation: 1,
+                flexDirection: 'row',
+                alignItems: 'center',
               }}
-              key={index + 1}
             >
-              <View
+              <Pressable
                 style={{
+                  height: 54,
                   backgroundColor: 'white',
-                  padding: 12,
-                  paddingTop: 16,
-                  borderRadius: 4,
-                  flex: 1,
-                  overflow: 'scroll',
-                  paddingBottom: 0,
-                  shadowColor: '#000',
-                  shadowOffset: {
-                    width: 0,
-                    height: 2,
-                  },
-                  shadowOpacity: 0.25,
-                  shadowRadius: 3.84,
-                  elevation: 1,
+                  justifyContent: 'center',
+                  marginRight: 'auto',
+                  backgroundColor: 'white',
+                  paddingHorizontal: 12,
+                }}
+                onPress={() => {
+                  PagerViewRef.current.setPage(position - 1);
                 }}
               >
-                <BatchPictures
-                  horizontalPadding={32}
-                  data={obj.fotografiaLotes}
-                />
-
-                <ScrollView>
-                  <LoteDescription
-                    mat={obj.idProduto0.idMaterial0.nome}
-                    cor={obj.idProduto0.idCor0.nome}
-                    quant={obj.quantidade}
-                    localex={obj.idLocalExtracao0.nome}
-                    localar={obj.idLocalArmazem0.nome}
-                    dataex={obj.dataHora}
-                    horaex={obj.dataHora}
-                    codLote={obj.codigo_lote}
-                  />
-                </ScrollView>
-
-                <Text>{obj.text}</Text>
-              </View>
+                <Feather size={28} name="chevron-left" />
+              </Pressable>
+              <Text style={{ fontSize: 20, lineHeight: 24 }}>
+                {position + 1}/{informacoes_lote.length}
+              </Text>
+              <Pressable
+                style={{
+                  height: 54,
+                  backgroundColor: 'white',
+                  justifyContent: 'center',
+                  marginLeft: 'auto',
+                  backgroundColor: 'white',
+                  paddingHorizontal: 12,
+                }}
+                onPress={() => {
+                  PagerViewRef.current.setPage(position + 1);
+                }}
+              >
+                <Feather size={28} name="chevron-right" />
+              </Pressable>
             </View>
-          );
-        })}
-      </PagerView>
-      <View
-        style={{
-          padding: 16,
-          paddingTop: 8,
-          borderRadius: 4,
-          height: 80,
-          overflow: 'scroll',
-        }}
-      >
+          </View>
+        </>
+      ) : (
         <View
           style={{
             flex: 1,
-            paddingVertical: 12,
-            borderRadius: 4,
-            backgroundColor: 'white',
-            shadowColor: '#000',
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            shadowOpacity: 0.25,
-            shadowRadius: 3.84,
-            elevation: 1,
-            flexDirection: 'row',
+            justifyContent: 'center',
             alignItems: 'center',
           }}
         >
-          <Pressable
-            style={{
-              height: 54,
-              backgroundColor: 'white',
-              justifyContent: 'center',
-              marginRight: 'auto',
-              backgroundColor: 'white',
-              paddingHorizontal: 12,
-            }}
-            onPress={() => {
-              PagerViewRef.current.setPage(position - 1);
-            }}
-          >
-            <Feather size={28} name="chevron-left" />
-          </Pressable>
-          <Text style={{ fontSize: 20, lineHeight: 24 }}>
-            {position + 1}/{informacoes_lote.length}
-          </Text>
-          <Pressable
-            style={{
-              height: 54,
-              backgroundColor: 'white',
-              justifyContent: 'center',
-              marginLeft: 'auto',
-              backgroundColor: 'white',
-              paddingHorizontal: 12,
-            }}
-            onPress={() => {
-              PagerViewRef.current.setPage(position + 1);
-            }}
-          >
-            <Feather size={28} name="chevron-right" />
-          </Pressable>
+          <ActivityIndicator size={80} color={themeColors.main.A} />
         </View>
-      </View>
+      )}
     </View>
   );
 }
