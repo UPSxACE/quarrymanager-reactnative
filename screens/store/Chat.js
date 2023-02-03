@@ -20,10 +20,12 @@ import {
 import { firebase_db } from '../../firebase';
 import api from '../../api';
 import apiconfig from '../../api-config';
+import axios from 'axios';
 
 export default function Chat({ route }) {
   const [messages, setMessages] = useState([]);
   const params = route.params;
+  console.log(params);
   const canal_mensagens_ref = (id_canal) =>
     query(
       ref(firebase_db, '/pedidos-mensagens/' + id_canal),
@@ -77,6 +79,20 @@ export default function Chat({ route }) {
     });
   }, []);
 
+  async function notificar(titulo, mensagem) {
+    result = await axios.post(
+      api.notificar_gestores,
+      {
+        titulo,
+        mensagem,
+        pessoas_a_notificar: [1],
+      },
+      { headers: await api.gerar_auth_header() }
+    );
+
+    return result;
+  }
+
   const onSend = useCallback(async (newMessages = []) => {
     setMessages((previousMessages) =>
       GiftedChat.append(previousMessages, newMessages)
@@ -104,7 +120,25 @@ export default function Chat({ route }) {
     updates[
       '/pedidos-mensagens/' + params.id + '/' + newPostKey + '/sent'
     ] = true;
-    update(ref(firebase_db), updates);
+    await update(ref(firebase_db), updates);
+    notificar(params.title, newMessages[0].text).catch((error) => {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+        // http.ClientRequest in node.js
+        console.log(error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log('Error', error.message);
+      }
+      console.log(error.config);
+    });
   }, []);
 
   const customMessageImages = (props) => {

@@ -52,6 +52,7 @@ const api = {
   register: criarUrl('auth/register'),
   refresh_token: (push_token) =>
     criarUrl('auth/refresh-token?push_token=' + push_token),
+  notificar_gestores: criarUrl('notifications/notificar-gestores'),
 };
 
 export default api;
