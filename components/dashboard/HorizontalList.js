@@ -1,7 +1,6 @@
-import { useNavigation } from "@react-navigation/native";
-import { InfoIcon } from "native-base";
-import { FlatList, StyleSheet, View, Text, Pressable } from "react-native";
-import { themeColors } from "../../Theme";
+import { useNavigation } from '@react-navigation/native';
+import { FlatList, StyleSheet, View, Text, Pressable } from 'react-native';
+import { themeColors } from '../../Theme';
 
 export default function HorizontalList({
   title,
@@ -49,26 +48,26 @@ export default function HorizontalList({
     return (
       <Item
         mainText={
-          typeof mainText !== "undefined"
+          typeof mainText !== 'undefined'
             ? mainTextPedido
               ? item.idPedido0.idUser0.profile.full_name
               : item[mainText]
-            : ""
+            : ''
         }
         tag={
-          typeof tag !== "undefined"
+          typeof tag !== 'undefined'
             ? tagPedido
               ? item.idPedido0.idProduto0.tituloArtigo
               : item[tag]
-            : "#" + (index + 1)
+            : '#' + (index + 1)
         }
-        date={typeof date !== "undefined" ? item[date] : ""}
+        date={typeof date !== 'undefined' ? item[date] : ''}
         subText={
-          typeof subText !== "undefined"
+          typeof subText !== 'undefined'
             ? subTextPedido
               ? item.idPedido0.idUser0.profile.morada
               : item[subText]
-            : ""
+            : ''
         }
         full_data={item}
       />
@@ -92,20 +91,20 @@ export default function HorizontalList({
 const styles = StyleSheet.create({
   categoryTitle: {
     fontSize: 21,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 4,
   },
 
   item: {
-    flexDirection: "row",
+    flexDirection: 'row',
     width: 240,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     marginRight: 12,
   },
 
   blueBar: {
     backgroundColor: themeColors.main.dashboardComponentColor1,
-    height: "100%",
+    height: '100%',
     width: 4,
   },
 
@@ -151,7 +150,7 @@ const styles = StyleSheet.create({
     lineHeight: 40,
     fontSize: 21,
     borderBottomWidth: 1,
-    borderBottomColor: "rgba(0,0,0,0.16)",
+    borderBottomColor: 'rgba(0,0,0,0.16)',
     color: themeColors.main.mainTextColor,
   },
 
@@ -160,7 +159,7 @@ const styles = StyleSheet.create({
     lineHeight: 26,
     fontSize: 12,
     borderBottomWidth: 1,
-    borderBottomColor: "rgba(0,0,0,0.16)",
+    borderBottomColor: 'rgba(0,0,0,0.16)',
     color: themeColors.main.mainTextColor,
   },
 

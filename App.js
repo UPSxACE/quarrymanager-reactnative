@@ -1,41 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
-import {
-  ActivityIndicator,
-  Animated,
-  Button,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { ActivityIndicator, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import TestPage from './screens/store/TestPage';
-import { NativeBaseProvider, extendTheme, Box, HStack } from 'native-base';
-import { LinearGradient } from 'expo-linear-gradient';
 import Profile from './screens/store/Profile';
 import SettingsPage from './screens/store/SettingsPage';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Feather } from '@expo/vector-icons';
-import TestPage2 from './screens/store/TestPage2';
-import TestPage3 from './screens/store/TestPage3';
 import { useCallback, useEffect, useState } from 'react';
 import DashboardHome from './screens/dashboard/DashboardHome';
 import Orders from './screens/store/Orders';
-import StoreCategories from './screens/store/StoreCategories';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import {
-  gradientHeaderOptions,
-  gradientTabBarOptions,
-  theme_obj,
-  theme_config,
-  CustomBottomTab,
-  SearchBarHeader,
-} from './Theme';
+import { gradientHeaderOptions, CustomBottomTab } from './Theme';
 import Product from './screens/store/Product';
 import DashboardLotes from './screens/dashboard/DashboardLotes';
-import { themeColors } from './Theme';
-import StyledOnFocus from './components/StyledOnFocus';
 import ChangeUsername from './screens/store/ChangeUsername';
 import ChangeEmail from './screens/store/ChangeEmail';
 import ChangePassword from './screens/store/ChangePassword';
@@ -43,14 +19,11 @@ import RegisterPage from './screens/store/RegisterPage';
 import LoginPage from './screens/store/LoginPage';
 import * as SplashScreen from 'expo-splash-screen';
 import OrderProduct from './screens/store/OrderProduct';
-import TestPage4 from './screens/store/TestPage4';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NotificationsScreen from './screens/store/NotificationsScreen';
 import Chat from './screens/store/Chat';
 import StorePage from './screens/store/StorePage';
 import DashboardPedido from './screens/dashboard/DashboardPedido';
-import { firebase_db } from './firebase';
-import { ref } from 'firebase/database';
 import axios from 'axios';
 import api from './api';
 import * as Device from 'expo-device';
@@ -76,8 +49,6 @@ function isRootStack(routeName) {
       return true;
     case 'Detalhes Produto':
       return true;
-    case 'Tests3':
-      return true;
     case 'Produto':
       return true;
     case 'Alterar Username':
@@ -100,7 +71,6 @@ function isRootStack(routeName) {
 const RootStack = createNativeStackNavigator();
 const HomeTab = createBottomTabNavigator();
 export default function App() {
-  const theme = extendTheme(theme_obj);
   const [dashboard, setDashboard] = useState(false);
   const [login, setLogin] = useState(false);
   const [appIsReady, setAppIsReady] = useState(false);
@@ -270,105 +240,98 @@ export default function App() {
 
   return (
     <View style={{ flex: 1 }}>
-      <NativeBaseProvider theme={theme} config={theme_config}>
-        <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
-          <NavigationContainer>
-            <RootStack.Navigator
-              screenOptions={({ route }) => ({
-                //animation: 'slide_from_right',
-                headerShown: isRootStack(route.name) ? true : false,
-              })}
-            >
-              <RootStack.Screen
-                name="HomeStack"
-                component={HomeTabs}
-              ></RootStack.Screen>
-              <RootStack.Screen
-                name="Pedido"
-                component={DashboardPedido}
-                options={{
+      <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
+        <NavigationContainer>
+          <RootStack.Navigator
+            screenOptions={({ route }) => ({
+              //animation: 'slide_from_right',
+              headerShown: isRootStack(route.name) ? true : false,
+            })}
+          >
+            <RootStack.Screen
+              name="HomeStack"
+              component={HomeTabs}
+            ></RootStack.Screen>
+            <RootStack.Screen
+              name="Pedido"
+              component={DashboardPedido}
+              options={{
+                ...gradientHeaderOptions,
+              }}
+            ></RootStack.Screen>
+            <RootStack.Screen
+              name="Transportadora"
+              component={DashboardTransportadora}
+              options={{
+                ...gradientHeaderOptions,
+              }}
+            ></RootStack.Screen>
+            <RootStack.Screen
+              name="Detalhes Produto"
+              component={DashboardProdutos}
+              options={{
+                ...gradientHeaderOptions,
+              }}
+            ></RootStack.Screen>
+            <RootStack.Screen
+              name="Produto"
+              component={Product}
+              options={({ route }) => {
+                return {
                   ...gradientHeaderOptions,
-                }}
-              ></RootStack.Screen>
-              <RootStack.Screen
-                name="Transportadora"
-                component={DashboardTransportadora}
-                options={{
-                  ...gradientHeaderOptions,
-                }}
-              ></RootStack.Screen>
-              <RootStack.Screen
-                name="Detalhes Produto"
-                component={DashboardProdutos}
-                options={{
-                  ...gradientHeaderOptions,
-                }}
-              ></RootStack.Screen>
-              <RootStack.Screen
-                name="Tests3"
-                component={TestPage3}
-                options={{ ...gradientHeaderOptions }}
-              ></RootStack.Screen>
-              <RootStack.Screen
-                name="Produto"
-                component={Product}
-                options={({ route }) => {
+                  headerTitle: route.params.title,
+                };
+              }}
+            ></RootStack.Screen>
+            <RootStack.Screen
+              name="Alterar Username"
+              component={ChangeUsername}
+              options={{ ...gradientHeaderOptions }}
+            ></RootStack.Screen>
+            <RootStack.Screen
+              name="Alterar Email"
+              component={ChangeEmail}
+              options={{ ...gradientHeaderOptions }}
+            ></RootStack.Screen>
+            <RootStack.Screen
+              name="Alterar Palavra-Passe"
+              component={ChangePassword}
+              options={{ ...gradientHeaderOptions }}
+            ></RootStack.Screen>
+            <RootStack.Screen
+              name="Pedido de Orçamento"
+              component={OrderProduct}
+              options={{ ...gradientHeaderOptions }}
+            ></RootStack.Screen>
+            <RootStack.Screen
+              name="Notificações"
+              component={NotificationsScreen}
+              options={{ ...gradientHeaderOptions }}
+            ></RootStack.Screen>
+            <RootStack.Screen
+              name="Chat"
+              options={({ route }) => {
+                if (route.params) {
                   return {
                     ...gradientHeaderOptions,
                     headerTitle: route.params.title,
                   };
-                }}
-              ></RootStack.Screen>
-              <RootStack.Screen
-                name="Alterar Username"
-                component={ChangeUsername}
-                options={{ ...gradientHeaderOptions }}
-              ></RootStack.Screen>
-              <RootStack.Screen
-                name="Alterar Email"
-                component={ChangeEmail}
-                options={{ ...gradientHeaderOptions }}
-              ></RootStack.Screen>
-              <RootStack.Screen
-                name="Alterar Palavra-Passe"
-                component={ChangePassword}
-                options={{ ...gradientHeaderOptions }}
-              ></RootStack.Screen>
-              <RootStack.Screen
-                name="Pedido de Orçamento"
-                component={OrderProduct}
-                options={{ ...gradientHeaderOptions }}
-              ></RootStack.Screen>
-              <RootStack.Screen
-                name="Notificações"
-                component={NotificationsScreen}
-                options={{ ...gradientHeaderOptions }}
-              ></RootStack.Screen>
-              <RootStack.Screen
-                name="Chat"
-                options={({ route }) => {
-                  if (route.params) {
-                    return {
-                      ...gradientHeaderOptions,
-                      headerTitle: route.params.title,
-                    };
-                  }
-                  return {
-                    ...gradientHeaderOptions,
-                  };
-                }}
-                component={Chat}
-              />
-            </RootStack.Navigator>
-            <StatusBar style={login ? 'light' : 'dark'} />
-            <CustomBottomTab
-              login={login}
-              dashboard={dashboard}
-              setDashboard={setDashboard}
+                }
+                return {
+                  ...gradientHeaderOptions,
+                };
+              }}
+              component={Chat}
             />
-          </NavigationContainer>
-        </GestureHandlerRootView>
-      </NativeBaseProvider>
+          </RootStack.Navigator>
+          <StatusBar style={login ? 'light' : 'dark'} />
+          <CustomBottomTab
+            login={login}
+            dashboard={dashboard}
+            setDashboard={setDashboard}
+          />
+        </NavigationContainer>
+      </GestureHandlerRootView>
     </View>
   );
 }

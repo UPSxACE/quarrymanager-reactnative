@@ -34,7 +34,7 @@ export const gradientHeaderOptions = {
           justifyContent: 'space-evenly',
         }}
         colors={[themeColors.main.D, themeColors.main.C]}
-        start={{ x: 0, y: 0.5 }}
+        start={{ x: 0.5, y: 0.5 }}
       ></LinearGradient>
     </View>
   ),
@@ -50,7 +50,7 @@ export const gradientTabBarOptions = {
           justifyContent: 'space-evenly',
         }}
         colors={[themeColors.main.C, themeColors.main.D]}
-        start={{ x: 0, y: 0.5 }}
+        start={{ x: 0.5, y: 0.5 }}
         justifyContent={'space-evenly'}
       ></LinearGradient>
     </View>
@@ -71,7 +71,7 @@ export const SearchBarHeader = ({ state, setState }) => {
           justifyContent: 'space-evenly',
         }}
         colors={[themeColors.main.D, themeColors.main.C]}
-        start={{ x: 0, y: 0.5 }}
+        start={{ x: 0.5, y: 0.5 }}
       >
         <View
           style={{
@@ -223,7 +223,7 @@ export function CustomBottomTab({ dashboard, setDashboard, login }) {
           justifyContent: 'space-evenly',
         }}
         colors={[themeColors.main.C, themeColors.main.D]}
-        start={{ x: 0, y: 0.5 }}
+        start={{ x: 0.5, y: 0.5 }}
         justifyContent={'space-evenly'}
       >
         {dashboard

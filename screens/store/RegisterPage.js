@@ -12,7 +12,6 @@ import BlueInput from '../../components/store/BlueInput';
 import BlueButton from '../../components/store/BlueButton';
 import { Feather, MaterialIcons } from '@expo/vector-icons';
 import { themeColors } from '../../Theme';
-import { Button, Input } from 'native-base';
 import { CommonActions, useNavigation } from '@react-navigation/native';
 import RegisterFooter from '../../components/store/RegisterFooter';
 import { useState } from 'react';
