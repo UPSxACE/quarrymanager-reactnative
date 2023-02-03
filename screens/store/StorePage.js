@@ -60,7 +60,6 @@ export default function StorePage() {
   }, []);
 
   // LISTAR MÁRMORES:
-
   useEffect(() => {
     const sendRequest = async () => {
       const result = await axios.get(api.listar_marmores, {
@@ -68,7 +67,6 @@ export default function StorePage() {
           Authorization: apiconfig.adminToken,
         },
       });
-
       setCategoryData1(result.data);
     };
 

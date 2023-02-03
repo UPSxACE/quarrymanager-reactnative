@@ -6,8 +6,10 @@ import {
   View,
   StyleSheet,
   Pressable,
+  ActivityIndicator,
 } from 'react-native';
 import apiconfig from '../../api-config';
+import { themeColors } from '../../Theme';
 
 export default function HorizontalCategory({ categoryTitle, data }) {
   const navigation = useNavigation();
@@ -60,13 +62,26 @@ export default function HorizontalCategory({ categoryTitle, data }) {
   return (
     <View style={list_styles.horizontalList}>
       <Text style={list_styles.text}>{categoryTitle}</Text>
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-      />
+      {data.length !== 0 ? (
+        <FlatList
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+        />
+      ) : (
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: 150,
+            width: '100%',
+          }}
+        >
+          <ActivityIndicator size={80} color={themeColors.main.A} />
+        </View>
+      )}
     </View>
   );
 }
@@ -87,6 +102,7 @@ const list_styles = StyleSheet.create({
     paddingLeft: 12,
     paddingTop: 6,
     paddingBottom: 12,
+    flex: 1,
   },
 
   text: {
