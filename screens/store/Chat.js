@@ -15,37 +15,38 @@ import {
   push,
   query,
   ref,
+  set,
   update,
 } from 'firebase/database';
 import { firebase_db } from '../../firebase';
 import api from '../../api';
 import apiconfig from '../../api-config';
 import axios from 'axios';
+import { useIsFocused } from '@react-navigation/native';
 
 export default function Chat({ route }) {
+  const isFocused = useIsFocused();
   const [messages, setMessages] = useState([]);
   const params = route.params;
-  console.log(params);
   const canal_mensagens_ref = (id_canal) =>
     query(
       ref(firebase_db, '/pedidos-mensagens/' + id_canal),
       orderByKey('createdAt'),
       limitToLast(100)
     );
-  const canal_nova_mensagem_ref = (id_canal) =>
-    ref(firebase_db, '/pedidos-mensagens/' + id_canal);
-  const ultima_mensagem_ref = (id_canal) =>
-    ref(firebase_db, '/pedidos-listagem/' + id_canal + '/ultima-mensagem');
   const ultima_lida_ref = (id_canal) =>
     ref(
       firebase_db,
-      '/pedidos-listagem/' + id_canal + '/ultima-mensagem/' + params.user_id
+      '/pedidos-listagem/' + id_canal + '/ultima-lida/' + params.user_id
     );
 
   useEffect(() => {
     onValue(canal_mensagens_ref(params.id), (snapshot) => {
       const result_map = new Map();
       const result = [];
+      if (isFocused) {
+        set(ultima_lida_ref(params.id), Date.now());
+      }
       try {
         for (const [key, value] of Object.entries(snapshot.val())) {
           if (!result_map.has(value._id)) {

@@ -12,6 +12,8 @@ export default function ListItem({
   state,
   imageUrl,
   user_id,
+  onPressEvent = () => {},
+  orders = false,
 }) {
   const navigation = useNavigation();
   const params_obj = destiny[1]
@@ -27,6 +29,12 @@ export default function ListItem({
   return (
     <Pressable
       onPress={() => {
+        if (!orders) {
+          onPressEvent();
+        } else {
+          onPressEvent(id);
+        }
+
         if (destiny) {
           navigation.push(destiny[0], params_obj);
         }

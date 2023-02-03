@@ -29,7 +29,12 @@ const DATA = [
   },
 ];
 
-export default function BasicList({ data, user_id }) {
+export default function BasicList({
+  data,
+  user_id,
+  onPressEvent,
+  orders = false,
+}) {
   const [channels, setChannels] = useState([]);
 
   function Item({ id, state, title, newMessage, imageUrl }) {
@@ -42,17 +47,20 @@ export default function BasicList({ data, user_id }) {
         imageUrl={imageUrl}
         destiny={['Chat', '']}
         user_id={user_id}
+        onPressEvent={onPressEvent}
+        orders={orders}
       ></ListItem>
     );
   }
 
   function renderItem({ item }) {
-    // código que verifica se há nova mensagem:
     return (
       <Item
         id={item.id}
         title={item.titulo}
-        newMessage={false}
+        newMessage={
+          item['ultima-mensagem'] > item['ultima-lida'][user_id] ? true : false
+        }
         state={item.estado}
         imageUrl={'http://' + apiconfig.serverIP + '/uploads/' + item.pic}
       />

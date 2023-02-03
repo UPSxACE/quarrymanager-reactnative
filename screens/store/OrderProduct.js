@@ -136,7 +136,7 @@ export default function OrderProduct({ navigation, route }) {
             setOrderComplete(true);
           } else {
             setOrderComplete(true);
-            console.log(await response.json());
+            //console.log(await response.json());
           }
 
           return response.json();

@@ -24,6 +24,9 @@ export default function Orders() {
   const canal_info_ref = (id_canal) =>
     query(ref(firebase_db, '/pedidos-listagem/' + id_canal), limitToLast(25));
 
+  const ultima_lida_ref = (id_canal) =>
+    ref(firebase_db, '/pedidos-listagem/' + id_canal + '/ultima-lida/' + user);
+
   function updateChannels(key, value) {
     // prevenir erro caso channels não seja um map
     if (channel_list) {
@@ -58,7 +61,14 @@ export default function Orders() {
   return (
     <View style={{ flex: 1 }}>
       <ScrollableTabs tabs={TABS_DATA} setSearch={setCategory} />
-      <BasicList data={channel_list} user_id={user} />
+      <BasicList
+        data={channel_list}
+        user_id={user}
+        orders
+        onPressEvent={(canal) => {
+          set(ultima_lida_ref(canal), Date.now());
+        }}
+      />
     </View>
   );
 }

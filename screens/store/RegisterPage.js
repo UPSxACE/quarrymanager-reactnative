@@ -89,10 +89,6 @@ export default function RegisterPage({ setLogin }) {
       });
   };
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   return (
     <Provider>
       <Portal>
