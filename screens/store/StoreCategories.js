@@ -11,7 +11,6 @@ export default function StoreCategories(props) {
     'Porcelana',
     'Pedras',
     'Rochas',
-    'Favoritos',
   ];
   const CATEGORY_DATA = [
     {

@@ -9,7 +9,7 @@ export default function NotificationToggle({
   iconName,
   notificationName,
 }) {
-  const [isSwitchOn, setIsSwitchOn] = useState(false);
+  const [isSwitchOn, setIsSwitchOn] = useState(true);
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
 
   return (

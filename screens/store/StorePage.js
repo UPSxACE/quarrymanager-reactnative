@@ -128,13 +128,7 @@ export default function StorePage() {
     });
   }, []);
 
-  const TABS_DATA = [
-    'Mármore',
-    'Granito',
-    'Cerâmica',
-    'Porcelana',
-    'Favoritos',
-  ];
+  const TABS_DATA = ['Mármore', 'Granito', 'Cerâmica', 'Porcelana'];
 
   const [search, setSearch] = useState('');
 

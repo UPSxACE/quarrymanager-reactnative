@@ -12,7 +12,6 @@ const TABS_DATA = [
   'Porcelana',
   'Pedras',
   'Rochas',
-  'Favoritos',
 ];
 
 const HLDATA = [

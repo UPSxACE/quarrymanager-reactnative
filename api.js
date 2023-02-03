@@ -46,7 +46,7 @@ const api = {
   obter_perfil: criarUrl('profile/get-profile'),
   editar_perfil: criarUrl('profile/editar'),
   obter_produtos_loja: criarUrl(
-    'produto/produtos-loja?fields=tituloArtigo,preco&expand=id,url_fotografia'
+    'produto/produtos-loja-todos?fields=tituloArtigo,preco&expand=id,url_fotografia'
   ),
   login: criarUrl('auth/login'),
   register: criarUrl('auth/register'),
