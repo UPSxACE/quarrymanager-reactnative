@@ -172,6 +172,8 @@ export default function Chat({ route }) {
             flexDirection: 'row',
             flexWrap: 'wrap',
             minWidth: 200,
+            minHeight: size === 3 ? 200 : 0,
+            height: 180,
           }}
         >
           {imgs.map((img, index) => (
@@ -179,7 +181,7 @@ export default function Chat({ route }) {
               key={index}
               containerStyle={{
                 minHeight: 93.5,
-                minWidth: size < 3 ? 80 : 93.5,
+                minWidth: size < 3 ? 80 : size == 3 ? 90 : 93.5,
                 flex: 1,
                 padding: 2,
                 paddingRight: 8,
@@ -187,14 +189,15 @@ export default function Chat({ route }) {
               lightboxProps={{
                 style: {
                   minHeight: 93.5,
-                  minWidth: size < 3 ? 80 : 93.5,
+                  minWidth: size < 3 ? 80 : size == 3 ? 90 : 93.5,
                   width: '100%',
                 },
               }}
               imageStyle={{
                 minHeight: 93.5,
-                minWidth: size < 3 ? 80 : 93.5,
-                width: '100%',
+                minWidth: size < 3 ? 80 : size == 3 ? 90 : 93.5,
+                width: size === 3 ? '50%' : '100%',
+                height: 93.5,
                 borderRadius: 0,
                 ...getRadius(index, size),
               }}
