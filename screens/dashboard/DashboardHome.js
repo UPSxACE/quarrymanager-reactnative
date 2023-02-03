@@ -7,6 +7,7 @@ import api from '../../api';
 import apiconfig from '../../api-config';
 import DashboardCard from '../../components/dashboard/DashboardCard';
 import HorizontalList from '../../components/dashboard/HorizontalList';
+import { themeColors } from '../../Theme';
 
 const HLDATA = [
   {
@@ -116,7 +117,7 @@ export default function DashboardHome() {
   return (
     <FlatList
       ListHeaderComponent={() => (
-        <View style={{ paddingHorizontal: 20, marginBottom: 16 }}>
+        <View style={{ paddingHorizontal: 20, marginBottom: 16, flex: 1 }}>
           <View
             style={{
               flexDirection: 'row',
@@ -156,36 +157,53 @@ export default function DashboardHome() {
             </View>
           </View>
 
-          <View>
-            <HorizontalList
-              title="Pedidos"
-              data={info_pedido ? info_pedido : []}
-              mainText="full_name"
-              subText="morada"
-              date="dataEstado"
-              tag="tituloArtigo"
-              subTextPedido
-              mainTextPedido
-              tagPedido
-              destiny="Pedido"
-            />
-          </View>
-          <View style={{ marginTop: 12 }}>
-            <HorizontalList
-              title="Transportadoras"
-              data={info_transportadora}
-              mainText="nome"
-              destiny={'Transportadora'}
-            />
-          </View>
-          <View style={{ marginTop: 12 }}>
-            <HorizontalList
-              title="Produtos"
-              data={info_produto}
-              mainText="tituloArtigo"
-              destiny={'Detalhes Produto'}
-            />
-          </View>
+          {info_pedido !== false &&
+          info_produto !== [] &&
+          info_transportadora !== [] ? (
+            <>
+              <View>
+                <HorizontalList
+                  title="Pedidos"
+                  data={info_pedido ? info_pedido : []}
+                  mainText="full_name"
+                  subText="morada"
+                  date="dataEstado"
+                  tag="tituloArtigo"
+                  subTextPedido
+                  mainTextPedido
+                  tagPedido
+                  destiny="Pedido"
+                />
+              </View>
+              <View style={{ marginTop: 12 }}>
+                <HorizontalList
+                  title="Transportadoras"
+                  data={info_transportadora}
+                  mainText="nome"
+                  destiny={'Transportadora'}
+                />
+              </View>
+              <View style={{ marginTop: 12 }}>
+                <HorizontalList
+                  title="Produtos"
+                  data={info_produto}
+                  mainText="tituloArtigo"
+                  destiny={'Detalhes Produto'}
+                />
+              </View>
+            </>
+          ) : (
+            <View
+              style={{
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: 400,
+              }}
+            >
+              <ActivityIndicator size={80} color={themeColors.main.A} />
+            </View>
+          )}
         </View>
       )}
     />
