@@ -1,31 +1,31 @@
-import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
-import { ActivityIndicator, Text, View } from "react-native";
-import { FlatList } from "react-native-gesture-handler";
-import api from "../../api";
-import apiconfig from "../../api-config";
-import DashboardCard from "../../components/dashboard/DashboardCard";
-import HorizontalList from "../../components/dashboard/HorizontalList";
+import axios from 'axios';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { ActivityIndicator, Text, View } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
+import api from '../../api';
+import apiconfig from '../../api-config';
+import DashboardCard from '../../components/dashboard/DashboardCard';
+import HorizontalList from '../../components/dashboard/HorizontalList';
 
 const HLDATA = [
   {
-    product: "Mármore Preto",
-    customer: "Eduardo Botelho",
-    address: "Rua de Bragança",
-    date: "17 Dez 2022 | 09:05 PM",
+    product: 'Mármore Preto',
+    customer: 'Eduardo Botelho',
+    address: 'Rua de Bragança',
+    date: '17 Dez 2022 | 09:05 PM',
   },
   {
-    product: "Mármore Preto",
-    customer: "Monique dos Santos",
-    address: "Rua Av. das Azeitonas",
-    date: "17 Dez 2022 | 08:17 PM",
+    product: 'Mármore Preto',
+    customer: 'Monique dos Santos',
+    address: 'Rua Av. das Azeitonas',
+    date: '17 Dez 2022 | 08:17 PM',
   },
   {
-    product: "Mármore Branco",
-    customer: "Eduardo Botelho",
-    address: "Rua de Bragança",
-    date: "17 Dez 2022 | 06:09 PM",
+    product: 'Mármore Branco',
+    customer: 'Eduardo Botelho',
+    address: 'Rua de Bragança',
+    date: '17 Dez 2022 | 06:09 PM',
   },
 ];
 
@@ -116,39 +116,39 @@ export default function DashboardHome() {
   return (
     <FlatList
       ListHeaderComponent={() => (
-        <View style={{ paddingHorizontal: 20 }}>
+        <View style={{ paddingHorizontal: 20, marginBottom: 16 }}>
           <View
             style={{
-              flexDirection: "row",
-              flexWrap: "wrap",
+              flexDirection: 'row',
+              flexWrap: 'wrap',
               marginTop: 16,
             }}
           >
-            <View style={{ width: "50%", paddingRight: 8, marginBottom: 16 }}>
+            <View style={{ width: '50%', paddingRight: 8, marginBottom: 16 }}>
               <DashboardCard
                 pedidos={info_status.pendentes}
                 label="Pendentes"
                 cardColor="#F69624"
               />
             </View>
-            <View style={{ width: "50%", paddingLeft: 8 }}>
+            <View style={{ width: '50%', paddingLeft: 8 }}>
               <DashboardCard
-                style={{ marginLeft: "auto" }}
+                style={{ marginLeft: 'auto' }}
                 pedidos={info_status.confirmados}
                 label="Confirmados"
                 cardColor="#3468ED"
               />
             </View>
-            <View style={{ width: "50%", paddingRight: 8, marginBottom: 16 }}>
+            <View style={{ width: '50%', paddingRight: 8, marginBottom: 16 }}>
               <DashboardCard
                 pedidos={info_status.cancelados}
                 label="Cancelados"
                 cardColor="#EB3E26"
               />
             </View>
-            <View style={{ width: "50%", paddingLeft: 8 }}>
+            <View style={{ width: '50%', paddingLeft: 8 }}>
               <DashboardCard
-                style={{ marginLeft: "auto" }}
+                style={{ marginLeft: 'auto' }}
                 pedidos={info_status.finalizados}
                 label="Finalizados"
                 cardColor="#2CA739"
