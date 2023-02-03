@@ -173,7 +173,7 @@ export default function Chat({ route }) {
             flexWrap: 'wrap',
             minWidth: 200,
             minHeight: size === 3 ? 200 : 0,
-            height: 180,
+            height: size === 3 ? 200 : 'auto',
           }}
         >
           {imgs.map((img, index) => (
