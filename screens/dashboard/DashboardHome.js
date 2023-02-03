@@ -175,6 +175,7 @@ export default function DashboardHome() {
               title="Transportadoras"
               data={info_transportadora}
               mainText="nome"
+              destiny={'Transportadora'}
             />
           </View>
           <View style={{ marginTop: 12 }}>
@@ -182,6 +183,7 @@ export default function DashboardHome() {
               title="Produtos"
               data={info_produto}
               mainText="tituloArtigo"
+              destiny={'Detalhes Produto'}
             />
           </View>
         </View>

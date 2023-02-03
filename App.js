@@ -56,6 +56,8 @@ import api from './api';
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
 import { useRef } from 'react';
+import DashboardTransportadora from './screens/dashboard/DashboardTransportadoras';
+import DashboardProdutos from './screens/dashboard/DashboardProdutos';
 
 SplashScreen.preventAutoHideAsync();
 Notifications.setNotificationHandler({
@@ -69,6 +71,10 @@ Notifications.setNotificationHandler({
 function isRootStack(routeName) {
   switch (routeName) {
     case 'Pedido':
+      return true;
+    case 'Transportadora':
+      return true;
+    case 'Detalhes Produto':
       return true;
     case 'Tests3':
       return true;
@@ -280,6 +286,20 @@ export default function App() {
               <RootStack.Screen
                 name="Pedido"
                 component={DashboardPedido}
+                options={{
+                  ...gradientHeaderOptions,
+                }}
+              ></RootStack.Screen>
+              <RootStack.Screen
+                name="Transportadora"
+                component={DashboardTransportadora}
+                options={{
+                  ...gradientHeaderOptions,
+                }}
+              ></RootStack.Screen>
+              <RootStack.Screen
+                name="Detalhes Produto"
+                component={DashboardProdutos}
                 options={{
                   ...gradientHeaderOptions,
                 }}
